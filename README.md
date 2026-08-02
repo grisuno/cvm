@@ -1,6 +1,6 @@
 # CVM - C Virtual Machine
 
-A stack-based bytecode virtual machine for a C language subset, designed as an alternative execution backend for the [miniGCC](https://github.com/grisuno/miniGCC) and LazyC compilers. CVM compiles C source to a portable binary module format (`.cvm`) and interprets it at runtime, providing portability, sandboxing, and dynamic module loading without native code generation.
+A stack-based bytecode virtual machine for a C language subset, designed as an alternative execution backend for the [miniGCC](https://github.com/grisuno/miniGCC) and [LazyC](https://github.com/grisuno/LazyC) compilers. CVM compiles C source to a portable binary module format (`.cvm`) and interprets it at runtime, providing portability, sandboxing, and dynamic module loading without native code generation.
 
 ## Architecture
 
