@@ -17,6 +17,7 @@
 #define CVM_DEF_FUNCS       8192
 #define CVM_DEF_NATIVES     512
 #define CVM_DEF_CODE        (64 * 1024 * 1024)
+#define CVM_DEF_PROFILE     (4 * 1024 * 1024)
 #define CVM_HEAP_ALIGN      16
 #define CVM_MAX_NARGS       16
 #define CVM_MAX_SARGS       6
@@ -43,6 +44,7 @@ CvmConfig cvm_config_default(void) {
     c.max_functions        = CVM_DEF_FUNCS;
     c.max_natives          = CVM_DEF_NATIVES;
     c.max_code_size        = CVM_DEF_CODE;
+    c.max_profile_code     = CVM_DEF_PROFILE;
     c.trace_enabled        = 0;
     return c;
 }
@@ -78,6 +80,10 @@ CvmState *cvm_create(const CvmConfig *config) {
     vm->funcs = NULL;
     vm->num_funcs = 0;
     vm->entry_func = 0;
+    vm->num_breakpoints = 0;
+    vm->ip_counts = NULL;
+    memset(vm->op_counts, 0, sizeof(vm->op_counts));
+    vm->profile_enabled = 0;
     return vm;
 }
 
@@ -93,6 +99,7 @@ void cvm_destroy(CvmState *vm) {
     free(vm->native_map);
     free(vm->string_pool);
     free(vm->funcs);
+    free(vm->ip_counts);
     free(vm);
 }
 
@@ -115,6 +122,7 @@ const char *cvm_strerror(int e) {
         case CVM_ERR_IO:          return "I/O error";
         case CVM_ERR_BOUNDS:      return "bounds check failure";
         case CVM_ERR_NOMATCH:     return "unresolved native symbol";
+        case CVM_BREAK:           return "breakpoint";
         default:                  return "unknown error";
     }
 }
@@ -165,13 +173,15 @@ static int r64(CvmState *vm, uint64_t *o) {
     return CVM_OK;
 }
 
-static int push_frame(CvmState *vm, uint32_t num_locals, size_t return_ip) {
+static int push_frame(CvmState *vm, uint32_t num_locals, size_t return_ip,
+                      uint32_t func_idx) {
     if (vm->frame_count >= vm->max_frames) return CVM_ERR_FRAME_OVER;
     if (num_locals > vm->config.max_locals_per_frame) return CVM_ERR_BOUNDS;
     CvmFrame *f = &vm->frames[vm->frame_count];
     f->capacity = num_locals > 0 ? num_locals : 1;
     f->slots = (uint64_t *)xcal(f->capacity, sizeof(uint64_t));
     f->return_ip = return_ip;
+    f->func_idx = func_idx;
     vm->frame_count++;
     return CVM_OK;
 }
@@ -915,6 +925,16 @@ int cvm_load_module_file(CvmState *vm, const char *path) {
 /* ------------------------------------------------------------------ */
 /*  Interpreter                                                       */
 /* ------------------------------------------------------------------ */
+static int cvm_run_loop(CvmState *vm) {
+    int rc = CVM_OK;
+    while (vm->running) {
+        if (cvm_break_hit(vm)) return CVM_BREAK;
+        rc = cvm_step(vm);
+        if (rc) break;
+    }
+    return rc;
+}
+
 int cvm_run(CvmState *vm) {
     register_defaults(vm);
     vm->running = 1;
@@ -926,7 +946,8 @@ int cvm_run(CvmState *vm) {
 
     if (vm->entry_func >= vm->num_funcs) return CVM_ERR_BAD_FUNC;
     uint32_t entry_locals = vm->funcs[vm->entry_func].num_locals;
-    rc = push_frame(vm, entry_locals > 0 ? entry_locals : 16, 0);
+    rc = push_frame(vm, entry_locals > 0 ? entry_locals : 16, 0,
+                    vm->entry_func);
     if (rc) return rc;
     vm->ip = vm->funcs[vm->entry_func].code_off;
 
@@ -946,19 +967,77 @@ int cvm_run(CvmState *vm) {
         }
     }
 
-    while (vm->running) {
-        uint8_t op;
-        rc = r8(vm, &op);
-        if (rc) break;
+    return cvm_run_loop(vm);
+}
 
-        if (vm->config.trace_enabled) {
-            fprintf(stderr, "[%08lu] ip=%zu op=0x%02X sp=%zu fr=%zu\n",
-                    (unsigned long)vm->instr_count, vm->ip-1, op,
-                    vm->sp, vm->frame_count);
+/* Run after a breakpoint: same loop, no state reset. */
+int cvm_continue(CvmState *vm) {
+    return cvm_run_loop(vm);
+}
+
+int cvm_break_set(CvmState *vm, size_t ip) {
+    if (ip >= vm->code_size) return CVM_ERR_BOUNDS;
+    for (size_t i = 0; i < vm->num_breakpoints; i++)
+        if (vm->breakpoints[i].ip == ip) return CVM_OK;
+    if (vm->num_breakpoints >= CVM_MAX_BREAKPOINTS) return CVM_ERR_BOUNDS;
+    vm->breakpoints[vm->num_breakpoints++].ip = ip;
+    return CVM_OK;
+}
+
+int cvm_break_clear(CvmState *vm, size_t ip) {
+    for (size_t i = 0; i < vm->num_breakpoints; i++) {
+        if (vm->breakpoints[i].ip == ip) {
+            vm->breakpoints[i] = vm->breakpoints[vm->num_breakpoints - 1];
+            vm->num_breakpoints--;
+            return CVM_OK;
         }
-        vm->instr_count++;
+    }
+    return CVM_ERR_NOMATCH;
+}
 
-        switch (op) {
+void cvm_break_clear_all(CvmState *vm) {
+    vm->num_breakpoints = 0;
+}
+
+int cvm_break_hit(const CvmState *vm) {
+    for (size_t i = 0; i < vm->num_breakpoints; i++)
+        if (vm->breakpoints[i].ip == vm->ip) return 1;
+    return 0;
+}
+
+int cvm_profile_begin(CvmState *vm) {
+    if (vm->code_size > vm->config.max_profile_code) return CVM_ERR_BOUNDS;
+    if (!vm->ip_counts)
+        vm->ip_counts = (uint32_t *)xcal(vm->code_size > 0 ? vm->code_size : 1,
+                                         sizeof(uint32_t));
+    memset(vm->op_counts, 0, sizeof(vm->op_counts));
+    vm->profile_enabled = 1;
+    return CVM_OK;
+}
+
+void cvm_profile_end(CvmState *vm) {
+    vm->profile_enabled = 0;
+}
+
+/* Execute exactly one instruction at vm->ip. */
+int cvm_step(CvmState *vm) {
+    size_t ip_start = vm->ip;
+    uint8_t op;
+    int rc = r8(vm, &op);
+    if (rc) return rc;
+
+    if (vm->config.trace_enabled) {
+        fprintf(stderr, "[%08lu] ip=%zu op=0x%02X sp=%zu fr=%zu\n",
+                (unsigned long)vm->instr_count, ip_start, op,
+                vm->sp, vm->frame_count);
+    }
+    vm->instr_count++;
+    if (vm->profile_enabled) {
+        vm->op_counts[op]++;
+        vm->ip_counts[ip_start]++;
+    }
+
+    switch (op) {
         case OP_NOP:
             break;
         case OP_PUSH_IMM64: {
@@ -1080,7 +1159,8 @@ int cvm_run(CvmState *vm) {
             uint8_t na; rc = r8(vm, &na); if (rc) break;
             if (fi >= vm->num_funcs) { rc = CVM_ERR_BAD_FUNC; break; }
             CvmFuncEntry *fe = &vm->funcs[fi];
-            rc = push_frame(vm, fe->num_locals > 0 ? fe->num_locals : 16, vm->ip);
+            rc = push_frame(vm, fe->num_locals > 0 ? fe->num_locals : 16,
+                            vm->ip, fi);
             if (rc) break;
             CvmFrame *f = cur_frame(vm);
             for (int i = (int)na - 1; i >= 0; i--) {
@@ -1207,8 +1287,6 @@ int cvm_run(CvmState *vm) {
         default:
             rc = CVM_ERR_BAD_OPCODE;
             break;
-        }
-        if (rc) break;
     }
     return rc;
 }
@@ -1216,7 +1294,7 @@ int cvm_run(CvmState *vm) {
 int64_t cvm_exit_code(const CvmState *vm) { return vm->exit_code; }
 uint64_t cvm_instruction_count(const CvmState *vm) { return vm->instr_count; }
 
-#ifdef CVM_STANDALONE
+#if defined(CVM_STANDALONE) && !defined(CVM_NO_MAIN)
 int main(int argc, char *argv[]) {
     if (argc < 2) {
         fprintf(stderr, "Usage: %s <module.cvm> [--trace] [args...]\n", argv[0]);

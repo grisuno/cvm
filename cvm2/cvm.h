@@ -134,7 +134,8 @@ typedef enum {
     CVM_ERR_HEAP_OVER   = -13,
     CVM_ERR_IO          = -14,
     CVM_ERR_BOUNDS      = -15,
-    CVM_ERR_NOMATCH     = -16
+    CVM_ERR_NOMATCH     = -16,
+    CVM_BREAK           =  17
 } CvmError;
 
 typedef struct {
@@ -168,6 +169,7 @@ typedef struct {
     size_t max_functions;
     size_t max_natives;
     size_t max_code_size;
+    size_t max_profile_code;
     int    trace_enabled;
 } CvmConfig;
 
@@ -175,6 +177,7 @@ typedef struct {
     uint64_t *slots;
     size_t    capacity;
     size_t    return_ip;
+    uint32_t  func_idx;
 } CvmFrame;
 
 typedef int64_t (*CvmNativeFn)(void *vm, int argc, uint64_t *argv);
@@ -183,6 +186,12 @@ typedef struct {
     char        name[40];
     CvmNativeFn fn;
 } CvmNative;
+
+#define CVM_MAX_BREAKPOINTS 64
+
+typedef struct {
+    size_t ip;
+} CvmBreakpoint;
 
 typedef struct {
     uint64_t     *slots;
@@ -213,6 +222,11 @@ typedef struct {
     CvmFuncEntry *funcs;
     size_t        num_funcs;
     uint32_t      entry_func;
+    CvmBreakpoint breakpoints[CVM_MAX_BREAKPOINTS];
+    size_t        num_breakpoints;
+    uint32_t     *ip_counts;
+    uint32_t      op_counts[256];
+    int           profile_enabled;
 } CvmState;
 
 CvmConfig   cvm_config_default(void);
@@ -221,6 +235,8 @@ void        cvm_destroy(CvmState *vm);
 int         cvm_load_module(CvmState *vm, const uint8_t *data, size_t size);
 int         cvm_load_module_file(CvmState *vm, const char *path);
 int         cvm_run(CvmState *vm);
+int         cvm_continue(CvmState *vm);
+int         cvm_step(CvmState *vm);
 int64_t     cvm_exit_code(const CvmState *vm);
 uint64_t    cvm_instruction_count(const CvmState *vm);
 const char *cvm_strerror(int error_code);
@@ -228,6 +244,13 @@ const char *cvm_strerror(int error_code);
 int cvm_register_native(CvmState *vm, const char *name, CvmNativeFn fn);
 int cvm_set_args(CvmState *vm, int argc, char **argv);
 void *cvm_heap_alloc(CvmState *vm, size_t size);
+
+int cvm_break_set(CvmState *vm, size_t ip);
+int cvm_break_clear(CvmState *vm, size_t ip);
+void cvm_break_clear_all(CvmState *vm);
+int cvm_break_hit(const CvmState *vm);
+int cvm_profile_begin(CvmState *vm);
+void cvm_profile_end(CvmState *vm);
 
 #ifdef __cplusplus
 }
