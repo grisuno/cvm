@@ -1117,6 +1117,7 @@ int cvm_step(CvmState *vm) {
         case OP_NOT: { uint64_t a; rc=vo(vm,&a); if(!rc) rc=vp(vm,~a); break; }
         case OP_SHL: { uint64_t b,a; rc=vo(vm,&b); if(rc) break; rc=vo(vm,&a); if(!rc) rc=vp(vm,a<<(b&CVM_SHIFT_MASK)); break; }
         case OP_SHR: { uint64_t b,a; rc=vo(vm,&b); if(rc) break; rc=vo(vm,&a); if(!rc) rc=vp(vm,(uint64_t)((int64_t)a>>(b&CVM_SHIFT_MASK))); break; }
+        case OP_USHR: { uint64_t b,a; rc=vo(vm,&b); if(rc) break; rc=vo(vm,&a); if(!rc) rc=vp(vm,a>>(b&CVM_SHIFT_MASK)); break; }
 
         case OP_CMP_EQ: { uint64_t b,a; rc=vo(vm,&b); if(rc) break; rc=vo(vm,&a); if(!rc) rc=vp(vm,(int64_t)a==(int64_t)b?1:0); break; }
         case OP_CMP_NE: { uint64_t b,a; rc=vo(vm,&b); if(rc) break; rc=vo(vm,&a); if(!rc) rc=vp(vm,(int64_t)a!=(int64_t)b?1:0); break; }
@@ -1124,6 +1125,10 @@ int cvm_step(CvmState *vm) {
         case OP_CMP_LE: { uint64_t b,a; rc=vo(vm,&b); if(rc) break; rc=vo(vm,&a); if(!rc) rc=vp(vm,(int64_t)a<=(int64_t)b?1:0); break; }
         case OP_CMP_GT: { uint64_t b,a; rc=vo(vm,&b); if(rc) break; rc=vo(vm,&a); if(!rc) rc=vp(vm,(int64_t)a>(int64_t)b?1:0); break; }
         case OP_CMP_GE: { uint64_t b,a; rc=vo(vm,&b); if(rc) break; rc=vo(vm,&a); if(!rc) rc=vp(vm,(int64_t)a>=(int64_t)b?1:0); break; }
+        case OP_CMP_ULT: { uint64_t b,a; rc=vo(vm,&b); if(rc) break; rc=vo(vm,&a); if(!rc) rc=vp(vm,(uint64_t)a<(uint64_t)b?1:0); break; }
+        case OP_CMP_ULE: { uint64_t b,a; rc=vo(vm,&b); if(rc) break; rc=vo(vm,&a); if(!rc) rc=vp(vm,(uint64_t)a<=(uint64_t)b?1:0); break; }
+        case OP_CMP_UGT: { uint64_t b,a; rc=vo(vm,&b); if(rc) break; rc=vo(vm,&a); if(!rc) rc=vp(vm,(uint64_t)a>(uint64_t)b?1:0); break; }
+        case OP_CMP_UGE: { uint64_t b,a; rc=vo(vm,&b); if(rc) break; rc=vo(vm,&a); if(!rc) rc=vp(vm,(uint64_t)a>=(uint64_t)b?1:0); break; }
         case OP_LNOT: { uint64_t a; rc=vo(vm,&a); if(!rc) rc=vp(vm,a==0?1:0); break; }
 
         case OP_JMP: {
@@ -1210,6 +1215,12 @@ int cvm_step(CvmState *vm) {
             rc=vp(vm,(uint64_t)(int64_t)*(int8_t*)(uintptr_t)a);
             break;
         }
+        case OP_LOAD16: {
+            uint64_t a; rc=vo(vm,&a); if(rc) break;
+            if(!mem_valid(vm,a,2)){rc=CVM_ERR_BAD_ADDR;break;}
+            rc=vp(vm,(uint64_t)(int64_t)*(int16_t*)(uintptr_t)a);
+            break;
+        }
         case OP_LOAD32: {
             uint64_t a; rc=vo(vm,&a); if(rc) break;
             if(!mem_valid(vm,a,4)){rc=CVM_ERR_BAD_ADDR;break;}
@@ -1226,6 +1237,12 @@ int cvm_step(CvmState *vm) {
             uint64_t v,a; rc=vo(vm,&v); if(rc) break; rc=vo(vm,&a); if(rc) break;
             if(!mem_valid(vm,a,1)){rc=CVM_ERR_BAD_ADDR;break;}
             *(uint8_t*)(uintptr_t)a=(uint8_t)v;
+            break;
+        }
+        case OP_STORE16: {
+            uint64_t v,a; rc=vo(vm,&v); if(rc) break; rc=vo(vm,&a); if(rc) break;
+            if(!mem_valid(vm,a,2)){rc=CVM_ERR_BAD_ADDR;break;}
+            *(uint16_t*)(uintptr_t)a=(uint16_t)v;
             break;
         }
         case OP_STORE32: {

@@ -129,8 +129,10 @@ static int stack_effect(const CvmModuleView *v, size_t off, uint8_t op,
         return 0;
     case OP_ADD: case OP_SUB: case OP_MUL: case OP_DIV: case OP_MOD:
     case OP_AND: case OP_OR:  case OP_XOR: case OP_SHL: case OP_SHR:
+    case OP_USHR:
     case OP_CMP_EQ: case OP_CMP_NE: case OP_CMP_LT: case OP_CMP_LE:
     case OP_CMP_GT: case OP_CMP_GE:
+    case OP_CMP_ULT: case OP_CMP_ULE: case OP_CMP_UGT: case OP_CMP_UGE:
         ef->need = 1; ef->dlo = -1; ef->dhi = -1;
         return 0;
     case OP_JMP:
@@ -150,11 +152,11 @@ static int stack_effect(const CvmModuleView *v, size_t off, uint8_t op,
         ef->need = 0;
         ef->dlo = -1; ef->dhi = -1;
         return 1; /* pops only when non-empty */
-    case OP_LOAD8: case OP_LOAD32: case OP_LOAD64:
+    case OP_LOAD8: case OP_LOAD16: case OP_LOAD32: case OP_LOAD64:
     case OP_ALLOC:
         ef->need = 1; ef->dlo = 0; ef->dhi = 0;
         return 0;
-    case OP_STORE8: case OP_STORE32: case OP_STORE64:
+    case OP_STORE8: case OP_STORE16: case OP_STORE32: case OP_STORE64:
         ef->need = 2; ef->dlo = -2; ef->dhi = -2;
         return 0;
     case OP_SYSCALL: {
