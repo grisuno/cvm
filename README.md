@@ -17,6 +17,16 @@ This repository carries two module formats and two interpreters:
 
 The remainder of this file documents the v1 interpreter and module format.
 
+## Related projects
+
+| Repository | Role |
+|------------|------|
+| [miniGCC](https://github.com/grisuno/miniGCC) | C compiler: C to x86-64 AT&T assembly |
+| [ld](https://github.com/grisuno/ld) | this repository: assembly to a Linux ELF or a CVM module |
+| [cvm](https://github.com/grisuno/cvm) | the CVM / cvm2 bytecode interpreter |
+| [miniOS](https://github.com/grisuno/miniOS) | the kernel that hosts the whole toolchain |
+
+
 ## Architecture
 
 ```
