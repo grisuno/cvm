@@ -2,6 +2,21 @@
 
 A stack-based bytecode virtual machine for a C language subset, designed as an alternative execution backend for the [miniGCC](https://github.com/grisuno/miniGCC) and [LazyC](https://github.com/grisuno/LazyC) compilers. CVM compiles C source to a portable binary module format (`.cvm`) and interprets it at runtime, providing portability, sandboxing, and dynamic module loading without native code generation.
 
+## Two interpreters
+
+This repository carries two module formats and two interpreters:
+
+- **v1 (this README, root `cvm.c`)** — the original standalone bytecode
+  format (`CVM1` magic). Self-contained; the documentation below describes it.
+- **v2 (`cvm2/`)** — the current format. `ld -f cvm` emits CVM v2 modules
+  (from miniGCC or host-gcc assembly), and the cvm2 interpreter is what
+  ships on the MiniOS ramdisk (`run file.cvm`). v2 runs a Linux-style argv
+  (the module path is `argv[0]`), models the x86-64 stack and register
+  arguments, and adds a disassembler, a validator and a scripted debugger.
+  See `cvm2/README.md`.
+
+The remainder of this file documents the v1 interpreter and module format.
+
 ## Architecture
 
 ```

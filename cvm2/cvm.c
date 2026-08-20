@@ -243,12 +243,19 @@ static uint64_t data_r64(CvmState *vm, size_t off) {
 int cvm_set_args(CvmState *vm, int argc, char **argv) {
     if (argc < 0) argc = 0;
     if (argc > 1024) return CVM_ERR_BOUNDS;
-    if (vm->globals_size < CVM_DATA_STACK_BASE) return CVM_OK;
+    /* The data section holds the stack base where the module's own startup
+     * expects argc at top-8 and the argv array from top upward. ld reserves
+     * that argv area at the end of the data region; older modules without
+     * the stored base fall back to the fixed layout. */
+    uint64_t stack_base = data_r64(vm, CVM_DATA_STACK_BASE);
+    if (stack_base < CVM_MODULE_HEADER_SIZE) stack_base = CVM_DATA_STACK_BASE;
+    if (vm->globals_size < stack_base) return CVM_OK;
     uint64_t stack_size = data_r64(vm, CVM_DATA_STACK_SIZE);
     if (stack_size < (size_t)(argc + 2) * 8) return CVM_ERR_BOUNDS;
     uint64_t base = (uint64_t)(uintptr_t)vm->globals;
-    uint64_t top = (uint64_t)(uintptr_t)(vm->globals + CVM_DATA_STACK_BASE) + stack_size;
-    if (top - base > vm->globals_size + CVM_DATA_STACK_BASE) return CVM_ERR_BOUNDS;
+    uint64_t top = base + stack_base + stack_size;
+    if (top < base || top + (uint64_t)(argc + 1) * 8 > base + vm->globals_size)
+        return CVM_ERR_BOUNDS;
     for (int i = 0; i < argc; i++) {
         size_t n = strlen(argv[i]) + 1;
         uint64_t s = heap_alloc(vm, n);
@@ -951,11 +958,13 @@ int cvm_run(CvmState *vm) {
     if (rc) return rc;
     vm->ip = vm->funcs[vm->entry_func].code_off;
 
-    if (vm->globals_size >= CVM_DATA_STACK_BASE + 8) {
+    uint64_t stack_base = data_r64(vm, CVM_DATA_STACK_BASE);
+    if (stack_base < CVM_MODULE_HEADER_SIZE) stack_base = CVM_DATA_STACK_BASE;
+    if (vm->globals_size >= stack_base + 8) {
         uint64_t stack_size = data_r64(vm, CVM_DATA_STACK_SIZE);
-        if (stack_size > 0 && stack_size <= vm->globals_size - CVM_DATA_STACK_BASE) {
+        if (stack_size > 0 && stack_size <= vm->globals_size - stack_base) {
             uint64_t rsp = data_r64(vm, CVM_DATA_RSP);
-            uint64_t top = (uint64_t)(uintptr_t)(vm->globals + CVM_DATA_STACK_BASE) + stack_size;
+            uint64_t top = (uint64_t)(uintptr_t)(vm->globals + stack_base) + stack_size;
             if (rsp == 0 || rsp > top || rsp + 8 < top - stack_size) {
                 rsp = top - 8;
                 *(uint64_t *)(uintptr_t)(top - 8) = 0;
@@ -1328,14 +1337,19 @@ int main(int argc, char *argv[]) {
         cvm_destroy(vm);
         return 1;
     }
-    int prog_argc = 0;
+    /* The module sees a Linux-style argv: argv[0] is the module path and
+     * the remaining words are the program arguments. The x86 startup code
+     * every ld-compiled module carries reads argc/argv from the stack that
+     * cvm_set_args builds, so both must be passed here. */
+    int prog_argc = 1;
     for (int i = 2; i < argc; i++) {
         if (strcmp(argv[i], "--trace") != 0) prog_argc++;
     }
-    if (prog_argc > 0) {
+    {
         char **pargv = (char **)malloc(sizeof(char *) * (size_t)prog_argc);
         if (!pargv) { cvm_destroy(vm); return 1; }
         int k = 0;
+        pargv[k++] = argv[1];
         for (int i = 2; i < argc; i++)
             if (strcmp(argv[i], "--trace") != 0) pargv[k++] = argv[i];
         rc = cvm_set_args(vm, prog_argc, pargv);

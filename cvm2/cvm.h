@@ -64,6 +64,9 @@ extern "C" {
 #define CVM_DATA_ARGS        32
 #define CVM_DATA_RET         80
 #define CVM_DATA_STACK_SIZE  88
+/* Offset of the stored stack-region base: the value written here tells the
+ * interpreter where the x86 stack region begins inside the data section.
+ * Old modules keep it zero and the interpreter falls back to offset 96. */
 #define CVM_DATA_STACK_BASE  96
 
 typedef enum {
