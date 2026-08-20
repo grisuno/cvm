@@ -1,0 +1,20 @@
+{
+  "cvm.c": "7d13b77ecd27dd74357b2f9c7e5fe517ec858127222416ef658c9416738c1366",
+  "cvm.h": "863dbb924772b0a12df1321e9b2fc76b41a2b1d81e41f6cc4b6cf9e9af69cf69",
+  "cvm2/cvm.c": "fadc0d730854c57f2577bb0004632a6b50b1953c59dd6ef9119ddd586e3aad21",
+  "cvm2/cvm.h": "b0559edec1df0c5c26eacaaeed6ef5f31651980fbd83766d429fac09f08a693b",
+  "cvm2/cvm_dbg_main.c": "73f8b6f4d1855906c8bfa67c28174bfc68cd236dec4a193e0709f5d5eb1219fc",
+  "cvm2/cvm_dis.c": "856f9bab5f90b03c04aee772530fd54b0e95e9c9e359e5f509775dc54dc8f399",
+  "cvm2/cvm_dis.h": "878f2f8552ffccbeb7eaa3d9ae5c2d5ad105ae8c95d21e841cc6bd1bc59abfe2",
+  "cvm2/cvm_dis_main.c": "ed498157684903962dd59527ce9dcb4336ddf3b62b2c39eb3b8484658287a4d3",
+  "cvm2/cvm_ops.c": "31b22fd565169ac895726d897c4cda2f8954c41e47f5238943d69164d127abe8",
+  "cvm2/cvm_ops.h": "f19f32a59404df5a72c49ec19dbea516b9712eead71d0dc77264bfa88035c62e",
+  "cvm2/cvm_val_main.c": "a62a5948b72d0af96789485c11f9effafafa77256f7245e02e4df8b6e9f7626a",
+  "cvm2/cvm_view.c": "b30f6e414e17ae806763366e74a2cefaaf625a02fa302dbc527dd8bcbb6887a9",
+  "cvm2/cvm_view.h": "147bf05238d023d9e30a42dfe261217ee261d99a67daba716a21a95764a54ae8",
+  "cvm2/deepseek_bash_20260808_653f26.sh": "ebf2cba968e654e06a2e5b2e4a3e84938b9f9e5ac15ddb490fbeed49ba3799e6",
+  "cvm2/gen_fib_cvm.c": "d3d56b02b2692f998009fafd488a60f0f0f586015a7e0ce95a59647fe5fb4495",
+  "cvm2/test.sh": "109bfb8e7d87811835c8e31b1e6240f89b5d317504f7f9b7eb21bee5c30cdfd9",
+  "gen_fib_cvm.c": "c9d8b0c63074ec5b656f9dab2a787f0c9e4fab2dac98959e7191c5c55bbbd31f",
+  "test.sh": "26d0375e6d1c39448e8d75c91d4beca36f29c95323541fa3cbe32e2e86edb07b"
+}
