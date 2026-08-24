@@ -237,6 +237,7 @@ typedef struct {
     uint32_t     *ip_counts;
     uint32_t      op_counts[256];
     int           profile_enabled;
+    void         *jit;  /* CvmJitState*, opaque here to avoid circular include */
 } CvmState;
 
 CvmConfig   cvm_config_default(void);

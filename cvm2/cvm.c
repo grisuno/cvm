@@ -4,6 +4,9 @@
  * @license GPL-2.0-or-later
  */
 #include "cvm.h"
+#ifdef CVM_JIT
+#include "cvm_jit.h"
+#endif
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -84,11 +87,15 @@ CvmState *cvm_create(const CvmConfig *config) {
     vm->ip_counts = NULL;
     memset(vm->op_counts, 0, sizeof(vm->op_counts));
     vm->profile_enabled = 0;
+    vm->jit = NULL;
     return vm;
 }
 
 void cvm_destroy(CvmState *vm) {
     if (!vm) return;
+#ifdef CVM_JIT
+    if (vm->jit) cvm_jit_destroy(vm->jit);
+#endif
     free(vm->slots);
     for (size_t i = 0; i < vm->frame_count; i++) free(vm->frames[i].slots);
     free(vm->frames);
@@ -1323,14 +1330,26 @@ uint64_t cvm_instruction_count(const CvmState *vm) { return vm->instr_count; }
 #if defined(CVM_STANDALONE) && !defined(CVM_NO_MAIN)
 int main(int argc, char *argv[]) {
     if (argc < 2) {
-        fprintf(stderr, "Usage: %s <module.cvm> [--trace] [args...]\n", argv[0]);
+        fprintf(stderr, "Usage: %s <module.cvm> [--trace] [--jit] [args...]\n", argv[0]);
         return 1;
     }
     CvmConfig cfg = cvm_config_default();
+    int use_jit = 0;
     for (int i = 2; i < argc; i++) {
         if (strcmp(argv[i], "--trace") == 0) cfg.trace_enabled = 1;
+        if (strcmp(argv[i], "--jit") == 0) use_jit = 1;
     }
     CvmState *vm = cvm_create(&cfg);
+#ifdef CVM_JIT
+    if (use_jit) {
+        vm->jit = cvm_jit_create();
+        if (!vm->jit) {
+            fprintf(stderr, "cvm: jit init failed\n");
+            cvm_destroy(vm);
+            return 1;
+        }
+    }
+#endif
     int rc = cvm_load_module_file(vm, argv[1]);
     if (rc != CVM_OK) {
         fprintf(stderr, "cvm: load: %s\n", cvm_strerror(rc));
@@ -1343,7 +1362,8 @@ int main(int argc, char *argv[]) {
      * cvm_set_args builds, so both must be passed here. */
     int prog_argc = 1;
     for (int i = 2; i < argc; i++) {
-        if (strcmp(argv[i], "--trace") != 0) prog_argc++;
+        if (strcmp(argv[i], "--trace") != 0 && strcmp(argv[i], "--jit") != 0)
+            prog_argc++;
     }
     {
         char **pargv = (char **)malloc(sizeof(char *) * (size_t)prog_argc);
@@ -1351,7 +1371,8 @@ int main(int argc, char *argv[]) {
         int k = 0;
         pargv[k++] = argv[1];
         for (int i = 2; i < argc; i++)
-            if (strcmp(argv[i], "--trace") != 0) pargv[k++] = argv[i];
+            if (strcmp(argv[i], "--trace") != 0 && strcmp(argv[i], "--jit") != 0)
+                pargv[k++] = argv[i];
         rc = cvm_set_args(vm, prog_argc, pargv);
         free(pargv);
         if (rc != CVM_OK) {
@@ -1360,13 +1381,23 @@ int main(int argc, char *argv[]) {
             return 1;
         }
     }
-    rc = cvm_run(vm);
+#ifdef CVM_JIT
+    if (vm->jit) {
+        rc = cvm_jit_run(vm);
+    } else
+#endif
+    {
+        rc = cvm_run(vm);
+    }
     if (rc != CVM_OK) {
         fprintf(stderr, "cvm: runtime: %s (ip=%zu)\n", cvm_strerror(rc), vm->ip);
         cvm_destroy(vm);
         return 1;
     }
     int64_t ec = cvm_exit_code(vm);
+#ifdef CVM_JIT
+    if (vm->jit) cvm_jit_stats(vm);
+#endif
     if (cfg.trace_enabled)
         fprintf(stderr, "cvm: %lu instructions\n", (unsigned long)cvm_instruction_count(vm));
     cvm_destroy(vm);

@@ -5,6 +5,7 @@
  * @license GPL-2.0-or-later
  */
 #include "cvm.h"
+#include "cvm_jit.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -60,7 +61,8 @@ static void emit_global_inc(void) {
     emit_byte(OP_STORE64);
 }
 
-int main(void) {
+int main(int argc, char *argv[]) {
+    (void)argc; (void)argv;
     code_buf = NULL;
     code_cap = 0;
     code_len = 0;
@@ -169,9 +171,21 @@ int main(void) {
         fprintf(stderr, "load failed: %s\n", cvm_strerror(rc));
         cvm_destroy(vm); free(module); free(code_buf); return 1;
     }
-    rc = cvm_run(vm);
-    if (rc != CVM_OK) {
-        fprintf(stderr, "run failed: %s (ip=%zu)\n", cvm_strerror(rc), vm->ip);
+#ifdef CVM_JIT
+    if (argc > 1 && strcmp(argv[1], "--jit") == 0) {
+        vm->jit = cvm_jit_create();
+        if (!vm->jit) { fprintf(stderr, "jit init failed\n"); return 1; }
+    }
+#endif
+    int rc2 = 0;
+#ifdef CVM_JIT
+    if (vm->jit)
+        rc2 = cvm_jit_run(vm);
+    else
+#endif
+        rc2 = cvm_run(vm);
+    if (rc2 != CVM_OK) {
+        fprintf(stderr, "run failed: %s (ip=%zu)\n", cvm_strerror(rc2), vm->ip);
         cvm_destroy(vm); free(module); free(code_buf); return 1;
     }
     int64_t result = cvm_exit_code(vm);

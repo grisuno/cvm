@@ -123,6 +123,58 @@ test.c` inside the OS compiles `test.c` just like the standalone runner
 above. The kernel-level natives in `cvm_host.c` back `write`, `read`,
 `exit` and the libc-style symbols the toolchain needs.
 
+## JIT compiler
+
+The interpreter includes a multi-tier x86-64 JIT compiler that compiles
+CVM bytecode to native code at load time. The JIT is transparent: every
+`.cvm` module runs correctly with or without it, and the output is
+identical to the interpreter.
+
+### Architecture
+
+| Tier | Description |
+|------|-------------|
+| Interpreter | switch-based dispatch (default, always available) |
+| Baseline JIT | one-pass compiler: one native function per CVM function, linear bytecode mapping |
+
+The baseline JIT compiles each function independently. Cross-function
+control flow (CALL/RET) still dispatches through the interpreter's frame
+stack, so the JIT is a drop-in speedup with no ABI changes.
+
+### x86-64 register assignment
+
+| Register | Role |
+|----------|------|
+| r14 | CvmState pointer |
+| r12 | operand stack base (`slots`) |
+| r13 | stack pointer (index into `slots`) |
+| r15 | frame stack base |
+| rbx | current frame's `slots` array pointer |
+| rax, rcx, rdx, rsi, rdi | scratch registers |
+
+Stack accesses use SIB encoding: `[r12 + r13*8]`. Local variable
+accesses use `[rbx + idx*8]`.
+
+### Building
+
+```bash
+make            # builds cvm with JIT enabled (default)
+make JIT=0      # interpreter only, no JIT
+make test-jit   # JIT-specific tests (fib, gen_fib_cvm --jit)
+```
+
+On the host the JIT buffer is allocated with `mmap` (RWX). Inside MiniOS
+(freestanding, `CVM_FREESTANDING`) it uses `malloc` instead, because the
+kernel heap is already executable (2 MB pages).
+
+### MiniOS integration
+
+The JIT is enabled by default in MiniOS. The kernel calls
+`cvm_jit_create()` on first use and `cvm_jit_run()` for every module
+invocation. If JIT initialization fails, the interpreter takes over
+transparently. The whole miniGCC compiler (`minigcc.cvm`) compiles and
+runs correctly under JIT inside the OS.
+
 ## License
 
 AGPLv3 (see the parent repository).
