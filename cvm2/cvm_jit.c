@@ -260,6 +260,27 @@ static void emit_restore_sp(JitBuf *b) {
                        (int32_t)offsetof(CvmState, sp));
 }
 
+/* Bail out of the current native function when the machine stopped
+ * (exit/abort/error/HALT cleared vm->running inside a helper or native).
+ * The interpreter checks running before every instruction; emitted code
+ * must recheck at every point where running can change, otherwise it
+ * keeps executing dead code after the stop: error() -> exit() returns
+ * into the middle of the faulting function and parsing continues with
+ * garbage state, cascading into wild stores. */
+static void emit_bail_if_stopped(JitBuf *b) {
+    emit_mov32_reg_mem(b, XAX, JIT_REG_VM,
+                       (int32_t)offsetof(CvmState, running));
+    emit_test_reg_reg(b, XAX, XAX);
+    size_t patch_cont = emit_jcc_rel32(b, CC_NE, 0); /* jnz .cont */
+    emit_epilogue(b);
+    {
+        size_t target = b->size;
+        int32_t rel = (int32_t)(target - (patch_cont + 4));
+        memcpy(b->code + patch_cont, &rel, 4);
+    }
+    /* .cont: */
+}
+
 /* ------------------------------------------------------------------ */
 /*  Opcode code generation                                             */
 /* ------------------------------------------------------------------ */
@@ -268,7 +289,11 @@ typedef struct {
     CvmState    *vm;
     JitBuf      *b;
     CvmJitState *jit;
-    JitPatches   patches;
+    /* Heap-allocated: 8192 entries x 16 bytes = 128 KB, far too big for
+     * a C stack local (it overflows small kernel stacks and lands on
+     * low-memory page tables/MMIO). Allocated per compiled function and
+     * freed before returning. */
+    JitPatches   *patches;
     uint32_t     func_idx;
     size_t       func_bc_start;  /* bytecode offset of this function */
     size_t       func_bc_end;    /* bytecode offset of end */
@@ -592,7 +617,7 @@ static int emit_opcode(JitCtx *ctx, size_t bc_ip) {
         /* Target bytecode IP = ip + rel */
         size_t target_bc = ip + (int64_t)rel;
         /* Emit jmp with placeholder, patch later */
-        emit_jmp_buf(b, target_bc, &ctx->patches);
+        emit_jmp_buf(b, target_bc, ctx->patches);
         break;
     }
 
@@ -604,7 +629,7 @@ static int emit_opcode(JitCtx *ctx, size_t bc_ip) {
         size_t target_bc = ip + (int64_t)rel;
         emit_stack_pop(b);
         emit_test_reg_reg(b, JIT_SCRATCH1, JIT_SCRATCH1);
-        emit_jcc_buf(b, CC_E, target_bc, &ctx->patches);
+        emit_jcc_buf(b, CC_E, target_bc, ctx->patches);
         break;
     }
 
@@ -616,7 +641,7 @@ static int emit_opcode(JitCtx *ctx, size_t bc_ip) {
         size_t target_bc = ip + (int64_t)rel;
         emit_stack_pop(b);
         emit_test_reg_reg(b, JIT_SCRATCH1, JIT_SCRATCH1);
-        emit_jcc_buf(b, CC_NE, target_bc, &ctx->patches);
+        emit_jcc_buf(b, CC_NE, target_bc, ctx->patches);
         break;
     }
 
@@ -645,6 +670,9 @@ static int emit_opcode(JitCtx *ctx, size_t bc_ip) {
         emit_mov_reg_reg(b, XDI, JIT_REG_VM);
         emit_call_abs(b, (void *)(uintptr_t)cvm_jit_exec_one, X10);
         emit_restore_sp(b);
+        /* The callee may have stopped the machine (exit/HALT/error):
+         * unwind instead of executing the ops after the call. */
+        emit_bail_if_stopped(b);
         /* .done: (patch the jnz here) */
         {
             size_t target = b->size;
@@ -693,6 +721,9 @@ static int emit_opcode(JitCtx *ctx, size_t bc_ip) {
         emit_mov_reg_imm32(b, XDX, (int32_t)na);
         emit_call_abs(b, (void *)(uintptr_t)cvm_jit_call_native, X10);
         emit_restore_sp(b);
+        /* A native may stop the machine (exit/abort): unwind, mirroring
+         * the interpreter's per-instruction running check. */
+        emit_bail_if_stopped(b);
         break;
     }
 
@@ -1077,6 +1108,8 @@ static int emit_opcode(JitCtx *ctx, size_t bc_ip) {
         emit_mov_reg_imm32(b, XDX, (int32_t)na);
         emit_call_abs(b, (void *)(uintptr_t)cvm_jit_syscall, X10);
         emit_restore_sp(b);
+        /* CVM_SYS_EXIT stops the machine: unwind like CALL_NATIVE. */
+        emit_bail_if_stopped(b);
         break;
     }
 
@@ -1167,7 +1200,12 @@ void *cvm_jit_compile_func(CvmState *vm, uint32_t func_idx) {
     ctx.vm = vm;
     ctx.b = &jit->buf;
     ctx.jit = jit;
-    ctx.patches.count = 0;
+    ctx.patches = (JitPatches *)malloc(sizeof(JitPatches));
+    if (!ctx.patches) {
+        jit->buf.failed = 1;
+        return NULL;
+    }
+    ctx.patches->count = 0;
     ctx.func_idx = func_idx;
     ctx.func_bc_start = bc_start;
     ctx.func_bc_end = bc_end;
@@ -1204,9 +1242,9 @@ void *cvm_jit_compile_func(CvmState *vm, uint32_t func_idx) {
 
     /* Apply patches: for each jump, look up the native offset for the
      * target bytecode IP.  We need to search the ip_map. */
-    for (size_t i = 0; i < ctx.patches.count; i++) {
-        size_t off = ctx.patches.patches[i].patch_off;
-        size_t bc_target = ctx.patches.patches[i].target;
+    for (size_t i = 0; i < ctx.patches->count; i++) {
+        size_t off = ctx.patches->patches[i].patch_off;
+        size_t bc_target = ctx.patches->patches[i].target;
         size_t native_target = (size_t)-1;
         /* Search from the beginning of ip_map */
         for (size_t j = 0; j < jit->ip_map_count; j++) {
@@ -1228,11 +1266,12 @@ void *cvm_jit_compile_func(CvmState *vm, uint32_t func_idx) {
         memcpy(jit->buf.code + off, &r, 4);
     }
 
-    if (jit->buf.failed) return NULL;
+    if (jit->buf.failed) { free(ctx.patches); return NULL; }
 
     size_t native_size = jit->buf.size - native_start;
     func_cache_add(jit, func_idx, native_start, native_size, JIT_TIER_BASELINE);
 
+    free(ctx.patches);
     return jit->buf.code + native_start;
 }
 
