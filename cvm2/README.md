@@ -123,6 +123,16 @@ test.c` inside the OS compiles `test.c` just like the standalone runner
 above. The kernel-level natives in `cvm_host.c` back `write`, `read`,
 `exit` and the libc-style symbols the toolchain needs.
 
+## Contracts
+
+- The native `printf` reads `%d`/`%i` as 32-bit signed (glibc parity),
+  `%u`/`%x`/`%o`/`%p` as 64-bit.
+- There is deliberately no translation for privileged or lock-prefixed
+  x86 (`cli sti hlt lock`): `ld -f cvm` rejects such modules at assembly
+  time with file and line instead of virtualizing something the VM cannot
+  mean. Unprivileged raw templates (`nop`, `mov`-class, `incq`/`decq`)
+  virtualize and run.
+
 ## JIT compiler
 
 The interpreter includes a multi-tier x86-64 JIT compiler that compiles
