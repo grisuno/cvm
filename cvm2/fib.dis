@@ -1,0 +1,37 @@
+; CVM module: version 1.0
+; functions=2 globals=1 natives=0 strings=0
+; code=101 bytes data=0 pool=0 entry=1
+; Function 0: func0 (locals=4, argc=1, code=0x0000)
+0000  PUSH_LOCAL  0
+0005  PUSH_ONE    
+0006  CMP_LE      
+0007  JZ          002a
+000c  LEA_DATA    0
+0011  LOAD64      
+0012  PUSH_ONE    
+0013  ADD         
+0014  STORE_LOCAL 3
+0019  LEA_DATA    0
+001e  PUSH_LOCAL  3
+0023  STORE64     
+0024  PUSH_LOCAL  0
+0029  RET         
+002a  PUSH_LOCAL  0
+002f  PUSH_ONE    
+0030  SUB         
+0031  CALL        0 1  ; func0
+0037  PUSH_LOCAL  0
+003c  PUSH_IMM8   2
+003e  SUB         
+003f  CALL        0 1  ; func0
+0045  ADD         
+0046  RET         
+; Function 1: func1 (locals=4, argc=0, code=0x0047)
+0047  PUSH_IMM8   10
+0049  CALL        0 1  ; func0
+004f  STORE_LOCAL 1
+0054  LEA_DATA    0
+0059  LOAD64      
+005a  STORE_LOCAL 2
+005f  PUSH_LOCAL  1
+0064  HALT        

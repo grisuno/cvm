@@ -33,9 +33,9 @@ test: gen_fib_cvm cvm cvm-dis cvm-validate cvmdbg
 	$(Q)./cvm-dis fib.cvm > fib.dis
 	$(Q)grep -q "PUSH_LOCAL" fib.dis
 	$(Q)grep -q "CALL" fib.dis
-	$(Q)grep -q "; Function 1: main" fib.dis
+	$(Q)grep -q "; Function 1: func1" fib.dis
 	$(Q)./cvm-validate fib.cvm
-	$(Q)printf 'run\nbt\nquit\n' | ./cvmdbg fib.cvm > fib.dbg
+	$(Q)printf 'run\nbt\nquit\n' | ./cvmdbg fib.cvm > fib.dbg; test $$? -eq 55
 	$(Q)grep -q "program exited: 55" fib.dbg
 
 test-jit: gen_fib_cvm cvm

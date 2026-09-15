@@ -20,7 +20,8 @@ gen_fib_cvm: gen_fib_cvm.c cvm.c cvm.h
 
 test: gen_fib_cvm cvm
 	$(Q)./gen_fib_cvm
-	$(Q)./cvm fib.cvm
+	$(Q)./cvm fib.cvm; test $$? -eq 55
+	$(Q)$(MAKE) -C cvm2 test
 
 clean:
 	$(Q)rm -f cvm gen_fib_cvm fib.cvm *.o

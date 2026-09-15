@@ -1,0 +1,3 @@
+program exited: 55 (2486 instructions)
+frames (innermost first):
+  #0 func1 return=0x0000 locals=4
