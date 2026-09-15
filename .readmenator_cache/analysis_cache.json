@@ -3,43 +3,43 @@
     "god_nodes": [
       [
         "cvm.h",
-        20.9
-      ],
-      [
-        "cvm2/cvm.c",
-        12.3
-      ],
-      [
-        "cvm2/cvm_jit_x86.c",
-        7.2
-      ],
-      [
-        "cvm2/cvm_dbg_main.c",
-        4.1
-      ],
-      [
-        "cvm.c",
-        4.0
-      ],
-      [
-        "cvm2/cvm_jit.c",
-        3.3000000000000003
-      ],
-      [
-        "cvm2/cvm_jit.h",
-        3.3
-      ],
-      [
-        "cvm2/gen_fib_cvm.c",
-        3.0
+        22.8
       ],
       [
         "cvm2/cvm.h",
-        2.7
+        21.8
       ],
       [
-        "cvm2/cvm_ops.c",
-        2.7
+        "cvm2/cvm_jit.h",
+        18.6
+      ],
+      [
+        "cvm2/cvm.c",
+        17.200000000000003
+      ],
+      [
+        "cvm2/cvm_view.h",
+        14.9
+      ],
+      [
+        "cvm2/cvm_dbg_main.c",
+        13.5
+      ],
+      [
+        "cvm2/cvm_jit.c",
+        13.1
+      ],
+      [
+        "cvm2/cvm_jit_x86.h",
+        11.0
+      ],
+      [
+        "cvm2/cvm_ops.h",
+        10.9
+      ],
+      [
+        "cvm2/cvm_jit_x86.c",
+        9.4
       ]
     ],
     "communities": [
@@ -47,29 +47,79 @@
         "id": 0,
         "label": "cvm2",
         "file_ids": [
-          "cvm2/gen_fib_cvm.c",
-          "cvm.c",
-          "cvm2/cvm_ops.c",
-          "cvm2/cvm_dbg_main.c",
+          "cvm2/cvm_jit.c",
           "cvm2/cvm_view.h",
-          "cvm2/cvm_jit_help.h",
+          "cvm2/cvm_dis_main.c",
+          "cvm2/cvm_view.c",
           "cvm2/gen_minimal.c",
-          "gen_fib_cvm.c",
-          "cvm2/cvm_jit.h",
+          "cvm2/cvm_val_main.c",
+          "cvm2/cvm_dbg_main.c",
+          "cvm2/cvm_ops.c",
+          "cvm2/cvm_jit_help.h",
+          "cvm2/cvm_dis.h",
           "cvm2/cvm.c",
-          "cvm.h"
+          "cvm2/cvm_jit.h",
+          "cvm2/cvm_ops.h",
+          "gen_fib_cvm.c",
+          "cvm2/cvm.h",
+          "cvm2/gen_fib_cvm.c",
+          "cvm2/cvm_dis.c",
+          "cvm2/cvm_jit_help.c",
+          "cvm.h",
+          "cvm.c"
         ],
-        "cohesion": 1.0,
-        "size": 11
+        "cohesion": 0.9736842105263158,
+        "size": 20
+      },
+      {
+        "id": 1,
+        "label": "cvm2",
+        "file_ids": [
+          "cvm2/cvm_jit_x86.h",
+          "cvm2/cvm_jit_x86.c"
+        ],
+        "cohesion": 0.5,
+        "size": 2
       }
     ],
-    "surprising_connections": [],
+    "surprising_connections": [
+      [
+        "cvm2/cvm_dis.c",
+        "cvm2/cvm_jit_x86.c",
+        5,
+        "{0, 1}"
+      ],
+      [
+        "cvm2/cvm_dis.h",
+        "cvm2/cvm_jit_x86.c",
+        5,
+        "{0, 1}"
+      ],
+      [
+        "cvm2/cvm_dis_main.c",
+        "cvm2/cvm_jit_x86.c",
+        5,
+        "{0, 1}"
+      ],
+      [
+        "cvm2/cvm_jit_x86.c",
+        "cvm2/cvm_val_main.c",
+        5,
+        "{0, 1}"
+      ],
+      [
+        "cvm2/cvm_jit_x86.c",
+        "cvm2/cvm_view.c",
+        5,
+        "{0, 1}"
+      ]
+    ],
     "suggested_questions": [
       "What does cvm.h depend on, and what depends on it? (10 connections)",
-      "What does cvm.c depend on, and what depends on it? (1 connections)",
-      "What does cvm_jit_x86.c depend on, and what depends on it? (0 connections)",
-      "How are the 11 files in 'cvm2' related to each other?",
-      "What is CVM_Module in cvm.h and how is it used?"
+      "What does cvm.h depend on, and what depends on it? (8 connections)",
+      "What does cvm_jit.h depend on, and what depends on it? (8 connections)",
+      "How are the 20 files in 'cvm2' related to each other?",
+      "Why are cvm_dis.c and cvm_jit_x86.c connected through 5 hops across 2 communities?"
     ]
   },
   "layers": {

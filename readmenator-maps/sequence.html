@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" data-preset="classic">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Request Sequence | Live System Map</title>
+<link href="https://unpkg.com/vis-network@9/styles/vis-network.min.css" rel="stylesheet">
+<script src="https://unpkg.com/vis-network@9/standalone/umd/vis-network.min.js"></script>
+<style>
+:root{--canvas:#020617;--mask:#0f172a;--ink:#ffffff;--muted:#94a3b8;--border:#1e293b;--box:#0f172a;--boxink:#ffffff}
+html[data-theme="light"]{--canvas:#f8fafc;--mask:#ffffff;--ink:#0f172a;--muted:#475569;--border:#e2e8f0;--box:#ffffff;--boxink:#0f172a}
+*{box-sizing:border-box}
+body{margin:0;background:var(--canvas);color:var(--ink);font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+.toolbar{display:flex;gap:8px;align-items:center;padding:10px 14px;background:var(--mask);border-bottom:1px solid var(--border);flex-wrap:wrap}
+.brand{font-weight:700;font-size:14px;letter-spacing:.04em}
+.kind{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.12em}
+.live{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.12em;border:1px solid var(--border);border-radius:999px;padding:3px 10px}
+.toolbar input{background:var(--canvas);color:var(--ink);border:1px solid var(--border);border-radius:8px;padding:8px 10px;min-width:220px;font:inherit;font-size:12px}
+.toolbar button{background:var(--canvas);color:var(--ink);border:1px solid var(--border);border-radius:8px;padding:8px 10px;font:inherit;font-size:12px;cursor:pointer;min-height:32px}
+.toolbar button:hover,.toolbar button:focus-visible{border-color:#22d3ee;outline:2px solid #22d3ee;outline-offset:2px}
+.home-link{color:var(--ink);border:1px solid var(--border);border-radius:8px;padding:8px 10px;font-size:12px;text-decoration:none;background:var(--canvas)}
+.home-link:hover,.home-link:focus-visible{border-color:#22d3ee;outline:2px solid #22d3ee;outline-offset:2px}
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 320px;min-height:calc(100vh - 53px)}
+.stage{position:relative;padding:16px;overflow:auto}
+#network{width:100%;height:78vh;min-height:520px;background:var(--canvas);border:1px solid var(--border);border-radius:16px}
+#network:focus-visible{outline:2px solid #22d3ee;outline-offset:3px}
+.symbols{font-size:11px;margin-top:10px;overflow:auto}
+.symbols table{width:100%;border-collapse:collapse}
+.symbols th{text-align:left;color:var(--muted);font-weight:400;border-bottom:1px solid var(--border);padding:3px 4px}
+.symbols td{border-bottom:1px solid var(--border);padding:3px 4px;vertical-align:top}
+.symbols code{font-size:11px}
+.symbols .filedoc{color:var(--muted);margin:0 0 8px;line-height:1.6}
+.symbols .neighbors{color:var(--muted);margin:8px 0 0;line-height:1.6}
+.passport{background:var(--mask);border-left:1px solid var(--border);padding:16px;overflow:auto}
+.passport h2{font-size:13px;margin:0 0 8px}
+.passport .row{font-size:12px;color:var(--muted);margin:6px 0;line-height:1.7}
+.counts{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+.chip{border:1px solid var(--border);border-radius:999px;padding:3px 10px;font-size:11px;color:var(--ink);background:transparent;cursor:pointer;font:inherit}
+.views{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0}
+.views button{background:var(--canvas);color:var(--ink);border:1px solid var(--border);border-radius:8px;padding:6px 9px;font:inherit;font-size:11px;cursor:pointer}
+.journey{font-size:12px;line-height:1.7}
+.receipt{font-size:11px;color:var(--muted);border:1px solid var(--border);border-radius:8px;padding:8px;margin-top:10px}
+.routebox{display:flex;gap:6px;margin-top:8px}
+.routebox input{flex:1;background:var(--canvas);color:var(--ink);border:1px solid var(--border);border-radius:8px;padding:7px;font:inherit;font-size:12px;min-width:0}
+.routebox button{background:var(--canvas);color:var(--ink);border:1px solid var(--border);border-radius:8px;padding:7px 10px;font:inherit;font-size:12px;cursor:pointer}
+.present .layout{grid-template-columns:minmax(0,1fr)}
+.present .passport{display:none}
+dialog{background:var(--mask);color:var(--ink);border:1px solid var(--border);border-radius:12px;max-width:520px}
+dialog kbd{border:1px solid var(--border);border-radius:6px;padding:1px 6px;font-size:11px}
+@media (max-width:960px){.layout{grid-template-columns:minmax(0,1fr)}.passport{border-left:none;border-top:1px solid var(--border)}}
+</style>
+</head>
+<body>
+<header class="toolbar" aria-label="Map controls">
+<span class="brand">System Maps</span>
+<span class="live">Live physics</span>
+<a class="home-link" href="index.html">Gallery</a>
+<span class="kind">sequence | Request Sequence</span>
+<input id="search" type="search" placeholder="Search nodes ( / )" aria-label="Search nodes" title="Filter nodes by label or id. Shortcut: /">
+<button type="button" data-action="reach-up" aria-label="Trace upstream reach" title="Show everything that reaches the focused node (authored relationships only)">Upstream</button>
+<button type="button" data-action="reach-down" aria-label="Trace downstream reach" title="Show everything the focused node reaches (authored relationships only)">Downstream</button>
+<button type="button" data-action="lens" aria-label="Compare roles" title="Highlight one semantic role and compare counts; activate again to clear">Lens</button>
+<button type="button" data-action="views-prev" aria-label="Previous chapter" title="Show the previous guided chapter">[</button>
+<button type="button" data-action="views-next" aria-label="Next chapter" title="Show the next guided chapter">]</button>
+<button type="button" data-action="play" aria-label="Play guided story" title="Play all guided chapters in order">Play</button>
+<button type="button" data-action="stabilize" aria-label="Stabilize layout" title="Re-run the physics stabilization">Stabilize</button>
+<button type="button" data-action="physics" aria-label="Toggle physics" title="Freeze or resume the live physics engine">Physics</button>
+<button type="button" data-action="present" aria-label="Enter presentation stage" title="Hide the side panel for presenting">Present</button>
+<button type="button" data-action="style" aria-label="Cycle visual preset" title="Cycle visual preset: classic, flow, blueprint, editorial">Style</button>
+<button type="button" data-action="theme" aria-label="Toggle theme" title="Toggle dark and light themes">Theme</button>
+<button type="button" data-action="export" aria-label="Open export menu" title="Download a PNG snapshot or the typed JSON">Export</button>
+<button type="button" data-action="help" aria-label="Open diagram guide" title="Open the diagram guide with every shortcut">?</button>
+</header>
+<div class="layout">
+<main class="stage">
+<div id="network" tabindex="0" role="application" aria-label="Request Sequence live network. Drag nodes to rearrange them."></div>
+</main>
+<aside class="passport" aria-live="polite" aria-label="Semantic passport">
+<h2 id="passport-title">Diagram guide</h2>
+<div class="row" id="passport-meta"></div>
+<div class="views" id="chapters"></div>
+<div class="counts" id="role-counts"></div>
+<div class="row">1. Drag any node; physics settles the rest. 2. Click a node to focus it. 3. Upstream and Downstream trace authored reach. 4. Path probes the exact route between two ids. 5. Play walks the guided chapters. Press ? for every shortcut. This page loads its network engine from a CDN and needs network access.</div>
+<div class="routebox"><input id="route-from" placeholder="route from id" aria-label="Route source" title="Source node id for the route probe"><input id="route-to" placeholder="route to id" aria-label="Route target" title="Target node id for the route probe"><button type="button" data-action="route" aria-label="Probe directed route" title="Highlight the shortest authored directed path">Path</button></div>
+<div class="journey" id="journey"></div>
+<div class="symbols" id="node-symbols"></div>
+<div class="receipt" id="receipt"></div>
+</aside>
+</div>
+<dialog id="guide" aria-label="Diagram guide dialog">
+<h2>Diagram guide</h2>
+<p><kbd>/</kbd> search &middot; <kbd>R</kbd> route probe &middot; <kbd>L</kbd> role lens &middot; <kbd>P</kbd> play &middot; <kbd>[</kbd> <kbd>]</kbd> chapters &middot; <kbd>F</kbd> present &middot; <kbd>S</kbd> style &middot; <kbd>T</kbd> theme &middot; <kbd>E</kbd> export &middot; <kbd>+</kbd> <kbd>-</kbd> <kbd>0</kbd> zoom &middot; <kbd>B</kbd> physics</p>
+<p>Drag nodes freely; Stabilize re-runs the physics engine and Physics freezes it. Reach, routes, lens, and chapters reuse authored relationships only. Deep links restore <code>#focus=id</code>, <code>#focus=id&amp;reach=upstream|downstream</code>, <code>#route=a~b</code>, <code>#lens=role</code>, and <code>#view=id</code>.</p>
+<button type="button" data-action="close-guide" title="Close the diagram guide">Close</button>
+</dialog>
+<dialog id="exports" aria-label="Export dialog">
+<h2>Export</h2>
+<p>PNG captures the live canvas; JSON carries the typed source.</p>
+<button type="button" data-action="export-png" title="Download a PNG snapshot of the live canvas">Download PNG</button>
+<button type="button" data-action="export-json" title="Download the typed JSON behind this diagram">Download typed JSON</button>
+<button type="button" data-action="close-exports" title="Close the export menu">Close</button>
+</dialog>
+<script type="application/json" id="vis-nodes">[{"id": "cvm.h", "label": "cvm.h", "title": "\u003cb>cvm.h\u003c/b>\u003cbr>external | lifeline | h\u003cbr>symbols: 28 (CVM_H, CVM_MAGIC, CVM_VERSION, CVM_Header, CVM_FuncEntry +3 more)", "group": "external", "language": "h", "doc": "", "symbols": [{"name": "CVM_H", "kind": "macro", "line": "8", "signature": "#define CVM_H", "doc": ""}, {"name": "CVM_MAGIC", "kind": "macro", "line": "22", "signature": "#define CVM_MAGIC", "doc": ""}, {"name": "CVM_VERSION", "kind": "macro", "line": "23", "signature": "#define CVM_VERSION", "doc": ""}, {"name": "CVM_Header", "kind": "struct", "line": "107", "signature": "", "doc": "/* Heap OP_ALLOC        = 0x80,   /* size on stack → ptr OP_FREE         = 0x81, /* Syscalls / misc OP_SYSCALL      = 0x90,   /* nr, arg0..arg5 on stack (Linux x86-64 style) OP_PRINT_I64    = 0x91,   /* debug helper OP_HALT         = 0xFF }; /* ------------------------------------------------------------------ /*  Module format (on disk / in memory) /* ------------------------------------------------------------------ pragma pack(push, 1)"}, {"name": "CVM_FuncEntry", "kind": "struct", "line": "126", "signature": "", "doc": ""}, {"name": "CVM_GlobalEntry", "kind": "struct", "line": "136", "signature": "", "doc": ""}, {"name": "CVM_StringEntry", "kind": "struct", "line": "142", "signature": "", "doc": ""}, {"name": "CVM_NativeEntry", "kind": "struct", "line": "147", "signature": "", "doc": ""}, {"name": "CVM_STACK_SIZE", "kind": "macro", "line": "155", "signature": "#define CVM_STACK_SIZE", "doc": ""}, {"name": "CVM_FRAME_DEPTH", "kind": "macro", "line": "156", "signature": "#define CVM_FRAME_DEPTH", "doc": ""}, {"name": "CVM_HEAP_SIZE", "kind": "macro", "line": "157", "signature": "#define CVM_HEAP_SIZE", "doc": ""}, {"name": "CVM_MAX_MODULES", "kind": "macro", "line": "158", "signature": "#define CVM_MAX_MODULES", "doc": ""}, {"name": "CVM_MAX_NATIVES", "kind": "macro", "line": "159", "signature": "#define CVM_MAX_NATIVES", "doc": ""}, {"name": "CVM_Frame", "kind": "struct", "line": "161", "signature": "", "doc": ""}, {"name": "hdr", "kind": "type_alias", "line": "168", "signature": "typedef struct CVM_Module { CVM_Header hdr;", "doc": ""}, {"name": "CVM_Module", "kind": "struct", "line": "169", "signature": "", "doc": ""}, {"name": "CVM", "kind": "struct", "line": "182", "signature": "", "doc": ""}, {"name": "cvm_create", "kind": "function", "line": "215", "signature": "CVM *cvm_create(void);", "doc": "/* Heap (bump allocator for simplicity) uint8_t    *heap; size_t      heap_used; size_t      heap_size; /* Stats / debug uint64_t    instr_count; int         running; int         trace; } CVM; /* ------------------------------------------------------------------ /*  Public API /* ------------------------------------------------------------------"}, {"name": "cvm_destroy", "kind": "function", "line": "216", "signature": "void cvm_destroy(CVM *vm);", "doc": ""}, {"name": "cvm_load_module", "kind": "function", "line": "217", "signature": "int cvm_load_module(CVM *vm, const char *path);", "doc": ""}, {"name": "cvm_load_module_mem", "kind": "function", "line": "218", "signature": "int cvm_load_module_mem(CVM *vm, const uint8_t *data, size_t size, const char *name);", "doc": ""}, {"name": "cvm_run", "kind": "function", "line": "219", "signature": "int cvm_run(CVM *vm, const char *entry_name);", "doc": ""}, {"name": "cvm_call", "kind": "function", "line": "220", "signature": "int cvm_call(CVM *vm, int module_idx, int func_idx, int argc, uint64_t *args);", "doc": ""}, {"name": "cvm_emit_byte", "kind": "function", "line": "223", "signature": "void cvm_emit_byte(uint8_t **buf, size_t *cap, size_t *len, uint8_t b);", "doc": "int         trace; } CVM; /* ------------------------------------------------------------------ /*  Public API /* ------------------------------------------------------------------ CVM        *cvm_create(void); void        cvm_destroy(CVM *vm); int         cvm_load_module(CVM *vm, const char *path); int         cvm_load_module_mem(CVM *vm, const uint8_t *data, size_t size, const char *name); int         cvm_run(CVM *vm, const char *entry_name); int         cvm_call(CVM *vm, int module_idx, int func_idx, int argc, uint64_t *args); /* Helpers used by the backend emitter"}, {"name": "cvm_emit_i16", "kind": "function", "line": "224", "signature": "void cvm_emit_i16 (uint8_t **buf, size_t *cap, size_t *len, int16_t v);", "doc": ""}], "symbolTotal": 28}, {"id": "cvm2/cvm.h", "label": "cvm.h", "title": "\u003cb>cvm.h\u003c/b>\u003cbr>external | lifeline | h\u003cbr>symbols: 58 (CVM_H, CvmOpcode, CVM_MAGIC_0, CVM_MAGIC_1, CVM_MAGIC_2 +33 more)", "group": "external", "language": "h", "doc": "", "symbols": [{"name": "CVM_H", "kind": "macro", "line": "28", "signature": "#define CVM_H", "doc": ""}, {"name": "CvmOpcode", "kind": "variable", "line": "38", "signature": "extern \"C\" { #endif #define CVM_MAGIC_0 0x43 #define CVM_MAGIC_1 0x56 #define CVM_MAGIC_2 0x4D #define CVM_MAGIC_3 0x04 #define CVM_VERSION_MAJOR 1 #define CVM_VERSION_MINOR 0 #define CVM_MODULE_HEADE", "doc": "ifdef __cplusplus"}, {"name": "CVM_MAGIC_0", "kind": "macro", "line": "40", "signature": "#define CVM_MAGIC_0", "doc": ""}, {"name": "CVM_MAGIC_1", "kind": "macro", "line": "42", "signature": "#define CVM_MAGIC_1", "doc": ""}, {"name": "CVM_MAGIC_2", "kind": "macro", "line": "43", "signature": "#define CVM_MAGIC_2", "doc": ""}, {"name": "CVM_MAGIC_3", "kind": "macro", "line": "44", "signature": "#define CVM_MAGIC_3", "doc": ""}, {"name": "CVM_VERSION_MAJOR", "kind": "macro", "line": "45", "signature": "#define CVM_VERSION_MAJOR", "doc": ""}, {"name": "CVM_VERSION_MINOR", "kind": "macro", "line": "46", "signature": "#define CVM_VERSION_MINOR", "doc": ""}, {"name": "CVM_MODULE_HEADER_SIZE", "kind": "macro", "line": "47", "signature": "#define CVM_MODULE_HEADER_SIZE", "doc": ""}, {"name": "CVM_FUNC_ENTRY_SIZE", "kind": "macro", "line": "48", "signature": "#define CVM_FUNC_ENTRY_SIZE", "doc": ""}, {"name": "CVM_GLOBAL_ENTRY_SIZE", "kind": "macro", "line": "49", "signature": "#define CVM_GLOBAL_ENTRY_SIZE", "doc": ""}, {"name": "CVM_NATIVE_ENTRY_SIZE", "kind": "macro", "line": "50", "signature": "#define CVM_NATIVE_ENTRY_SIZE", "doc": ""}, {"name": "CVM_STRING_ENTRY_SIZE", "kind": "macro", "line": "51", "signature": "#define CVM_STRING_ENTRY_SIZE", "doc": ""}, {"name": "CVM_MAX_NARGS", "kind": "macro", "line": "52", "signature": "#define CVM_MAX_NARGS", "doc": ""}, {"name": "CVM_MAX_SARGS", "kind": "macro", "line": "54", "signature": "#define CVM_MAX_SARGS", "doc": ""}, {"name": "CVM_SHIFT_MASK", "kind": "macro", "line": "55", "signature": "#define CVM_SHIFT_MASK", "doc": ""}, {"name": "CVM_SYS_READ", "kind": "macro", "line": "56", "signature": "#define CVM_SYS_READ", "doc": ""}, {"name": "CVM_SYS_WRITE", "kind": "macro", "line": "57", "signature": "#define CVM_SYS_WRITE", "doc": ""}, {"name": "CVM_SYS_EXIT", "kind": "macro", "line": "58", "signature": "#define CVM_SYS_EXIT", "doc": ""}, {"name": "CVM_DATA_ARGC", "kind": "macro", "line": "59", "signature": "#define CVM_DATA_ARGC", "doc": ""}, {"name": "CVM_DATA_ARGV", "kind": "macro", "line": "61", "signature": "#define CVM_DATA_ARGV", "doc": ""}, {"name": "CVM_DATA_RSP", "kind": "macro", "line": "62", "signature": "#define CVM_DATA_RSP", "doc": ""}, {"name": "CVM_DATA_RBP", "kind": "macro", "line": "63", "signature": "#define CVM_DATA_RBP", "doc": ""}, {"name": "CVM_DATA_ARGS", "kind": "macro", "line": "64", "signature": "#define CVM_DATA_ARGS", "doc": ""}, {"name": "CVM_DATA_RET", "kind": "macro", "line": "65", "signature": "#define CVM_DATA_RET", "doc": ""}], "symbolTotal": 58}, {"id": "cvm2/cvm_jit.h", "label": "cvm_jit.h", "title": "\u003cb>cvm_jit.h\u003c/b>\u003cbr>external | lifeline | h\u003cbr>symbols: 26 (CVM_JIT_H, JitTier, JIT_REG_VM, JIT_REG_SLOTS, JIT_REG_SP +1 more)", "group": "external", "language": "h", "doc": "", "symbols": [{"name": "CVM_JIT_H", "kind": "macro", "line": "15", "signature": "#define CVM_JIT_H", "doc": ""}, {"name": "JitTier", "kind": "variable", "line": "22", "signature": "extern \"C\" { #endif /* ------------------------------------------------------------------ */ /* Register assignment for JIT-compiled code */ /* --------------------------------------------------------", "doc": "ifdef __cplusplus"}, {"name": "JIT_REG_VM", "kind": "macro", "line": "44", "signature": "#define JIT_REG_VM", "doc": ""}, {"name": "JIT_REG_SLOTS", "kind": "macro", "line": "46", "signature": "#define JIT_REG_SLOTS", "doc": ""}, {"name": "JIT_REG_SP", "kind": "macro", "line": "47", "signature": "#define JIT_REG_SP", "doc": ""}, {"name": "JIT_REG_FRAMES", "kind": "macro", "line": "48", "signature": "#define JIT_REG_FRAMES", "doc": ""}, {"name": "JIT_REG_FRAME", "kind": "macro", "line": "49", "signature": "#define JIT_REG_FRAME", "doc": ""}, {"name": "JIT_SCRATCH1", "kind": "macro", "line": "52", "signature": "#define JIT_SCRATCH1", "doc": ""}, {"name": "JIT_SCRATCH2", "kind": "macro", "line": "53", "signature": "#define JIT_SCRATCH2", "doc": ""}, {"name": "JIT_SCRATCH3", "kind": "macro", "line": "54", "signature": "#define JIT_SCRATCH3", "doc": ""}, {"name": "JIT_SCRATCH4", "kind": "macro", "line": "55", "signature": "#define JIT_SCRATCH4", "doc": ""}, {"name": "JIT_SCRATCH5", "kind": "macro", "line": "56", "signature": "#define JIT_SCRATCH5", "doc": ""}, {"name": "JitFuncEntry", "kind": "struct", "line": "72", "signature": "", "doc": ""}, {"name": "JitIpMap", "kind": "struct", "line": "84", "signature": "", "doc": ""}, {"name": "JIT_MAX_FUNCS", "kind": "macro", "line": "92", "signature": "#define JIT_MAX_FUNCS", "doc": ""}, {"name": "JIT_IP_MAP_SIZE", "kind": "macro", "line": "94", "signature": "#define JIT_IP_MAP_SIZE", "doc": ""}, {"name": "CvmJitState", "kind": "struct", "line": "96", "signature": "", "doc": ""}, {"name": "cvm_jit_create", "kind": "function", "line": "120", "signature": "CvmJitState *cvm_jit_create(void);", "doc": "/* IP-to-native mapping (shared across all functions) JitIpMap        ip_map[JIT_IP_MAP_SIZE]; size_t          ip_map_count; /* Profile counters for tier-up uint32_t        hot_threshold;          /* tier-up threshold uint32_t        warm_threshold;         /* tier-1 threshold } CvmJitState; /* ------------------------------------------------------------------ /*  JIT lifecycle /* ------------------------------------------------------------------ /* Create JIT state.  Call after cvm_create()."}, {"name": "cvm_jit_destroy", "kind": "function", "line": "123", "signature": "void cvm_jit_destroy(CvmJitState *jit);", "doc": "/* Profile counters for tier-up uint32_t        hot_threshold;          /* tier-up threshold uint32_t        warm_threshold;         /* tier-1 threshold } CvmJitState; /* ------------------------------------------------------------------ /*  JIT lifecycle /* ------------------------------------------------------------------ /* Create JIT state.  Call after cvm_create(). CvmJitState *cvm_jit_create(void); /* Destroy JIT state.  Call before cvm_destroy()."}, {"name": "cvm_jit_compile_module", "kind": "function", "line": "127", "signature": "int cvm_jit_compile_module(CvmState *vm);", "doc": "Compile all functions in a loaded module to native code. * Returns CVM_OK on success."}, {"name": "cvm_jit_compile_func", "kind": "function", "line": "130", "signature": "void *cvm_jit_compile_func(CvmState *vm, uint32_t func_idx);", "doc": "Compile all functions in a loaded module to native code. * Returns CVM_OK on success. int cvm_jit_compile_module(CvmState *vm); /* Compile a single function.  Returns pointer to native code, or NULL."}, {"name": "cvm_jit_lookup", "kind": "function", "line": "133", "signature": "void *cvm_jit_lookup(CvmState *vm, uint32_t func_idx);", "doc": "Compile all functions in a loaded module to native code. * Returns CVM_OK on success. int cvm_jit_compile_module(CvmState *vm); /* Compile a single function.  Returns pointer to native code, or NULL. void *cvm_jit_compile_func(CvmState *vm, uint32_t func_idx); /* Look up native code for a function.  Returns pointer or NULL."}, {"name": "cvm_jit_run", "kind": "function", "line": "142", "signature": "int cvm_jit_run(CvmState *vm);", "doc": "Execute using the JIT.  Compiles all functions first, then dispatches to compiled code.  Falls back to interpreter for uncompiled functions. * Returns CVM_OK on success."}, {"name": "returns", "kind": "function", "line": "145", "signature": "* returns (via RET) or encounters an error. */ void cvm_jit_exec_one(CvmState *vm);", "doc": ""}, {"name": "cvm_jit_stats", "kind": "function", "line": "153", "signature": "void cvm_jit_stats(const CvmState *vm);", "doc": "Execute one compiled function at vm->ip.  Returns when the function * returns (via RET) or encounters an error. void cvm_jit_exec_one(CvmState *vm); /* ------------------------------------------------------------------ /*  Statistics /* ------------------------------------------------------------------ /* Print JIT compilation statistics to stderr."}], "symbolTotal": 26}, {"id": "cvm2/cvm.c", "label": "cvm.c", "title": "\u003cb>cvm.c\u003c/b>\u003cbr>external | lifeline | c\u003cbr>symbols: 112 (CVM_DEF_STACK, CVM_DEF_FRAMES, CVM_DEF_LOCALS, CVM_DEF_HEAP, CVM_DEF_GLOBALS +87 more)", "group": "external", "language": "c", "doc": "", "symbols": [{"name": "CVM_DEF_STACK", "kind": "macro", "line": "14", "signature": "#define CVM_DEF_STACK", "doc": ""}, {"name": "CVM_DEF_FRAMES", "kind": "macro", "line": "16", "signature": "#define CVM_DEF_FRAMES", "doc": ""}, {"name": "CVM_DEF_LOCALS", "kind": "macro", "line": "17", "signature": "#define CVM_DEF_LOCALS", "doc": ""}, {"name": "CVM_DEF_HEAP", "kind": "macro", "line": "18", "signature": "#define CVM_DEF_HEAP", "doc": ""}, {"name": "CVM_DEF_GLOBALS", "kind": "macro", "line": "19", "signature": "#define CVM_DEF_GLOBALS", "doc": ""}, {"name": "CVM_DEF_FUNCS", "kind": "macro", "line": "20", "signature": "#define CVM_DEF_FUNCS", "doc": ""}, {"name": "CVM_DEF_NATIVES", "kind": "macro", "line": "21", "signature": "#define CVM_DEF_NATIVES", "doc": ""}, {"name": "CVM_DEF_CODE", "kind": "macro", "line": "22", "signature": "#define CVM_DEF_CODE", "doc": ""}, {"name": "CVM_DEF_PROFILE", "kind": "macro", "line": "23", "signature": "#define CVM_DEF_PROFILE", "doc": ""}, {"name": "CVM_HEAP_ALIGN", "kind": "macro", "line": "24", "signature": "#define CVM_HEAP_ALIGN", "doc": ""}, {"name": "CVM_MAX_NARGS", "kind": "macro", "line": "25", "signature": "#define CVM_MAX_NARGS", "doc": ""}, {"name": "CVM_MAX_SARGS", "kind": "macro", "line": "26", "signature": "#define CVM_MAX_SARGS", "doc": ""}, {"name": "xmal", "kind": "function", "line": "27", "signature": "static void *xmal(size_t s)", "doc": "define CVM_DEF_STACK       65536 define CVM_DEF_FRAMES      4096 define CVM_DEF_LOCALS      512 define CVM_DEF_HEAP        (16 * 1024 * 1024) define CVM_DEF_GLOBALS     65536 define CVM_DEF_FUNCS       8192 define CVM_DEF_NATIVES     512 define CVM_DEF_CODE        (64 * 1024 * 1024) define CVM_DEF_PROFILE     (4 * 1024 * 1024) define CVM_HEAP_ALIGN      16 define CVM_MAX_NARGS       16 define CVM_MAX_SARGS       6"}, {"name": "xcal", "kind": "function", "line": "33", "signature": "static void *xcal(size_t n, size_t s)", "doc": ""}, {"name": "cvm_config_default", "kind": "function", "line": "39", "signature": "CvmConfig cvm_config_default(void)", "doc": ""}, {"name": "cvm_create", "kind": "function", "line": "54", "signature": "CvmState *cvm_create(const CvmConfig *config)", "doc": ""}, {"name": "memset", "kind": "function", "line": "88", "signature": "memset(vm->op_counts, 0, sizeof(vm->op_counts));", "doc": ""}, {"name": "cvm_destroy", "kind": "function", "line": "93", "signature": "void cvm_destroy(CvmState *vm)", "doc": ""}, {"name": "free", "kind": "function", "line": "99", "signature": "free(vm->slots);", "doc": "endif"}, {"name": "cvm_strerror", "kind": "function", "line": "112", "signature": "const char *cvm_strerror(int e)", "doc": ""}, {"name": "vp", "kind": "function", "line": "136", "signature": "static int vp(CvmState *vm, uint64_t v)", "doc": ""}, {"name": "vo", "kind": "function", "line": "142", "signature": "static int vo(CvmState *vm, uint64_t *v)", "doc": ""}, {"name": "r8", "kind": "function", "line": "148", "signature": "static int r8(CvmState *vm, uint8_t *o)", "doc": ""}, {"name": "r32", "kind": "function", "line": "154", "signature": "static int r32(CvmState *vm, uint32_t *o)", "doc": ""}, {"name": "ri32", "kind": "function", "line": "164", "signature": "static int ri32(CvmState *vm, int32_t *o)", "doc": ""}], "symbolTotal": 112}, {"id": "cvm2/cvm_view.h", "label": "cvm_view.h", "title": "\u003cb>cvm_view.h\u003c/b>\u003cbr>frontend | lifeline | h\u003cbr>symbols: 9 (CVM_VIEW_H, data, CvmModuleView, cvm_view_open, cvm_view_strerror)", "group": "frontend", "language": "h", "doc": "", "symbols": [{"name": "CVM_VIEW_H", "kind": "macro", "line": "9", "signature": "#define CVM_VIEW_H", "doc": ""}, {"name": "data", "kind": "variable", "line": "16", "signature": "extern \"C\" { #endif typedef struct { const uint8_t *data;", "doc": "ifdef __cplusplus"}, {"name": "CvmModuleView", "kind": "struct", "line": "19", "signature": "", "doc": ""}, {"name": "cvm_view_open", "kind": "function", "line": "41", "signature": "int cvm_view_open(CvmModuleView *v, const uint8_t *data, size_t size);", "doc": "uint32_t       num_strings; uint32_t       code_size; uint32_t       string_pool_size; uint32_t       data_size; uint32_t       entry_func; size_t         func_off; size_t         global_off; size_t         native_off; size_t         string_off; size_t         code_off; size_t         pool_off; } CvmModuleView; /* Parse and validate the header plus all section extents."}, {"name": "cvm_view_strerror", "kind": "function", "line": "44", "signature": "const char *cvm_view_strerror(int error_code);", "doc": "uint32_t       data_size; uint32_t       entry_func; size_t         func_off; size_t         global_off; size_t         native_off; size_t         string_off; size_t         code_off; size_t         pool_off; } CvmModuleView; /* Parse and validate the header plus all section extents. int cvm_view_open(CvmModuleView *v, const uint8_t *data, size_t size); /* Message for an error code returned by cvm_view_open."}, {"name": "cvm_view_func", "kind": "function", "line": "45", "signature": "const CvmFuncEntry *cvm_view_func(const CvmModuleView *v, uint32_t i);", "doc": ""}, {"name": "cvm_view_string", "kind": "function", "line": "50", "signature": "const char *cvm_view_string(const CvmModuleView *v, uint32_t off);", "doc": "String from the pool, or NULL when the offset is outside it. The * pointer is only valid while the module data lives."}, {"name": "cvm_view_func_name", "kind": "function", "line": "53", "signature": "const char *cvm_view_func_name(const CvmModuleView *v, uint32_t fi, char *fallback, size_t cap);", "doc": "String from the pool, or NULL when the offset is outside it. The * pointer is only valid while the module data lives. const char *cvm_view_string(const CvmModuleView *v, uint32_t off); /* Function name from the pool; falls back to \"func\u003cN>\" in fallback."}, {"name": "cvm_view_func_region", "kind": "function", "line": "58", "signature": "int cvm_view_func_region(const CvmModuleView *v, uint32_t fi, size_t *begin, size_t *end);", "doc": "Code region of a function: [*begin, *end) where *end is the next * function's code offset or the end of the code section."}], "symbolTotal": 9}, {"id": "cvm2/cvm_dbg_main.c", "label": "cvm_dbg_main.c", "title": "\u003cb>cvm_dbg_main.c\u003c/b>\u003cbr>external | lifeline | c\u003cbr>symbols: 35 (DBG_LINE_MAX, DBG_PROFILE_TOP, emit_stdout, fputs, fputc +10 more)", "group": "external", "language": "c", "doc": "", "symbols": [{"name": "DBG_LINE_MAX", "kind": "macro", "line": "17", "signature": "#define DBG_LINE_MAX", "doc": ""}, {"name": "DBG_PROFILE_TOP", "kind": "macro", "line": "19", "signature": "#define DBG_PROFILE_TOP", "doc": ""}, {"name": "emit_stdout", "kind": "function", "line": "28", "signature": "static int emit_stdout(void *ctx, const char *line)", "doc": ""}, {"name": "fputs", "kind": "function", "line": "31", "signature": "fputs(line, f);", "doc": ""}, {"name": "fputc", "kind": "function", "line": "32", "signature": "fputc('\\n', f);", "doc": ""}, {"name": "func_display", "kind": "function", "line": "35", "signature": "static const char *func_display(uint32_t fi, char *fb, size_t cap)", "doc": ""}, {"name": "cvm_view_func_name", "kind": "function", "line": "37", "signature": "return cvm_view_func_name(&g_view, fi, fb, cap);", "doc": ""}, {"name": "func_of_ip", "kind": "function", "line": "39", "signature": "static int func_of_ip(size_t ip)", "doc": ""}, {"name": "parse_u32", "kind": "function", "line": "50", "signature": "static int parse_u32(const char *s, uint32_t *out)", "doc": ""}, {"name": "report_run", "kind": "function", "line": "58", "signature": "static void report_run(int rc)", "doc": ""}, {"name": "printf", "kind": "function", "line": "61", "signature": "printf(\"breakpoint at 0x%04zx\\n\", g_vm->ip);", "doc": ""}, {"name": "cmd_list", "kind": "function", "line": "70", "signature": "static void cmd_list(char *arg)", "doc": ""}, {"name": "cvm_dis_function", "kind": "function", "line": "95", "signature": "cvm_dis_function(&g_view, begin, end, emit_stdout, stdout);", "doc": ""}, {"name": "cmd_break", "kind": "function", "line": "97", "signature": "static void cmd_break(char *arg)", "doc": ""}, {"name": "cmd_delete", "kind": "function", "line": "132", "signature": "static void cmd_delete(char *arg)", "doc": ""}, {"name": "cvm_break_clear_all", "kind": "function", "line": "135", "signature": "cvm_break_clear_all(g_vm);", "doc": ""}, {"name": "cmd_step", "kind": "function", "line": "151", "signature": "static void cmd_step(void)", "doc": ""}, {"name": "cmd_next", "kind": "function", "line": "165", "signature": "static void cmd_next(void)", "doc": ""}, {"name": "cmd_run", "kind": "function", "line": "183", "signature": "static void cmd_run(void)", "doc": ""}, {"name": "cmd_bt", "kind": "function", "line": "193", "signature": "static void cmd_bt(void)", "doc": ""}, {"name": "cmd_stack", "kind": "function", "line": "205", "signature": "static void cmd_stack(void)", "doc": ""}, {"name": "cmd_locals", "kind": "function", "line": "212", "signature": "static void cmd_locals(void)", "doc": ""}, {"name": "cmd_info", "kind": "function", "line": "224", "signature": "static void cmd_info(void)", "doc": ""}, {"name": "cmd_profile", "kind": "function", "line": "240", "signature": "static void cmd_profile(char *arg)", "doc": ""}, {"name": "cvm_profile_end", "kind": "function", "line": "297", "signature": "cvm_profile_end(g_vm);", "doc": ""}], "symbolTotal": 35}]</script>
+<script type="application/json" id="vis-edges">[{"from": "cvm2/cvm.c", "to": "cvm2/cvm.h", "title": "resolved_imports", "dashes": false}, {"from": "cvm2/cvm.c", "to": "cvm2/cvm_jit.h", "title": "resolved_imports", "dashes": false}, {"from": "cvm2/cvm_dbg_main.c", "to": "cvm2/cvm.h", "title": "resolved_imports", "dashes": false}, {"from": "cvm2/cvm_dbg_main.c", "to": "cvm2/cvm_view.h", "title": "resolved_imports", "dashes": false}, {"from": "cvm2/cvm_jit.h", "to": "cvm2/cvm.h", "title": "resolved_imports", "dashes": false}, {"from": "cvm2/cvm_view.h", "to": "cvm2/cvm.h", "title": "resolved_imports", "dashes": false}]</script>
+<script type="application/json" id="vis-views">[{"id": "primary-path", "title": "Primary path", "focus": ["cvm.h", "cvm2/cvm.h", "cvm2/cvm_jit.h", "cvm2/cvm.c", "cvm2/cvm_view.h", "cvm2/cvm_dbg_main.c"], "description": "Follow the dominant authored path first."}, {"id": "happy-path", "title": "Happy path", "focus": ["cvm.h", "cvm2/cvm.c", "cvm2/cvm_dbg_main.c"], "description": "Trace the shortest authored route end to end."}, {"id": "hub-focus", "title": "Hub focus", "focus": ["cvm2/cvm.c"], "description": "Inspect the most connected authored hub."}, {"id": "side-branches", "title": "Side branches", "focus": ["cvm2/cvm.c", "cvm2/cvm_view.h", "cvm2/cvm_dbg_main.c"], "description": "Review supporting detail without losing orientation."}, {"id": "full-map", "title": "Full map", "focus": ["cvm.h", "cvm2/cvm.h", "cvm2/cvm_jit.h", "cvm2/cvm.c", "cvm2/cvm_view.h", "cvm2/cvm_dbg_main.c"], "description": "Restore the complete authored context."}]</script>
+<script type="application/json" id="vis-meta">{"kind": "sequence", "title": "Request Sequence", "nodeCount": 6, "edgeCount": 6, "totalFiles": "26", "neighbors": 8}</script>
+<script type="application/json" id="vis-physics">{"enabled": true, "barnesHut": {"gravitationalConstant": -60000, "centralGravity": 0.15, "springLength": 320, "damping": 0.12}, "stabilization": {"iterations": 250}}</script>
+<script type="application/json" id="vis-roles">{"frontend": "#22d3ee", "backend": "#34d399", "database": "#a78bfa", "cloud": "#fbbf24", "security": "#fb7185", "messagebus": "#fb923c", "external": "#94a3b8"}</script>
+<script>
+(function(){
+"use strict";
+var rawNodes=JSON.parse(document.getElementById("vis-nodes").textContent||"[]");
+var rawEdges=JSON.parse(document.getElementById("vis-edges").textContent||"[]");
+var views=JSON.parse(document.getElementById("vis-views").textContent||"[]");
+var meta=JSON.parse(document.getElementById("vis-meta").textContent||"{}");
+var physics=JSON.parse(document.getElementById("vis-physics").textContent||"{}");
+var roleColors=JSON.parse(document.getElementById("vis-roles").textContent||"{}");
+var root=document.documentElement;
+var container=document.getElementById("network");
+var search=document.getElementById("search");
+var passportTitle=document.getElementById("passport-title");
+var passportMeta=document.getElementById("passport-meta");
+var journey=document.getElementById("journey");
+var receipt=document.getElementById("receipt");
+var chapters=document.getElementById("chapters");
+var roleCounts=document.getElementById("role-counts");
+var nodeSymbols=document.getElementById("node-symbols");
+var guide=document.getElementById("guide");
+var exportsDialog=document.getElementById("exports");
+var state={focus:null,reach:null,lens:null,view:-1,physicsOn:true};
+var reduced=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+function themeBox(){return root.getAttribute("data-theme")==="light"?{box:"#ffffff",ink:"#0f172a"}:{box:"#0f172a",ink:"#ffffff"};}
+function paintNodes(){
+var palette=themeBox();
+var update=rawNodes.map(function(n){
+return {id:n.id,color:{background:palette.box,border:roleColors[n.group]||"#94a3b8",highlight:{background:palette.box,border:roleColors[n.group]||"#94a3b8"}},font:{color:palette.ink,size:13,face:"monospace"}};});
+visNodes.update(update);}
+var visNodes=new vis.DataSet(rawNodes.map(function(n){return {id:n.id,label:n.label,title:n.title,group:n.group,shape:"box"};}));
+var visEdges=new vis.DataSet(rawEdges.map(function(e,index){return {id:"e"+index,from:e.from,to:e.to,title:e.label,arrows:"to",dashes:!!e.dashes,smooth:{type:"dynamic"},color:{opacity:0.7}};}));
+paintNodes();
+var network=new vis.Network(container,{nodes:visNodes,edges:visEdges},{
+physics:physics,
+interaction:{hover:true,navigationButtons:false,keyboard:false},
+nodes:{shape:"box",borderWidth:2,margin:10},
+edges:{arrows:{to:{enabled:true}},smooth:{type:"dynamic"}}});
+if(reduced&&physics.enabled){try{network.stabilize(50);}catch(e){}}
+function outgoing(id){return rawEdges.filter(function(e){return e.from===id;});}
+function incoming(id){return rawEdges.filter(function(e){return e.to===id;});}
+function nodeById(id){for(var i=0;i<rawNodes.length;i++){if(rawNodes[i].id===id){return rawNodes[i];}}return null;}
+function escapeHtml(text){
+return String(text==null?"":text).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");}
+function neighborNames(ids){
+var cap=(meta.neighbors||8);
+return ids.slice().sort().slice(0,cap).map(function(id){var n=nodeById(id);return escapeHtml(n?n.label:id);});}
+function renderNodeDetail(node){
+if(!nodeSymbols){return;}
+var ins=incoming(node.id).map(function(e){return e.from;});
+var outs=outgoing(node.id).map(function(e){return e.to;});
+var html="";
+if(node.doc){html+='<p class="filedoc">'+escapeHtml(node.doc)+"</p>";}
+var symbols=node.symbols||[];
+if(symbols.length){
+html+="<table><thead><tr><th>Symbol</th><th>Kind</th><th>Line</th></tr></thead><tbody>";
+symbols.forEach(function(s){
+var docTitle=s.doc?(' title="'+escapeHtml(s.doc)+'"'):"";
+var name="<span"+docTitle+">"+escapeHtml(s.name)+"</span>"+(s.signature?" <code>"+escapeHtml(s.signature)+"</code>":"");
+html+="<tr><td>"+name+"</td><td>"+escapeHtml(s.kind)+"</td><td>"+escapeHtml(s.line)+"</td></tr>";});
+html+="</tbody></table>";
+var hidden=(node.symbolTotal||symbols.length)-symbols.length;
+if(hidden>0){html+='<p class="filedoc">+'+hidden+' more symbols in source.</p>';}}
+else{html+='<p class="filedoc">No symbols extracted.</p>';}
+html+='<p class="neighbors">Imports '+outs.length+(outs.length?": "+neighborNames(outs).join(", "):"")+"</p>";
+html+='<p class="neighbors">Imported by '+ins.length+(ins.length?": "+neighborNames(ins).join(", "):"")+"</p>";
+nodeSymbols.innerHTML=html;}
+function clearNodeDetail(){
+if(nodeSymbols){nodeSymbols.innerHTML="";}
+passportTitle.textContent="Diagram guide";}
+function clearNodeDetailSilent(){
+if(nodeSymbols){nodeSymbols.innerHTML="";}}
+function bfsReach(start,direction){
+var seen={};seen[start]=0;var queue=[start];var order=[start];
+while(queue.length){var current=queue.shift();var nexts=direction==="downstream"?outgoing(current):incoming(current);
+for(var i=0;i<nexts.length;i++){var nid=direction==="downstream"?nexts[i].to:nexts[i].from;
+if(!(nid in seen)){seen[nid]=seen[current]+1;queue.push(nid);order.push(nid);}}}
+return {members:order,hops:seen};}
+function bfsRoute(from,to){
+if(from===to){return [from];}
+var prev={};var seen={};seen[from]=true;var queue=[from];
+while(queue.length){var current=queue.shift();var nexts=outgoing(current);
+for(var i=0;i<nexts.length;i++){var nid=nexts[i].to;
+if(!(nid in seen)){seen[nid]=true;prev[nid]=current;
+if(nid===to){var path=[to];var c=to;while(c!==from){c=prev[c];path.unshift(c);}return path;}
+queue.push(nid);}}}
+return [];}
+function showOnly(allowed){
+var nodeUpdate=rawNodes.map(function(n){return {id:n.id,hidden:!allowed[n.id]};});
+visNodes.update(nodeUpdate);
+var edgeUpdate=rawEdges.map(function(e,index){return {id:"e"+index,hidden:!(allowed[e.from]&&allowed[e.to])};});
+visEdges.update(edgeUpdate);}
+function showAll(){
+var nodeUpdate=rawNodes.map(function(n){return {id:n.id,hidden:false};});
+visNodes.update(nodeUpdate);
+var edgeUpdate=rawEdges.map(function(e,index){return {id:"e"+index,hidden:false};});
+visEdges.update(edgeUpdate);}
+function setHash(value){try{history.replaceState(null,"",value);}catch(e){location.hash=value;}}
+function focusNode(id,reach){
+var node=nodeById(id);if(!node){return;}
+state.focus=id;state.reach=reach||null;
+var allowed={};allowed[id]=true;
+if(state.reach){var found=bfsReach(id,state.reach);found.members.forEach(function(m){allowed[m]=true;});
+var hops=0;for(var k in found.hops){if(found.hops[k]>hops){hops=found.hops[k];}}
+receipt.textContent=(state.reach==="downstream"?"Downstream":"Upstream")+" reach: "+found.members.length+" nodes, "+hops+" max hops. Authored relationships only.";}
+else{receipt.textContent="In: "+incoming(id).length+" | Out: "+outgoing(id).length+" | Views: "+views.length;}
+showOnly(allowed);
+network.selectNodes([id]);
+passportTitle.textContent=node.label;
+passportMeta.textContent=node.id+" | role "+node.group+" | "+(node.language||"")+" | "+(node.symbolTotal||0)+" symbols";
+renderNodeDetail(node);
+var hash="#focus="+encodeURIComponent(id);
+if(state.reach){hash+="&reach="+state.reach;}
+setHash(hash);}
+function probeRoute(){
+var from=document.getElementById("route-from").value.trim();
+var to=document.getElementById("route-to").value.trim();
+if(!from||!to){return;}
+var path=bfsRoute(from,to);
+if(!path.length){journey.textContent="No authored directed route from "+from+" to "+to+".";receipt.textContent="Route probe: 0 links.";return;}
+var allowed={};path.forEach(function(n){allowed[n]=true;});
+showOnly(allowed);
+network.selectNodes(path);
+try{network.fit({nodes:path,animation:reduced?false:{duration:600}});}catch(e){}
+var names=path.map(function(n){var node=nodeById(n);return node?node.label:n;});
+journey.textContent="Journey: "+names.join(" -> ")+" ("+(path.length-1)+" hops).";
+receipt.textContent="Route probe: "+path.length+" nodes, "+(path.length-1)+" links.";
+setHash("#route="+encodeURIComponent(from)+"~"+encodeURIComponent(to));}
+function applyLens(role){
+state.lens=role;
+if(!role){showAll();clearNodeDetail();receipt.textContent="Lens cleared.";setHash("#");return;}
+var counts={};rawNodes.forEach(function(n){counts[n.group]=(counts[n.group]||0)+1;});
+var allowed={};rawNodes.forEach(function(n){if(n.group===role){allowed[n.id]=true;}});
+showOnly(allowed);
+var parts=[];for(var k in counts){parts.push(k+": "+counts[k]);}
+receipt.textContent="Lens "+role+": "+(counts[role]||0)+" of "+rawNodes.length+" nodes. "+parts.join(" | ");
+setHash("#lens="+encodeURIComponent(role));}
+function showView(index){
+if(!views.length){return;}
+state.view=(index+views.length)%views.length;
+var view=views[state.view];
+chapters.querySelectorAll("button").forEach(function(b,i){b.disabled=(i===state.view);});
+passportTitle.textContent=view.title;
+passportMeta.textContent=view.description||"";
+clearNodeDetailSilent();
+if(!view.focus.length){showAll();}
+else{var allowed={};view.focus.forEach(function(n){allowed[n]=true;});showOnly(allowed);network.selectNodes(view.focus);}
+journey.textContent=view.focus.length?("Chapter focus: "+view.focus.join(", ")):"";
+receipt.textContent="Chapter "+(state.view+1)+" of "+views.length+".";
+setHash("#view="+encodeURIComponent(view.id));}
+function renderChapters(){
+chapters.innerHTML="";
+views.forEach(function(view,index){var b=document.createElement("button");b.type="button";b.textContent=view.title;b.setAttribute("aria-label","Show chapter "+view.title);b.setAttribute("title","Focus the "+view.title+" chapter");b.addEventListener("click",function(){showView(index);});chapters.appendChild(b);});}
+function renderRoleCounts(){
+var counts={};rawNodes.forEach(function(n){counts[n.group]=(counts[n.group]||0)+1;});
+roleCounts.innerHTML="";
+Object.keys(counts).sort().forEach(function(role){var s=document.createElement("button");s.type="button";s.className="chip";s.textContent=role+": "+counts[role];s.setAttribute("aria-label","Filter role "+role);s.setAttribute("title","Highlight the "+role+" role");s.addEventListener("click",function(){applyLens(role);});roleCounts.appendChild(s);});}
+function cyclePreset(){
+var presets=["classic","flow","blueprint","editorial"];
+var current=root.getAttribute("data-preset")||"classic";
+root.setAttribute("data-preset",presets[(presets.indexOf(current)+1)%presets.length]);}
+function toggleTheme(){
+var current=root.getAttribute("data-theme")||"dark";
+root.setAttribute("data-theme",current==="dark"?"light":"dark");
+paintNodes();}
+function togglePhysics(){
+state.physicsOn=!state.physicsOn;
+try{network.setOptions({physics:{enabled:state.physicsOn}});}catch(e){}
+receipt.textContent=state.physicsOn?"Physics resumed.":"Physics frozen; nodes stay draggable.";}
+function exportPNG(){
+try{
+var link=document.createElement("a");
+link.href=network.canvas.frame.canvas.toDataURL("image/png");
+link.download="system-map-"+(meta.kind||"map")+".png";
+document.body.appendChild(link);link.click();
+setTimeout(function(){link.remove();},400);
+receipt.textContent="PNG snapshot downloaded.";
+}catch(e){receipt.textContent="PNG export unavailable in this browser.";}}
+function exportJSON(){
+var payload={kind:meta.kind,title:meta.title,nodes:rawNodes,edges:rawEdges,views:views};
+var blob=new Blob([JSON.stringify(payload,null,2)],{type:"application/json"});
+var link=document.createElement("a");link.href=URL.createObjectURL(blob);link.download="system-map-"+(meta.kind||"map")+".json";document.body.appendChild(link);link.click();
+setTimeout(function(){URL.revokeObjectURL(link.href);link.remove();},400);}
+function readHash(){
+var hash=location.hash||"";
+if(hash.indexOf("#route=")===0){var parts=hash.slice(7).split("~");if(parts.length===2){document.getElementById("route-from").value=decodeURIComponent(parts[0]);document.getElementById("route-to").value=decodeURIComponent(parts[1]);probeRoute();}return;}
+if(hash.indexOf("#lens=")===0){applyLens(decodeURIComponent(hash.slice(6)));return;}
+if(hash.indexOf("#view=")===0){var id=decodeURIComponent(hash.slice(6));for(var i=0;i<views.length;i++){if(views[i].id===id){showView(i);return;}}return;}
+if(hash.indexOf("#focus=")===0){var rest=hash.slice(7).split("&reach=");focusNode(decodeURIComponent(rest[0]),rest[1]?decodeURIComponent(rest[1]):null);return;}}
+network.on("click",function(params){
+if(params.nodes.length>0){focusNode(params.nodes[0]);}});
+network.on("stabilized",function(){receipt.textContent="Physics stabilized: "+rawNodes.length+" nodes placed.";});
+document.querySelectorAll("[data-action]").forEach(function(btn){
+btn.addEventListener("click",function(){
+var action=btn.getAttribute("data-action");
+if(action==="reach-up"&&state.focus){focusNode(state.focus,"upstream");}
+else if(action==="reach-down"&&state.focus){focusNode(state.focus,"downstream");}
+else if(action==="route"){probeRoute();}
+else if(action==="lens"){applyLens(state.lens?null:"backend");}
+else if(action==="views-prev"){showView(state.view-1);}
+else if(action==="views-next"){showView(state.view+1);}
+else if(action==="play"){var i=0;var step=function(){if(i>=views.length){return;}showView(i);i++;if(!reduced){setTimeout(step,1400);}};step();}
+else if(action==="stabilize"){try{network.stabilize();}catch(e){}receipt.textContent="Stabilizing physics...";}
+else if(action==="physics"){togglePhysics();}
+else if(action==="present"){document.body.classList.toggle("present");}
+else if(action==="style"){cyclePreset();}
+else if(action==="theme"){toggleTheme();}
+else if(action==="export"){if(typeof exportsDialog.showModal==="function"){exportsDialog.showModal();}}
+else if(action==="help"){if(typeof guide.showModal==="function"){guide.showModal();}}
+else if(action==="close-guide"){guide.close();}
+else if(action==="close-exports"){exportsDialog.close();}
+else if(action==="export-png"){exportPNG();}
+else if(action==="export-json"){exportJSON();}});});
+search.addEventListener("input",function(){
+var term=search.value.trim().toLowerCase();
+if(!term){showAll();return;}
+var allowed={};rawNodes.forEach(function(n){
+if(n.label.toLowerCase().indexOf(term)>=0||n.id.toLowerCase().indexOf(term)>=0){allowed[n.id]=true;}});
+showOnly(allowed);});
+document.addEventListener("keydown",function(ev){
+if(ev.target&&(ev.target.tagName==="INPUT"||ev.target.tagName==="TEXTAREA")){return;}
+if(ev.key==="/"){ev.preventDefault();search.focus();}
+else if(ev.key==="R"||ev.key==="r"){var f=document.getElementById("route-from");if(f){f.focus();}}
+else if(ev.key==="L"||ev.key==="l"){applyLens(state.lens?null:"backend");}
+else if(ev.key==="P"||ev.key==="p"){showView(state.view+1);}
+else if(ev.key==="["){showView(state.view-1);}
+else if(ev.key==="]"){showView(state.view+1);}
+else if(ev.key==="B"||ev.key==="b"){togglePhysics();}
+else if(ev.key==="F"||ev.key==="f"){document.body.classList.toggle("present");}
+else if(ev.key==="S"||ev.key==="s"){cyclePreset();}
+else if(ev.key==="T"||ev.key==="t"){toggleTheme();}
+else if(ev.key==="E"||ev.key==="e"){if(typeof exportsDialog.showModal==="function"){exportsDialog.showModal();}}
+else if(ev.key==="?"){if(typeof guide.showModal==="function"){guide.showModal();}}
+else if(ev.key==="+"){try{network.zoomIn();}catch(e){}}
+else if(ev.key==="-"){try{network.zoomOut();}catch(e){}}
+else if(ev.key==="0"){try{network.fit();}catch(e){}}});
+passportMeta.textContent=(meta.nodeCount||rawNodes.length)+" of "+(meta.totalFiles||rawNodes.length)+" files | "+(meta.edgeCount||rawEdges.length)+" links | "+views.length+" chapters. Primary scope only; full listing lives in the knowledge base.";
+receipt.textContent="Live physics network. Drag nodes, search, focus, trace reach, probe routes, compare roles, or play chapters.";
+renderChapters();renderRoleCounts();readHash();
+})();
+</script>
+</body>
+</html>

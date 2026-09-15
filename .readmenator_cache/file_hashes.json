@@ -7,7 +7,7 @@
   "cvm2/cvm_dis.c": "856f9bab5f90b03c04aee772530fd54b0e95e9c9e359e5f509775dc54dc8f399",
   "cvm2/cvm_dis.h": "878f2f8552ffccbeb7eaa3d9ae5c2d5ad105ae8c95d21e841cc6bd1bc59abfe2",
   "cvm2/cvm_dis_main.c": "ed498157684903962dd59527ce9dcb4336ddf3b62b2c39eb3b8484658287a4d3",
-  "cvm2/cvm_jit.c": "6dbe5caf99cab9c53cf9f2df1d322033563ae16f6c4c52892864f7cafd8e0f60",
+  "cvm2/cvm_jit.c": "105047191b757c6ac8d3736196d25ddf031621f73624adb70acd8fdb67ac909d",
   "cvm2/cvm_jit.h": "7106c68d39e40550afea9b143ab8359b29eb69729d9c2e0318c880bd9e40adce",
   "cvm2/cvm_jit_help.c": "5eb905a20a9a44febcf132a4da1e0ab456b21c6c344182c0c7cd79cf0f4769fb",
   "cvm2/cvm_jit_help.h": "2b4e11ee6019891632714700ac20fd2f5ae1c03b540f717518d221d8efba28fb",
