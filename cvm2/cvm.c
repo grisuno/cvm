@@ -533,7 +533,7 @@ static void vformat(Vout *vo, const char *fmt, uint64_t *argv, int argc) {
             vout_write(vo, s, n);
             if (pad > 0 && left) while (pad-- > 0) vout_char(vo, ' ');
         } else if (c == 'd' || c == 'i') {
-            int64_t sv = (int64_t)val;
+            int64_t sv = (int64_t)(int32_t)val;
             int ndig = 1;
             uint64_t m = sv < 0 ? (uint64_t)(-sv) : (uint64_t)sv;
             if (prec > 0 && prec > ndig) ndig = prec;

@@ -47,31 +47,34 @@
         "id": 0,
         "label": "cvm2",
         "file_ids": [
-          "cvm2/cvm.h",
-          "cvm2/gen_minimal.c",
-          "cvm2/cvm_jit_help.h",
-          "cvm2/cvm.c",
-          "cvm2/cvm_view.c",
-          "cvm2/cvm_view.h",
-          "cvm.c",
-          "cvm2/gen_fib_cvm.c",
-          "cvm2/cvm_jit_help.c",
-          "cvm2/cvm_ops.c",
-          "cvm.h",
+          "cvm2/cvm_jit.c",
+          "cvm2/cvm_ops.h",
           "cvm2/cvm_dbg_main.c",
+          "cvm2/cvm_jit_help.h",
+          "cvm2/cvm_val_main.c",
+          "cvm2/cvm.h",
+          "cvm2/cvm_view.c",
+          "cvm2/cvm_jit.h",
+          "cvm2/cvm_jit_help.c",
+          "cvm2/cvm.c",
+          "cvm2/gen_fib_cvm.c",
+          "cvm2/gen_minimal.c",
           "gen_fib_cvm.c",
-          "cvm2/cvm_jit.h"
+          "cvm2/cvm_view.h",
+          "cvm2/cvm_ops.c",
+          "cvm.c",
+          "cvm.h"
         ],
-        "cohesion": 0.7575757575757576,
-        "size": 14
+        "cohesion": 0.8611111111111112,
+        "size": 17
       },
       {
         "id": 1,
         "label": "cvm2",
         "file_ids": [
-          "cvm2/cvm_dis.h",
           "cvm2/cvm_dis.c",
-          "cvm2/cvm_dis_main.c"
+          "cvm2/cvm_dis_main.c",
+          "cvm2/cvm_dis.h"
         ],
         "cohesion": 0.3333333333333333,
         "size": 3
@@ -80,19 +83,8 @@
         "id": 2,
         "label": "cvm2",
         "file_ids": [
-          "cvm2/cvm_ops.h",
-          "cvm2/cvm_val_main.c",
-          "cvm2/cvm_jit.c"
-        ],
-        "cohesion": 0.2857142857142857,
-        "size": 3
-      },
-      {
-        "id": 3,
-        "label": "cvm2",
-        "file_ids": [
-          "cvm2/cvm_jit_x86.h",
-          "cvm2/cvm_jit_x86.c"
+          "cvm2/cvm_jit_x86.c",
+          "cvm2/cvm_jit_x86.h"
         ],
         "cohesion": 0.5,
         "size": 2
@@ -103,39 +95,39 @@
         "cvm2/cvm_dis.c",
         "cvm2/cvm_jit_x86.c",
         5,
-        "{0, 1, 2, 3}"
+        "{0, 1, 2}"
       ],
       [
         "cvm2/cvm_dis.h",
         "cvm2/cvm_jit_x86.c",
         5,
-        "{0, 1, 3}"
+        "{0, 1, 2}"
       ],
       [
         "cvm2/cvm_dis_main.c",
         "cvm2/cvm_jit_x86.c",
         5,
-        "{0, 1, 3}"
+        "{0, 1, 2}"
       ],
       [
         "cvm2/cvm_jit_x86.c",
         "cvm2/cvm_val_main.c",
         5,
-        "{0, 2, 3}"
+        "{0, 2}"
       ],
       [
         "cvm2/cvm_jit_x86.c",
         "cvm2/cvm_view.c",
         5,
-        "{0, 3}"
+        "{0, 2}"
       ]
     ],
     "suggested_questions": [
       "What does cvm.h depend on, and what depends on it? (10 connections)",
       "What does cvm.h depend on, and what depends on it? (8 connections)",
       "What does cvm_jit.h depend on, and what depends on it? (8 connections)",
-      "How are the 14 files in 'cvm2' related to each other?",
-      "Why are cvm_dis.c and cvm_jit_x86.c connected through 5 hops across 4 communities?"
+      "How are the 17 files in 'cvm2' related to each other?",
+      "Why are cvm_dis.c and cvm_jit_x86.c connected through 5 hops across 3 communities?"
     ]
   },
   "layers": {
