@@ -489,6 +489,56 @@ static int emit_opcode(JitCtx *ctx, size_t bc_ip) {
         break;
     }
 
+    case OP_UDIV: {
+        /* unsigned divide: rax = a / b */
+        emit_save_sp(b);
+        emit_stack_pop_into(b, XCX);   /* b -> rcx */
+        emit_stack_pop(b);              /* a -> rax */
+        emit_test_reg_reg(b, XCX, XCX);
+        size_t patch_ok = emit_jcc_rel32(b, CC_NE, 0);  /* jnz .ok */
+        emit_mov_reg_reg(b, XDI, JIT_REG_VM);
+        emit_mov_reg_imm32(b, XSI, CVM_ERR_DIV_ZERO);
+        emit_call_abs(b, (void *)(uintptr_t)cvm_jit_error, X10);
+        emit_mov_reg_imm32(b, XAX, CVM_ERR_DIV_ZERO);
+        emit_epilogue(b);
+        /* .ok: */
+        {
+            size_t target = b->size;
+            int32_t rel = (int32_t)(target - (patch_ok + 4));
+            memcpy(b->code + patch_ok, &rel, 4);
+        }
+        emit_xor_reg_self(b, XDX);
+        emit_div_reg(b, XCX);
+        emit_stack_push(b);
+        break;
+    }
+
+    case OP_UMOD: {
+        /* unsigned modulo: rax = a % b */
+        emit_save_sp(b);
+        emit_stack_pop_into(b, XCX);   /* b -> rcx */
+        emit_stack_pop(b);              /* a -> rax */
+        emit_test_reg_reg(b, XCX, XCX);
+        size_t patch_bad = emit_jcc_rel32(b, CC_NE, 0);
+        emit_mov_reg_reg(b, XDI, JIT_REG_VM);
+        emit_mov_reg_imm32(b, XSI, CVM_ERR_DIV_ZERO);
+        emit_call_abs(b, (void *)(uintptr_t)cvm_jit_error, X10);
+        emit_mov_reg_imm32(b, XAX, CVM_ERR_DIV_ZERO);
+        emit_epilogue(b);
+        /* .ok: */
+        {
+            size_t target = b->size;
+            int32_t rel = (int32_t)(target - (patch_bad + 4));
+            memcpy(b->code + patch_bad, &rel, 4);
+        }
+        emit_xor_reg_self(b, XDX);
+        emit_div_reg(b, XCX);
+        /* remainder is in rdx */
+        emit_mov_reg_reg(b, JIT_SCRATCH1, XDX);
+        emit_stack_push(b);
+        break;
+    }
+
     case OP_NEG:
         emit_stack_pop(b);
         emit_neg_reg(b, JIT_SCRATCH1);

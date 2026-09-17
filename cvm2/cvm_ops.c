@@ -22,6 +22,8 @@ static const CvmOpInfo op_infos[] = {
     { OP_MUL,          CVM_OPK_NONE,  1, "MUL" },
     { OP_DIV,          CVM_OPK_NONE,  1, "DIV" },
     { OP_MOD,          CVM_OPK_NONE,  1, "MOD" },
+    { OP_UDIV,         CVM_OPK_NONE,  1, "UDIV" },
+    { OP_UMOD,         CVM_OPK_NONE,  1, "UMOD" },
     { OP_NEG,          CVM_OPK_NONE,  1, "NEG" },
     { OP_AND,          CVM_OPK_NONE,  1, "AND" },
     { OP_OR,           CVM_OPK_NONE,  1, "OR" },

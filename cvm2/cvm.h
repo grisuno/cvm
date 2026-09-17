@@ -86,6 +86,8 @@ typedef enum {
     OP_DIV          = 0x23,
     OP_MOD          = 0x24,
     OP_NEG          = 0x25,
+    OP_UDIV         = 0x26,
+    OP_UMOD         = 0x27,
     OP_AND          = 0x30,
     OP_OR           = 0x31,
     OP_XOR          = 0x32,

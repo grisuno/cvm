@@ -128,6 +128,7 @@ static int stack_effect(const CvmModuleView *v, size_t off, uint8_t op,
         ef->need = 1; ef->dlo = -1; ef->dhi = -1;
         return 0;
     case OP_ADD: case OP_SUB: case OP_MUL: case OP_DIV: case OP_MOD:
+    case OP_UDIV: case OP_UMOD:
     case OP_AND: case OP_OR:  case OP_XOR: case OP_SHL: case OP_SHR:
     case OP_USHR:
     case OP_CMP_EQ: case OP_CMP_NE: case OP_CMP_LT: case OP_CMP_LE:

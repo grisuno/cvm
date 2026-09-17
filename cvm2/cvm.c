@@ -1126,6 +1126,18 @@ int cvm_step(CvmState *vm) {
             rc=vp(vm,(uint64_t)((int64_t)a%(int64_t)b));
             break;
         }
+        case OP_UDIV: {
+            uint64_t b,a; rc=vo(vm,&b); if(rc) break; rc=vo(vm,&a); if(rc) break;
+            if (b==0) { rc=CVM_ERR_DIV_ZERO; break; }
+            rc=vp(vm,a/b);
+            break;
+        }
+        case OP_UMOD: {
+            uint64_t b,a; rc=vo(vm,&b); if(rc) break; rc=vo(vm,&a); if(rc) break;
+            if (b==0) { rc=CVM_ERR_DIV_ZERO; break; }
+            rc=vp(vm,a%b);
+            break;
+        }
         case OP_NEG: { uint64_t a; rc=vo(vm,&a); if(!rc) rc=vp(vm,(uint64_t)(-(int64_t)a)); break; }
         case OP_AND: { uint64_t b,a; rc=vo(vm,&b); if(rc) break; rc=vo(vm,&a); if(!rc) rc=vp(vm,a&b); break; }
         case OP_OR:  { uint64_t b,a; rc=vo(vm,&b); if(rc) break; rc=vo(vm,&a); if(!rc) rc=vp(vm,a|b); break; }

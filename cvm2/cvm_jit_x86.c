@@ -331,6 +331,13 @@ void emit_idiv_reg(JitBuf *b, int divisor) {
     emit_modrm(b, 3, 7, divisor);
 }
 
+void emit_div_reg(JitBuf *b, int divisor) {
+    /* REX.W + F7 /6 r/m64 -- DIV r/m64 (divides RDX:RAX, unsigned) */
+    emit_rex(b, 1, 0, 0, reg_high3(divisor));
+    emit8(b, 0xF7);
+    emit_modrm(b, 3, 6, divisor);
+}
+
 void emit_cqo(JitBuf *b) {
     /* REX.W + 99 -- CQO (sign-extend RAX into RDX:RAX) */
     emit8(b, 0x48);

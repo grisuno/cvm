@@ -161,6 +161,10 @@ void emit_imul_reg_reg(JitBuf *b, int dst, int src);
  * Requires RDX=0 before unsigned, or use CQO for signed. */
 void emit_idiv_reg(JitBuf *b, int divisor);
 
+/* DIV r64  (divides RDX:RAX by r64, unsigned; quotient RAX, remainder RDX)
+ * Requires RDX=0 before (xor edx,edx). */
+void emit_div_reg(JitBuf *b, int divisor);
+
 /* CQO  (sign-extend RAX into RDX:RAX) */
 void emit_cqo(JitBuf *b);
 
