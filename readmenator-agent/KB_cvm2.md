@@ -97,14 +97,6 @@
   - `cvm_exit_code` (function, line 1338) `int64_t cvm_exit_code(const CvmState *vm)`
   - `cvm_instruction_count` (function, line 1340) `uint64_t cvm_instruction_count(const CvmState *vm)`
   - `main` (function, line 1343) `int main(int argc, char *argv[])`
-  - `memset` (function, line 88) `memset(vm->op_counts, 0, sizeof(vm->op_counts));`
-  - `free` (function, line 99) `free(vm->slots);`
-  - `memcpy` (function, line 241) `memcpy(vm->globals + off, &v, 8);`
-  - `write` (function, line 344) `write(1, &nl, 1);`
-  - `rewind` (function, line 667) `rewind((FILE *)(uintptr_t)av[0]);`
-  - `fseek` (function, line 926) `fseek(f, 0, SEEK_END);`
-  - `fclose` (function, line 932) `fclose(f);`
-  - `fprintf` (function, line 1046) `fprintf(stderr, "[%08lu] ip=%zu op=0x%02X sp=%zu fr=%zu\n", (unsigned long)vm->instr_count, ip_start, op, vm->sp, vm->frame_count);`
   - `CVM_DEF_STACK` (macro, line 14) `#define CVM_DEF_STACK`
   - `CVM_DEF_FRAMES` (macro, line 16) `#define CVM_DEF_FRAMES`
   - `CVM_DEF_LOCALS` (macro, line 17) `#define CVM_DEF_LOCALS`
@@ -132,8 +124,6 @@
   - `CvmNative` (struct, line 196)
   - `CvmBreakpoint` (struct, line 203)
   - `CvmState` (struct, line 207)
-  - `int64_t` (function, line 193) `typedef int64_t (*CvmNativeFn)(void *vm, int argc, uint64_t *argv);`
-  - `cvm_config_default` (function, line 243) `CvmConfig cvm_config_default(void);`
   - `cvm_create` (function, line 245) `CvmState *cvm_create(const CvmConfig *config);`
   - `cvm_destroy` (function, line 246) `void cvm_destroy(CvmState *vm);`
   - `cvm_load_module` (function, line 247) `int cvm_load_module(CvmState *vm, const uint8_t *data, size_t size);`
@@ -206,20 +196,6 @@
   - `cmd_help` (function, line 303) `static void cmd_help(void)`
   - `dispatch` (function, line 309) `static void dispatch(char *line)`
   - `main` (function, line 336) `int main(int argc, char **argv)`
-  - `fputs` (function, line 31) `fputs(line, f);`
-  - `fputc` (function, line 32) `fputc('\n', f);`
-  - `cvm_view_func_name` (function, line 37) `return cvm_view_func_name(&g_view, fi, fb, cap);`
-  - `printf` (function, line 61) `printf("breakpoint at 0x%04zx\n", g_vm->ip);`
-  - `cvm_dis_function` (function, line 95) `cvm_dis_function(&g_view, begin, end, emit_stdout, stdout);`
-  - `cvm_break_clear_all` (function, line 135) `cvm_break_clear_all(g_vm);`
-  - `cvm_profile_end` (function, line 297) `cvm_profile_end(g_vm);`
-  - `fprintf` (function, line 339) `fprintf(stderr, "Usage: %s <module.cvm>\n", argv[0]);`
-  - `fseek` (function, line 347) `fseek(f, 0, SEEK_END);`
-  - `rewind` (function, line 349) `rewind(f);`
-  - `fclose` (function, line 352) `fclose(f);`
-  - `free` (function, line 364) `free(g_buf);`
-  - `cvm_destroy` (function, line 381) `cvm_destroy(g_vm);`
-  - `fflush` (function, line 395) `fflush(stdout);`
   - `DBG_LINE_MAX` (macro, line 17) `#define DBG_LINE_MAX`
   - `DBG_PROFILE_TOP` (macro, line 19) `#define DBG_PROFILE_TOP`
 - Depends on: `cvm2/cvm.h`, `cvm2/cvm_dis.h`, `cvm2/cvm_ops.h`, `cvm2/cvm_view.h`
@@ -238,7 +214,6 @@
   - `cvm_dis_function` (function, line 152) `int cvm_dis_function(const CvmModuleView *v, size_t begin, size_t end,
                      CvmDi...`
   - `cvm_dis_module` (function, line 172) `int cvm_dis_module(const CvmModuleView *v, CvmDisEmit emit, void *ctx)`
-  - `emit` (function, line 164) `emit(ctx, line);`
   - `CVM_DIS_LINE_MAX` (macro, line 10) `#define CVM_DIS_LINE_MAX`
 - Depends on: `cvm2/cvm_dis.h`, `cvm2/cvm_ops.h`
 
@@ -246,7 +221,6 @@
 - Layer: infrastructure
 - Language: h
 - Symbols:
-  - `int` (function, line 19) `typedef int (*CvmDisEmit)(void *ctx, const char *line);`
   - `cvm_dis_module` (function, line 23) `int cvm_dis_module(const CvmModuleView *v, CvmDisEmit emit, void *ctx);`
   - `cvm_dis_function` (function, line 26) `int cvm_dis_function(const CvmModuleView *v, size_t begin, size_t end, CvmDisEmit emit, void *ctx);`
   - `cvm_dis_line` (function, line 31) `int cvm_dis_line(const CvmModuleView *v, size_t off, size_t end, char *buf, size_t cap);`
@@ -260,13 +234,6 @@
 - Symbols:
   - `print_line` (function, line 10) `static int print_line(void *ctx, const char *line)`
   - `main` (function, line 17) `int main(int argc, char **argv)`
-  - `fputs` (function, line 13) `fputs(line, f);`
-  - `fputc` (function, line 14) `fputc('\n', f);`
-  - `fprintf` (function, line 20) `fprintf(stderr, "Usage: %s <module.cvm>\n", argv[0]);`
-  - `fseek` (function, line 28) `fseek(f, 0, SEEK_END);`
-  - `rewind` (function, line 30) `rewind(f);`
-  - `fclose` (function, line 33) `fclose(f);`
-  - `free` (function, line 44) `free(buf);`
 - Depends on: `cvm2/cvm_dis.h`, `cvm2/cvm_view.h`
 
 ## cvm2/cvm_jit.c
@@ -306,60 +273,6 @@
   - `cvm_jit_run` (function, line 1376) `int cvm_jit_run(CvmState *vm)`
   - `cvm_jit_stats` (function, line 1437) `void cvm_jit_stats(const CvmState *vm)`
   - `cvm_jit_dump` (function, line 1448) `void cvm_jit_dump(const CvmState *vm)`
-  - `jit_buf_init` (function, line 39) `jit_buf_init(&jit->buf, 1024 * 1024);`
-  - `cvm_jit_offsets_init` (function, line 40) `cvm_jit_offsets_init(&jit->offsets);`
-  - `jit_buf_free` (function, line 50) `jit_buf_free(&jit->buf);`
-  - `free` (function, line 51) `free(jit);`
-  - `emit_mov_sib_reg` (function, line 119) `emit_mov_sib_reg(b, JIT_REG_SLOTS, JIT_REG_SP, 3, JIT_SCRATCH1);`
-  - `emit_inc_reg` (function, line 120) `emit_inc_reg(b, JIT_REG_SP);`
-  - `emit_dec_reg` (function, line 125) `emit_dec_reg(b, JIT_REG_SP);`
-  - `emit_mov_reg_sib` (function, line 126) `emit_mov_reg_sib(b, JIT_SCRATCH1, JIT_REG_SLOTS, JIT_REG_SP, 3);`
-  - `emit_call_abs` (function, line 148) `emit_call_abs(b, fn, X10);`
-  - `emit_push` (function, line 172) `emit_push(b, XBP);`
-  - `emit_mov_reg_reg` (function, line 173) `emit_mov_reg_reg(b, XBP, XSP);`
-  - `emit_sub_reg_imm32` (function, line 186) `emit_sub_reg_imm32(b, XSP, 8);`
-  - `emit_mov_reg_mem` (function, line 193) `emit_mov_reg_mem(b, JIT_REG_SLOTS, JIT_REG_VM, (int32_t)offsetof(CvmState, slots));`
-  - `emit_mov32_reg_mem` (function, line 197) `emit_mov32_reg_mem(b, JIT_REG_SP, JIT_REG_VM, (int32_t)offsetof(CvmState, sp));`
-  - `emit_mov_reg_imm32` (function, line 216) `emit_mov_reg_imm32(b, XCX, 2);`
-  - `emit_shl_reg_cl` (function, line 217) `emit_shl_reg_cl(b, XAX);`
-  - `emit_lea_sib` (function, line 218) `emit_lea_sib(b, JIT_SCRATCH1, JIT_REG_FRAMES, XAX, 3 /* *8 */, 0);`
-  - `memcpy` (function, line 227) `memcpy(b->code + patch, &rel, 4);`
-  - `emit_add_reg_imm32` (function, line 234) `emit_add_reg_imm32(b, XSP, 8);`
-  - `emit_pop` (function, line 236) `emit_pop(b, JIT_REG_FRAMES);`
-  - `emit_xor_reg_self` (function, line 243) `emit_xor_reg_self(b, XAX);`
-  - `emit_ret` (function, line 244) `emit_ret(b);`
-  - `emit_mov32_mem_reg` (function, line 253) `emit_mov32_mem_reg(b, JIT_REG_VM, (int32_t)offsetof(CvmState, sp), JIT_REG_SP);`
-  - `emit_test_reg_reg` (function, line 273) `emit_test_reg_reg(b, XAX, XAX);`
-  - `emit_nop` (function, line 318) `case OP_NOP: emit_nop(b);`
-  - `emit_mov_reg_imm64` (function, line 329) `emit_mov_reg_imm64(b, JIT_SCRATCH1, v);`
-  - `emit_mov_mem_reg` (function, line 382) `emit_mov_mem_reg(b, JIT_REG_FRAME, (int32_t)(idx * 8), JIT_SCRATCH1);`
-  - `emit_add_reg_reg` (function, line 419) `emit_add_reg_reg(b, JIT_SCRATCH1, JIT_SCRATCH2);`
-  - `emit_sub_reg_reg` (function, line 426) `emit_sub_reg_reg(b, JIT_SCRATCH1, JIT_SCRATCH2);`
-  - `emit_imul_reg_reg` (function, line 433) `emit_imul_reg_reg(b, JIT_SCRATCH1, JIT_SCRATCH2);`
-  - `emit_cqo` (function, line 457) `emit_cqo(b);`
-  - `emit_idiv_reg` (function, line 458) `emit_idiv_reg(b, XCX);`
-  - `emit_neg_reg` (function, line 494) `emit_neg_reg(b, JIT_SCRATCH1);`
-  - `emit_and_reg_reg` (function, line 503) `emit_and_reg_reg(b, JIT_SCRATCH1, JIT_SCRATCH2);`
-  - `emit_or_reg_reg` (function, line 510) `emit_or_reg_reg(b, JIT_SCRATCH1, JIT_SCRATCH2);`
-  - `emit_xor_reg_reg` (function, line 517) `emit_xor_reg_reg(b, JIT_SCRATCH1, JIT_SCRATCH2);`
-  - `emit_not_reg` (function, line 523) `emit_not_reg(b, JIT_SCRATCH1);`
-  - `emit_and_reg_imm32` (function, line 530) `emit_and_reg_imm32(b, XCX, CVM_SHIFT_MASK);`
-  - `emit_sar_reg_cl` (function, line 539) `emit_sar_reg_cl(b, JIT_SCRATCH1);`
-  - `emit_shr_reg_cl` (function, line 547) `emit_shr_reg_cl(b, JIT_SCRATCH1);`
-  - `emit_cmp_reg_reg` (function, line 556) `emit_cmp_reg_reg(b, JIT_SCRATCH1, JIT_SCRATCH2);`
-  - `emit_setcc` (function, line 557) `emit_setcc(b, cc_signed, JIT_SCRATCH1);`
-  - `emit_movzx_reg_mem8` (function, line 559) `emit_movzx_reg_mem8(b, JIT_SCRATCH1, JIT_SCRATCH1, 0);`
-  - `emit_rex` (function, line 580) `emit_rex(b, 1, 0, 0, 0);`
-  - `emit8` (function, line 581) `emit8(b, 0x0F);`
-  - `emit_modrm` (function, line 582) `emit_modrm(b, 3, JIT_SCRATCH1, JIT_SCRATCH1);`
-  - `EMIT_CMP_SIGNED` (function, line 587) `case OP_CMP_EQ: EMIT_CMP_SIGNED(CC_E);`
-  - `EMIT_CMP_UNSIGNED` (function, line 594) `case OP_CMP_ULT: EMIT_CMP_UNSIGNED(CC_B);`
-  - `emit_jmp_buf` (function, line 620) `emit_jmp_buf(b, target_bc, ctx->patches);`
-  - `emit_jcc_buf` (function, line 632) `emit_jcc_buf(b, CC_E, target_bc, ctx->patches);`
-  - `emit_bail_if_stopped` (function, line 675) `emit_bail_if_stopped(b);`
-  - `emit_mov_mem_imm32` (function, line 1162) `emit_mov_mem_imm32(b, JIT_REG_VM, (int32_t)offsetof(CvmState, running), 0);`
-  - `fprintf` (function, line 1316) `fprintf(stderr, "cvm jit: failed to compile function %u\n", i);`
-  - `void` (function, line 1359) `typedef void (*JitFn)(CvmState *);`
   - `cvm_step` (function, line 1370) `extern int cvm_step(CvmState *);`
   - `cvm_run` (function, line 1380) `extern int cvm_run(CvmState *);`
   - `JIT_STATE` (macro, line 30) `#define JIT_STATE(vm)`
@@ -427,7 +340,6 @@
   - `cvm_jit_alloc` (function, line 220) `uint64_t cvm_jit_alloc(CvmState *vm, size_t size)`
   - `cvm_jit_syscall` (function, line 228) `int cvm_jit_syscall(CvmState *vm, uint8_t sn, uint8_t argc)`
   - `cvm_jit_error` (function, line 255) `void cvm_jit_error(CvmState *vm, int error_code)`
-  - `free` (function, line 74) `free(vm->frames[vm->frame_count].slots);`
   - `CVM_HEAP_ALIGN` (macro, line 15) `#define CVM_HEAP_ALIGN`
 - Depends on: `cvm2/cvm_jit.h`, `cvm2/cvm_jit_help.h`
 
@@ -522,8 +434,6 @@
   - `emit_call_abs` (function, line 544) `void emit_call_abs(JitBuf *b, void *func, int scratch)`
   - `emit_mov_mem_imm8` (function, line 553) `void emit_mov_mem_imm8(JitBuf *b, int base, int32_t disp, uint8_t imm)`
   - `emit_mov_mem_imm32` (function, line 561) `void emit_mov_mem_imm32(JitBuf *b, int base, int32_t disp, int32_t imm)`
-  - `JIT_BUF_FREE` (function, line 79) `JIT_BUF_FREE(b->code, b->capacity);`
-  - `memcpy` (function, line 501) `memcpy(b->code + off, &r, 4);`
   - `JIT_BUF_ALLOC` (macro, line 26) `#define JIT_BUF_ALLOC(sz)`
   - `JIT_BUF_FREE` (macro, line 27) `#define JIT_BUF_FREE(p, sz)`
   - `JIT_BUF_ALLOC` (macro, line 29) `#define JIT_BUF_ALLOC(sz)`
@@ -657,14 +567,6 @@
   - `check_function` (function, line 433) `static int check_function(FuncCtx *fc, size_t *insn_count)`
   - `cmp_func` (function, line 448) `static int cmp_func(const void *a, const void *b)`
   - `main` (function, line 454) `int main(int argc, char **argv)`
-  - `fprintf` (function, line 58) `fprintf(stderr, "%s: error: %s\n", ctx->path, what);`
-  - `snprintf` (function, line 191) `snprintf(msg, sizeof(msg), "local index %u out of range (locals=%u) at 0x%04zx", i, cap, off);`
-  - `fseek` (function, line 471) `fseek(f, 0, SEEK_END);`
-  - `rewind` (function, line 473) `rewind(f);`
-  - `fclose` (function, line 476) `fclose(f);`
-  - `free` (function, line 487) `free(buf);`
-  - `qsort` (function, line 595) `qsort(sorted, v.num_functions, CVM_FUNC_ENTRY_SIZE, cmp_func);`
-  - `printf` (function, line 639) `printf("function %s: %zu instructions, stack balanced\n", fn, insn);`
   - `CVM_VAL_MAX_FUNCS` (macro, line 14) `#define CVM_VAL_MAX_FUNCS`
   - `CVM_VAL_MAX_GLOBALS` (macro, line 16) `#define CVM_VAL_MAX_GLOBALS`
   - `CVM_VAL_MAX_NATIVES` (macro, line 17) `#define CVM_VAL_MAX_NATIVES`
@@ -690,7 +592,6 @@
                              ...`
   - `cvm_view_func_region` (function, line 107) `int cvm_view_func_region(const CvmModuleView *v, uint32_t fi,
                          size_t *be...`
-  - `memset` (function, line 30) `memset(v, 0, sizeof(*v));`
 - Depends on: `cvm2/cvm_view.h`
 
 ## cvm2/cvm_view.h
@@ -724,12 +625,6 @@
   - `write_le32` (function, line 45) `static void write_le32(uint8_t *p, uint32_t v)`
   - `emit_global_inc` (function, line 52) `static void emit_global_inc(void)`
   - `main` (function, line 63) `int main(int argc, char *argv[])`
-  - `memcpy` (function, line 158) `memcpy(module + CVM_MODULE_HEADER_SIZE + ft + gt, code_buf, code_len);`
-  - `fwrite` (function, line 163) `fwrite(module, 1, total, f);`
-  - `fclose` (function, line 164) `fclose(f);`
-  - `printf` (function, line 165) `printf("Generated fib.cvm (%zu bytes total, %zu bytes code)\n", total, code_len);`
-  - `fprintf` (function, line 171) `fprintf(stderr, "load failed: %s\n", cvm_strerror(rc));`
-  - `cvm_destroy` (function, line 172) `cvm_destroy(vm);`
   - `FIB_N` (macro, line 12) `#define FIB_N`
   - `EXPECTED_FIB10` (macro, line 14) `#define EXPECTED_FIB10`
   - `EXPECTED_CALLS` (macro, line 15) `#define EXPECTED_CALLS`
@@ -743,12 +638,6 @@
   - `emit_u32` (function, line 21) `static void emit_u32(uint32_t v)`
   - `write_le32` (function, line 25) `static void write_le32(uint8_t *p, uint32_t v)`
   - `main` (function, line 29) `int main(void)`
-  - `memcpy` (function, line 80) `memcpy(module + 40 + ft + gt, code_buf, code_size);`
-  - `fwrite` (function, line 84) `fwrite(module, 1, total, f);`
-  - `fclose` (function, line 85) `fclose(f);`
-  - `printf` (function, line 86) `printf("Generated minimal.cvm (%zu bytes)\n", total);`
-  - `cvm_destroy` (function, line 104) `cvm_destroy(vm);`
-  - `free` (function, line 107) `free(module);`
 - Depends on: `cvm2/cvm.h`
 
 ## cvm2/gen_test.py

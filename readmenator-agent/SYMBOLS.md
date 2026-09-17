@@ -14,26 +14,14 @@
 | `cvm_load_module` | function | `cvm.c:336` | `int cvm_load_module(CVM *vm, const char *path)` |
 | `cvm_load_module_mem` | function | `cvm.c:267` | `int cvm_load_module_mem(CVM *vm, const uint8_t *data, size_t size, const char *name)` |
 | `cvm_run` | function | `cvm.c:700` | `int cvm_run(CVM *vm, const char *entry_name)` |
-| `fclose` | function | `cvm.c:349` | `fclose(f);` |
-| `fprintf` | function | `cvm.c:15` | `fprintf(stderr, "[CVM ERROR] ");` |
-| `free` | function | `cvm.c:152` | `free(fr->locals);` |
-| `fseek` | function | `cvm.c:343` | `fseek(f, 0, SEEK_END);` |
 | `interpret` | function | `cvm.c:361` | `static int interpret(CVM *vm)` |
 | `main` | function | `cvm.c:775` | `int main(int argc, char **argv)` |
-| `memcpy` | function | `cvm.c:297` | `memcpy(mod->funcs, data + off, hdr->num_functions * sizeof(CVM_FuncEntry));` |
-| `memset` | function | `cvm.c:331` | `memset(mod->native_ptrs, 0, sizeof(mod->native_ptrs));` |
 | `op_name` | function | `cvm.c:21` | `static const char *op_name(uint8_t op)` |
 | `peek` | function | `cvm.c:93` | `static inline uint64_t peek(CVM *vm)` |
-| `perror` | function | `cvm.c:340` | `perror(path);` |
 | `pop` | function | `cvm.c:85` | `static inline uint64_t pop(CVM *vm)` |
 | `pop_frame` | function | `cvm.c:141` | `static void pop_frame(CVM *vm, int has_retval)` |
-| `printf` | function | `cvm.c:201` | `printf("%lld\n", (long long)(int64_t)v);` |
 | `push` | function | `cvm.c:78` | `static inline void push(CVM *vm, uint64_t v)` |
 | `push_frame` | function | `cvm.c:102` | `static int push_frame(CVM *vm, CVM_Module *mod, uint16_t func_idx, int argc)` |
-| `strncpy` | function | `cvm.c:293` | `strncpy(mod->name, name ? name : "anon", sizeof(mod->name) - 1);` |
-| `va_end` | function | `cvm.c:18` | `va_end(ap);` |
-| `va_start` | function | `cvm.c:14` | `va_start(ap, fmt);` |
-| `vfprintf` | function | `cvm.c:16` | `vfprintf(stderr, fmt, ap);` |
 | `CVM` | struct | `cvm.h:182` | `` |
 | `CVM_FRAME_DEPTH` | macro | `cvm.h:156` | `#define CVM_FRAME_DEPTH` |
 | `CVM_Frame` | struct | `cvm.h:161` | `` |
@@ -101,16 +89,10 @@
 | `data_r64` | function | `cvm2/cvm.c:243` | `static uint64_t data_r64(CvmState *vm, size_t off)` |
 | `data_w64` | function | `cvm2/cvm.c:238` | `static void data_w64(CvmState *vm, size_t off, uint64_t v)` |
 | `decompress_rle` | function | `cvm2/cvm.c:792` | `static int decompress_rle(uint8_t *dst, size_t dsz, const uint8_t *src, size_t ssz)` |
-| `fclose` | function | `cvm2/cvm.c:932` | `fclose(f);` |
 | `find_native` | function | `cvm2/cvm.c:293` | `static int find_native(CvmState *vm, const char *name)` |
-| `fprintf` | function | `cvm2/cvm.c:1046` | `fprintf(stderr, "[%08lu] ip=%zu op=0x%02X sp=%zu fr=%zu\n", (unsigned long)vm->instr_count, ip_start, op, vm->sp, vm->fr` |
-| `free` | function | `cvm2/cvm.c:99` | `free(vm->slots);` |
-| `fseek` | function | `cvm2/cvm.c:926` | `fseek(f, 0, SEEK_END);` |
 | `heap_alloc` | function | `cvm2/cvm.c:226` | `static uint64_t heap_alloc(CvmState *vm, size_t s)` |
 | `main` | function | `cvm2/cvm.c:1343` | `int main(int argc, char *argv[])` |
 | `mem_valid` | function | `cvm2/cvm.c:214` | `static int mem_valid(CvmState *vm, uint64_t a, size_t s)` |
-| `memcpy` | function | `cvm2/cvm.c:241` | `memcpy(vm->globals + off, &v, 8);` |
-| `memset` | function | `cvm2/cvm.c:88` | `memset(vm->op_counts, 0, sizeof(vm->op_counts));` |
 | `native_abort` | function | `cvm2/cvm.c:323` | `static int64_t native_abort(void *vm, int ac, uint64_t *av)` |
 | `native_atol` | function | `cvm2/cvm.c:450` | `static int64_t native_atol(void *vm, int ac, uint64_t *av)` |
 | `native_calloc` | function | `cvm2/cvm.c:432` | `static int64_t native_calloc(void *vm, int ac, uint64_t *av)` |
@@ -163,7 +145,6 @@
 | `r8` | function | `cvm2/cvm.c:148` | `static int r8(CvmState *vm, uint8_t *o)` |
 | `range_valid` | function | `cvm2/cvm.c:206` | `static int range_valid(uint64_t a, size_t s, const uint8_t *base, size_t len)` |
 | `register_defaults` | function | `cvm2/cvm.c:735` | `static void register_defaults(CvmState *vm)` |
-| `rewind` | function | `cvm2/cvm.c:667` | `rewind((FILE *)(uintptr_t)av[0]);` |
 | `ri32` | function | `cvm2/cvm.c:164` | `static int ri32(CvmState *vm, int32_t *o)` |
 | `rl32` | function | `cvm2/cvm.c:788` | `static uint32_t rl32(const uint8_t *p)` |
 | `vformat` | function | `cvm2/cvm.c:498` | `static void vformat(Vout *vo, const char *fmt, uint64_t *argv, int argc)` |
@@ -172,7 +153,6 @@
 | `vout_uint` | function | `cvm2/cvm.c:485` | `static void vout_uint(Vout *vo, uint64_t v, int base, int upper)` |
 | `vout_write` | function | `cvm2/cvm.c:471` | `static void vout_write(Vout *vo, const char *s, size_t n)` |
 | `vp` | function | `cvm2/cvm.c:136` | `static int vp(CvmState *vm, uint64_t v)` |
-| `write` | function | `cvm2/cvm.c:344` | `write(1, &nl, 1);` |
 | `xcal` | function | `cvm2/cvm.c:33` | `static void *xcal(size_t n, size_t s)` |
 | `xmal` | function | `cvm2/cvm.c:27` | `static void *xmal(size_t s)` |
 | `CVM_DATA_ARGC` | macro | `cvm2/cvm.h:59` | `#define CVM_DATA_ARGC` |
@@ -216,7 +196,6 @@
 | `cvm_break_clear_all` | function | `cvm2/cvm.h:262` | `void cvm_break_clear_all(CvmState *vm);` |
 | `cvm_break_hit` | function | `cvm2/cvm.h:263` | `int cvm_break_hit(const CvmState *vm);` |
 | `cvm_break_set` | function | `cvm2/cvm.h:259` | `int cvm_break_set(CvmState *vm, size_t ip);` |
-| `cvm_config_default` | function | `cvm2/cvm.h:243` | `CvmConfig cvm_config_default(void);` |
 | `cvm_continue` | function | `cvm2/cvm.h:250` | `int cvm_continue(CvmState *vm);` |
 | `cvm_create` | function | `cvm2/cvm.h:245` | `CvmState *cvm_create(const CvmConfig *config);` |
 | `cvm_destroy` | function | `cvm2/cvm.h:246` | `void cvm_destroy(CvmState *vm);` |
@@ -232,7 +211,6 @@
 | `cvm_set_args` | function | `cvm2/cvm.h:257` | `int cvm_set_args(CvmState *vm, int argc, char **argv);` |
 | `cvm_step` | function | `cvm2/cvm.h:251` | `int cvm_step(CvmState *vm);` |
 | `cvm_strerror` | function | `cvm2/cvm.h:254` | `const char *cvm_strerror(int error_code);` |
-| `int64_t` | function | `cvm2/cvm.h:193` | `typedef int64_t (*CvmNativeFn)(void *vm, int argc, uint64_t *argv);` |
 | `DBG_LINE_MAX` | macro | `cvm2/cvm_dbg_main.c:17` | `#define DBG_LINE_MAX` |
 | `DBG_PROFILE_TOP` | macro | `cvm2/cvm_dbg_main.c:19` | `#define DBG_PROFILE_TOP` |
 | `cmd_break` | function | `cvm2/cvm_dbg_main.c:97` | `static void cmd_break(char *arg)` |
@@ -247,34 +225,19 @@
 | `cmd_run` | function | `cvm2/cvm_dbg_main.c:183` | `static void cmd_run(void)` |
 | `cmd_stack` | function | `cvm2/cvm_dbg_main.c:205` | `static void cmd_stack(void)` |
 | `cmd_step` | function | `cvm2/cvm_dbg_main.c:151` | `static void cmd_step(void)` |
-| `cvm_break_clear_all` | function | `cvm2/cvm_dbg_main.c:135` | `cvm_break_clear_all(g_vm);` |
-| `cvm_destroy` | function | `cvm2/cvm_dbg_main.c:381` | `cvm_destroy(g_vm);` |
-| `cvm_dis_function` | function | `cvm2/cvm_dbg_main.c:95` | `cvm_dis_function(&g_view, begin, end, emit_stdout, stdout);` |
-| `cvm_profile_end` | function | `cvm2/cvm_dbg_main.c:297` | `cvm_profile_end(g_vm);` |
-| `cvm_view_func_name` | function | `cvm2/cvm_dbg_main.c:37` | `return cvm_view_func_name(&g_view, fi, fb, cap);` |
 | `dispatch` | function | `cvm2/cvm_dbg_main.c:309` | `static void dispatch(char *line)` |
 | `emit_stdout` | function | `cvm2/cvm_dbg_main.c:28` | `static int emit_stdout(void *ctx, const char *line)` |
-| `fclose` | function | `cvm2/cvm_dbg_main.c:352` | `fclose(f);` |
-| `fflush` | function | `cvm2/cvm_dbg_main.c:395` | `fflush(stdout);` |
-| `fprintf` | function | `cvm2/cvm_dbg_main.c:339` | `fprintf(stderr, "Usage: %s <module.cvm>\n", argv[0]);` |
-| `fputc` | function | `cvm2/cvm_dbg_main.c:32` | `fputc('\n', f);` |
-| `fputs` | function | `cvm2/cvm_dbg_main.c:31` | `fputs(line, f);` |
-| `free` | function | `cvm2/cvm_dbg_main.c:364` | `free(g_buf);` |
-| `fseek` | function | `cvm2/cvm_dbg_main.c:347` | `fseek(f, 0, SEEK_END);` |
 | `func_display` | function | `cvm2/cvm_dbg_main.c:35` | `static const char *func_display(uint32_t fi, char *fb, size_t cap)` |
 | `func_of_ip` | function | `cvm2/cvm_dbg_main.c:39` | `static int func_of_ip(size_t ip)` |
 | `main` | function | `cvm2/cvm_dbg_main.c:336` | `int main(int argc, char **argv)` |
 | `parse_u32` | function | `cvm2/cvm_dbg_main.c:50` | `static int parse_u32(const char *s, uint32_t *out)` |
-| `printf` | function | `cvm2/cvm_dbg_main.c:61` | `printf("breakpoint at 0x%04zx\n", g_vm->ip);` |
 | `report_run` | function | `cvm2/cvm_dbg_main.c:58` | `static void report_run(int rc)` |
-| `rewind` | function | `cvm2/cvm_dbg_main.c:349` | `rewind(f);` |
 | `CVM_DIS_LINE_MAX` | macro | `cvm2/cvm_dis.c:10` | `#define CVM_DIS_LINE_MAX` |
 | `cvm_dis_function` | function | `cvm2/cvm_dis.c:152` | `int cvm_dis_function(const CvmModuleView *v, size_t begin, size_t end,
                      CvmDi...` |
 | `cvm_dis_line` | function | `cvm2/cvm_dis.c:55` | `int cvm_dis_line(const CvmModuleView *v, size_t off, size_t end,
                  char *buf, size...` |
 | `cvm_dis_module` | function | `cvm2/cvm_dis.c:172` | `int cvm_dis_module(const CvmModuleView *v, CvmDisEmit emit, void *ctx)` |
-| `emit` | function | `cvm2/cvm_dis.c:164` | `emit(ctx, line);` |
 | `pad_name` | function | `cvm2/cvm_dis.c:48` | `static void pad_name(char *buf, size_t cap, size_t *n, const char *name)` |
 | `put_dec` | function | `cvm2/cvm_dis.c:34` | `static void put_dec(char *buf, size_t cap, size_t *n, int64_t v)` |
 | `put_hex` | function | `cvm2/cvm_dis.c:20` | `static void put_hex(char *buf, size_t cap, size_t *n, uint64_t v, int digits)` |
@@ -284,21 +247,11 @@
 | `cvm_dis_function` | function | `cvm2/cvm_dis.h:26` | `int cvm_dis_function(const CvmModuleView *v, size_t begin, size_t end, CvmDisEmit emit, void *ctx);` |
 | `cvm_dis_line` | function | `cvm2/cvm_dis.h:31` | `int cvm_dis_line(const CvmModuleView *v, size_t off, size_t end, char *buf, size_t cap);` |
 | `cvm_dis_module` | function | `cvm2/cvm_dis.h:23` | `int cvm_dis_module(const CvmModuleView *v, CvmDisEmit emit, void *ctx);` |
-| `int` | function | `cvm2/cvm_dis.h:19` | `typedef int (*CvmDisEmit)(void *ctx, const char *line);` |
-| `fclose` | function | `cvm2/cvm_dis_main.c:33` | `fclose(f);` |
-| `fprintf` | function | `cvm2/cvm_dis_main.c:20` | `fprintf(stderr, "Usage: %s <module.cvm>\n", argv[0]);` |
-| `fputc` | function | `cvm2/cvm_dis_main.c:14` | `fputc('\n', f);` |
-| `fputs` | function | `cvm2/cvm_dis_main.c:13` | `fputs(line, f);` |
-| `free` | function | `cvm2/cvm_dis_main.c:44` | `free(buf);` |
-| `fseek` | function | `cvm2/cvm_dis_main.c:28` | `fseek(f, 0, SEEK_END);` |
 | `main` | function | `cvm2/cvm_dis_main.c:17` | `int main(int argc, char **argv)` |
 | `print_line` | function | `cvm2/cvm_dis_main.c:10` | `static int print_line(void *ctx, const char *line)` |
-| `rewind` | function | `cvm2/cvm_dis_main.c:30` | `rewind(f);` |
 | `EMIT_CMP` | macro | `cvm2/cvm_jit.c:552` | `#define EMIT_CMP(cc_signed)` |
 | `EMIT_CMP_SIGNED` | macro | `cvm2/cvm_jit.c:573` | `#define EMIT_CMP_SIGNED(cc)` |
-| `EMIT_CMP_SIGNED` | function | `cvm2/cvm_jit.c:587` | `case OP_CMP_EQ: EMIT_CMP_SIGNED(CC_E);` |
 | `EMIT_CMP_UNSIGNED` | macro | `cvm2/cvm_jit.c:585` | `#define EMIT_CMP_UNSIGNED(cc)` |
-| `EMIT_CMP_UNSIGNED` | function | `cvm2/cvm_jit.c:594` | `case OP_CMP_ULT: EMIT_CMP_UNSIGNED(CC_B);` |
 | `JIT_STATE` | macro | `cvm2/cvm_jit.c:30` | `#define JIT_STATE(vm)` |
 | `JitCtx` | struct | `cvm2/cvm_jit.c:288` | `` |
 | `cvm_jit_compile_func` | function | `cvm2/cvm_jit.c:1202` | `void *cvm_jit_compile_func(CvmState *vm, uint32_t func_idx)` |
@@ -308,73 +261,25 @@
 | `cvm_jit_dump` | function | `cvm2/cvm_jit.c:1448` | `void cvm_jit_dump(const CvmState *vm)` |
 | `cvm_jit_exec_one` | function | `cvm2/cvm_jit.c:1346` | `void cvm_jit_exec_one(CvmState *vm)` |
 | `cvm_jit_lookup` | function | `cvm2/cvm_jit.c:1325` | `void *cvm_jit_lookup(CvmState *vm, uint32_t func_idx)` |
-| `cvm_jit_offsets_init` | function | `cvm2/cvm_jit.c:40` | `cvm_jit_offsets_init(&jit->offsets);` |
 | `cvm_jit_run` | function | `cvm2/cvm_jit.c:1376` | `int cvm_jit_run(CvmState *vm)` |
 | `cvm_jit_stats` | function | `cvm2/cvm_jit.c:1437` | `void cvm_jit_stats(const CvmState *vm)` |
 | `cvm_run` | function | `cvm2/cvm_jit.c:1380` | `extern int cvm_run(CvmState *);` |
 | `cvm_step` | function | `cvm2/cvm_jit.c:1370` | `extern int cvm_step(CvmState *);` |
-| `emit8` | function | `cvm2/cvm_jit.c:581` | `emit8(b, 0x0F);` |
-| `emit_add_reg_imm32` | function | `cvm2/cvm_jit.c:234` | `emit_add_reg_imm32(b, XSP, 8);` |
-| `emit_add_reg_reg` | function | `cvm2/cvm_jit.c:419` | `emit_add_reg_reg(b, JIT_SCRATCH1, JIT_SCRATCH2);` |
-| `emit_and_reg_imm32` | function | `cvm2/cvm_jit.c:530` | `emit_and_reg_imm32(b, XCX, CVM_SHIFT_MASK);` |
-| `emit_and_reg_reg` | function | `cvm2/cvm_jit.c:503` | `emit_and_reg_reg(b, JIT_SCRATCH1, JIT_SCRATCH2);` |
-| `emit_bail_if_stopped` | function | `cvm2/cvm_jit.c:675` | `emit_bail_if_stopped(b);` |
 | `emit_call1` | function | `cvm2/cvm_jit.c:146` | `static void emit_call1(JitBuf *b, void *fn, int arg)` |
 | `emit_call2` | function | `cvm2/cvm_jit.c:152` | `static void emit_call2(JitBuf *b, void *fn, int a1, int a2)` |
 | `emit_call3` | function | `cvm2/cvm_jit.c:159` | `static void emit_call3(JitBuf *b, void *fn, int a1, int a2, int a3)` |
-| `emit_call_abs` | function | `cvm2/cvm_jit.c:148` | `emit_call_abs(b, fn, X10);` |
-| `emit_cmp_reg_reg` | function | `cvm2/cvm_jit.c:556` | `emit_cmp_reg_reg(b, JIT_SCRATCH1, JIT_SCRATCH2);` |
-| `emit_cqo` | function | `cvm2/cvm_jit.c:457` | `emit_cqo(b);` |
-| `emit_dec_reg` | function | `cvm2/cvm_jit.c:125` | `emit_dec_reg(b, JIT_REG_SP);` |
 | `emit_epilogue` | function | `cvm2/cvm_jit.c:231` | `static void emit_epilogue(JitBuf *b)` |
-| `emit_idiv_reg` | function | `cvm2/cvm_jit.c:458` | `emit_idiv_reg(b, XCX);` |
-| `emit_imul_reg_reg` | function | `cvm2/cvm_jit.c:433` | `emit_imul_reg_reg(b, JIT_SCRATCH1, JIT_SCRATCH2);` |
-| `emit_inc_reg` | function | `cvm2/cvm_jit.c:120` | `emit_inc_reg(b, JIT_REG_SP);` |
-| `emit_jcc_buf` | function | `cvm2/cvm_jit.c:632` | `emit_jcc_buf(b, CC_E, target_bc, ctx->patches);` |
-| `emit_jmp_buf` | function | `cvm2/cvm_jit.c:620` | `emit_jmp_buf(b, target_bc, ctx->patches);` |
-| `emit_lea_sib` | function | `cvm2/cvm_jit.c:218` | `emit_lea_sib(b, JIT_SCRATCH1, JIT_REG_FRAMES, XAX, 3 /* *8 */, 0);` |
-| `emit_modrm` | function | `cvm2/cvm_jit.c:582` | `emit_modrm(b, 3, JIT_SCRATCH1, JIT_SCRATCH1);` |
-| `emit_mov32_mem_reg` | function | `cvm2/cvm_jit.c:253` | `emit_mov32_mem_reg(b, JIT_REG_VM, (int32_t)offsetof(CvmState, sp), JIT_REG_SP);` |
-| `emit_mov32_reg_mem` | function | `cvm2/cvm_jit.c:197` | `emit_mov32_reg_mem(b, JIT_REG_SP, JIT_REG_VM, (int32_t)offsetof(CvmState, sp));` |
-| `emit_mov_mem_imm32` | function | `cvm2/cvm_jit.c:1162` | `emit_mov_mem_imm32(b, JIT_REG_VM, (int32_t)offsetof(CvmState, running), 0);` |
-| `emit_mov_mem_reg` | function | `cvm2/cvm_jit.c:382` | `emit_mov_mem_reg(b, JIT_REG_FRAME, (int32_t)(idx * 8), JIT_SCRATCH1);` |
-| `emit_mov_reg_imm32` | function | `cvm2/cvm_jit.c:216` | `emit_mov_reg_imm32(b, XCX, 2);` |
-| `emit_mov_reg_imm64` | function | `cvm2/cvm_jit.c:329` | `emit_mov_reg_imm64(b, JIT_SCRATCH1, v);` |
-| `emit_mov_reg_mem` | function | `cvm2/cvm_jit.c:193` | `emit_mov_reg_mem(b, JIT_REG_SLOTS, JIT_REG_VM, (int32_t)offsetof(CvmState, slots));` |
-| `emit_mov_reg_reg` | function | `cvm2/cvm_jit.c:173` | `emit_mov_reg_reg(b, XBP, XSP);` |
-| `emit_mov_reg_sib` | function | `cvm2/cvm_jit.c:126` | `emit_mov_reg_sib(b, JIT_SCRATCH1, JIT_REG_SLOTS, JIT_REG_SP, 3);` |
-| `emit_mov_sib_reg` | function | `cvm2/cvm_jit.c:119` | `emit_mov_sib_reg(b, JIT_REG_SLOTS, JIT_REG_SP, 3, JIT_SCRATCH1);` |
-| `emit_movzx_reg_mem8` | function | `cvm2/cvm_jit.c:559` | `emit_movzx_reg_mem8(b, JIT_SCRATCH1, JIT_SCRATCH1, 0);` |
-| `emit_neg_reg` | function | `cvm2/cvm_jit.c:494` | `emit_neg_reg(b, JIT_SCRATCH1);` |
-| `emit_nop` | function | `cvm2/cvm_jit.c:318` | `case OP_NOP: emit_nop(b);` |
-| `emit_not_reg` | function | `cvm2/cvm_jit.c:523` | `emit_not_reg(b, JIT_SCRATCH1);` |
 | `emit_opcode` | function | `cvm2/cvm_jit.c:301` | `static int emit_opcode(JitCtx *ctx, size_t bc_ip)` |
-| `emit_or_reg_reg` | function | `cvm2/cvm_jit.c:510` | `emit_or_reg_reg(b, JIT_SCRATCH1, JIT_SCRATCH2);` |
-| `emit_pop` | function | `cvm2/cvm_jit.c:236` | `emit_pop(b, JIT_REG_FRAMES);` |
 | `emit_prologue` | function | `cvm2/cvm_jit.c:169` | `static void emit_prologue(JitBuf *b)` |
-| `emit_push` | function | `cvm2/cvm_jit.c:172` | `emit_push(b, XBP);` |
 | `emit_restore_sp` | function | `cvm2/cvm_jit.c:258` | `static void emit_restore_sp(JitBuf *b)` |
-| `emit_ret` | function | `cvm2/cvm_jit.c:244` | `emit_ret(b);` |
-| `emit_rex` | function | `cvm2/cvm_jit.c:580` | `emit_rex(b, 1, 0, 0, 0);` |
-| `emit_sar_reg_cl` | function | `cvm2/cvm_jit.c:539` | `emit_sar_reg_cl(b, JIT_SCRATCH1);` |
 | `emit_save_sp` | function | `cvm2/cvm_jit.c:252` | `static void emit_save_sp(JitBuf *b)` |
-| `emit_setcc` | function | `cvm2/cvm_jit.c:557` | `emit_setcc(b, cc_signed, JIT_SCRATCH1);` |
-| `emit_shl_reg_cl` | function | `cvm2/cvm_jit.c:217` | `emit_shl_reg_cl(b, XAX);` |
-| `emit_shr_reg_cl` | function | `cvm2/cvm_jit.c:547` | `emit_shr_reg_cl(b, JIT_SCRATCH1);` |
 | `emit_stack_pop` | function | `cvm2/cvm_jit.c:124` | `static void emit_stack_pop(JitBuf *b)` |
 | `emit_stack_pop_into` | function | `cvm2/cvm_jit.c:130` | `static void emit_stack_pop_into(JitBuf *b, int dst)` |
 | `emit_stack_push` | function | `cvm2/cvm_jit.c:117` | `static void emit_stack_push(JitBuf *b)` |
 | `emit_stack_push_reg` | function | `cvm2/cvm_jit.c:136` | `static void emit_stack_push_reg(JitBuf *b, int reg)` |
-| `emit_sub_reg_imm32` | function | `cvm2/cvm_jit.c:186` | `emit_sub_reg_imm32(b, XSP, 8);` |
-| `emit_sub_reg_reg` | function | `cvm2/cvm_jit.c:426` | `emit_sub_reg_reg(b, JIT_SCRATCH1, JIT_SCRATCH2);` |
-| `emit_test_reg_reg` | function | `cvm2/cvm_jit.c:273` | `emit_test_reg_reg(b, XAX, XAX);` |
-| `emit_xor_reg_reg` | function | `cvm2/cvm_jit.c:517` | `emit_xor_reg_reg(b, JIT_SCRATCH1, JIT_SCRATCH2);` |
-| `emit_xor_reg_self` | function | `cvm2/cvm_jit.c:243` | `emit_xor_reg_self(b, XAX);` |
 | `error` | function | `cvm2/cvm_jit.c:267` | `* keeps executing dead code after the stop: error() -> exit() returns
  * into the middle of the f...` |
 | `find_func_for_ip` | function | `cvm2/cvm_jit.c:1338` | `static uint32_t find_func_for_ip(const CvmState *vm)` |
-| `fprintf` | function | `cvm2/cvm_jit.c:1316` | `fprintf(stderr, "cvm jit: failed to compile function %u\n", i);` |
-| `free` | function | `cvm2/cvm_jit.c:51` | `free(jit);` |
 | `func_cache_add` | function | `cvm2/cvm_jit.c:87` | `static JitFuncEntry *func_cache_add(CvmJitState *jit, uint32_t func_idx,
                         ...` |
 | `func_cache_find` | function | `cvm2/cvm_jit.c:80` | `static JitFuncEntry *func_cache_find(CvmJitState *jit, uint32_t func_idx)` |
@@ -382,11 +287,7 @@
 | `ip_map_clear` | function | `cvm2/cvm_jit.c:57` | `static void ip_map_clear(CvmJitState *jit)` |
 | `ip_map_lookup` | function | `cvm2/cvm_jit.c:68` | `static size_t ip_map_lookup(const CvmJitState *jit, size_t bc_ip)` |
 | `jit_apply_patches_local` | function | `cvm2/cvm_jit.c:1184` | `static void jit_apply_patches_local(JitBuf *b, const JitPatches *p)` |
-| `jit_buf_free` | function | `cvm2/cvm_jit.c:50` | `jit_buf_free(&jit->buf);` |
-| `jit_buf_init` | function | `cvm2/cvm_jit.c:39` | `jit_buf_init(&jit->buf, 1024 * 1024);` |
-| `memcpy` | function | `cvm2/cvm_jit.c:227` | `memcpy(b->code + patch, &rel, 4);` |
 | `opcode_total_size` | function | `cvm2/cvm_jit.c:104` | `static size_t opcode_total_size(const uint8_t *code, size_t code_size, size_t ip)` |
-| `void` | function | `cvm2/cvm_jit.c:1359` | `typedef void (*JitFn)(CvmState *);` |
 | `CVM_JIT_H` | macro | `cvm2/cvm_jit.h:15` | `#define CVM_JIT_H` |
 | `CvmJitState` | struct | `cvm2/cvm_jit.h:96` | `` |
 | `JIT_IP_MAP_SIZE` | macro | `cvm2/cvm_jit.h:94` | `#define JIT_IP_MAP_SIZE` |
@@ -426,7 +327,6 @@
 | `cvm_jit_ret` | function | `cvm2/cvm_jit_help.c:175` | `int cvm_jit_ret(CvmState *vm, uint64_t retval)` |
 | `cvm_jit_syscall` | function | `cvm2/cvm_jit_help.c:228` | `int cvm_jit_syscall(CvmState *vm, uint8_t sn, uint8_t argc)` |
 | `find_native` | function | `cvm2/cvm_jit_help.c:109` | `static int find_native(const CvmState *vm, const char *name)` |
-| `free` | function | `cvm2/cvm_jit_help.c:74` | `free(vm->frames[vm->frame_count].slots);` |
 | `heap_alloc` | function | `cvm2/cvm_jit_help.c:101` | `static uint64_t heap_alloc(CvmState *vm, size_t s)` |
 | `jit_vo` | function | `cvm2/cvm_jit_help.c:125` | `static int jit_vo(CvmState *vm, uint64_t *v)` |
 | `jit_vp` | function | `cvm2/cvm_jit_help.c:119` | `static int jit_vp(CvmState *vm, uint64_t v)` |
@@ -455,7 +355,6 @@
 | `JIT_BUF_FAILED` | macro | `cvm2/cvm_jit_x86.c:32` | `#define JIT_BUF_FAILED` |
 | `JIT_BUF_FREE` | macro | `cvm2/cvm_jit_x86.c:27` | `#define JIT_BUF_FREE(p, sz)` |
 | `JIT_BUF_FREE` | macro | `cvm2/cvm_jit_x86.c:31` | `#define JIT_BUF_FREE(p, sz)` |
-| `JIT_BUF_FREE` | function | `cvm2/cvm_jit_x86.c:79` | `JIT_BUF_FREE(b->code, b->capacity);` |
 | `emit16` | function | `cvm2/cvm_jit_x86.c:88` | `void emit16(JitBuf *b, uint16_t v)` |
 | `emit32` | function | `cvm2/cvm_jit_x86.c:93` | `void emit32(JitBuf *b, uint32_t v)` |
 | `emit64` | function | `cvm2/cvm_jit_x86.c:98` | `void emit64(JitBuf *b, uint64_t v)` |
@@ -523,7 +422,6 @@
 | `jit_buf_free` | function | `cvm2/cvm_jit_x86.c:47` | `void jit_buf_free(JitBuf *b)` |
 | `jit_buf_init` | function | `cvm2/cvm_jit_x86.c:34` | `void jit_buf_init(JitBuf *b, size_t cap)` |
 | `jit_buf_reset` | function | `cvm2/cvm_jit_x86.c:55` | `void jit_buf_reset(JitBuf *b)` |
-| `memcpy` | function | `cvm2/cvm_jit_x86.c:501` | `memcpy(b->code + off, &r, 4);` |
 | `CVM_JIT_X86_H` | macro | `cvm2/cvm_jit_x86.h:10` | `#define CVM_JIT_X86_H` |
 | `JIT_MAX_PATCHES` | macro | `cvm2/cvm_jit_x86.h:52` | `#define JIT_MAX_PATCHES` |
 | `JitBuf` | struct | `cvm2/cvm_jit_x86.h:40` | `` |
@@ -630,17 +528,9 @@
 | `cmp_func` | function | `cvm2/cvm_val_main.c:448` | `static int cmp_func(const void *a, const void *b)` |
 | `code_of` | function | `cvm2/cvm_val_main.c:67` | `static const uint8_t *code_of(const CvmModuleView *v)` |
 | `dr_merge` | function | `cvm2/cvm_val_main.c:87` | `static int dr_merge(DepthRange *d, int32_t lo2, int32_t hi2)` |
-| `fclose` | function | `cvm2/cvm_val_main.c:476` | `fclose(f);` |
-| `fprintf` | function | `cvm2/cvm_val_main.c:58` | `fprintf(stderr, "%s: error: %s\n", ctx->path, what);` |
-| `free` | function | `cvm2/cvm_val_main.c:487` | `free(buf);` |
-| `fseek` | function | `cvm2/cvm_val_main.c:471` | `fseek(f, 0, SEEK_END);` |
 | `main` | function | `cvm2/cvm_val_main.c:454` | `int main(int argc, char **argv)` |
-| `printf` | function | `cvm2/cvm_val_main.c:639` | `printf("function %s: %zu instructions, stack balanced\n", fn, insn);` |
 | `q_pop` | function | `cvm2/cvm_val_main.c:80` | `static size_t q_pop(FuncCtx *fc)` |
 | `q_push` | function | `cvm2/cvm_val_main.c:71` | `static void q_push(FuncCtx *fc, size_t off)` |
-| `qsort` | function | `cvm2/cvm_val_main.c:595` | `qsort(sorted, v.num_functions, CVM_FUNC_ENTRY_SIZE, cmp_func);` |
-| `rewind` | function | `cvm2/cvm_val_main.c:473` | `rewind(f);` |
-| `snprintf` | function | `cvm2/cvm_val_main.c:191` | `snprintf(msg, sizeof(msg), "local index %u out of range (locals=%u) at 0x%04zx", i, cap, off);` |
 | `stack_effect` | function | `cvm2/cvm_val_main.c:102` | `static int stack_effect(const CvmModuleView *v, size_t off, uint8_t op,
                         S...` |
 | `val_err` | function | `cvm2/cvm_val_main.c:55` | `static void val_err(ValCtx *ctx, const char *what)` |
@@ -653,7 +543,6 @@
 | `cvm_view_open` | function | `cvm2/cvm_view.c:28` | `int cvm_view_open(CvmModuleView *v, const uint8_t *data, size_t size)` |
 | `cvm_view_strerror` | function | `cvm2/cvm_view.c:17` | `const char *cvm_view_strerror(int error_code)` |
 | `cvm_view_string` | function | `cvm2/cvm_view.c:77` | `const char *cvm_view_string(const CvmModuleView *v, uint32_t off)` |
-| `memset` | function | `cvm2/cvm_view.c:30` | `memset(v, 0, sizeof(*v));` |
 | `rl16` | function | `cvm2/cvm_view.c:13` | `static uint32_t rl16(const uint8_t *p)` |
 | `rl32` | function | `cvm2/cvm_view.c:8` | `static uint32_t rl32(const uint8_t *p)` |
 | `CVM_VIEW_H` | macro | `cvm2/cvm_view.h:9` | `#define CVM_VIEW_H` |
@@ -668,43 +557,21 @@
 | `EXPECTED_CALLS` | macro | `cvm2/gen_fib_cvm.c:15` | `#define EXPECTED_CALLS` |
 | `EXPECTED_FIB10` | macro | `cvm2/gen_fib_cvm.c:14` | `#define EXPECTED_FIB10` |
 | `FIB_N` | macro | `cvm2/gen_fib_cvm.c:12` | `#define FIB_N` |
-| `cvm_destroy` | function | `cvm2/gen_fib_cvm.c:172` | `cvm_destroy(vm);` |
 | `emit_byte` | function | `cvm2/gen_fib_cvm.c:20` | `static void emit_byte(uint8_t b)` |
 | `emit_global_inc` | function | `cvm2/gen_fib_cvm.c:52` | `static void emit_global_inc(void)` |
 | `emit_i32` | function | `cvm2/gen_fib_cvm.c:36` | `static void emit_i32(int32_t v)` |
 | `emit_u32` | function | `cvm2/gen_fib_cvm.c:29` | `static void emit_u32(uint32_t v)` |
-| `fclose` | function | `cvm2/gen_fib_cvm.c:164` | `fclose(f);` |
-| `fprintf` | function | `cvm2/gen_fib_cvm.c:171` | `fprintf(stderr, "load failed: %s\n", cvm_strerror(rc));` |
-| `fwrite` | function | `cvm2/gen_fib_cvm.c:163` | `fwrite(module, 1, total, f);` |
 | `main` | function | `cvm2/gen_fib_cvm.c:63` | `int main(int argc, char *argv[])` |
-| `memcpy` | function | `cvm2/gen_fib_cvm.c:158` | `memcpy(module + CVM_MODULE_HEADER_SIZE + ft + gt, code_buf, code_len);` |
 | `patch_i32` | function | `cvm2/gen_fib_cvm.c:38` | `static void patch_i32(size_t pos, int32_t val)` |
-| `printf` | function | `cvm2/gen_fib_cvm.c:165` | `printf("Generated fib.cvm (%zu bytes total, %zu bytes code)\n", total, code_len);` |
 | `write_le32` | function | `cvm2/gen_fib_cvm.c:45` | `static void write_le32(uint8_t *p, uint32_t v)` |
-| `cvm_destroy` | function | `cvm2/gen_minimal.c:104` | `cvm_destroy(vm);` |
 | `emit_byte` | function | `cvm2/gen_minimal.c:13` | `static void emit_byte(uint8_t b)` |
 | `emit_u32` | function | `cvm2/gen_minimal.c:21` | `static void emit_u32(uint32_t v)` |
-| `fclose` | function | `cvm2/gen_minimal.c:85` | `fclose(f);` |
-| `free` | function | `cvm2/gen_minimal.c:107` | `free(module);` |
-| `fwrite` | function | `cvm2/gen_minimal.c:84` | `fwrite(module, 1, total, f);` |
 | `main` | function | `cvm2/gen_minimal.c:29` | `int main(void)` |
-| `memcpy` | function | `cvm2/gen_minimal.c:80` | `memcpy(module + 40 + ft + gt, code_buf, code_size);` |
-| `printf` | function | `cvm2/gen_minimal.c:86` | `printf("Generated minimal.cvm (%zu bytes)\n", total);` |
 | `write_le32` | function | `cvm2/gen_minimal.c:25` | `static void write_le32(uint8_t *p, uint32_t v)` |
 | `emit_byte` | function | `cvm2/gen_test.py:7` | `def emit_byte(b)` |
 | `emit_u32` | function | `cvm2/gen_test.py:10` | `def emit_u32(v)` |
 | `check` | function | `cvm2/test.sh:13` | `` |
 | `reject` | function | `cvm2/test.sh:24` | `` |
 | `add_string` | function | `gen_fib_cvm.c:23` | `static uint32_t add_string(const char *s)` |
-| `cvm_emit_byte` | function | `gen_fib_cvm.c:66` | `cvm_emit_byte(&code, &code_cap, &code_len, OP_LOAD_LOCAL);` |
-| `cvm_emit_i16` | function | `gen_fib_cvm.c:67` | `cvm_emit_i16 (&code, &code_cap, &code_len, 0);` |
-| `cvm_emit_i32` | function | `gen_fib_cvm.c:79` | `cvm_emit_i32 (&code, &code_cap, &code_len, 0);` |
-| `cvm_emit_u16` | function | `gen_fib_cvm.c:99` | `cvm_emit_u16 (&code, &code_cap, &code_len, 0);` |
-| `fclose` | function | `gen_fib_cvm.c:178` | `fclose(f);` |
 | `fib` | function | `gen_fib_cvm.c:7` | `* return fib(n-1) + fib(n-2);` |
-| `free` | function | `gen_fib_cvm.c:181` | `free(code);` |
-| `fwrite` | function | `gen_fib_cvm.c:173` | `fwrite(&hdr, 1, sizeof(hdr), f);` |
 | `main` | function | `gen_fib_cvm.c:35` | `int main(void)` |
-| `memcpy` | function | `gen_fib_cvm.c:31` | `memcpy(strpool + strpool_len, s, n);` |
-| `memset` | function | `gen_fib_cvm.c:155` | `memset(funcs, 0, sizeof(funcs));` |
-| `printf` | function | `gen_fib_cvm.c:179` | `printf("Generated fib.cvm (%zu bytes of code)\n", code_len);` |

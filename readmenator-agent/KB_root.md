@@ -24,18 +24,6 @@
   - `cvm_emit_i32` (function, line 760) `void cvm_emit_i32(uint8_t **buf, size_t *cap, size_t *len, int32_t v)`
   - `cvm_emit_i64` (function, line 765) `void cvm_emit_i64(uint8_t **buf, size_t *cap, size_t *len, int64_t v)`
   - `main` (function, line 775) `int main(int argc, char **argv)`
-  - `va_start` (function, line 14) `va_start(ap, fmt);`
-  - `fprintf` (function, line 15) `fprintf(stderr, "[CVM ERROR] ");`
-  - `vfprintf` (function, line 16) `vfprintf(stderr, fmt, ap);`
-  - `va_end` (function, line 18) `va_end(ap);`
-  - `free` (function, line 152) `free(fr->locals);`
-  - `printf` (function, line 201) `printf("%lld\n", (long long)(int64_t)v);`
-  - `strncpy` (function, line 293) `strncpy(mod->name, name ? name : "anon", sizeof(mod->name) - 1);`
-  - `memcpy` (function, line 297) `memcpy(mod->funcs, data + off, hdr->num_functions * sizeof(CVM_FuncEntry));`
-  - `memset` (function, line 331) `memset(mod->native_ptrs, 0, sizeof(mod->native_ptrs));`
-  - `perror` (function, line 340) `perror(path);`
-  - `fseek` (function, line 343) `fseek(f, 0, SEEK_END);`
-  - `fclose` (function, line 349) `fclose(f);`
 - Depends on: `cvm.h`
 
 ## cvm.h
@@ -79,16 +67,6 @@
   - `add_string` (function, line 23) `static uint32_t add_string(const char *s)`
   - `main` (function, line 35) `int main(void)`
   - `fib` (function, line 7) `* return fib(n-1) + fib(n-2);`
-  - `memcpy` (function, line 31) `memcpy(strpool + strpool_len, s, n);`
-  - `cvm_emit_byte` (function, line 66) `cvm_emit_byte(&code, &code_cap, &code_len, OP_LOAD_LOCAL);`
-  - `cvm_emit_i16` (function, line 67) `cvm_emit_i16 (&code, &code_cap, &code_len, 0);`
-  - `cvm_emit_i32` (function, line 79) `cvm_emit_i32 (&code, &code_cap, &code_len, 0);`
-  - `cvm_emit_u16` (function, line 99) `cvm_emit_u16 (&code, &code_cap, &code_len, 0);`
-  - `memset` (function, line 155) `memset(funcs, 0, sizeof(funcs));`
-  - `fwrite` (function, line 173) `fwrite(&hdr, 1, sizeof(hdr), f);`
-  - `fclose` (function, line 178) `fclose(f);`
-  - `printf` (function, line 179) `printf("Generated fib.cvm (%zu bytes of code)\n", code_len);`
-  - `free` (function, line 181) `free(code);`
 - Depends on: `cvm.h`
 
 ## test.sh
