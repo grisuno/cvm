@@ -24,7 +24,7 @@
 | `cvm2/deepseek_bash_20260808_653f26.sh` | - | cvm2 | 0 |
 | `cvm2/gen_fib_cvm.c` | - | cvm2 | 16 |
 | `cvm2/gen_minimal.c` | - | cvm2 | 10 |
-| `cvm2/gen_test.py` | - | cvm2 | 2 |
+| `cvm2/gen_test.py` | Generate a minimal .cvm that pushes 42 and halts. No function calls. | cvm2 | 2 |
 | `cvm2/test.sh` | CVM v2 toolchain suite: interpreter, disassembler, validator (including corrupte | cvm2 | 2 |
 | `gen_fib_cvm.c` | - | root | 13 |
 | `test.sh` | - | root | 0 |

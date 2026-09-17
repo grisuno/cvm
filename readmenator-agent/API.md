@@ -553,15 +553,15 @@
 - Depends on: `cvm2/cvm.h`, `cvm2/cvm_jit.h`
 
 ### cvm_exit_code (function) `int64_t cvm_exit_code(const CvmState *vm)`
-- Defined: `cvm2/cvm.c:1326`
+- Defined: `cvm2/cvm.c:1338`
 - Depends on: `cvm2/cvm.h`, `cvm2/cvm_jit.h`
 
 ### cvm_instruction_count (function) `uint64_t cvm_instruction_count(const CvmState *vm)`
-- Defined: `cvm2/cvm.c:1328`
+- Defined: `cvm2/cvm.c:1340`
 - Depends on: `cvm2/cvm.h`, `cvm2/cvm_jit.h`
 
 ### main (function) `int main(int argc, char *argv[])`
-- Defined: `cvm2/cvm.c:1331`
+- Defined: `cvm2/cvm.c:1343`
 - Doc: if defined(CVM_STANDALONE) && !defined(CVM_NO_MAIN)
 - Depends on: `cvm2/cvm.h`, `cvm2/cvm_jit.h`
 
@@ -601,87 +601,87 @@
 ## cvm2/cvm.h
 
 ### int64_t (function) `typedef int64_t (*CvmNativeFn)(void *vm, int argc, uint64_t *argv);`
-- Defined: `cvm2/cvm.h:192`
+- Defined: `cvm2/cvm.h:193`
 - Imported by: `cvm2/cvm.c`, `cvm2/cvm_dbg_main.c`, `cvm2/cvm_jit.h`, `cvm2/cvm_jit_help.h`, `cvm2/cvm_ops.c`, `cvm2/cvm_view.h`, `cvm2/gen_fib_cvm.c`, `cvm2/gen_minimal.c`
 
 ### cvm_config_default (function) `CvmConfig cvm_config_default(void);`
-- Defined: `cvm2/cvm.h:242`
+- Defined: `cvm2/cvm.h:243`
 - Imported by: `cvm2/cvm.c`, `cvm2/cvm_dbg_main.c`, `cvm2/cvm_jit.h`, `cvm2/cvm_jit_help.h`, `cvm2/cvm_ops.c`, `cvm2/cvm_view.h`, `cvm2/gen_fib_cvm.c`, `cvm2/gen_minimal.c`
 
 ### cvm_create (function) `CvmState *cvm_create(const CvmConfig *config);`
-- Defined: `cvm2/cvm.h:244`
-- Imported by: `cvm2/cvm.c`, `cvm2/cvm_dbg_main.c`, `cvm2/cvm_jit.h`, `cvm2/cvm_jit_help.h`, `cvm2/cvm_ops.c`, `cvm2/cvm_view.h`, `cvm2/gen_fib_cvm.c`, `cvm2/gen_minimal.c`
-
-### cvm_destroy (function) `void cvm_destroy(CvmState *vm);`
 - Defined: `cvm2/cvm.h:245`
 - Imported by: `cvm2/cvm.c`, `cvm2/cvm_dbg_main.c`, `cvm2/cvm_jit.h`, `cvm2/cvm_jit_help.h`, `cvm2/cvm_ops.c`, `cvm2/cvm_view.h`, `cvm2/gen_fib_cvm.c`, `cvm2/gen_minimal.c`
 
-### cvm_load_module (function) `int cvm_load_module(CvmState *vm, const uint8_t *data, size_t size);`
+### cvm_destroy (function) `void cvm_destroy(CvmState *vm);`
 - Defined: `cvm2/cvm.h:246`
 - Imported by: `cvm2/cvm.c`, `cvm2/cvm_dbg_main.c`, `cvm2/cvm_jit.h`, `cvm2/cvm_jit_help.h`, `cvm2/cvm_ops.c`, `cvm2/cvm_view.h`, `cvm2/gen_fib_cvm.c`, `cvm2/gen_minimal.c`
 
-### cvm_load_module_file (function) `int cvm_load_module_file(CvmState *vm, const char *path);`
+### cvm_load_module (function) `int cvm_load_module(CvmState *vm, const uint8_t *data, size_t size);`
 - Defined: `cvm2/cvm.h:247`
 - Imported by: `cvm2/cvm.c`, `cvm2/cvm_dbg_main.c`, `cvm2/cvm_jit.h`, `cvm2/cvm_jit_help.h`, `cvm2/cvm_ops.c`, `cvm2/cvm_view.h`, `cvm2/gen_fib_cvm.c`, `cvm2/gen_minimal.c`
 
-### cvm_run (function) `int cvm_run(CvmState *vm);`
+### cvm_load_module_file (function) `int cvm_load_module_file(CvmState *vm, const char *path);`
 - Defined: `cvm2/cvm.h:248`
 - Imported by: `cvm2/cvm.c`, `cvm2/cvm_dbg_main.c`, `cvm2/cvm_jit.h`, `cvm2/cvm_jit_help.h`, `cvm2/cvm_ops.c`, `cvm2/cvm_view.h`, `cvm2/gen_fib_cvm.c`, `cvm2/gen_minimal.c`
 
-### cvm_continue (function) `int cvm_continue(CvmState *vm);`
+### cvm_run (function) `int cvm_run(CvmState *vm);`
 - Defined: `cvm2/cvm.h:249`
 - Imported by: `cvm2/cvm.c`, `cvm2/cvm_dbg_main.c`, `cvm2/cvm_jit.h`, `cvm2/cvm_jit_help.h`, `cvm2/cvm_ops.c`, `cvm2/cvm_view.h`, `cvm2/gen_fib_cvm.c`, `cvm2/gen_minimal.c`
 
-### cvm_step (function) `int cvm_step(CvmState *vm);`
+### cvm_continue (function) `int cvm_continue(CvmState *vm);`
 - Defined: `cvm2/cvm.h:250`
 - Imported by: `cvm2/cvm.c`, `cvm2/cvm_dbg_main.c`, `cvm2/cvm_jit.h`, `cvm2/cvm_jit_help.h`, `cvm2/cvm_ops.c`, `cvm2/cvm_view.h`, `cvm2/gen_fib_cvm.c`, `cvm2/gen_minimal.c`
 
-### cvm_exit_code (function) `int64_t cvm_exit_code(const CvmState *vm);`
+### cvm_step (function) `int cvm_step(CvmState *vm);`
 - Defined: `cvm2/cvm.h:251`
 - Imported by: `cvm2/cvm.c`, `cvm2/cvm_dbg_main.c`, `cvm2/cvm_jit.h`, `cvm2/cvm_jit_help.h`, `cvm2/cvm_ops.c`, `cvm2/cvm_view.h`, `cvm2/gen_fib_cvm.c`, `cvm2/gen_minimal.c`
 
-### cvm_instruction_count (function) `uint64_t cvm_instruction_count(const CvmState *vm);`
+### cvm_exit_code (function) `int64_t cvm_exit_code(const CvmState *vm);`
 - Defined: `cvm2/cvm.h:252`
 - Imported by: `cvm2/cvm.c`, `cvm2/cvm_dbg_main.c`, `cvm2/cvm_jit.h`, `cvm2/cvm_jit_help.h`, `cvm2/cvm_ops.c`, `cvm2/cvm_view.h`, `cvm2/gen_fib_cvm.c`, `cvm2/gen_minimal.c`
 
-### cvm_strerror (function) `const char *cvm_strerror(int error_code);`
+### cvm_instruction_count (function) `uint64_t cvm_instruction_count(const CvmState *vm);`
 - Defined: `cvm2/cvm.h:253`
 - Imported by: `cvm2/cvm.c`, `cvm2/cvm_dbg_main.c`, `cvm2/cvm_jit.h`, `cvm2/cvm_jit_help.h`, `cvm2/cvm_ops.c`, `cvm2/cvm_view.h`, `cvm2/gen_fib_cvm.c`, `cvm2/gen_minimal.c`
 
-### cvm_register_native (function) `int cvm_register_native(CvmState *vm, const char *name, CvmNativeFn fn);`
+### cvm_strerror (function) `const char *cvm_strerror(int error_code);`
 - Defined: `cvm2/cvm.h:254`
 - Imported by: `cvm2/cvm.c`, `cvm2/cvm_dbg_main.c`, `cvm2/cvm_jit.h`, `cvm2/cvm_jit_help.h`, `cvm2/cvm_ops.c`, `cvm2/cvm_view.h`, `cvm2/gen_fib_cvm.c`, `cvm2/gen_minimal.c`
 
-### cvm_set_args (function) `int cvm_set_args(CvmState *vm, int argc, char **argv);`
-- Defined: `cvm2/cvm.h:256`
+### cvm_register_native (function) `int cvm_register_native(CvmState *vm, const char *name, CvmNativeFn fn);`
+- Defined: `cvm2/cvm.h:255`
 - Imported by: `cvm2/cvm.c`, `cvm2/cvm_dbg_main.c`, `cvm2/cvm_jit.h`, `cvm2/cvm_jit_help.h`, `cvm2/cvm_ops.c`, `cvm2/cvm_view.h`, `cvm2/gen_fib_cvm.c`, `cvm2/gen_minimal.c`
 
-### cvm_heap_alloc (function) `void *cvm_heap_alloc(CvmState *vm, size_t size);`
+### cvm_set_args (function) `int cvm_set_args(CvmState *vm, int argc, char **argv);`
 - Defined: `cvm2/cvm.h:257`
 - Imported by: `cvm2/cvm.c`, `cvm2/cvm_dbg_main.c`, `cvm2/cvm_jit.h`, `cvm2/cvm_jit_help.h`, `cvm2/cvm_ops.c`, `cvm2/cvm_view.h`, `cvm2/gen_fib_cvm.c`, `cvm2/gen_minimal.c`
 
-### cvm_break_set (function) `int cvm_break_set(CvmState *vm, size_t ip);`
+### cvm_heap_alloc (function) `void *cvm_heap_alloc(CvmState *vm, size_t size);`
 - Defined: `cvm2/cvm.h:258`
 - Imported by: `cvm2/cvm.c`, `cvm2/cvm_dbg_main.c`, `cvm2/cvm_jit.h`, `cvm2/cvm_jit_help.h`, `cvm2/cvm_ops.c`, `cvm2/cvm_view.h`, `cvm2/gen_fib_cvm.c`, `cvm2/gen_minimal.c`
 
-### cvm_break_clear (function) `int cvm_break_clear(CvmState *vm, size_t ip);`
-- Defined: `cvm2/cvm.h:260`
+### cvm_break_set (function) `int cvm_break_set(CvmState *vm, size_t ip);`
+- Defined: `cvm2/cvm.h:259`
 - Imported by: `cvm2/cvm.c`, `cvm2/cvm_dbg_main.c`, `cvm2/cvm_jit.h`, `cvm2/cvm_jit_help.h`, `cvm2/cvm_ops.c`, `cvm2/cvm_view.h`, `cvm2/gen_fib_cvm.c`, `cvm2/gen_minimal.c`
 
-### cvm_break_clear_all (function) `void cvm_break_clear_all(CvmState *vm);`
+### cvm_break_clear (function) `int cvm_break_clear(CvmState *vm, size_t ip);`
 - Defined: `cvm2/cvm.h:261`
 - Imported by: `cvm2/cvm.c`, `cvm2/cvm_dbg_main.c`, `cvm2/cvm_jit.h`, `cvm2/cvm_jit_help.h`, `cvm2/cvm_ops.c`, `cvm2/cvm_view.h`, `cvm2/gen_fib_cvm.c`, `cvm2/gen_minimal.c`
 
-### cvm_break_hit (function) `int cvm_break_hit(const CvmState *vm);`
+### cvm_break_clear_all (function) `void cvm_break_clear_all(CvmState *vm);`
 - Defined: `cvm2/cvm.h:262`
 - Imported by: `cvm2/cvm.c`, `cvm2/cvm_dbg_main.c`, `cvm2/cvm_jit.h`, `cvm2/cvm_jit_help.h`, `cvm2/cvm_ops.c`, `cvm2/cvm_view.h`, `cvm2/gen_fib_cvm.c`, `cvm2/gen_minimal.c`
 
-### cvm_profile_begin (function) `int cvm_profile_begin(CvmState *vm);`
+### cvm_break_hit (function) `int cvm_break_hit(const CvmState *vm);`
 - Defined: `cvm2/cvm.h:263`
 - Imported by: `cvm2/cvm.c`, `cvm2/cvm_dbg_main.c`, `cvm2/cvm_jit.h`, `cvm2/cvm_jit_help.h`, `cvm2/cvm_ops.c`, `cvm2/cvm_view.h`, `cvm2/gen_fib_cvm.c`, `cvm2/gen_minimal.c`
 
-### cvm_profile_end (function) `void cvm_profile_end(CvmState *vm);`
+### cvm_profile_begin (function) `int cvm_profile_begin(CvmState *vm);`
 - Defined: `cvm2/cvm.h:264`
+- Imported by: `cvm2/cvm.c`, `cvm2/cvm_dbg_main.c`, `cvm2/cvm_jit.h`, `cvm2/cvm_jit_help.h`, `cvm2/cvm_ops.c`, `cvm2/cvm_view.h`, `cvm2/gen_fib_cvm.c`, `cvm2/gen_minimal.c`
+
+### cvm_profile_end (function) `void cvm_profile_end(CvmState *vm);`
+- Defined: `cvm2/cvm.h:265`
 - Imported by: `cvm2/cvm.c`, `cvm2/cvm_dbg_main.c`, `cvm2/cvm_jit.h`, `cvm2/cvm_jit_help.h`, `cvm2/cvm_ops.c`, `cvm2/cvm_view.h`, `cvm2/gen_fib_cvm.c`, `cvm2/gen_minimal.c`
 
 ## cvm2/cvm_dbg_main.c
@@ -1027,44 +1027,44 @@
 - Depends on: `cvm2/cvm_jit.h`, `cvm2/cvm_ops.h`
 
 ### jit_apply_patches_local (function) `static void jit_apply_patches_local(JitBuf *b, const JitPatches *p)`
-- Defined: `cvm2/cvm_jit.c:1156`
+- Defined: `cvm2/cvm_jit.c:1184`
 - Doc: emit_mov_reg_reg(b, XDI, JIT_REG_VM); emit_mov_reg_imm32(b, XSI, CVM_ERR_BAD_OPCODE); emit_call_abs(b, (void *)(uintptr_
 - Depends on: `cvm2/cvm_jit.h`, `cvm2/cvm_ops.h`
 
 ### cvm_jit_compile_func (function) `void *cvm_jit_compile_func(CvmState *vm, uint32_t func_idx)`
-- Defined: `cvm2/cvm_jit.c:1174`
+- Defined: `cvm2/cvm_jit.c:1202`
 - Depends on: `cvm2/cvm_jit.h`, `cvm2/cvm_ops.h`
 
 ### cvm_jit_compile_module (function) `int cvm_jit_compile_module(CvmState *vm)`
-- Defined: `cvm2/cvm_jit.c:1281`
+- Defined: `cvm2/cvm_jit.c:1309`
 - Doc: } if (jit->buf.failed) { free(ctx.patches); return NULL; } size_t native_size = jit->buf.size - native_start; func_cache
 - Depends on: `cvm2/cvm_jit.h`, `cvm2/cvm_ops.h`
 
 ### cvm_jit_lookup (function) `void *cvm_jit_lookup(CvmState *vm, uint32_t func_idx)`
-- Defined: `cvm2/cvm_jit.c:1297`
+- Defined: `cvm2/cvm_jit.c:1325`
 - Doc: if (!vm->jit || !JIT_STATE(vm)->enabled) return CVM_OK; ip_map_clear(vm->jit); for (uint32_t i = 0; i < vm->num_funcs; i
 - Depends on: `cvm2/cvm_jit.h`, `cvm2/cvm_ops.h`
 
 ### find_func_for_ip (function) `static uint32_t find_func_for_ip(const CvmState *vm)`
-- Defined: `cvm2/cvm_jit.c:1310`
+- Defined: `cvm2/cvm_jit.c:1338`
 - Doc: /* ------------------------------------------------------------------ void *cvm_jit_lookup(CvmState *vm, uint32_t func_i
 - Depends on: `cvm2/cvm_jit.h`, `cvm2/cvm_ops.h`
 
 ### cvm_jit_exec_one (function) `void cvm_jit_exec_one(CvmState *vm)`
-- Defined: `cvm2/cvm_jit.c:1318`
+- Defined: `cvm2/cvm_jit.c:1346`
 - Depends on: `cvm2/cvm_jit.h`, `cvm2/cvm_ops.h`
 
 ### cvm_jit_run (function) `int cvm_jit_run(CvmState *vm)`
-- Defined: `cvm2/cvm_jit.c:1348`
+- Defined: `cvm2/cvm_jit.c:1376`
 - Depends on: `cvm2/cvm_jit.h`, `cvm2/cvm_ops.h`
 
 ### cvm_jit_stats (function) `void cvm_jit_stats(const CvmState *vm)`
-- Defined: `cvm2/cvm_jit.c:1409`
+- Defined: `cvm2/cvm_jit.c:1437`
 - Doc: } } /* Dispatch loop while (vm->running) { cvm_jit_exec_one(vm); } return CVM_OK; } /* ---------------------------------
 - Depends on: `cvm2/cvm_jit.h`, `cvm2/cvm_ops.h`
 
 ### cvm_jit_dump (function) `void cvm_jit_dump(const CvmState *vm)`
-- Defined: `cvm2/cvm_jit.c:1420`
+- Defined: `cvm2/cvm_jit.c:1448`
 - Depends on: `cvm2/cvm_jit.h`, `cvm2/cvm_ops.h`
 
 ### jit_buf_init (function) `jit_buf_init(&jit->buf, 1024 * 1024);`
@@ -1291,25 +1291,25 @@
 - Depends on: `cvm2/cvm_jit.h`, `cvm2/cvm_ops.h`
 
 ### emit_mov_mem_imm32 (function) `emit_mov_mem_imm32(b, JIT_REG_VM, (int32_t)offsetof(CvmState, running), 0);`
-- Defined: `cvm2/cvm_jit.c:1134`
+- Defined: `cvm2/cvm_jit.c:1162`
 - Doc: emit_mov32_reg_mem(b, XAX, JIT_REG_VM, (int32_t)offsetof(CvmState, sp)); emit_test_reg_reg(b, XAX, XAX); size_t patch_ha
 - Depends on: `cvm2/cvm_jit.h`, `cvm2/cvm_ops.h`
 
 ### fprintf (function) `fprintf(stderr, "cvm jit: failed to compile function %u\n", i);`
-- Defined: `cvm2/cvm_jit.c:1288`
+- Defined: `cvm2/cvm_jit.c:1316`
 - Depends on: `cvm2/cvm_jit.h`, `cvm2/cvm_ops.h`
 
 ### void (function) `typedef void (*JitFn)(CvmState *);`
-- Defined: `cvm2/cvm_jit.c:1331`
+- Defined: `cvm2/cvm_jit.c:1359`
 - Depends on: `cvm2/cvm_jit.h`, `cvm2/cvm_ops.h`
 
 ### cvm_step (function) `extern int cvm_step(CvmState *);`
-- Defined: `cvm2/cvm_jit.c:1342`
+- Defined: `cvm2/cvm_jit.c:1370`
 - Doc: Fall back: interpret this function's bytecodes. We run the interpreter until ip leaves this function or * vm->running be
 - Depends on: `cvm2/cvm_jit.h`, `cvm2/cvm_ops.h`
 
 ### cvm_run (function) `extern int cvm_run(CvmState *);`
-- Defined: `cvm2/cvm_jit.c:1352`
+- Defined: `cvm2/cvm_jit.c:1380`
 - Doc: while (vm->running) { uint32_t cur = find_func_for_ip(vm); if (cur != start_func) break;  /* left this function /* Execu
 - Depends on: `cvm2/cvm_jit.h`, `cvm2/cvm_ops.h`
 
@@ -2146,28 +2146,28 @@
 ## cvm2/cvm_ops.c
 
 ### cvm_op_info (function) `const CvmOpInfo *cvm_op_info(uint8_t opcode)`
-- Defined: `cvm2/cvm_ops.c:68`
+- Defined: `cvm2/cvm_ops.c:69`
 - Doc: define OP_INFOS_LEN (sizeof(op_infos) / sizeof(op_infos[0]))
 - Depends on: `cvm2/cvm.h`, `cvm2/cvm_ops.h`
 
 ### cvm_op_name (function) `const char *cvm_op_name(uint8_t opcode)`
-- Defined: `cvm2/cvm_ops.c:74`
+- Defined: `cvm2/cvm_ops.c:75`
 - Depends on: `cvm2/cvm.h`, `cvm2/cvm_ops.h`
 
 ### cvm_ops_r8 (function) `int cvm_ops_r8(const uint8_t *code, size_t size, size_t off, uint8_t *out)`
-- Defined: `cvm2/cvm_ops.c:79`
+- Defined: `cvm2/cvm_ops.c:80`
 - Depends on: `cvm2/cvm.h`, `cvm2/cvm_ops.h`
 
 ### cvm_ops_ru32 (function) `uint32_t cvm_ops_ru32(const uint8_t *code, size_t size, size_t off)`
-- Defined: `cvm2/cvm_ops.c:85`
+- Defined: `cvm2/cvm_ops.c:86`
 - Depends on: `cvm2/cvm.h`, `cvm2/cvm_ops.h`
 
 ### cvm_ops_ri32 (function) `int32_t cvm_ops_ri32(const uint8_t *code, size_t size, size_t off)`
-- Defined: `cvm2/cvm_ops.c:93`
+- Defined: `cvm2/cvm_ops.c:94`
 - Depends on: `cvm2/cvm.h`, `cvm2/cvm_ops.h`
 
 ### cvm_ops_ri64 (function) `int64_t cvm_ops_ri64(const uint8_t *code, size_t size, size_t off)`
-- Defined: `cvm2/cvm_ops.c:97`
+- Defined: `cvm2/cvm_ops.c:98`
 - Depends on: `cvm2/cvm.h`, `cvm2/cvm_ops.h`
 
 ## cvm2/cvm_ops.h
@@ -2232,24 +2232,24 @@
 
 ### check_static (function) `static int check_static(FuncCtx *fc, size_t off, uint8_t op,
                         size_t next_ip)`
-- Defined: `cvm2/cvm_val_main.c:176`
+- Defined: `cvm2/cvm_val_main.c:179`
 - Depends on: `cvm2/cvm_ops.h`, `cvm2/cvm_view.h`
 
 ### analyze_stack (function) `static int analyze_stack(FuncCtx *fc)`
-- Defined: `cvm2/cvm_val_main.c:354`
+- Defined: `cvm2/cvm_val_main.c:360`
 - Doc: Abstract-interpretation stack balance: each instruction start carries a [lo,hi] interval of possible stack depths; a req
 - Depends on: `cvm2/cvm_ops.h`, `cvm2/cvm_view.h`
 
 ### check_function (function) `static int check_function(FuncCtx *fc, size_t *insn_count)`
-- Defined: `cvm2/cvm_val_main.c:427`
+- Defined: `cvm2/cvm_val_main.c:433`
 - Depends on: `cvm2/cvm_ops.h`, `cvm2/cvm_view.h`
 
 ### cmp_func (function) `static int cmp_func(const void *a, const void *b)`
-- Defined: `cvm2/cvm_val_main.c:442`
+- Defined: `cvm2/cvm_val_main.c:448`
 - Depends on: `cvm2/cvm_ops.h`, `cvm2/cvm_view.h`
 
 ### main (function) `int main(int argc, char **argv)`
-- Defined: `cvm2/cvm_val_main.c:448`
+- Defined: `cvm2/cvm_val_main.c:454`
 - Depends on: `cvm2/cvm_ops.h`, `cvm2/cvm_view.h`
 
 ### fprintf (function) `fprintf(stderr, "%s: error: %s\n", ctx->path, what);`
@@ -2257,31 +2257,31 @@
 - Depends on: `cvm2/cvm_ops.h`, `cvm2/cvm_view.h`
 
 ### snprintf (function) `snprintf(msg, sizeof(msg), "local index %u out of range (locals=%u) at 0x%04zx", i, cap, off);`
-- Defined: `cvm2/cvm_val_main.c:188`
+- Defined: `cvm2/cvm_val_main.c:191`
 - Depends on: `cvm2/cvm_ops.h`, `cvm2/cvm_view.h`
 
 ### fseek (function) `fseek(f, 0, SEEK_END);`
-- Defined: `cvm2/cvm_val_main.c:465`
+- Defined: `cvm2/cvm_val_main.c:471`
 - Depends on: `cvm2/cvm_ops.h`, `cvm2/cvm_view.h`
 
 ### rewind (function) `rewind(f);`
-- Defined: `cvm2/cvm_val_main.c:467`
+- Defined: `cvm2/cvm_val_main.c:473`
 - Depends on: `cvm2/cvm_ops.h`, `cvm2/cvm_view.h`
 
 ### fclose (function) `fclose(f);`
-- Defined: `cvm2/cvm_val_main.c:470`
+- Defined: `cvm2/cvm_val_main.c:476`
 - Depends on: `cvm2/cvm_ops.h`, `cvm2/cvm_view.h`
 
 ### free (function) `free(buf);`
-- Defined: `cvm2/cvm_val_main.c:481`
+- Defined: `cvm2/cvm_val_main.c:487`
 - Depends on: `cvm2/cvm_ops.h`, `cvm2/cvm_view.h`
 
 ### qsort (function) `qsort(sorted, v.num_functions, CVM_FUNC_ENTRY_SIZE, cmp_func);`
-- Defined: `cvm2/cvm_val_main.c:589`
+- Defined: `cvm2/cvm_val_main.c:595`
 - Depends on: `cvm2/cvm_ops.h`, `cvm2/cvm_view.h`
 
 ### printf (function) `printf("function %s: %zu instructions, stack balanced\n", fn, insn);`
-- Defined: `cvm2/cvm_val_main.c:633`
+- Defined: `cvm2/cvm_val_main.c:639`
 - Depends on: `cvm2/cvm_ops.h`, `cvm2/cvm_view.h`
 
 ## cvm2/cvm_view.c

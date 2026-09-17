@@ -1,12 +1,12 @@
 {
   "tool": "readmenator",
-  "generated_at": "2026-09-15T01:43:16Z",
+  "generated_at": "2026-09-17T03:26:17Z",
   "project_root": "/home/grisun0/src_note/c/boot/repo/cvm",
   "files": 26,
   "symbols": 696,
   "imports": 94,
   "resolved_imports": 31,
-  "security_findings": 0,
+  "security_findings": 1,
   "languages": {
     "c": 14,
     "h": 8,
@@ -16,6 +16,7 @@
   "entrypoints": [],
   "start_here": "INDEX.md",
   "workflow": [
+    "ls *.md readmenator-*/  # orient: docs first, ignore build noise",
     "grep -n '<keyword>' INDEX.md",
     "cat KB_<subsystem>.md",
     "grep -n '<file>' ARCHITECTURE.md SYMBOLS.md"

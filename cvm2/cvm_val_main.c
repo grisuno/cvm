@@ -148,6 +148,9 @@ static int stack_effect(const CvmModuleView *v, size_t off, uint8_t op,
         ef->dhi = -(int32_t)na + 1;
         return 0;
     }
+    case OP_CALL_INDIRECT:
+        ef->need = 1; ef->dlo = -1; ef->dhi = -1;
+        return 0;
     case OP_RET:
         ef->need = 0;
         ef->dlo = -1; ef->dhi = -1;
@@ -256,6 +259,9 @@ static int check_static(FuncCtx *fc, size_t off, uint8_t op,
             val_fun_err(fc, msg);
             return -1;
         }
+        break;
+    }
+    case OP_CALL_INDIRECT: {
         break;
     }
     case OP_JMP: case OP_JZ: case OP_JNZ: {

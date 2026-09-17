@@ -110,6 +110,7 @@ typedef enum {
     OP_CALL         = 0x60,
     OP_RET          = 0x61,
     OP_CALL_NATIVE  = 0x62,
+    OP_CALL_INDIRECT = 0x63,
     OP_LOAD16       = 0x6F,
     OP_STORE16      = 0x6E,
     OP_LOAD8        = 0x70,

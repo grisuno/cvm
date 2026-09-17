@@ -1193,6 +1193,18 @@ int cvm_step(CvmState *vm) {
             break;
         }
 
+        case OP_CALL_INDIRECT: {
+            uint64_t t; rc = vo(vm, &t); if (rc) break;
+            uint32_t fi = (uint32_t)t;
+            if (fi >= vm->num_funcs) { rc = CVM_ERR_BAD_FUNC; break; }
+            CvmFuncEntry *fe = &vm->funcs[fi];
+            rc = push_frame(vm, fe->num_locals > 0 ? fe->num_locals : 16,
+                            vm->ip, fi);
+            if (rc) break;
+            vm->ip = fe->code_off;
+            break;
+        }
+
         case OP_RET: {
             uint64_t rv = 0;
             if (vm->sp > 0) rv = vm->slots[--vm->sp];

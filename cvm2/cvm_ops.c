@@ -45,6 +45,7 @@ static const CvmOpInfo op_infos[] = {
     { OP_JZ,           CVM_OPK_REL,   5, "JZ" },
     { OP_JNZ,          CVM_OPK_REL,   5, "JNZ" },
     { OP_CALL,         CVM_OPK_U32U8, 6, "CALL" },
+    { OP_CALL_INDIRECT, CVM_OPK_NONE, 1, "CALL_INDIRECT" },
     { OP_RET,          CVM_OPK_NONE,  1, "RET" },
     { OP_CALL_NATIVE,  CVM_OPK_U32U8, 6, "CALL_NATIVE" },
     { OP_LOAD16,       CVM_OPK_NONE,  1, "LOAD16" },

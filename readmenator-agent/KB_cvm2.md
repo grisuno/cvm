@@ -94,9 +94,9 @@
   - `cvm_profile_begin` (function, line 1023) `int cvm_profile_begin(CvmState *vm)`
   - `cvm_profile_end` (function, line 1033) `void cvm_profile_end(CvmState *vm)`
   - `cvm_step` (function, line 1039) `int cvm_step(CvmState *vm)`
-  - `cvm_exit_code` (function, line 1326) `int64_t cvm_exit_code(const CvmState *vm)`
-  - `cvm_instruction_count` (function, line 1328) `uint64_t cvm_instruction_count(const CvmState *vm)`
-  - `main` (function, line 1331) `int main(int argc, char *argv[])`
+  - `cvm_exit_code` (function, line 1338) `int64_t cvm_exit_code(const CvmState *vm)`
+  - `cvm_instruction_count` (function, line 1340) `uint64_t cvm_instruction_count(const CvmState *vm)`
+  - `main` (function, line 1343) `int main(int argc, char *argv[])`
   - `memset` (function, line 88) `memset(vm->op_counts, 0, sizeof(vm->op_counts));`
   - `free` (function, line 99) `free(vm->slots);`
   - `memcpy` (function, line 241) `memcpy(vm->globals + off, &v, 8);`
@@ -123,36 +123,36 @@
 - Layer: utility
 - Language: h
 - Symbols:
-  - `CvmFuncEntry` (struct, line 151)
-  - `CvmGlobalEntry` (struct, line 159)
-  - `CvmNativeEntry` (struct, line 164)
-  - `CvmStringEntry` (struct, line 168)
-  - `CvmConfig` (struct, line 173)
-  - `CvmFrame` (struct, line 186)
-  - `CvmNative` (struct, line 195)
-  - `CvmBreakpoint` (struct, line 202)
-  - `CvmState` (struct, line 206)
-  - `int64_t` (function, line 192) `typedef int64_t (*CvmNativeFn)(void *vm, int argc, uint64_t *argv);`
-  - `cvm_config_default` (function, line 242) `CvmConfig cvm_config_default(void);`
-  - `cvm_create` (function, line 244) `CvmState *cvm_create(const CvmConfig *config);`
-  - `cvm_destroy` (function, line 245) `void cvm_destroy(CvmState *vm);`
-  - `cvm_load_module` (function, line 246) `int cvm_load_module(CvmState *vm, const uint8_t *data, size_t size);`
-  - `cvm_load_module_file` (function, line 247) `int cvm_load_module_file(CvmState *vm, const char *path);`
-  - `cvm_run` (function, line 248) `int cvm_run(CvmState *vm);`
-  - `cvm_continue` (function, line 249) `int cvm_continue(CvmState *vm);`
-  - `cvm_step` (function, line 250) `int cvm_step(CvmState *vm);`
-  - `cvm_exit_code` (function, line 251) `int64_t cvm_exit_code(const CvmState *vm);`
-  - `cvm_instruction_count` (function, line 252) `uint64_t cvm_instruction_count(const CvmState *vm);`
-  - `cvm_strerror` (function, line 253) `const char *cvm_strerror(int error_code);`
-  - `cvm_register_native` (function, line 254) `int cvm_register_native(CvmState *vm, const char *name, CvmNativeFn fn);`
-  - `cvm_set_args` (function, line 256) `int cvm_set_args(CvmState *vm, int argc, char **argv);`
-  - `cvm_heap_alloc` (function, line 257) `void *cvm_heap_alloc(CvmState *vm, size_t size);`
-  - `cvm_break_set` (function, line 258) `int cvm_break_set(CvmState *vm, size_t ip);`
-  - `cvm_break_clear` (function, line 260) `int cvm_break_clear(CvmState *vm, size_t ip);`
-  - `cvm_break_clear_all` (function, line 261) `void cvm_break_clear_all(CvmState *vm);`
-  - `cvm_break_hit` (function, line 262) `int cvm_break_hit(const CvmState *vm);`
-  - `cvm_profile_begin` (function, line 263) `int cvm_profile_begin(CvmState *vm);`
-  - `cvm_profile_end` (function, line 264) `void cvm_profile_end(CvmState *vm);`
+  - `CvmFuncEntry` (struct, line 152)
+  - `CvmGlobalEntry` (struct, line 160)
+  - `CvmNativeEntry` (struct, line 165)
+  - `CvmStringEntry` (struct, line 169)
+  - `CvmConfig` (struct, line 174)
+  - `CvmFrame` (struct, line 187)
+  - `CvmNative` (struct, line 196)
+  - `CvmBreakpoint` (struct, line 203)
+  - `CvmState` (struct, line 207)
+  - `int64_t` (function, line 193) `typedef int64_t (*CvmNativeFn)(void *vm, int argc, uint64_t *argv);`
+  - `cvm_config_default` (function, line 243) `CvmConfig cvm_config_default(void);`
+  - `cvm_create` (function, line 245) `CvmState *cvm_create(const CvmConfig *config);`
+  - `cvm_destroy` (function, line 246) `void cvm_destroy(CvmState *vm);`
+  - `cvm_load_module` (function, line 247) `int cvm_load_module(CvmState *vm, const uint8_t *data, size_t size);`
+  - `cvm_load_module_file` (function, line 248) `int cvm_load_module_file(CvmState *vm, const char *path);`
+  - `cvm_run` (function, line 249) `int cvm_run(CvmState *vm);`
+  - `cvm_continue` (function, line 250) `int cvm_continue(CvmState *vm);`
+  - `cvm_step` (function, line 251) `int cvm_step(CvmState *vm);`
+  - `cvm_exit_code` (function, line 252) `int64_t cvm_exit_code(const CvmState *vm);`
+  - `cvm_instruction_count` (function, line 253) `uint64_t cvm_instruction_count(const CvmState *vm);`
+  - `cvm_strerror` (function, line 254) `const char *cvm_strerror(int error_code);`
+  - `cvm_register_native` (function, line 255) `int cvm_register_native(CvmState *vm, const char *name, CvmNativeFn fn);`
+  - `cvm_set_args` (function, line 257) `int cvm_set_args(CvmState *vm, int argc, char **argv);`
+  - `cvm_heap_alloc` (function, line 258) `void *cvm_heap_alloc(CvmState *vm, size_t size);`
+  - `cvm_break_set` (function, line 259) `int cvm_break_set(CvmState *vm, size_t ip);`
+  - `cvm_break_clear` (function, line 261) `int cvm_break_clear(CvmState *vm, size_t ip);`
+  - `cvm_break_clear_all` (function, line 262) `void cvm_break_clear_all(CvmState *vm);`
+  - `cvm_break_hit` (function, line 263) `int cvm_break_hit(const CvmState *vm);`
+  - `cvm_profile_begin` (function, line 264) `int cvm_profile_begin(CvmState *vm);`
+  - `cvm_profile_end` (function, line 265) `void cvm_profile_end(CvmState *vm);`
   - `CvmOpcode` (variable, line 38) `extern "C" { #endif #define CVM_MAGIC_0 0x43 #define CVM_MAGIC_1 0x56 #define CVM_MAGIC_2 0x4D #define CVM_MAGIC_3 0x04 #define CVM_VERSION_MAJOR 1 #define CVM_VERSION_MINOR 0 #define CVM_MODULE_HEADE`
   - `CVM_H` (macro, line 28) `#define CVM_H`
   - `CVM_MAGIC_0` (macro, line 40) `#define CVM_MAGIC_0`
@@ -180,7 +180,7 @@
   - `CVM_DATA_RET` (macro, line 65) `#define CVM_DATA_RET`
   - `CVM_DATA_STACK_SIZE` (macro, line 66) `#define CVM_DATA_STACK_SIZE`
   - `CVM_DATA_STACK_BASE` (macro, line 70) `#define CVM_DATA_STACK_BASE`
-  - `CVM_MAX_BREAKPOINTS` (macro, line 199) `#define CVM_MAX_BREAKPOINTS`
+  - `CVM_MAX_BREAKPOINTS` (macro, line 200) `#define CVM_MAX_BREAKPOINTS`
 - Imported by: `cvm2/cvm.c`, `cvm2/cvm_dbg_main.c`, `cvm2/cvm_jit.h`, `cvm2/cvm_jit_help.h`, `cvm2/cvm_ops.c`, `cvm2/cvm_view.h`, `cvm2/gen_fib_cvm.c`, `cvm2/gen_minimal.c`
 
 ## cvm2/cvm_dbg_main.c
@@ -297,15 +297,15 @@
   - `error` (function, line 267) `* keeps executing dead code after the stop: error() -> exit() returns
  * into the middle of the f...`
   - `emit_opcode` (function, line 301) `static int emit_opcode(JitCtx *ctx, size_t bc_ip)`
-  - `jit_apply_patches_local` (function, line 1156) `static void jit_apply_patches_local(JitBuf *b, const JitPatches *p)`
-  - `cvm_jit_compile_func` (function, line 1174) `void *cvm_jit_compile_func(CvmState *vm, uint32_t func_idx)`
-  - `cvm_jit_compile_module` (function, line 1281) `int cvm_jit_compile_module(CvmState *vm)`
-  - `cvm_jit_lookup` (function, line 1297) `void *cvm_jit_lookup(CvmState *vm, uint32_t func_idx)`
-  - `find_func_for_ip` (function, line 1310) `static uint32_t find_func_for_ip(const CvmState *vm)`
-  - `cvm_jit_exec_one` (function, line 1318) `void cvm_jit_exec_one(CvmState *vm)`
-  - `cvm_jit_run` (function, line 1348) `int cvm_jit_run(CvmState *vm)`
-  - `cvm_jit_stats` (function, line 1409) `void cvm_jit_stats(const CvmState *vm)`
-  - `cvm_jit_dump` (function, line 1420) `void cvm_jit_dump(const CvmState *vm)`
+  - `jit_apply_patches_local` (function, line 1184) `static void jit_apply_patches_local(JitBuf *b, const JitPatches *p)`
+  - `cvm_jit_compile_func` (function, line 1202) `void *cvm_jit_compile_func(CvmState *vm, uint32_t func_idx)`
+  - `cvm_jit_compile_module` (function, line 1309) `int cvm_jit_compile_module(CvmState *vm)`
+  - `cvm_jit_lookup` (function, line 1325) `void *cvm_jit_lookup(CvmState *vm, uint32_t func_idx)`
+  - `find_func_for_ip` (function, line 1338) `static uint32_t find_func_for_ip(const CvmState *vm)`
+  - `cvm_jit_exec_one` (function, line 1346) `void cvm_jit_exec_one(CvmState *vm)`
+  - `cvm_jit_run` (function, line 1376) `int cvm_jit_run(CvmState *vm)`
+  - `cvm_jit_stats` (function, line 1437) `void cvm_jit_stats(const CvmState *vm)`
+  - `cvm_jit_dump` (function, line 1448) `void cvm_jit_dump(const CvmState *vm)`
   - `jit_buf_init` (function, line 39) `jit_buf_init(&jit->buf, 1024 * 1024);`
   - `cvm_jit_offsets_init` (function, line 40) `cvm_jit_offsets_init(&jit->offsets);`
   - `jit_buf_free` (function, line 50) `jit_buf_free(&jit->buf);`
@@ -357,11 +357,11 @@
   - `emit_jmp_buf` (function, line 620) `emit_jmp_buf(b, target_bc, ctx->patches);`
   - `emit_jcc_buf` (function, line 632) `emit_jcc_buf(b, CC_E, target_bc, ctx->patches);`
   - `emit_bail_if_stopped` (function, line 675) `emit_bail_if_stopped(b);`
-  - `emit_mov_mem_imm32` (function, line 1134) `emit_mov_mem_imm32(b, JIT_REG_VM, (int32_t)offsetof(CvmState, running), 0);`
-  - `fprintf` (function, line 1288) `fprintf(stderr, "cvm jit: failed to compile function %u\n", i);`
-  - `void` (function, line 1331) `typedef void (*JitFn)(CvmState *);`
-  - `cvm_step` (function, line 1342) `extern int cvm_step(CvmState *);`
-  - `cvm_run` (function, line 1352) `extern int cvm_run(CvmState *);`
+  - `emit_mov_mem_imm32` (function, line 1162) `emit_mov_mem_imm32(b, JIT_REG_VM, (int32_t)offsetof(CvmState, running), 0);`
+  - `fprintf` (function, line 1316) `fprintf(stderr, "cvm jit: failed to compile function %u\n", i);`
+  - `void` (function, line 1359) `typedef void (*JitFn)(CvmState *);`
+  - `cvm_step` (function, line 1370) `extern int cvm_step(CvmState *);`
+  - `cvm_run` (function, line 1380) `extern int cvm_run(CvmState *);`
   - `JIT_STATE` (macro, line 30) `#define JIT_STATE(vm)`
   - `EMIT_CMP` (macro, line 552) `#define EMIT_CMP(cc_signed)`
   - `EMIT_CMP_SIGNED` (macro, line 573) `#define EMIT_CMP_SIGNED(cc)`
@@ -611,13 +611,13 @@
 - Layer: utility
 - Language: c
 - Symbols:
-  - `cvm_op_info` (function, line 68) `const CvmOpInfo *cvm_op_info(uint8_t opcode)`
-  - `cvm_op_name` (function, line 74) `const char *cvm_op_name(uint8_t opcode)`
-  - `cvm_ops_r8` (function, line 79) `int cvm_ops_r8(const uint8_t *code, size_t size, size_t off, uint8_t *out)`
-  - `cvm_ops_ru32` (function, line 85) `uint32_t cvm_ops_ru32(const uint8_t *code, size_t size, size_t off)`
-  - `cvm_ops_ri32` (function, line 93) `int32_t cvm_ops_ri32(const uint8_t *code, size_t size, size_t off)`
-  - `cvm_ops_ri64` (function, line 97) `int64_t cvm_ops_ri64(const uint8_t *code, size_t size, size_t off)`
-  - `OP_INFOS_LEN` (macro, line 66) `#define OP_INFOS_LEN`
+  - `cvm_op_info` (function, line 69) `const CvmOpInfo *cvm_op_info(uint8_t opcode)`
+  - `cvm_op_name` (function, line 75) `const char *cvm_op_name(uint8_t opcode)`
+  - `cvm_ops_r8` (function, line 80) `int cvm_ops_r8(const uint8_t *code, size_t size, size_t off, uint8_t *out)`
+  - `cvm_ops_ru32` (function, line 86) `uint32_t cvm_ops_ru32(const uint8_t *code, size_t size, size_t off)`
+  - `cvm_ops_ri32` (function, line 94) `int32_t cvm_ops_ri32(const uint8_t *code, size_t size, size_t off)`
+  - `cvm_ops_ri64` (function, line 98) `int64_t cvm_ops_ri64(const uint8_t *code, size_t size, size_t off)`
+  - `OP_INFOS_LEN` (macro, line 67) `#define OP_INFOS_LEN`
 - Depends on: `cvm2/cvm.h`, `cvm2/cvm_ops.h`
 
 ## cvm2/cvm_ops.h
@@ -651,20 +651,20 @@
   - `dr_merge` (function, line 87) `static int dr_merge(DepthRange *d, int32_t lo2, int32_t hi2)`
   - `stack_effect` (function, line 102) `static int stack_effect(const CvmModuleView *v, size_t off, uint8_t op,
                         S...`
-  - `check_static` (function, line 176) `static int check_static(FuncCtx *fc, size_t off, uint8_t op,
+  - `check_static` (function, line 179) `static int check_static(FuncCtx *fc, size_t off, uint8_t op,
                         size_t next_ip)`
-  - `analyze_stack` (function, line 354) `static int analyze_stack(FuncCtx *fc)`
-  - `check_function` (function, line 427) `static int check_function(FuncCtx *fc, size_t *insn_count)`
-  - `cmp_func` (function, line 442) `static int cmp_func(const void *a, const void *b)`
-  - `main` (function, line 448) `int main(int argc, char **argv)`
+  - `analyze_stack` (function, line 360) `static int analyze_stack(FuncCtx *fc)`
+  - `check_function` (function, line 433) `static int check_function(FuncCtx *fc, size_t *insn_count)`
+  - `cmp_func` (function, line 448) `static int cmp_func(const void *a, const void *b)`
+  - `main` (function, line 454) `int main(int argc, char **argv)`
   - `fprintf` (function, line 58) `fprintf(stderr, "%s: error: %s\n", ctx->path, what);`
-  - `snprintf` (function, line 188) `snprintf(msg, sizeof(msg), "local index %u out of range (locals=%u) at 0x%04zx", i, cap, off);`
-  - `fseek` (function, line 465) `fseek(f, 0, SEEK_END);`
-  - `rewind` (function, line 467) `rewind(f);`
-  - `fclose` (function, line 470) `fclose(f);`
-  - `free` (function, line 481) `free(buf);`
-  - `qsort` (function, line 589) `qsort(sorted, v.num_functions, CVM_FUNC_ENTRY_SIZE, cmp_func);`
-  - `printf` (function, line 633) `printf("function %s: %zu instructions, stack balanced\n", fn, insn);`
+  - `snprintf` (function, line 191) `snprintf(msg, sizeof(msg), "local index %u out of range (locals=%u) at 0x%04zx", i, cap, off);`
+  - `fseek` (function, line 471) `fseek(f, 0, SEEK_END);`
+  - `rewind` (function, line 473) `rewind(f);`
+  - `fclose` (function, line 476) `fclose(f);`
+  - `free` (function, line 487) `free(buf);`
+  - `qsort` (function, line 595) `qsort(sorted, v.num_functions, CVM_FUNC_ENTRY_SIZE, cmp_func);`
+  - `printf` (function, line 639) `printf("function %s: %zu instructions, stack balanced\n", fn, insn);`
   - `CVM_VAL_MAX_FUNCS` (macro, line 14) `#define CVM_VAL_MAX_FUNCS`
   - `CVM_VAL_MAX_GLOBALS` (macro, line 16) `#define CVM_VAL_MAX_GLOBALS`
   - `CVM_VAL_MAX_NATIVES` (macro, line 17) `#define CVM_VAL_MAX_NATIVES`
@@ -753,6 +753,7 @@
 
 ## cvm2/gen_test.py
 - Layer: testing
+- Doc: Generate a minimal .cvm that pushes 42 and halts. No function calls.
 - Language: py
 - Symbols:
   - `emit_byte` (function, line 7) `def emit_byte(b)`

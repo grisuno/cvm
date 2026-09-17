@@ -682,6 +682,34 @@ static int emit_opcode(JitCtx *ctx, size_t bc_ip) {
         break;
     }
 
+    case OP_CALL_INDIRECT: {
+        /* Target function index rides the operand stack (pushed by the
+         * caller); argument registers travel via the GSLOT_ARGS area exactly
+         * like OP_CALL with zero stack args. The callee reads esi only, so
+         * the full 64-bit pop is safe: high bits are ignored. */
+        emit_stack_pop(b);  /* rax = target index */
+        emit_mov_reg_reg(b, JIT_SCRATCH2, JIT_SCRATCH1);
+        emit_save_sp(b);
+        emit_mov_reg_imm32(b, XAX, (int32_t)ip);
+        emit_mov32_mem_reg(b, JIT_REG_VM, (int32_t)offsetof(CvmState, ip), XAX);
+        emit_mov_reg_reg(b, XDI, JIT_REG_VM);
+        emit_mov_reg_reg(b, XSI, JIT_SCRATCH2);
+        emit_mov_reg_imm32(b, XDX, 0);
+        emit_call_abs(b, (void *)(uintptr_t)cvm_jit_call, X10);
+        emit_test_reg_reg(b, XAX, XAX);
+        size_t patch = emit_jcc_rel32(b, CC_NE, 0);
+        emit_mov_reg_reg(b, XDI, JIT_REG_VM);
+        emit_call_abs(b, (void *)(uintptr_t)cvm_jit_exec_one, X10);
+        emit_restore_sp(b);
+        emit_bail_if_stopped(b);
+        {
+            size_t target = b->size;
+            int32_t rel = (int32_t)(target - (patch + 4));
+            memcpy(b->code + patch, &rel, 4);
+        }
+        break;
+    }
+
     case OP_RET: {
         /* Pop return value from stack, but only if the stack is non-empty.
          * A void function can return with sp==0 (the interpreter guards with
