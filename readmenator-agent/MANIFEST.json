@@ -1,12 +1,12 @@
 {
   "tool": "readmenator",
-  "generated_at": "2026-09-17T03:26:17Z",
-  "project_root": "/home/grisun0/src_note/c/boot/repo/cvm",
+  "generated_at": "2026-09-18T06:44:55Z",
+  "project_root": "/tmp/push_cvm_20260918_033829",
   "files": 26,
-  "symbols": 696,
+  "symbols": 565,
   "imports": 94,
   "resolved_imports": 31,
-  "security_findings": 1,
+  "security_findings": 0,
   "languages": {
     "c": 14,
     "h": 8,
