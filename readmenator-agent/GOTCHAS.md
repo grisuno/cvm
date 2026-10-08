@@ -4,29 +4,16 @@
 
 These files have the most connections. Changes here have high blast radius.
 
-- `cvm.h` (score: 22.80, imported by 2 files)
-- `cvm2/cvm.h` (score: 21.60, imported by 8 files)
-- `cvm2/cvm_jit.h` (score: 18.60, imported by 4 files)
+- `cvm.h` (score: 22.80)
+- `cvm2/cvm.h` (score: 21.60)
+- `cvm2/cvm_jit.h` (score: 18.60)
 - `cvm2/cvm.c` (score: 16.40)
-- `cvm2/cvm_view.h` (score: 14.90, imported by 5 files)
+- `cvm2/cvm_view.h` (score: 14.90)
 - `cvm2/cvm_dbg_main.c` (score: 12.10)
-- `cvm2/cvm_jit_x86.h` (score: 11.10, imported by 2 files)
-- `cvm2/cvm_ops.h` (score: 10.90, imported by 5 files)
-- `cvm2/cvm_jit_help.h` (score: 9.30, imported by 2 files)
+- `cvm2/cvm_jit_x86.h` (score: 11.10)
+- `cvm2/cvm_ops.h` (score: 10.90)
+- `cvm2/cvm_jit_help.h` (score: 9.30)
 - `cvm2/cvm_jit_x86.c` (score: 9.30)
-
-## Blast Radius (change impact)
-
-Editing these files can break the listed number of dependents. Run their tests after any change.
-
-- `cvm2/cvm.h` -- 8 direct, 15 total dependents
-- `cvm2/cvm_jit_x86.h` -- 2 direct, 6 total dependents
-- `cvm2/cvm_view.h` -- 5 direct, 6 total dependents
-- `cvm2/cvm_jit_help.h` -- 2 direct, 5 total dependents
-- `cvm2/cvm_ops.h` -- 5 direct, 5 total dependents
-- `cvm2/cvm_jit.h` -- 4 direct, 4 total dependents
-- `cvm2/cvm_dis.h` -- 3 direct, 3 total dependents
-- `cvm.h` -- 2 direct, 2 total dependents
 
 ## Hotspots (complexity + centrality)
 
