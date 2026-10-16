@@ -1,0 +1,302 @@
+{
+ "schema_version": 1,
+ "format": "jsonl",
+ "meta": {
+  "modules": 23,
+  "entities": 415,
+  "languages": {
+   "c": 14,
+   "h": 8,
+   "sh": 1
+  },
+  "kinds": {
+   "function": 270,
+   "macro": 84,
+   "module": 23,
+   "struct": 32,
+   "type_alias": 1,
+   "variable": 5
+  },
+  "truncated": false,
+  "skipped_files": 3,
+  "privacy_mode": false
+ },
+ "coverage": {
+  "overall": {
+   "documented": 196,
+   "total": 410,
+   "percent": 47.8
+  },
+  "by_kind": {
+   "function": {
+    "documented": 183,
+    "total": 270,
+    "percent": 67.8
+   },
+   "macro": {
+    "documented": 7,
+    "total": 84,
+    "percent": 8.3
+   },
+   "module": {
+    "documented": 0,
+    "total": 23,
+    "percent": 0.0
+   },
+   "struct": {
+    "documented": 6,
+    "total": 32,
+    "percent": 18.8
+   },
+   "type_alias": {
+    "documented": 0,
+    "total": 1,
+    "percent": 0.0
+   }
+  },
+  "by_module": {
+   "cvm.c": {
+    "documented": 5,
+    "total": 12,
+    "percent": 41.7
+   },
+   "cvm.h": {
+    "documented": 5,
+    "total": 28,
+    "percent": 17.9
+   },
+   "cvm2/cvm.c": {
+    "documented": 5,
+    "total": 35,
+    "percent": 14.3
+   },
+   "cvm2/cvm.h": {
+    "documented": 2,
+    "total": 55,
+    "percent": 3.6
+   },
+   "cvm2/cvm_dbg_main.c": {
+    "documented": 0,
+    "total": 4,
+    "percent": 0.0
+   },
+   "cvm2/cvm_dis.c": {
+    "documented": 3,
+    "total": 5,
+    "percent": 60.0
+   },
+   "cvm2/cvm_dis.h": {
+    "documented": 3,
+    "total": 4,
+    "percent": 75.0
+   },
+   "cvm2/cvm_dis_main.c": {
+    "documented": 0,
+    "total": 2,
+    "percent": 0.0
+   },
+   "cvm2/cvm_jit.c": {
+    "documented": 11,
+    "total": 18,
+    "percent": 61.1
+   },
+   "cvm2/cvm_jit.h": {
+    "documented": 9,
+    "total": 25,
+    "percent": 36.0
+   },
+   "cvm2/cvm_jit_help.c": {
+    "documented": 8,
+    "total": 12,
+    "percent": 66.7
+   },
+   "cvm2/cvm_jit_help.h": {
+    "documented": 9,
+    "total": 12,
+    "percent": 75.0
+   },
+   "cvm2/cvm_jit_x86.c": {
+    "documented": 57,
+    "total": 70,
+    "percent": 81.4
+   },
+   "cvm2/cvm_jit_x86.h": {
+    "documented": 60,
+    "total": 71,
+    "percent": 84.5
+   },
+   "cvm2/cvm_ops.c": {
+    "documented": 3,
+    "total": 8,
+    "percent": 37.5
+   },
+   "cvm2/cvm_ops.h": {
+    "documented": 3,
+    "total": 8,
+    "percent": 37.5
+   },
+   "cvm2/cvm_val_main.c": {
+    "documented": 3,
+    "total": 15,
+    "percent": 20.0
+   },
+   "cvm2/cvm_view.c": {
+    "documented": 5,
+    "total": 7,
+    "percent": 71.4
+   },
+   "cvm2/cvm_view.h": {
+    "documented": 5,
+    "total": 8,
+    "percent": 62.5
+   },
+   "cvm2/deepseek_bash_20260808_653f26.sh": {
+    "documented": 0,
+    "total": 1,
+    "percent": 0.0
+   },
+   "cvm2/gen_fib_cvm.c": {
+    "documented": 0,
+    "total": 5,
+    "percent": 0.0
+   },
+   "cvm2/gen_minimal.c": {
+    "documented": 0,
+    "total": 2,
+    "percent": 0.0
+   },
+   "gen_fib_cvm.c": {
+    "documented": 0,
+    "total": 3,
+    "percent": 0.0
+   }
+  }
+ },
+ "modules": [
+  {
+   "uid": "cvm.c",
+   "path": "modules/cvm.c.jsonl",
+   "entities": 12
+  },
+  {
+   "uid": "cvm.h",
+   "path": "modules/cvm.h.jsonl",
+   "entities": 28
+  },
+  {
+   "uid": "cvm2/cvm.c",
+   "path": "modules/cvm2.cvm.c.jsonl",
+   "entities": 35
+  },
+  {
+   "uid": "cvm2/cvm.h",
+   "path": "modules/cvm2.cvm.h.jsonl",
+   "entities": 56
+  },
+  {
+   "uid": "cvm2/cvm_dbg_main.c",
+   "path": "modules/cvm2.cvm_dbg_main.c.jsonl",
+   "entities": 4
+  },
+  {
+   "uid": "cvm2/cvm_dis.c",
+   "path": "modules/cvm2.cvm_dis.c.jsonl",
+   "entities": 5
+  },
+  {
+   "uid": "cvm2/cvm_dis.h",
+   "path": "modules/cvm2.cvm_dis.h.jsonl",
+   "entities": 4
+  },
+  {
+   "uid": "cvm2/cvm_dis_main.c",
+   "path": "modules/cvm2.cvm_dis_main.c.jsonl",
+   "entities": 2
+  },
+  {
+   "uid": "cvm2/cvm_jit.c",
+   "path": "modules/cvm2.cvm_jit.c.jsonl",
+   "entities": 18
+  },
+  {
+   "uid": "cvm2/cvm_jit.h",
+   "path": "modules/cvm2.cvm_jit.h.jsonl",
+   "entities": 26
+  },
+  {
+   "uid": "cvm2/cvm_jit_help.c",
+   "path": "modules/cvm2.cvm_jit_help.c.jsonl",
+   "entities": 12
+  },
+  {
+   "uid": "cvm2/cvm_jit_help.h",
+   "path": "modules/cvm2.cvm_jit_help.h.jsonl",
+   "entities": 13
+  },
+  {
+   "uid": "cvm2/cvm_jit_x86.c",
+   "path": "modules/cvm2.cvm_jit_x86.c.jsonl",
+   "entities": 70
+  },
+  {
+   "uid": "cvm2/cvm_jit_x86.h",
+   "path": "modules/cvm2.cvm_jit_x86.h.jsonl",
+   "entities": 71
+  },
+  {
+   "uid": "cvm2/cvm_ops.c",
+   "path": "modules/cvm2.cvm_ops.c.jsonl",
+   "entities": 8
+  },
+  {
+   "uid": "cvm2/cvm_ops.h",
+   "path": "modules/cvm2.cvm_ops.h.jsonl",
+   "entities": 9
+  },
+  {
+   "uid": "cvm2/cvm_val_main.c",
+   "path": "modules/cvm2.cvm_val_main.c.jsonl",
+   "entities": 15
+  },
+  {
+   "uid": "cvm2/cvm_view.c",
+   "path": "modules/cvm2.cvm_view.c.jsonl",
+   "entities": 7
+  },
+  {
+   "uid": "cvm2/cvm_view.h",
+   "path": "modules/cvm2.cvm_view.h.jsonl",
+   "entities": 9
+  },
+  {
+   "uid": "cvm2/deepseek_bash_20260808_653f26.sh",
+   "path": "modules/cvm2.deepseek_bash_20260808_653f26.sh.jsonl",
+   "entities": 1
+  },
+  {
+   "uid": "cvm2/gen_fib_cvm.c",
+   "path": "modules/cvm2.gen_fib_cvm.c.jsonl",
+   "entities": 5
+  },
+  {
+   "uid": "cvm2/gen_minimal.c",
+   "path": "modules/cvm2.gen_minimal.c.jsonl",
+   "entities": 2
+  },
+  {
+   "uid": "gen_fib_cvm.c",
+   "path": "modules/gen_fib_cvm.c.jsonl",
+   "entities": 3
+  }
+ ],
+ "warnings": {
+  "path": "warnings.jsonl",
+  "total": 214
+ },
+ "usage": [
+  "grep -h '\"name\":\"<Name>\"' readmenator-apidocs/api/modules/*.jsonl",
+  "grep -h '\"qualname\":\"<Owner.method>\"' readmenator-apidocs/api/modules/*.jsonl",
+  "cat readmenator-apidocs/api/modules/<module-slug>.jsonl",
+  "grep -h '\"code\":\"DOC001\"' readmenator-apidocs/api/warnings.jsonl"
+ ]
+}

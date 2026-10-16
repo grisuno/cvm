@@ -1,10 +1,10 @@
 {
   "tool": "readmenator",
   "schema_version": 2,
-  "generated_at": "2026-10-16T23:42:15Z",
+  "generated_at": "2026-10-16T23:51:59Z",
   "project_root": ".",
   "project_name": "cvm",
-  "git_commit": "f18a832c52b6c14d4bf6e019defecfda9a5c248a",
+  "git_commit": "f135009afaf5a438e17781f8e362dbf175c8dd0b",
   "git_branch": "main",
   "source_fingerprint": "052e51b1dda10ca4ae03ccfe2c5e08a44998cd5e9f8d10d6b83a2324e0ad8718",
   "freshness_check": "readmenator . fresh  # exit 0 = docs match sources, exit 1 = run: readmenator . --rebuild",
@@ -86,6 +86,11 @@
       "path": "KB_root.md",
       "lines": 76,
       "approx_tokens": 1128
+    },
+    {
+      "path": "MEMORY.md",
+      "lines": 79,
+      "approx_tokens": 1158
     },
     {
       "path": "SECURITY.md",
