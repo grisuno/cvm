@@ -1,1 +1,66 @@
-[]
+[
+  {
+    "community_a": 1,
+    "community_b": 0,
+    "connection_type": "depends_on",
+    "explanation": "Extracted import edge crosses communities: cvm2/cvm_dbg_main.c imports cvm2/cvm.h.",
+    "strength": 0.9,
+    "confidence": "EXTRACTED"
+  },
+  {
+    "community_a": 1,
+    "community_b": 2,
+    "connection_type": "depends_on",
+    "explanation": "Extracted import edge crosses communities: cvm2/cvm_dbg_main.c imports cvm2/cvm_ops.h.",
+    "strength": 0.9,
+    "confidence": "EXTRACTED"
+  },
+  {
+    "community_a": 2,
+    "community_b": 0,
+    "connection_type": "depends_on",
+    "explanation": "Extracted import edge crosses communities: cvm2/cvm_jit.c imports cvm2/cvm_jit.h.",
+    "strength": 0.9,
+    "confidence": "EXTRACTED"
+  },
+  {
+    "community_a": 2,
+    "community_b": 0,
+    "connection_type": "bridges",
+    "explanation": "Inferred cross-community bridge: cvm2/cvm_dis.c reaches cvm2/cvm_jit_x86.c in 5 hops.",
+    "strength": 0.5,
+    "confidence": "INFERRED"
+  },
+  {
+    "community_a": 1,
+    "community_b": 0,
+    "connection_type": "bridges",
+    "explanation": "Inferred cross-community bridge: cvm2/cvm_dis.h reaches cvm2/cvm_jit_x86.c in 5 hops.",
+    "strength": 0.5,
+    "confidence": "INFERRED"
+  },
+  {
+    "community_a": 1,
+    "community_b": 0,
+    "connection_type": "bridges",
+    "explanation": "Inferred cross-community bridge: cvm2/cvm_dis_main.c reaches cvm2/cvm_jit_x86.c in 5 hops.",
+    "strength": 0.5,
+    "confidence": "INFERRED"
+  },
+  {
+    "community_a": 0,
+    "community_b": 2,
+    "connection_type": "bridges",
+    "explanation": "Inferred cross-community bridge: cvm2/cvm_jit_x86.c reaches cvm2/cvm_val_main.c in 5 hops.",
+    "strength": 0.5,
+    "confidence": "INFERRED"
+  },
+  {
+    "community_a": 0,
+    "community_b": 1,
+    "connection_type": "bridges",
+    "explanation": "Inferred cross-community bridge: cvm2/cvm_jit_x86.c reaches cvm2/cvm_view.c in 5 hops.",
+    "strength": 0.5,
+    "confidence": "INFERRED"
+  }
+]

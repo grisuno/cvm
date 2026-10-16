@@ -1,0 +1,120 @@
+# Concepts
+
+Nouns map atomically to file sets (EXTRACTED); verbs aggregate structural edges (INFERRED).
+
+- `cvm` | files=23 | mentions=377 | `cvm.c`, `cvm.h`, `cvm2/cvm.c`, `cvm2/cvm.h`, `cvm2/cvm_dbg_main.c`, `cvm2/cvm_dis.c`, `cvm2/cvm_dis.h`, `cvm2/cvm_dis_main.c`, `cvm2/cvm_jit.c`, `cvm2/cvm_jit.h`
+- `cvm2` | files=22 | mentions=22 | `cvm2/cvm.c`, `cvm2/cvm.h`, `cvm2/cvm_dbg_main.c`, `cvm2/cvm_dis.c`, `cvm2/cvm_dis.h`, `cvm2/cvm_dis_main.c`, `cvm2/cvm_jit.c`, `cvm2/cvm_jit.h`, `cvm2/cvm_jit_help.c`, `cvm2/cvm_jit_help.h`
+- `size` | files=12 | mentions=100 | `cvm.c`, `cvm.h`, `cvm2/cvm.c`, `cvm2/cvm.h`, `cvm2/cvm_dis.h`, `cvm2/cvm_jit.c`, `cvm2/cvm_jit.h`, `cvm2/cvm_jit_help.h`, `cvm2/cvm_jit_x86.c`, `cvm2/cvm_jit_x86.h`
+- `code` | files=12 | mentions=48 | `cvm.c`, `cvm2/cvm.c`, `cvm2/cvm.h`, `cvm2/cvm_dis.h`, `cvm2/cvm_jit.c`, `cvm2/cvm_jit.h`, `cvm2/cvm_jit_help.h`, `cvm2/cvm_jit_x86.c`, `cvm2/cvm_jit_x86.h`, `cvm2/cvm_ops.h`
+- `func` | files=11 | mentions=47 | `cvm.h`, `cvm2/cvm.h`, `cvm2/cvm_dbg_main.c`, `cvm2/cvm_jit.c`, `cvm2/cvm_jit.h`, `cvm2/cvm_jit_help.c`, `cvm2/cvm_jit_help.h`, `cvm2/cvm_jit_x86.h`, `cvm2/cvm_val_main.c`, `cvm2/cvm_view.c`
+- `emit` | files=10 | mentions=370 | `cvm.c`, `cvm.h`, `cvm2/cvm_dbg_main.c`, `cvm2/cvm_dis.h`, `cvm2/cvm_jit.c`, `cvm2/cvm_jit_x86.c`, `cvm2/cvm_jit_x86.h`, `cvm2/gen_fib_cvm.c`, `cvm2/gen_minimal.c`, `cvm2/gen_test.py`
+- `module` | files=10 | mentions=45 | `cvm.c`, `cvm.h`, `cvm2/cvm.c`, `cvm2/cvm.h`, `cvm2/cvm_dis.c`, `cvm2/cvm_dis.h`, `cvm2/cvm_jit.c`, `cvm2/cvm_jit.h`, `cvm2/cvm_view.h`, `cvm2/test.sh`
+- `int` | files=9 | mentions=278 | `cvm.c`, `cvm.h`, `cvm2/cvm.c`, `cvm2/cvm_dis.h`, `cvm2/cvm_jit.c`, `cvm2/cvm_jit.h`, `cvm2/cvm_jit_x86.c`, `cvm2/cvm_jit_x86.h`, `cvm2/cvm_view.h`
+- `native` | files=9 | mentions=86 | `cvm.c`, `cvm.h`, `cvm2/cvm.c`, `cvm2/cvm.h`, `cvm2/cvm_jit.c`, `cvm2/cvm_jit.h`, `cvm2/cvm_jit_help.c`, `cvm2/cvm_jit_help.h`, `cvm2/cvm_view.h`
+- `stack` | files=9 | mentions=51 | `cvm.c`, `cvm.h`, `cvm2/cvm.c`, `cvm2/cvm.h`, `cvm2/cvm_dbg_main.c`, `cvm2/cvm_jit.c`, `cvm2/cvm_jit_help.h`, `cvm2/cvm_jit_x86.h`, `cvm2/cvm_val_main.c`
+- `function` | files=9 | mentions=47 | `cvm2/cvm_dis.c`, `cvm2/cvm_dis.h`, `cvm2/cvm_jit.c`, `cvm2/cvm_jit.h`, `cvm2/cvm_jit_help.h`, `cvm2/cvm_jit_x86.h`, `cvm2/cvm_val_main.c`, `cvm2/cvm_view.h`, `cvm2/gen_test.py`
+- `push` | files=9 | mentions=32 | `cvm.c`, `cvm.h`, `cvm2/cvm.c`, `cvm2/cvm_jit.c`, `cvm2/cvm_jit_help.c`, `cvm2/cvm_jit_help.h`, `cvm2/cvm_jit_x86.c`, `cvm2/cvm_jit_x86.h`, `cvm2/cvm_val_main.c`
+- `uint8` | files=9 | mentions=31 | `cvm.c`, `cvm.h`, `cvm2/cvm.c`, `cvm2/cvm_jit.c`, `cvm2/cvm_jit_help.h`, `cvm2/cvm_jit_x86.c`, `cvm2/cvm_jit_x86.h`, `cvm2/cvm_ops.h`, `cvm2/cvm_view.h`
+- `const` | files=9 | mentions=29 | `cvm.h`, `cvm2/cvm.c`, `cvm2/cvm_dis.h`, `cvm2/cvm_jit.c`, `cvm2/cvm_jit.h`, `cvm2/cvm_jit_x86.c`, `cvm2/cvm_jit_x86.h`, `cvm2/cvm_ops.h`, `cvm2/cvm_view.h`
+- `void` | files=8 | mentions=201 | `cvm.c`, `cvm.h`, `cvm2/cvm.c`, `cvm2/cvm_dis.h`, `cvm2/cvm_jit.c`, `cvm2/cvm_jit.h`, `cvm2/cvm_jit_x86.c`, `cvm2/cvm_jit_x86.h`
+- `call` | files=8 | mentions=55 | `cvm.c`, `cvm.h`, `cvm2/cvm_jit.c`, `cvm2/cvm_jit.h`, `cvm2/cvm_jit_help.c`, `cvm2/cvm_jit_help.h`, `cvm2/cvm_jit_x86.c`, `cvm2/cvm_jit_x86.h`
+- `pop` | files=8 | mentions=32 | `cvm.c`, `cvm2/cvm.c`, `cvm2/cvm_jit.c`, `cvm2/cvm_jit_help.c`, `cvm2/cvm_jit_help.h`, `cvm2/cvm_jit_x86.c`, `cvm2/cvm_jit_x86.h`, `cvm2/cvm_val_main.c`
+- `max` | files=8 | mentions=21 | `cvm.h`, `cvm2/cvm.c`, `cvm2/cvm.h`, `cvm2/cvm_dbg_main.c`, `cvm2/cvm_dis.c`, `cvm2/cvm_jit.h`, `cvm2/cvm_jit_x86.h`, `cvm2/cvm_val_main.c`
+- `frame` | files=8 | mentions=17 | `cvm.c`, `cvm.h`, `cvm2/cvm.c`, `cvm2/cvm.h`, `cvm2/cvm_jit.c`, `cvm2/cvm_jit.h`, `cvm2/cvm_jit_help.c`, `cvm2/cvm_jit_help.h`
+- `mem` | files=7 | mentions=30 | `cvm.c`, `cvm.h`, `cvm2/cvm.c`, `cvm2/cvm_jit.c`, `cvm2/cvm_jit_help.c`, `cvm2/cvm_jit_x86.c`, `cvm2/cvm_jit_x86.h`
+- `byte` | files=7 | mentions=25 | `cvm.c`, `cvm.h`, `cvm2/cvm_jit_x86.c`, `cvm2/cvm_jit_x86.h`, `cvm2/gen_fib_cvm.c`, `cvm2/gen_minimal.c`, `cvm2/gen_test.py`
+- `uint32` | files=7 | mentions=23 | `cvm2/cvm.c`, `cvm2/cvm_jit.c`, `cvm2/cvm_jit.h`, `cvm2/cvm_jit_help.h`, `cvm2/cvm_jit_x86.c`, `cvm2/cvm_jit_x86.h`, `cvm2/cvm_view.h`
+- `ret` | files=7 | mentions=22 | `cvm.c`, `cvm2/cvm.h`, `cvm2/cvm_jit.c`, `cvm2/cvm_jit.h`, `cvm2/cvm_jit_help.c`, `cvm2/cvm_jit_x86.c`, `cvm2/cvm_jit_x86.h`
+- `entry` | files=7 | mentions=20 | `cvm.h`, `cvm2/cvm.h`, `cvm2/cvm_jit.c`, `cvm2/cvm_jit.h`, `cvm2/cvm_jit_help.h`, `cvm2/cvm_jit_x86.h`, `cvm2/cvm_view.h`
+- `run` | files=7 | mentions=16 | `cvm.c`, `cvm.h`, `cvm2/cvm.c`, `cvm2/cvm.h`, `cvm2/cvm_dbg_main.c`, `cvm2/cvm_jit.c`, `cvm2/cvm_jit.h`
+- `name` | files=7 | mentions=13 | `cvm.c`, `cvm.h`, `cvm2/cvm_dis.c`, `cvm2/cvm_ops.c`, `cvm2/cvm_ops.h`, `cvm2/cvm_view.c`, `cvm2/cvm_view.h`
+- `alloc` | files=7 | mentions=11 | `cvm.c`, `cvm.h`, `cvm2/cvm.c`, `cvm2/cvm.h`, `cvm2/cvm_jit_help.c`, `cvm2/cvm_jit_help.h`, `cvm2/cvm_jit_x86.c`
+- `ifdef` | files=7 | mentions=9 | `cvm.c`, `cvm2/cvm.h`, `cvm2/cvm_dis.h`, `cvm2/cvm_jit.h`, `cvm2/cvm_jit_help.h`, `cvm2/cvm_ops.h`, `cvm2/cvm_view.h`
+- `jit` | files=6 | mentions=367 | `cvm2/cvm_jit.c`, `cvm2/cvm_jit.h`, `cvm2/cvm_jit_help.c`, `cvm2/cvm_jit_help.h`, `cvm2/cvm_jit_x86.c`, `cvm2/cvm_jit_x86.h`
+- `data` | files=6 | mentions=34 | `cvm.h`, `cvm2/cvm.c`, `cvm2/cvm.h`, `cvm2/cvm_jit_x86.c`, `cvm2/cvm_jit_x86.h`, `cvm2/cvm_view.h`
+- `static` | files=6 | mentions=24 | `cvm.c`, `cvm2/cvm.c`, `cvm2/cvm_jit.c`, `cvm2/cvm_jit_x86.c`, `cvm2/cvm_jit_x86.h`, `cvm2/cvm_val_main.c`
+- `heap` | files=6 | mentions=16 | `cvm.c`, `cvm.h`, `cvm2/cvm.c`, `cvm2/cvm.h`, `cvm2/cvm_jit_help.c`, `cvm2/cvm_jit_help.h`
+- `one` | files=6 | mentions=15 | `cvm2/cvm.c`, `cvm2/cvm_dis.h`, `cvm2/cvm_jit.c`, `cvm2/cvm_jit.h`, `cvm2/cvm_ops.h`, `cvm2/cvm_val_main.c`
+- `syscall` | files=6 | mentions=15 | `cvm.c`, `cvm.h`, `cvm2/cvm_jit_help.c`, `cvm2/cvm_jit_help.h`, `cvm2/cvm_jit_x86.c`, `cvm2/cvm_jit_x86.h`
+- `all` | files=6 | mentions=14 | `cvm2/cvm.c`, `cvm2/cvm.h`, `cvm2/cvm_jit.h`, `cvm2/cvm_jit_help.h`, `cvm2/cvm_jit_x86.h`, `cvm2/cvm_view.h`
+- `create` | files=6 | mentions=13 | `cvm.c`, `cvm.h`, `cvm2/cvm.c`, `cvm2/cvm.h`, `cvm2/cvm_jit.c`, `cvm2/cvm_jit.h`
+- `string` | files=6 | mentions=13 | `cvm.c`, `cvm.h`, `cvm2/cvm.h`, `cvm2/cvm_view.c`, `cvm2/cvm_view.h`, `gen_fib_cvm.c`
+- `error` | files=6 | mentions=12 | `cvm.c`, `cvm2/cvm_jit.c`, `cvm2/cvm_jit.h`, `cvm2/cvm_jit_help.c`, `cvm2/cvm_jit_help.h`, `cvm2/cvm_view.h`
+- `destroy` | files=6 | mentions=10 | `cvm.c`, `cvm.h`, `cvm2/cvm.c`, `cvm2/cvm.h`, `cvm2/cvm_jit.c`, `cvm2/cvm_jit.h`
+- `interpreter` | files=6 | mentions=10 | `cvm.c`, `cvm2/cvm.c`, `cvm2/cvm_jit.c`, `cvm2/cvm_jit.h`, `cvm2/cvm_jit_help.h`, `cvm2/test.sh`
+- `args` | files=6 | mentions=9 | `cvm.c`, `cvm.h`, `cvm2/cvm.c`, `cvm2/cvm.h`, `cvm2/cvm_jit.c`, `cvm2/cvm_val_main.c`
+- `cplusplus` | files=6 | mentions=8 | `cvm2/cvm.h`, `cvm2/cvm_dis.h`, `cvm2/cvm_jit.h`, `cvm2/cvm_jit_help.h`, `cvm2/cvm_ops.h`, `cvm2/cvm_view.h`
+- `count` | files=6 | mentions=7 | `cvm.c`, `cvm.h`, `cvm2/cvm.c`, `cvm2/cvm.h`, `cvm2/cvm_jit.h`, `cvm2/cvm_jit_x86.h`
+- `buf` | files=5 | mentions=251 | `cvm.c`, `cvm2/cvm.c`, `cvm2/cvm_jit.c`, `cvm2/cvm_jit_x86.c`, `cvm2/cvm_jit_x86.h`
+- `register` | files=5 | mentions=31 | `cvm2/cvm.c`, `cvm2/cvm.h`, `cvm2/cvm_jit.c`, `cvm2/cvm_jit_help.h`, `cvm2/cvm_jit_x86.h`
+- `state` | files=5 | mentions=30 | `cvm2/cvm.c`, `cvm2/cvm.h`, `cvm2/cvm_jit.c`, `cvm2/cvm_jit.h`, `cvm2/cvm_jit_help.h`
+- `free` | files=5 | mentions=26 | `cvm.c`, `cvm.h`, `cvm2/cvm.c`, `cvm2/cvm_jit_x86.c`, `cvm2/cvm_jit_x86.h`
+- `opcode` | files=5 | mentions=23 | `cvm.c`, `cvm2/cvm.h`, `cvm2/cvm_jit.c`, `cvm2/cvm_jit_x86.c`, `cvm2/cvm_ops.h`
+- `not` | files=5 | mentions=18 | `cvm2/cvm_dis.h`, `cvm2/cvm_jit.c`, `cvm2/cvm_jit_x86.c`, `cvm2/cvm_jit_x86.h`, `cvm2/cvm_ops.h`
+- `break` | files=5 | mentions=14 | `cvm.c`, `cvm2/cvm.c`, `cvm2/cvm.h`, `cvm2/cvm_dbg_main.c`, `cvm2/cvm_jit.c`
+
+## Verb Edges
+
+- `cvm` --depends_on--> `size` (strength 1.00)
+- `cvm2` --depends_on--> `code` (strength 0.97)
+- `cvm2` --depends_on--> `cvm` (strength 0.97)
+- `cvm2` --depends_on--> `size` (strength 0.97)
+- `cvm` --depends_on--> `code` (strength 0.93)
+- `cvm` --depends_on--> `cvm2` (strength 0.93)
+- `cvm2` --depends_on--> `cplusplus` (strength 0.90)
+- `cvm2` --depends_on--> `ifdef` (strength 0.90)
+- `cvm` --depends_on--> `cplusplus` (strength 0.87)
+- `cvm` --depends_on--> `ifdef` (strength 0.87)
+- `cvm` --depends_on--> `entry` (strength 0.73)
+- `cvm` --depends_on--> `func` (strength 0.73)
+- `cvm` --depends_on--> `const` (strength 0.70)
+- `cvm` --depends_on--> `module` (strength 0.70)
+- `cvm2` --depends_on--> `all` (strength 0.70)
+- `cvm2` --depends_on--> `entry` (strength 0.70)
+- `cvm2` --depends_on--> `func` (strength 0.70)
+- `cvm` --depends_on--> `all` (strength 0.67)
+- `cvm` --depends_on--> `native` (strength 0.67)
+- `cvm2` --depends_on--> `module` (strength 0.67)
+- `cvm2` --depends_on--> `const` (strength 0.63)
+- `cvm2` --depends_on--> `native` (strength 0.63)
+- `cvm` --depends_on--> `data` (strength 0.53)
+- `cvm` --depends_on--> `function` (strength 0.53)
+- `cvm` --depends_on--> `int` (strength 0.53)
+- `cvm` --depends_on--> `uint8` (strength 0.53)
+- `cvm2` --depends_on--> `function` (strength 0.53)
+- `func` --depends_on--> `code` (strength 0.53)
+- `func` --depends_on--> `cvm` (strength 0.53)
+- `func` --depends_on--> `cvm2` (strength 0.53)
+- `func` --depends_on--> `size` (strength 0.53)
+- `cvm` --depends_on--> `count` (strength 0.50)
+- `cvm` --depends_on--> `frame` (strength 0.50)
+- `cvm` --depends_on--> `max` (strength 0.50)
+- `cvm2` --depends_on--> `data` (strength 0.50)
+- `func` --depends_on--> `cplusplus` (strength 0.50)
+- `func` --depends_on--> `ifdef` (strength 0.50)
+- `code` --depends_on--> `cvm` (strength 0.47)
+- `code` --depends_on--> `size` (strength 0.47)
+- `cvm` --depends_on--> `string` (strength 0.47)
+- `cvm2` --depends_on--> `count` (strength 0.47)
+- `cvm2` --depends_on--> `frame` (strength 0.47)
+- `cvm2` --depends_on--> `int` (strength 0.47)
+- `cvm2` --depends_on--> `max` (strength 0.47)
+- `cvm2` --depends_on--> `ret` (strength 0.47)
+- `cvm2` --depends_on--> `state` (strength 0.47)
+- `cvm2` --depends_on--> `uint8` (strength 0.47)
+- `code` --depends_on--> `cvm2` (strength 0.43)
+- `cvm` --depends_on--> `create` (strength 0.43)
+- `cvm` --depends_on--> `destroy` (strength 0.43)
+
+## Dialectic
+
+- Thesis: `all` centralizes 6 files; Antithesis: `alloc` pulls 7 files with 3 shared (Jaccard 0.30); Synthesis: should they merge, split by layer, or keep `bridges` explicit?
+- Thesis: `all` centralizes 6 files; Antithesis: `code` pulls 12 files with 6 shared (Jaccard 0.50); Synthesis: should they merge, split by layer, or keep `depends_on` explicit?
+- Thesis: `all` centralizes 6 files; Antithesis: `const` pulls 9 files with 4 shared (Jaccard 0.36); Synthesis: should they merge, split by layer, or keep `bridges` explicit?
+- Thesis: `all` centralizes 6 files; Antithesis: `count` pulls 6 files with 4 shared (Jaccard 0.50); Synthesis: should they merge, split by layer, or keep `bridges` explicit?
+- Thesis: `all` centralizes 6 files; Antithesis: `cplusplus` pulls 6 files with 4 shared (Jaccard 0.50); Synthesis: should they merge, split by layer, or keep `bridges` explicit?
+- Thesis: `all` centralizes 6 files; Antithesis: `create` pulls 6 files with 3 shared (Jaccard 0.33); Synthesis: should they merge, split by layer, or keep `bridges` explicit?
+- Thesis: `all` centralizes 6 files; Antithesis: `data` pulls 6 files with 4 shared (Jaccard 0.50); Synthesis: should they merge, split by layer, or keep `bridges` explicit?
+- Thesis: `all` centralizes 6 files; Antithesis: `destroy` pulls 6 files with 3 shared (Jaccard 0.33); Synthesis: should they merge, split by layer, or keep `bridges` explicit?
+- Thesis: `all` centralizes 6 files; Antithesis: `entry` pulls 7 files with 5 shared (Jaccard 0.62); Synthesis: should they merge, split by layer, or keep `bridges` explicit?
+- Thesis: `all` centralizes 6 files; Antithesis: `error` pulls 6 files with 3 shared (Jaccard 0.33); Synthesis: should they merge, split by layer, or keep `bridges` explicit?

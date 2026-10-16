@@ -16,11 +16,11 @@ Log each answered question here so the wiki compounds. Format: question, answer,
 
 - Status: unanswered
 
-### Q: How are the 22 files in 'cvm2' related to each other?
+### Q: How are the 12 files in 'cvm2: cvm' related to each other?
 
 - Status: unanswered
 
-### Q: What is CVM_Module in cvm.h and how is it used?
+### Q: Why are cvm_dis.c and cvm_jit_x86.c connected through 5 hops across 2 communities?
 
 - Status: unanswered
 

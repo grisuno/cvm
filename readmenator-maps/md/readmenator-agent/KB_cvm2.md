@@ -1,0 +1,454 @@
+# Subsystem: cvm2 (page 1 of 2)
+Pages: [KB_cvm2.md](KB_cvm2.md), [KB_cvm2_p2.md](KB_cvm2_p2.md)
+
+## cvm2/cvm.c
+- Doc: Vout: static int64_t native_atol(void *vm, int ac, uint64_t *av) { (void)vm; if (ac < 1) return...
+- Layer: utility
+- Language: c
+- Symbols:
+  - `Vout` (struct, line 465)
+  - `xmal` (function, line 28) `static void *xmal(size_t s)`
+  - `xcal` (function, line 34) `static void *xcal(size_t n, size_t s)`
+  - `cvm_config_default` (function, line 40) `CvmConfig cvm_config_default(void)`
+  - `cvm_create` (function, line 55) `CvmState *cvm_create(const CvmConfig *config)`
+  - `cvm_destroy` (function, line 94) `void cvm_destroy(CvmState *vm)`
+  - `cvm_strerror` (function, line 113) `const char *cvm_strerror(int e)`
+  - `vp` (function, line 137) `static int vp(CvmState *vm, uint64_t v)`
+  - `vo` (function, line 143) `static int vo(CvmState *vm, uint64_t *v)`
+  - `r8` (function, line 149) `static int r8(CvmState *vm, uint8_t *o)`
+  - `r32` (function, line 155) `static int r32(CvmState *vm, uint32_t *o)`
+  - `ri32` (function, line 165) `static int ri32(CvmState *vm, int32_t *o)`
+  - `r64` (function, line 173) `static int r64(CvmState *vm, uint64_t *o)`
+  - `push_frame` (function, line 183) `static int push_frame(CvmState *vm, uint32_t num_locals, size_t return_ip,
+                      ...`
+  - `pop_frame` (function, line 196) `static void pop_frame(CvmState *vm)`
+  - `cur_frame` (function, line 203) `static CvmFrame *cur_frame(CvmState *vm)`
+  - `range_valid` (function, line 207) `static int range_valid(uint64_t a, size_t s, const uint8_t *base, size_t len)`
+  - `mem_valid` (function, line 215) `static int mem_valid(CvmState *vm, uint64_t a, size_t s)`
+  - `heap_alloc` (function, line 227) `static uint64_t heap_alloc(CvmState *vm, size_t s)`
+  - `cvm_heap_alloc` (function, line 235) `void *cvm_heap_alloc(CvmState *vm, size_t size)`
+  - `data_w64` (function, line 239) `static void data_w64(CvmState *vm, size_t off, uint64_t v)`
+  - `data_r64` (function, line 244) `static uint64_t data_r64(CvmState *vm, size_t off)`
+  - `cvm_set_args` (function, line 250) `int cvm_set_args(CvmState *vm, int argc, char **argv)`
+  - `cvm_register_native` (function, line 283) `int cvm_register_native(CvmState *vm, const char *name, CvmNativeFn fn)`
+  - `find_native` (function, line 294) `static int find_native(CvmState *vm, const char *name)`
+  - `native_write` (function, line 305) `static int64_t native_write(void *vm, int ac, uint64_t *av)`
+  - `native_read` (function, line 311) `static int64_t native_read(void *vm, int ac, uint64_t *av)`
+  - `native_exit` (function, line 317) `static int64_t native_exit(void *vm, int ac, uint64_t *av)`
+  - `native_abort` (function, line 324) `static int64_t native_abort(void *vm, int ac, uint64_t *av)`
+  - `native_putchar` (function, line 329) `static int64_t native_putchar(void *vm, int ac, uint64_t *av)`
+  - `native_puts` (function, line 336) `static int64_t native_puts(void *vm, int ac, uint64_t *av)`
+  - `native_strlen` (function, line 350) `static int64_t native_strlen(void *vm, int ac, uint64_t *av)`
+  - `native_strcmp` (function, line 356) `static int64_t native_strcmp(void *vm, int ac, uint64_t *av)`
+  - `native_strncmp` (function, line 362) `static int64_t native_strncmp(void *vm, int ac, uint64_t *av)`
+  - `native_strcpy` (function, line 369) `static int64_t native_strcpy(void *vm, int ac, uint64_t *av)`
+  - `native_strncpy` (function, line 375) `static int64_t native_strncpy(void *vm, int ac, uint64_t *av)`
+  - `native_strchr` (function, line 382) `static int64_t native_strchr(void *vm, int ac, uint64_t *av)`
+  - `native_strstr` (function, line 388) `static int64_t native_strstr(void *vm, int ac, uint64_t *av)`
+  - `native_memcpy` (function, line 395) `static int64_t native_memcpy(void *vm, int ac, uint64_t *av)`
+  - `native_memmove` (function, line 402) `static int64_t native_memmove(void *vm, int ac, uint64_t *av)`
+  - `native_memset` (function, line 409) `static int64_t native_memset(void *vm, int ac, uint64_t *av)`
+  - `native_memcmp` (function, line 415) `static int64_t native_memcmp(void *vm, int ac, uint64_t *av)`
+  - `native_malloc` (function, line 422) `static int64_t native_malloc(void *vm, int ac, uint64_t *av)`
+  - `native_free` (function, line 428) `static int64_t native_free(void *vm, int ac, uint64_t *av)`
+  - `native_calloc` (function, line 433) `static int64_t native_calloc(void *vm, int ac, uint64_t *av)`
+  - `native_realloc` (function, line 442) `static int64_t native_realloc(void *vm, int ac, uint64_t *av)`
+  - `native_atol` (function, line 451) `static int64_t native_atol(void *vm, int ac, uint64_t *av)`
+  - `native_strtol` (function, line 457) `static int64_t native_strtol(void *vm, int ac, uint64_t *av)`
+  - `vout_write` (function, line 472) `static void vout_write(Vout *vo, const char *s, size_t n)`
+  - `vout_char` (function, line 484) `static void vout_char(Vout *vo, char c)`
+  - `vout_uint` (function, line 486) `static void vout_uint(Vout *vo, uint64_t v, int base, int upper)`
+  - `vformat` (function, line 499) `static void vformat(Vout *vo, const char *fmt, uint64_t *argv, int argc)`
+  - `native_fprintf` (function, line 583) `static int64_t native_fprintf(void *vm, int ac, uint64_t *av)`
+  - `native_printf` (function, line 593) `static int64_t native_printf(void *vm, int ac, uint64_t *av)`
+  - `native_sprintf` (function, line 602) `static int64_t native_sprintf(void *vm, int ac, uint64_t *av)`
+  - `native_snprintf` (function, line 613) `static int64_t native_snprintf(void *vm, int ac, uint64_t *av)`
+  - `native_fopen` (function, line 625) `static int64_t native_fopen(void *vm, int ac, uint64_t *av)`
+  - `native_fclose` (function, line 632) `static int64_t native_fclose(void *vm, int ac, uint64_t *av)`
+  - `native_fread` (function, line 638) `static int64_t native_fread(void *vm, int ac, uint64_t *av)`
+  - `native_fwrite` (function, line 645) `static int64_t native_fwrite(void *vm, int ac, uint64_t *av)`
+  - `native_fseek` (function, line 652) `static int64_t native_fseek(void *vm, int ac, uint64_t *av)`
+  - `native_ftell` (function, line 658) `static int64_t native_ftell(void *vm, int ac, uint64_t *av)`
+  - `native_rewind` (function, line 664) `static int64_t native_rewind(void *vm, int ac, uint64_t *av)`
+  - `native_fputs` (function, line 671) `static int64_t native_fputs(void *vm, int ac, uint64_t *av)`
+  - `native_fputc` (function, line 677) `static int64_t native_fputc(void *vm, int ac, uint64_t *av)`
+  - `native_fgetc` (function, line 683) `static int64_t native_fgetc(void *vm, int ac, uint64_t *av)`
+  - `native_ungetc` (function, line 689) `static int64_t native_ungetc(void *vm, int ac, uint64_t *av)`
+  - `native_fflush` (function, line 695) `static int64_t native_fflush(void *vm, int ac, uint64_t *av)`
+  - `native_perror` (function, line 701) `static int64_t native_perror(void *vm, int ac, uint64_t *av)`
+  - `native_stderr_addr` (function, line 712) `static int64_t native_stderr_addr(void *vm, int ac, uint64_t *av)`
+  - `native_stdout_addr` (function, line 717) `static int64_t native_stdout_addr(void *vm, int ac, uint64_t *av)`
+  - `native_stdin_addr` (function, line 722) `static int64_t native_stdin_addr(void *vm, int ac, uint64_t *av)`
+  - `native_exit_core` (function, line 729) `static int64_t native_exit_core(void *vm, int ac, uint64_t *av)`
+  - `register_defaults` (function, line 736) `static void register_defaults(CvmState *vm)`
+  - `rl32` (function, line 788) `static uint32_t rl32(const uint8_t *p)`
+  - `decompress_rle` (function, line 793) `static int decompress_rle(uint8_t *dst, size_t dsz, const uint8_t *src, size_t ssz)`
+  - `cvm_free_module` (function, line 815) `static void cvm_free_module(CvmState *vm)`
+  - `cvm_load_module` (function, line 830) `int cvm_load_module(CvmState *vm, const uint8_t *d, size_t sz)`
+  - `cvm_load_module_file` (function, line 923) `int cvm_load_module_file(CvmState *vm, const char *path)`
+  - `cvm_run_loop` (function, line 942) `static int cvm_run_loop(CvmState *vm)`
+  - `cvm_run` (function, line 952) `int cvm_run(CvmState *vm)`
+  - `cvm_continue` (function, line 990) `int cvm_continue(CvmState *vm)`
+  - `cvm_break_set` (function, line 994) `int cvm_break_set(CvmState *vm, size_t ip)`
+  - `cvm_break_clear` (function, line 1003) `int cvm_break_clear(CvmState *vm, size_t ip)`
+  - `cvm_break_clear_all` (function, line 1014) `void cvm_break_clear_all(CvmState *vm)`
+  - `cvm_break_hit` (function, line 1018) `int cvm_break_hit(const CvmState *vm)`
+  - `cvm_profile_begin` (function, line 1024) `int cvm_profile_begin(CvmState *vm)`
+  - `cvm_profile_end` (function, line 1034) `void cvm_profile_end(CvmState *vm)`
+  - `cvm_step` (function, line 1039) `int cvm_step(CvmState *vm)`
+  - `cvm_exit_code` (function, line 1351) `int64_t cvm_exit_code(const CvmState *vm)`
+  - `cvm_instruction_count` (function, line 1352) `uint64_t cvm_instruction_count(const CvmState *vm)`
+  - `main` (function, line 1355) `int main(int argc, char *argv[])`
+  - `CVM_DEF_STACK` (macro, line 15) `#define CVM_DEF_STACK`
+  - `CVM_DEF_FRAMES` (macro, line 16) `#define CVM_DEF_FRAMES`
+  - `CVM_DEF_LOCALS` (macro, line 17) `#define CVM_DEF_LOCALS`
+  - `CVM_DEF_HEAP` (macro, line 18) `#define CVM_DEF_HEAP`
+  - `CVM_DEF_GLOBALS` (macro, line 19) `#define CVM_DEF_GLOBALS`
+  - `CVM_DEF_FUNCS` (macro, line 20) `#define CVM_DEF_FUNCS`
+  - `CVM_DEF_NATIVES` (macro, line 21) `#define CVM_DEF_NATIVES`
+  - `CVM_DEF_CODE` (macro, line 22) `#define CVM_DEF_CODE`
+  - `CVM_DEF_PROFILE` (macro, line 23) `#define CVM_DEF_PROFILE`
+  - `CVM_HEAP_ALIGN` (macro, line 24) `#define CVM_HEAP_ALIGN`
+  - `CVM_MAX_NARGS` (macro, line 25) `#define CVM_MAX_NARGS`
+  - `CVM_MAX_SARGS` (macro, line 26) `#define CVM_MAX_SARGS`
+- Depends on: `cvm2/cvm.h`, `cvm2/cvm_jit.h`
+
+## cvm2/cvm.h
+- Doc: CvmOpcode: ifdef __cplusplus
+- Layer: utility
+- Language: h
+- Symbols:
+  - `CvmFuncEntry` (struct, line 154)
+  - `CvmGlobalEntry` (struct, line 162)
+  - `CvmNativeEntry` (struct, line 167)
+  - `CvmStringEntry` (struct, line 171)
+  - `CvmConfig` (struct, line 176)
+  - `CvmFrame` (struct, line 189)
+  - `CvmNative` (struct, line 198)
+  - `CvmBreakpoint` (struct, line 205)
+  - `CvmState` (struct, line 209)
+  - `cvm_create` (function, line 247) `CvmState *cvm_create(const CvmConfig *config);`
+  - `cvm_destroy` (function, line 248) `void cvm_destroy(CvmState *vm);`
+  - `cvm_load_module` (function, line 249) `int cvm_load_module(CvmState *vm, const uint8_t *data, size_t size);`
+  - `cvm_load_module_file` (function, line 250) `int cvm_load_module_file(CvmState *vm, const char *path);`
+  - `cvm_run` (function, line 251) `int cvm_run(CvmState *vm);`
+  - `cvm_continue` (function, line 252) `int cvm_continue(CvmState *vm);`
+  - `cvm_step` (function, line 253) `int cvm_step(CvmState *vm);`
+  - `cvm_exit_code` (function, line 254) `int64_t cvm_exit_code(const CvmState *vm);`
+  - `cvm_instruction_count` (function, line 255) `uint64_t cvm_instruction_count(const CvmState *vm);`
+  - `cvm_strerror` (function, line 256) `const char *cvm_strerror(int error_code);`
+  - `cvm_register_native` (function, line 258) `int cvm_register_native(CvmState *vm, const char *name, CvmNativeFn fn);`
+  - `cvm_set_args` (function, line 259) `int cvm_set_args(CvmState *vm, int argc, char **argv);`
+  - `cvm_heap_alloc` (function, line 260) `void *cvm_heap_alloc(CvmState *vm, size_t size);`
+  - `cvm_break_set` (function, line 262) `int cvm_break_set(CvmState *vm, size_t ip);`
+  - `cvm_break_clear` (function, line 263) `int cvm_break_clear(CvmState *vm, size_t ip);`
+  - `cvm_break_clear_all` (function, line 264) `void cvm_break_clear_all(CvmState *vm);`
+  - `cvm_break_hit` (function, line 265) `int cvm_break_hit(const CvmState *vm);`
+  - `cvm_profile_begin` (function, line 266) `int cvm_profile_begin(CvmState *vm);`
+  - `cvm_profile_end` (function, line 267) `void cvm_profile_end(CvmState *vm);`
+  - `CvmOpcode` (variable, line 38) `extern "C" { #endif #define CVM_MAGIC_0 0x43 #define CVM_MAGIC_1 0x56 #define CVM_MAGIC_2 0x4D #define CVM_MAGIC_3...`
+  - `CVM_H` (macro, line 28) `#define CVM_H`
+  - `CVM_MAGIC_0` (macro, line 41) `#define CVM_MAGIC_0`
+  - `CVM_MAGIC_1` (macro, line 42) `#define CVM_MAGIC_1`
+  - `CVM_MAGIC_2` (macro, line 43) `#define CVM_MAGIC_2`
+  - `CVM_MAGIC_3` (macro, line 44) `#define CVM_MAGIC_3`
+  - `CVM_VERSION_MAJOR` (macro, line 45) `#define CVM_VERSION_MAJOR`
+  - `CVM_VERSION_MINOR` (macro, line 46) `#define CVM_VERSION_MINOR`
+  - `CVM_MODULE_HEADER_SIZE` (macro, line 47) `#define CVM_MODULE_HEADER_SIZE`
+  - `CVM_FUNC_ENTRY_SIZE` (macro, line 48) `#define CVM_FUNC_ENTRY_SIZE`
+  - `CVM_GLOBAL_ENTRY_SIZE` (macro, line 49) `#define CVM_GLOBAL_ENTRY_SIZE`
+  - `CVM_NATIVE_ENTRY_SIZE` (macro, line 50) `#define CVM_NATIVE_ENTRY_SIZE`
+  - `CVM_STRING_ENTRY_SIZE` (macro, line 51) `#define CVM_STRING_ENTRY_SIZE`
+  - `CVM_MAX_NARGS` (macro, line 53) `#define CVM_MAX_NARGS`
+  - `CVM_MAX_SARGS` (macro, line 54) `#define CVM_MAX_SARGS`
+  - `CVM_SHIFT_MASK` (macro, line 55) `#define CVM_SHIFT_MASK`
+  - `CVM_SYS_READ` (macro, line 56) `#define CVM_SYS_READ`
+  - `CVM_SYS_WRITE` (macro, line 57) `#define CVM_SYS_WRITE`
+  - `CVM_SYS_EXIT` (macro, line 58) `#define CVM_SYS_EXIT`
+  - `CVM_DATA_ARGC` (macro, line 60) `#define CVM_DATA_ARGC`
+  - `CVM_DATA_ARGV` (macro, line 61) `#define CVM_DATA_ARGV`
+  - `CVM_DATA_RSP` (macro, line 62) `#define CVM_DATA_RSP`
+  - `CVM_DATA_RBP` (macro, line 63) `#define CVM_DATA_RBP`
+  - `CVM_DATA_ARGS` (macro, line 64) `#define CVM_DATA_ARGS`
+  - `CVM_DATA_RET` (macro, line 65) `#define CVM_DATA_RET`
+  - `CVM_DATA_STACK_SIZE` (macro, line 66) `#define CVM_DATA_STACK_SIZE`
+  - `CVM_DATA_STACK_BASE` (macro, line 70) `#define CVM_DATA_STACK_BASE`
+  - `CVM_MAX_BREAKPOINTS` (macro, line 203) `#define CVM_MAX_BREAKPOINTS`
+- Imported by: `cvm2/cvm.c`, `cvm2/cvm_dbg_main.c`, `cvm2/cvm_jit.h`, `cvm2/cvm_jit_help.h`, `cvm2/cvm_ops.c`, `cvm2/cvm_view.h`, `cvm2/gen_fib_cvm.c`, `cvm2/gen_minimal.c`
+
+## cvm2/cvm_dbg_main.c
+- Layer: utility
+- Language: c
+- Symbols:
+  - `emit_stdout` (function, line 29) `static int emit_stdout(void *ctx, const char *line)`
+  - `func_display` (function, line 36) `static const char *func_display(uint32_t fi, char *fb, size_t cap)`
+  - `func_of_ip` (function, line 40) `static int func_of_ip(size_t ip)`
+  - `parse_u32` (function, line 51) `static int parse_u32(const char *s, uint32_t *out)`
+  - `report_run` (function, line 59) `static void report_run(int rc)`
+  - `cmd_list` (function, line 71) `static void cmd_list(char *arg)`
+  - `cmd_break` (function, line 98) `static void cmd_break(char *arg)`
+  - `cmd_delete` (function, line 133) `static void cmd_delete(char *arg)`
+  - `cmd_step` (function, line 152) `static void cmd_step(void)`
+  - `cmd_next` (function, line 166) `static void cmd_next(void)`
+  - `cmd_run` (function, line 184) `static void cmd_run(void)`
+  - `cmd_bt` (function, line 194) `static void cmd_bt(void)`
+  - `cmd_stack` (function, line 206) `static void cmd_stack(void)`
+  - `cmd_locals` (function, line 213) `static void cmd_locals(void)`
+  - `cmd_info` (function, line 225) `static void cmd_info(void)`
+  - `cmd_profile` (function, line 241) `static void cmd_profile(char *arg)`
+  - `cmd_help` (function, line 304) `static void cmd_help(void)`
+  - `dispatch` (function, line 310) `static void dispatch(char *line)`
+  - `main` (function, line 337) `int main(int argc, char **argv)`
+  - `DBG_LINE_MAX` (macro, line 18) `#define DBG_LINE_MAX`
+  - `DBG_PROFILE_TOP` (macro, line 19) `#define DBG_PROFILE_TOP`
+- Depends on: `cvm2/cvm.h`, `cvm2/cvm_dis.h`, `cvm2/cvm_ops.h`, `cvm2/cvm_view.h`
+
+## cvm2/cvm_dis.c
+- Layer: utility
+- Language: c
+- Symbols:
+  - `putc_str` (function, line 13) `static void putc_str(char *buf, size_t cap, size_t *n, char c)`
+  - `puts_str` (function, line 17) `static void puts_str(char *buf, size_t cap, size_t *n, const char *s)`
+  - `put_hex` (function, line 21) `static void put_hex(char *buf, size_t cap, size_t *n, uint64_t v, int digits)`
+  - `put_dec` (function, line 35) `static void put_dec(char *buf, size_t cap, size_t *n, int64_t v)`
+  - `pad_name` (function, line 49) `static void pad_name(char *buf, size_t cap, size_t *n, const char *name)`
+  - `cvm_dis_line` (function, line 56) `int cvm_dis_line(const CvmModuleView *v, size_t off, size_t end,
+                 char *buf, size...`
+  - `cvm_dis_function` (function, line 153) `int cvm_dis_function(const CvmModuleView *v, size_t begin, size_t end,
+                     CvmDi...`
+  - `cvm_dis_module` (function, line 173) `int cvm_dis_module(const CvmModuleView *v, CvmDisEmit emit, void *ctx)`
+  - `CVM_DIS_LINE_MAX` (macro, line 11) `#define CVM_DIS_LINE_MAX`
+- Depends on: `cvm2/cvm_dis.h`, `cvm2/cvm_ops.h`
+
+## cvm2/cvm_dis.h
+- Doc: cvm_dis_module: #ifndef CVM_DIS_H #define CVM_DIS_H #include <stddef.h> #include <stdint.h>...
+- Layer: utility
+- Language: h
+- Symbols:
+  - `cvm_dis_module` (function, line 23) `int cvm_dis_module(const CvmModuleView *v, CvmDisEmit emit, void *ctx);`
+  - `cvm_dis_function` (function, line 26) `int cvm_dis_function(const CvmModuleView *v, size_t begin, size_t end, CvmDisEmit emit, void *ctx);`
+  - `cvm_dis_line` (function, line 31) `int cvm_dis_line(const CvmModuleView *v, size_t off, size_t end, char *buf, size_t cap);`
+  - `CVM_DIS_H` (macro, line 10) `#define CVM_DIS_H`
+- Depends on: `cvm2/cvm_view.h`
+- Imported by: `cvm2/cvm_dbg_main.c`, `cvm2/cvm_dis.c`, `cvm2/cvm_dis_main.c`
+
+## cvm2/cvm_dis_main.c
+- Layer: utility
+- Language: c
+- Symbols:
+  - `print_line` (function, line 11) `static int print_line(void *ctx, const char *line)`
+  - `main` (function, line 18) `int main(int argc, char **argv)`
+- Depends on: `cvm2/cvm_dis.h`, `cvm2/cvm_view.h`
+
+## cvm2/cvm_jit.c
+- Doc: emit_stack_pop_into: /* Push rax onto the operand stack: slots[sp] = rax; sp++ static void...
+- Layer: utility
+- Language: c
+- Symbols:
+  - `JitCtx` (struct, line 288)
+  - `cvm_jit_create` (function, line 36) `CvmJitState *cvm_jit_create(void)`
+  - `cvm_jit_destroy` (function, line 48) `void cvm_jit_destroy(CvmJitState *jit)`
+  - `ip_map_clear` (function, line 58) `static void ip_map_clear(CvmJitState *jit)`
+  - `ip_map_add` (function, line 62) `static void ip_map_add(CvmJitState *jit, size_t bc_ip, size_t native_off)`
+  - `ip_map_lookup` (function, line 69) `static size_t ip_map_lookup(const CvmJitState *jit, size_t bc_ip)`
+  - `func_cache_find` (function, line 81) `static JitFuncEntry *func_cache_find(CvmJitState *jit, uint32_t func_idx)`
+  - `func_cache_add` (function, line 88) `static JitFuncEntry *func_cache_add(CvmJitState *jit, uint32_t func_idx,
+                        ...`
+  - `opcode_total_size` (function, line 105) `static size_t opcode_total_size(const uint8_t *code, size_t code_size, size_t ip)`
+  - `emit_stack_push` (function, line 117) `static void emit_stack_push(JitBuf *b)`
+  - `emit_stack_pop` (function, line 124) `static void emit_stack_pop(JitBuf *b)`
+  - `emit_stack_pop_into` (function, line 130) `static void emit_stack_pop_into(JitBuf *b, int dst)`
+  - `emit_stack_push_reg` (function, line 136) `static void emit_stack_push_reg(JitBuf *b, int reg)`
+  - `emit_call1` (function, line 146) `static void emit_call1(JitBuf *b, void *fn, int arg)`
+  - `emit_call2` (function, line 152) `static void emit_call2(JitBuf *b, void *fn, int a1, int a2)`
+  - `emit_call3` (function, line 159) `static void emit_call3(JitBuf *b, void *fn, int a1, int a2, int a3)`
+  - `emit_prologue` (function, line 170) `static void emit_prologue(JitBuf *b)`
+  - `emit_epilogue` (function, line 232) `static void emit_epilogue(JitBuf *b)`
+  - `emit_save_sp` (function, line 252) `static void emit_save_sp(JitBuf *b)`
+  - `emit_restore_sp` (function, line 258) `static void emit_restore_sp(JitBuf *b)`
+  - `error` (function, line 267) `* keeps executing dead code after the stop: error() -> exit() returns
+ * into the middle of the f...`
+  - `emit_opcode` (function, line 302) `static int emit_opcode(JitCtx *ctx, size_t bc_ip)`
+  - `jit_apply_patches_local` (function, line 1235) `static void jit_apply_patches_local(JitBuf *b, const JitPatches *p)`
+  - `cvm_jit_compile_func` (function, line 1253) `void *cvm_jit_compile_func(CvmState *vm, uint32_t func_idx)`
+  - `cvm_jit_compile_module` (function, line 1360) `int cvm_jit_compile_module(CvmState *vm)`
+  - `cvm_jit_lookup` (function, line 1376) `void *cvm_jit_lookup(CvmState *vm, uint32_t func_idx)`
+  - `find_func_for_ip` (function, line 1388) `static uint32_t find_func_for_ip(const CvmState *vm)`
+  - `cvm_jit_exec_one` (function, line 1397) `void cvm_jit_exec_one(CvmState *vm)`
+  - `cvm_jit_run` (function, line 1427) `int cvm_jit_run(CvmState *vm)`
+  - `cvm_jit_stats` (function, line 1488) `void cvm_jit_stats(const CvmState *vm)`
+  - `cvm_jit_dump` (function, line 1499) `void cvm_jit_dump(const CvmState *vm)`
+  - `cvm_step` (function, line 1420) `extern int cvm_step(CvmState *);`
+  - `cvm_run` (function, line 1430) `extern int cvm_run(CvmState *);`
+  - `JIT_STATE` (macro, line 30) `#define JIT_STATE(vm)`
+  - `EMIT_CMP` (macro, line 603) `#define EMIT_CMP(cc_signed)`
+  - `EMIT_CMP_SIGNED` (macro, line 624) `#define EMIT_CMP_SIGNED(cc)`
+  - `EMIT_CMP_UNSIGNED` (macro, line 636) `#define EMIT_CMP_UNSIGNED(cc)`
+- Depends on: `cvm2/cvm_jit.h`, `cvm2/cvm_ops.h`
+
+## cvm2/cvm_jit.h
+- Doc: cvm_jit_create: /* IP-to-native mapping (shared across all functions) JitIpMap...
+- Layer: utility
+- Language: h
+- Symbols:
+  - `JitFuncEntry` (struct, line 72)
+  - `JitIpMap` (struct, line 84)
+  - `CvmJitState` (struct, line 96)
+  - `cvm_jit_create` (function, line 120) `CvmJitState *cvm_jit_create(void);`
+  - `cvm_jit_destroy` (function, line 123) `void cvm_jit_destroy(CvmJitState *jit);`
+  - `cvm_jit_compile_module` (function, line 127) `int cvm_jit_compile_module(CvmState *vm);`
+  - `cvm_jit_compile_func` (function, line 130) `void *cvm_jit_compile_func(CvmState *vm, uint32_t func_idx);`
+  - `cvm_jit_lookup` (function, line 133) `void *cvm_jit_lookup(CvmState *vm, uint32_t func_idx);`
+  - `cvm_jit_run` (function, line 142) `int cvm_jit_run(CvmState *vm);`
+  - `returns` (function, line 145) `* returns (via RET) or encounters an error. */ void cvm_jit_exec_one(CvmState *vm);`
+  - `cvm_jit_stats` (function, line 153) `void cvm_jit_stats(const CvmState *vm);`
+  - `cvm_jit_dump` (function, line 159) `void cvm_jit_dump(const CvmState *vm);`
+  - `JitTier` (variable, line 22) `extern "C" { #endif /* ------------------------------------------------------------------ */ /* Register assignment...`
+  - `CVM_JIT_H` (macro, line 15) `#define CVM_JIT_H`
+  - `JIT_REG_VM` (macro, line 45) `#define JIT_REG_VM`
+  - `JIT_REG_SLOTS` (macro, line 46) `#define JIT_REG_SLOTS`
+  - `JIT_REG_SP` (macro, line 47) `#define JIT_REG_SP`
+  - `JIT_REG_FRAMES` (macro, line 48) `#define JIT_REG_FRAMES`
+  - `JIT_REG_FRAME` (macro, line 49) `#define JIT_REG_FRAME`
+  - `JIT_SCRATCH1` (macro, line 52) `#define JIT_SCRATCH1`
+  - `JIT_SCRATCH2` (macro, line 53) `#define JIT_SCRATCH2`
+  - `JIT_SCRATCH3` (macro, line 54) `#define JIT_SCRATCH3`
+  - `JIT_SCRATCH4` (macro, line 55) `#define JIT_SCRATCH4`
+  - `JIT_SCRATCH5` (macro, line 56) `#define JIT_SCRATCH5`
+  - `JIT_MAX_FUNCS` (macro, line 93) `#define JIT_MAX_FUNCS`
+  - `JIT_IP_MAP_SIZE` (macro, line 94) `#define JIT_IP_MAP_SIZE`
+- Depends on: `cvm2/cvm.h`, `cvm2/cvm_jit_help.h`, `cvm2/cvm_jit_x86.h`
+- Imported by: `cvm2/cvm.c`, `cvm2/cvm_jit.c`, `cvm2/cvm_jit_help.c`, `cvm2/gen_fib_cvm.c`
+
+## cvm2/cvm_jit_help.c
+- Layer: utility
+- Language: c
+- Symbols:
+  - `cvm_jit_offsets_init` (function, line 22) `void cvm_jit_offsets_init(CvmJitOffsets *o)`
+  - `xmal` (function, line 46) `static void *xmal(size_t s)`
+  - `xcal` (function, line 52) `static void *xcal(size_t n, size_t s)`
+  - `push_frame` (function, line 58) `static int push_frame(CvmState *vm, uint32_t num_locals, size_t return_ip,
+                      ...`
+  - `pop_frame` (function, line 71) `static void pop_frame(CvmState *vm)`
+  - `cur_frame` (function, line 78) `static CvmFrame *cur_frame(CvmState *vm)`
+  - `range_valid` (function, line 82) `static int range_valid(uint64_t a, size_t s, const uint8_t *base, size_t len)`
+  - `mem_valid` (function, line 90) `static int mem_valid(const CvmState *vm, uint64_t a, size_t s)`
+  - `heap_alloc` (function, line 102) `static uint64_t heap_alloc(CvmState *vm, size_t s)`
+  - `find_native` (function, line 110) `static int find_native(const CvmState *vm, const char *name)`
+  - `jit_vp` (function, line 120) `static int jit_vp(CvmState *vm, uint64_t v)`
+  - `jit_vo` (function, line 126) `static int jit_vo(CvmState *vm, uint64_t *v)`
+  - `cvm_jit_func_enter` (function, line 136) `uint8_t *cvm_jit_func_enter(CvmState *vm, uint32_t func_idx)`
+  - `cvm_jit_func_leave` (function, line 145) `void cvm_jit_func_leave(CvmState *vm)`
+  - `cvm_jit_call` (function, line 155) `int cvm_jit_call(CvmState *vm, uint32_t func_idx, uint8_t argc)`
+  - `cvm_jit_ret` (function, line 176) `int cvm_jit_ret(CvmState *vm, uint64_t retval)`
+  - `cvm_jit_call_native` (function, line 193) `int cvm_jit_call_native(CvmState *vm, uint32_t native_idx, uint8_t argc)`
+  - `cvm_jit_memcheck` (function, line 213) `int cvm_jit_memcheck(const CvmState *vm, uint64_t addr, size_t size)`
+  - `cvm_jit_alloc` (function, line 221) `uint64_t cvm_jit_alloc(CvmState *vm, size_t size)`
+  - `cvm_jit_syscall` (function, line 229) `int cvm_jit_syscall(CvmState *vm, uint8_t sn, uint8_t argc)`
+  - `cvm_jit_error` (function, line 256) `void cvm_jit_error(CvmState *vm, int error_code)`
+  - `CVM_HEAP_ALIGN` (macro, line 16) `#define CVM_HEAP_ALIGN`
+- Depends on: `cvm2/cvm_jit.h`, `cvm2/cvm_jit_help.h`
+
+## cvm2/cvm_jit_help.h
+- Doc: CvmJitOffsets: Register offsets into CvmState, used by JIT-compiled code for * direct field access.
+- Layer: utility
+- Language: h
+- Symbols:
+  - `CvmJitOffsets` (struct, line 22)
+  - `cvm_jit_offsets_init` (function, line 44) `void cvm_jit_offsets_init(CvmJitOffsets *off);`
+  - `cvm_jit_func_enter` (function, line 52) `uint8_t *cvm_jit_func_enter(CvmState *vm, uint32_t func_idx);`
+  - `cvm_jit_func_leave` (function, line 55) `void cvm_jit_func_leave(CvmState *vm);`
+  - `cvm_jit_call` (function, line 66) `int cvm_jit_call(CvmState *vm, uint32_t func_idx, uint8_t argc);`
+  - `to` (function, line 70) `* Returns 0 if there is a caller to return to (vm->ip is set). * Returns 1 if this was the entry frame (vm->running...`
+  - `cvm_jit_call_native` (function, line 77) `int cvm_jit_call_native(CvmState *vm, uint32_t native_idx, uint8_t argc);`
+  - `region` (function, line 84) `* region (heap, globals, string pool, or any frame's locals). * Returns 1 if valid, 0 if invalid. */ int...`
+  - `cvm_jit_alloc` (function, line 94) `uint64_t cvm_jit_alloc(CvmState *vm, size_t size);`
+  - `cvm_jit_syscall` (function, line 103) `int cvm_jit_syscall(CvmState *vm, uint8_t syscall_nr, uint8_t argc);`
+  - `cvm_jit_error` (function, line 112) `void cvm_jit_error(CvmState *vm, int error_code);`
+  - `slots` (variable, line 17) `extern "C" { #endif /* Register offsets into CvmState, used by JIT-compiled code for * direct field access. These...`
+  - `CVM_JIT_HELP_H` (macro, line 12) `#define CVM_JIT_HELP_H`
+- Depends on: `cvm2/cvm.h`
+- Imported by: `cvm2/cvm_jit.h`, `cvm2/cvm_jit_help.c`
+
+## cvm2/cvm_jit_x86.c
+- Doc: emit_rex: emit_grow(b, 8); if (!b->failed) { memcpy(b->code + b->size, &v, 8); b->size += 8; } }...
+- Layer: utility
+- Language: c
+- Symbols:
+  - `jit_buf_init` (function, line 35) `void jit_buf_init(JitBuf *b, size_t cap)`
+  - `jit_buf_free` (function, line 48) `void jit_buf_free(JitBuf *b)`
+  - `jit_buf_reset` (function, line 56) `void jit_buf_reset(JitBuf *b)`
+  - `jit_buf_failed` (function, line 61) `int jit_buf_failed(const JitBuf *b)`
+  - `emit_grow` (function, line 67) `static void emit_grow(JitBuf *b, size_t need)`
+  - `emit8` (function, line 84) `void emit8(JitBuf *b, uint8_t v)`
+  - `emit16` (function, line 89) `void emit16(JitBuf *b, uint16_t v)`
+  - `emit32` (function, line 94) `void emit32(JitBuf *b, uint32_t v)`
+  - `emit64` (function, line 99) `void emit64(JitBuf *b, uint64_t v)`
+  - `emit_bytes` (function, line 104) `void emit_bytes(JitBuf *b, const void *data, size_t len)`
+  - `emit_rex` (function, line 114) `void emit_rex(JitBuf *buf, int w, int r, int x, int rex_b)`
+  - `emit_modrm` (function, line 119) `void emit_modrm(JitBuf *b, int mod, int reg, int rm)`
+  - `emit_modrm_disp32` (function, line 124) `static void emit_modrm_disp32(JitBuf *b, int reg, int rm, int32_t disp)`
+  - `emit_rex_op_modrm` (function, line 130) `static void emit_rex_op_modrm(JitBuf *b, uint8_t opc, int reg, int rm)`
+  - `emit_sib` (function, line 137) `static void emit_sib(JitBuf *b, int scale, int index, int base)`
+  - `emit_mov_reg_imm64` (function, line 145) `void emit_mov_reg_imm64(JitBuf *b, int dst, uint64_t imm)`
+  - `emit_mov_reg_imm32` (function, line 152) `void emit_mov_reg_imm32(JitBuf *b, int dst, int32_t imm)`
+  - `emit_mov_reg_reg` (function, line 165) `void emit_mov_reg_reg(JitBuf *b, int dst, int src)`
+  - `emit_mov_reg_mem` (function, line 171) `void emit_mov_reg_mem(JitBuf *b, int dst, int base, int32_t disp)`
+  - `emit_mov_mem_reg` (function, line 178) `void emit_mov_mem_reg(JitBuf *b, int base, int32_t disp, int src)`
+  - `emit_movzx_reg_mem8` (function, line 185) `void emit_movzx_reg_mem8(JitBuf *b, int dst, int base, int32_t disp)`
+  - `emit_movzx_reg_mem16` (function, line 192) `void emit_movzx_reg_mem16(JitBuf *b, int dst, int base, int32_t disp)`
+  - `emit_movsx_reg_mem32` (function, line 199) `void emit_movsx_reg_mem32(JitBuf *b, int dst, int base, int32_t disp)`
+  - `emit_mov32_reg_mem` (function, line 206) `void emit_mov32_reg_mem(JitBuf *b, int dst, int base, int32_t disp)`
+  - `emit_mov32_mem_reg` (function, line 214) `void emit_mov32_mem_reg(JitBuf *b, int base, int32_t disp, int src)`
+  - `emit_lea_sib` (function, line 222) `void emit_lea_sib(JitBuf *b, int dst, int base, int index, int scale, int32_t disp)`
+  - `emit_mov_reg_sib` (function, line 259) `void emit_mov_reg_sib(JitBuf *b, int dst, int base, int index, int scale)`
+  - `emit_mov_sib_reg` (function, line 267) `void emit_mov_sib_reg(JitBuf *b, int base, int index, int scale, int src)`
+  - `emit_push` (function, line 279) `void emit_push(JitBuf *b, int reg)`
+  - `emit_pop` (function, line 285) `void emit_pop(JitBuf *b, int reg)`
+  - `emit_add_reg_reg` (function, line 295) `void emit_add_reg_reg(JitBuf *b, int dst, int src)`
+  - `emit_add_reg_imm32` (function, line 299) `void emit_add_reg_imm32(JitBuf *b, int dst, int32_t imm)`
+  - `emit_sub_reg_reg` (function, line 308) `void emit_sub_reg_reg(JitBuf *b, int dst, int src)`
+  - `emit_sub_reg_imm32` (function, line 312) `void emit_sub_reg_imm32(JitBuf *b, int dst, int32_t imm)`
+  - `emit_imul_reg_reg` (function, line 320) `void emit_imul_reg_reg(JitBuf *b, int dst, int src)`
+  - `emit_idiv_reg` (function, line 327) `void emit_idiv_reg(JitBuf *b, int divisor)`
+  - `emit_div_reg` (function, line 334) `void emit_div_reg(JitBuf *b, int divisor)`
+  - `emit_cqo` (function, line 341) `void emit_cqo(JitBuf *b)`
+  - `emit_neg_reg` (function, line 347) `void emit_neg_reg(JitBuf *b, int reg)`
+  - `emit_inc_reg` (function, line 354) `void emit_inc_reg(JitBuf *b, int reg)`
+  - `emit_dec_reg` (function, line 361) `void emit_dec_reg(JitBuf *b, int reg)`
+  - `emit_and_reg_imm32` (function, line 372) `void emit_and_reg_imm32(JitBuf *buf, int dst, int32_t imm)`
+  - `emit_and_reg_reg` (function, line 380) `void emit_and_reg_reg(JitBuf *b, int dst, int src)`
+  - `emit_or_reg_reg` (function, line 384) `void emit_or_reg_reg(JitBuf *b, int dst, int src)`
+  - `emit_xor_reg_reg` (function, line 388) `void emit_xor_reg_reg(JitBuf *b, int dst, int src)`
+  - `emit_not_reg` (function, line 392) `void emit_not_reg(JitBuf *b, int reg)`
+  - `emit_shl_reg_cl` (function, line 399) `void emit_shl_reg_cl(JitBuf *b, int reg)`
+  - `emit_shr_reg_cl` (function, line 406) `void emit_shr_reg_cl(JitBuf *b, int reg)`
+  - `emit_sar_reg_cl` (function, line 413) `void emit_sar_reg_cl(JitBuf *b, int reg)`
+  - `emit_xor_reg_self` (function, line 420) `void emit_xor_reg_self(JitBuf *b, int reg)`
+  - `emit_cmp_reg_reg` (function, line 430) `void emit_cmp_reg_reg(JitBuf *buf, int a, int breg)`
+  - `emit_test_reg_reg` (function, line 435) `void emit_test_reg_reg(JitBuf *buf, int a, int breg)`
+  - `emit_setcc` (function, line 440) `void emit_setcc(JitBuf *b, int cc, int dst)`
+  - `emit_movzx_reg_reg8` (function, line 449) `void emit_movzx_reg_reg8(JitBuf *buf, int dst, int src)`
+  - `emit_jmp_rel32` (function, line 460) `size_t emit_jmp_rel32(JitBuf *b, int32_t rel)`
+  - `emit_jcc_rel32` (function, line 467) `size_t emit_jcc_rel32(JitBuf *b, int cc, int32_t rel)`
+  - `emit_jmp_buf` (function, line 475) `void emit_jmp_buf(JitBuf *b, size_t target, JitPatches *p)`
+  - `emit_jcc_buf` (function, line 487) `void emit_jcc_buf(JitBuf *b, int cc, size_t target, JitPatches *p)`
+  - `jit_apply_patches` (function, line 500) `void jit_apply_patches(JitBuf *b, const JitPatches *p)`
+  - `emit_call_rel32` (function, line 512) `size_t emit_call_rel32(JitBuf *b, int32_t rel)`
+  - `emit_call_reg` (function, line 519) `void emit_call_reg(JitBuf *b, int reg)`
+  - `emit_ret` (function, line 527) `void emit_ret(JitBuf *b)`
+  - `emit_syscall` (function, line 535) `void emit_syscall(JitBuf *b)`
+  - `emit_int3` (function, line 540) `void emit_int3(JitBuf *b)`
+  - `emit_nop` (function, line 544) `void emit_nop(JitBuf *b)`
+  - `emit_call_abs` (function, line 552) `void emit_call_abs(JitBuf *b, void *func, int scratch)`
+  - `emit_mov_mem_imm8` (function, line 561) `void emit_mov_mem_imm8(JitBuf *b, int base, int32_t disp, uint8_t imm)`
+  - `emit_mov_mem_imm32` (function, line 569) `void emit_mov_mem_imm32(JitBuf *b, int base, int32_t disp, int32_t imm)`
+  - `JIT_BUF_ALLOC` (macro, line 26) `#define JIT_BUF_ALLOC(sz)`
+  - `JIT_BUF_FREE` (macro, line 27) `#define JIT_BUF_FREE(p, sz)`
+  - `JIT_BUF_ALLOC` (macro, line 29) `#define JIT_BUF_ALLOC(sz)`
+  - `JIT_BUF_FREE` (macro, line 31) `#define JIT_BUF_FREE(p, sz)`
+  - `JIT_BUF_FAILED` (macro, line 32) `#define JIT_BUF_FAILED`
+- Depends on: `cvm2/cvm_jit_x86.h`
+
+
+Next: [KB_cvm2_p2.md](KB_cvm2_p2.md)

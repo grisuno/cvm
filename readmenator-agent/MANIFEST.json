@@ -1,25 +1,132 @@
 {
   "tool": "readmenator",
-  "generated_at": "2026-09-17T03:26:17Z",
-  "project_root": "/home/grisun0/src_note/c/boot/repo/cvm",
+  "schema_version": 2,
+  "generated_at": "2026-10-16T23:42:15Z",
+  "project_root": ".",
+  "project_name": "cvm",
+  "git_commit": "f18a832c52b6c14d4bf6e019defecfda9a5c248a",
+  "git_branch": "main",
+  "source_fingerprint": "052e51b1dda10ca4ae03ccfe2c5e08a44998cd5e9f8d10d6b83a2324e0ad8718",
+  "freshness_check": "readmenator . fresh  # exit 0 = docs match sources, exit 1 = run: readmenator . --rebuild",
   "files": 26,
-  "symbols": 696,
-  "imports": 94,
+  "symbols": 565,
+  "imports": 91,
+  "calls": 3,
+  "inherits": 0,
   "resolved_imports": 31,
-  "security_findings": 1,
+  "security_findings": 0,
   "languages": {
     "c": 14,
     "h": 8,
-    "sh": 3,
-    "py": 1
+    "py": 1,
+    "sh": 3
+  },
+  "subsystems": {
+    "cvm2": 22,
+    "root": 4
   },
   "entrypoints": [],
   "start_here": "INDEX.md",
+  "read_order": [
+    "readmenator-agent/MEMORY.md  # rules, workflow, done criteria, session log",
+    "readmenator-wiki/index.md  # big picture, communities, god nodes",
+    "readmenator-agent/INDEX.md  # file -> purpose -> used-by count",
+    "readmenator-agent/GOTCHAS.md  # blast radius before editing",
+    "readmenator-agent/KB_<subsystem>.md  # only the subsystem you touch"
+  ],
   "workflow": [
     "ls *.md readmenator-*/  # orient: docs first, ignore build noise",
-    "grep -n '<keyword>' INDEX.md",
+    "grep -n '<keyword>' INDEX*.md SYMBOLS*.md",
+    "readmenator . ask '<question>'  # GraphRAG context (--global for overviews)",
     "cat KB_<subsystem>.md",
-    "grep -n '<file>' ARCHITECTURE.md SYMBOLS.md"
+    "grep -n '<file>' ARCHITECTURE*.md API*.md"
+  ],
+  "documents": [
+    {
+      "path": "API.md",
+      "lines": 493,
+      "approx_tokens": 14165
+    },
+    {
+      "path": "API_p2.md",
+      "lines": 26,
+      "approx_tokens": 339
+    },
+    {
+      "path": "ARCHITECTURE.md",
+      "lines": 58,
+      "approx_tokens": 580
+    },
+    {
+      "path": "CONCEPTS.md",
+      "lines": 120,
+      "approx_tokens": 3065
+    },
+    {
+      "path": "GOTCHAS.md",
+      "lines": 51,
+      "approx_tokens": 684
+    },
+    {
+      "path": "INDEX.md",
+      "lines": 30,
+      "approx_tokens": 616
+    },
+    {
+      "path": "KB_cvm2.md",
+      "lines": 454,
+      "approx_tokens": 8554
+    },
+    {
+      "path": "KB_cvm2_p2.md",
+      "lines": 223,
+      "approx_tokens": 3647
+    },
+    {
+      "path": "KB_root.md",
+      "lines": 76,
+      "approx_tokens": 1128
+    },
+    {
+      "path": "SECURITY.md",
+      "lines": 3,
+      "approx_tokens": 10
+    },
+    {
+      "path": "SYMBOLS.md",
+      "lines": 500,
+      "approx_tokens": 12553
+    },
+    {
+      "path": "SYMBOLS_p2.md",
+      "lines": 78,
+      "approx_tokens": 1825
+    },
+    {
+      "path": "recipes/add-function.md",
+      "lines": 9,
+      "approx_tokens": 99
+    },
+    {
+      "path": "recipes/change-impact.md",
+      "lines": 9,
+      "approx_tokens": 105
+    },
+    {
+      "path": "recipes/fix-cycle.md",
+      "lines": 6,
+      "approx_tokens": 65
+    },
+    {
+      "path": "recipes/fix-security.md",
+      "lines": 6,
+      "approx_tokens": 69
+    },
+    {
+      "path": "recipes/reduce-complexity.md",
+      "lines": 9,
+      "approx_tokens": 70
+    }
   ],
   "regenerate": "readmenator . --rebuild"
 }

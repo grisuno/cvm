@@ -1,30 +1,30 @@
 # Second Brain
 
-*Last synthesized: 2026-09-17 | 26 files | 2 concept pages | offline, zero tokens*
+*Last synthesized: 2026-10-16 | 26 files | 4 concept pages | offline, zero tokens*
 
 > Raw sources -> readmenator wiki -> links (Karpathy LLM Wiki Pattern, deterministic).
 > Start here, then open one community page. Prefer grep over full reads.
 
 ## Vault Overview
 
-The codebase centres on `cvm.h`, `cvm2/cvm.h`, `cvm_jit.h`. Architecturally it is 4 layers, dominant utility (18 files) across 2 import-based communities. Recorded risk surface: 1 security findings and 0 dependency cycles.
+The codebase centres on `cvm.h`, `cvm2/cvm.h`, `cvm_jit.h`. Architecturally it is 3 layers, dominant utility (21 files) across 4 import-based communities. Recorded risk surface: 0 security findings and 0 dependency cycles.
 
-Communities are self-contained in the resolved import graph; no cross-boundary bridges were recorded.
+Surprising tissue lives between cvm2: cvm, cvm2: cvm_dbg_main, cvm2: cvm_jit: 3 extracted cross-community imports and 5 inferred bridges. Follow `connections.json` sorted by strength before refactoring.
 
-Open work clusters around documentation (8% file coverage), 1 security findings, 1 taint paths, and 5 suggested exploration questions in `queries.md`.
+Open work clusters around documentation (8% file coverage), 0 security findings, 1 taint paths, and 5 suggested exploration questions in `queries.md`.
 
 ## Stats
 
 | Metric | Value |
 |--------|-------|
 | Files | 26 |
-| Symbols | 696 |
+| Symbols | 565 |
 | Resolved imports | 31 |
 | Languages | c, h, py, sh |
-| Communities | 2 |
+| Communities | 4 |
 | Doc coverage | 8% (2/26 files) |
-| Security findings | 1 |
-| Estimated read cost | ~19653 tokens (chars/4, offline so $0) |
+| Security findings | 0 |
+| Estimated read cost | ~14288 tokens (chars/4, offline so $0) |
 
 ## Reading Order
 
@@ -39,22 +39,31 @@ readmenator query "<question>" --target cvm
 
 ## Concept Wiki
 
-- [cvm2 (22 files, cohesion 1.00)](./community_0_cvm2.md)
-- [orphans (4 files, cohesion 0.00)](./community_1_orphans.md)
+- [cvm2: cvm (12 files, cohesion 0.73)](./community_0_cvm2_cvm.md)
+- [cvm2: cvm_dbg_main (5 files, cohesion 0.46)](./community_1_cvm2_cvm_dbg_main.md)
+- [cvm2: cvm_jit (5 files, cohesion 0.40)](./community_2_cvm2_cvm_jit.md)
+- [orphans (4 files, cohesion 0.00)](./community_3_orphans.md)
 
 ## God Nodes
 
 | File | Score |
 |------|-------|
 | `cvm.h` | 22.8 |
-| `cvm2/cvm.h` | 21.8 |
+| `cvm2/cvm.h` | 21.6 |
 | `cvm2/cvm_jit.h` | 18.6 |
-| `cvm2/cvm.c` | 17.2 |
+| `cvm2/cvm.c` | 16.4 |
 | `cvm2/cvm_view.h` | 14.9 |
 
 ## Strongest Connections
 
-- No cross-community connections recorded.
+- 1 -> 0: depends_on (strength 0.9, EXTRACTED)
+- 1 -> 2: depends_on (strength 0.9, EXTRACTED)
+- 2 -> 0: depends_on (strength 0.9, EXTRACTED)
+- 2 -> 0: bridges (strength 0.5, INFERRED)
+- 1 -> 0: bridges (strength 0.5, INFERRED)
+- 1 -> 0: bridges (strength 0.5, INFERRED)
+- 0 -> 2: bridges (strength 0.5, INFERRED)
+- 0 -> 1: bridges (strength 0.5, INFERRED)
 
 ## Navigation Tips
 

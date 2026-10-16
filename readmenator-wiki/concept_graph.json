@@ -1,0 +1,2659 @@
+{
+  "concepts": [
+    {
+      "name": "cvm",
+      "files": [
+        "cvm.c",
+        "cvm.h",
+        "cvm2/cvm.c",
+        "cvm2/cvm.h",
+        "cvm2/cvm_dbg_main.c",
+        "cvm2/cvm_dis.c",
+        "cvm2/cvm_dis.h",
+        "cvm2/cvm_dis_main.c",
+        "cvm2/cvm_jit.c",
+        "cvm2/cvm_jit.h",
+        "cvm2/cvm_jit_help.c",
+        "cvm2/cvm_jit_help.h",
+        "cvm2/cvm_jit_x86.c",
+        "cvm2/cvm_jit_x86.h",
+        "cvm2/cvm_ops.c",
+        "cvm2/cvm_ops.h",
+        "cvm2/cvm_val_main.c",
+        "cvm2/cvm_view.c",
+        "cvm2/cvm_view.h",
+        "cvm2/gen_fib_cvm.c",
+        "cvm2/gen_test.py",
+        "cvm2/test.sh",
+        "gen_fib_cvm.c"
+      ],
+      "mentions": 377,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "cvm2",
+      "files": [
+        "cvm2/cvm.c",
+        "cvm2/cvm.h",
+        "cvm2/cvm_dbg_main.c",
+        "cvm2/cvm_dis.c",
+        "cvm2/cvm_dis.h",
+        "cvm2/cvm_dis_main.c",
+        "cvm2/cvm_jit.c",
+        "cvm2/cvm_jit.h",
+        "cvm2/cvm_jit_help.c",
+        "cvm2/cvm_jit_help.h",
+        "cvm2/cvm_jit_x86.c",
+        "cvm2/cvm_jit_x86.h",
+        "cvm2/cvm_ops.c",
+        "cvm2/cvm_ops.h",
+        "cvm2/cvm_val_main.c",
+        "cvm2/cvm_view.c",
+        "cvm2/cvm_view.h",
+        "cvm2/deepseek_bash_20260808_653f26.sh",
+        "cvm2/gen_fib_cvm.c",
+        "cvm2/gen_minimal.c",
+        "cvm2/gen_test.py",
+        "cvm2/test.sh"
+      ],
+      "mentions": 22,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "size",
+      "files": [
+        "cvm.c",
+        "cvm.h",
+        "cvm2/cvm.c",
+        "cvm2/cvm.h",
+        "cvm2/cvm_dis.h",
+        "cvm2/cvm_jit.c",
+        "cvm2/cvm_jit.h",
+        "cvm2/cvm_jit_help.h",
+        "cvm2/cvm_jit_x86.c",
+        "cvm2/cvm_jit_x86.h",
+        "cvm2/cvm_ops.h",
+        "cvm2/cvm_view.h"
+      ],
+      "mentions": 100,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "code",
+      "files": [
+        "cvm.c",
+        "cvm2/cvm.c",
+        "cvm2/cvm.h",
+        "cvm2/cvm_dis.h",
+        "cvm2/cvm_jit.c",
+        "cvm2/cvm_jit.h",
+        "cvm2/cvm_jit_help.h",
+        "cvm2/cvm_jit_x86.c",
+        "cvm2/cvm_jit_x86.h",
+        "cvm2/cvm_ops.h",
+        "cvm2/cvm_val_main.c",
+        "cvm2/cvm_view.h"
+      ],
+      "mentions": 48,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "func",
+      "files": [
+        "cvm.h",
+        "cvm2/cvm.h",
+        "cvm2/cvm_dbg_main.c",
+        "cvm2/cvm_jit.c",
+        "cvm2/cvm_jit.h",
+        "cvm2/cvm_jit_help.c",
+        "cvm2/cvm_jit_help.h",
+        "cvm2/cvm_jit_x86.h",
+        "cvm2/cvm_val_main.c",
+        "cvm2/cvm_view.c",
+        "cvm2/cvm_view.h"
+      ],
+      "mentions": 47,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "emit",
+      "files": [
+        "cvm.c",
+        "cvm.h",
+        "cvm2/cvm_dbg_main.c",
+        "cvm2/cvm_dis.h",
+        "cvm2/cvm_jit.c",
+        "cvm2/cvm_jit_x86.c",
+        "cvm2/cvm_jit_x86.h",
+        "cvm2/gen_fib_cvm.c",
+        "cvm2/gen_minimal.c",
+        "cvm2/gen_test.py"
+      ],
+      "mentions": 370,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "module",
+      "files": [
+        "cvm.c",
+        "cvm.h",
+        "cvm2/cvm.c",
+        "cvm2/cvm.h",
+        "cvm2/cvm_dis.c",
+        "cvm2/cvm_dis.h",
+        "cvm2/cvm_jit.c",
+        "cvm2/cvm_jit.h",
+        "cvm2/cvm_view.h",
+        "cvm2/test.sh"
+      ],
+      "mentions": 45,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "int",
+      "files": [
+        "cvm.c",
+        "cvm.h",
+        "cvm2/cvm.c",
+        "cvm2/cvm_dis.h",
+        "cvm2/cvm_jit.c",
+        "cvm2/cvm_jit.h",
+        "cvm2/cvm_jit_x86.c",
+        "cvm2/cvm_jit_x86.h",
+        "cvm2/cvm_view.h"
+      ],
+      "mentions": 278,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "native",
+      "files": [
+        "cvm.c",
+        "cvm.h",
+        "cvm2/cvm.c",
+        "cvm2/cvm.h",
+        "cvm2/cvm_jit.c",
+        "cvm2/cvm_jit.h",
+        "cvm2/cvm_jit_help.c",
+        "cvm2/cvm_jit_help.h",
+        "cvm2/cvm_view.h"
+      ],
+      "mentions": 86,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "stack",
+      "files": [
+        "cvm.c",
+        "cvm.h",
+        "cvm2/cvm.c",
+        "cvm2/cvm.h",
+        "cvm2/cvm_dbg_main.c",
+        "cvm2/cvm_jit.c",
+        "cvm2/cvm_jit_help.h",
+        "cvm2/cvm_jit_x86.h",
+        "cvm2/cvm_val_main.c"
+      ],
+      "mentions": 51,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "function",
+      "files": [
+        "cvm2/cvm_dis.c",
+        "cvm2/cvm_dis.h",
+        "cvm2/cvm_jit.c",
+        "cvm2/cvm_jit.h",
+        "cvm2/cvm_jit_help.h",
+        "cvm2/cvm_jit_x86.h",
+        "cvm2/cvm_val_main.c",
+        "cvm2/cvm_view.h",
+        "cvm2/gen_test.py"
+      ],
+      "mentions": 47,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "push",
+      "files": [
+        "cvm.c",
+        "cvm.h",
+        "cvm2/cvm.c",
+        "cvm2/cvm_jit.c",
+        "cvm2/cvm_jit_help.c",
+        "cvm2/cvm_jit_help.h",
+        "cvm2/cvm_jit_x86.c",
+        "cvm2/cvm_jit_x86.h",
+        "cvm2/cvm_val_main.c"
+      ],
+      "mentions": 32,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "uint8",
+      "files": [
+        "cvm.c",
+        "cvm.h",
+        "cvm2/cvm.c",
+        "cvm2/cvm_jit.c",
+        "cvm2/cvm_jit_help.h",
+        "cvm2/cvm_jit_x86.c",
+        "cvm2/cvm_jit_x86.h",
+        "cvm2/cvm_ops.h",
+        "cvm2/cvm_view.h"
+      ],
+      "mentions": 31,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "const",
+      "files": [
+        "cvm.h",
+        "cvm2/cvm.c",
+        "cvm2/cvm_dis.h",
+        "cvm2/cvm_jit.c",
+        "cvm2/cvm_jit.h",
+        "cvm2/cvm_jit_x86.c",
+        "cvm2/cvm_jit_x86.h",
+        "cvm2/cvm_ops.h",
+        "cvm2/cvm_view.h"
+      ],
+      "mentions": 29,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "void",
+      "files": [
+        "cvm.c",
+        "cvm.h",
+        "cvm2/cvm.c",
+        "cvm2/cvm_dis.h",
+        "cvm2/cvm_jit.c",
+        "cvm2/cvm_jit.h",
+        "cvm2/cvm_jit_x86.c",
+        "cvm2/cvm_jit_x86.h"
+      ],
+      "mentions": 201,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "call",
+      "files": [
+        "cvm.c",
+        "cvm.h",
+        "cvm2/cvm_jit.c",
+        "cvm2/cvm_jit.h",
+        "cvm2/cvm_jit_help.c",
+        "cvm2/cvm_jit_help.h",
+        "cvm2/cvm_jit_x86.c",
+        "cvm2/cvm_jit_x86.h"
+      ],
+      "mentions": 55,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "pop",
+      "files": [
+        "cvm.c",
+        "cvm2/cvm.c",
+        "cvm2/cvm_jit.c",
+        "cvm2/cvm_jit_help.c",
+        "cvm2/cvm_jit_help.h",
+        "cvm2/cvm_jit_x86.c",
+        "cvm2/cvm_jit_x86.h",
+        "cvm2/cvm_val_main.c"
+      ],
+      "mentions": 32,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "max",
+      "files": [
+        "cvm.h",
+        "cvm2/cvm.c",
+        "cvm2/cvm.h",
+        "cvm2/cvm_dbg_main.c",
+        "cvm2/cvm_dis.c",
+        "cvm2/cvm_jit.h",
+        "cvm2/cvm_jit_x86.h",
+        "cvm2/cvm_val_main.c"
+      ],
+      "mentions": 21,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "frame",
+      "files": [
+        "cvm.c",
+        "cvm.h",
+        "cvm2/cvm.c",
+        "cvm2/cvm.h",
+        "cvm2/cvm_jit.c",
+        "cvm2/cvm_jit.h",
+        "cvm2/cvm_jit_help.c",
+        "cvm2/cvm_jit_help.h"
+      ],
+      "mentions": 17,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "mem",
+      "files": [
+        "cvm.c",
+        "cvm.h",
+        "cvm2/cvm.c",
+        "cvm2/cvm_jit.c",
+        "cvm2/cvm_jit_help.c",
+        "cvm2/cvm_jit_x86.c",
+        "cvm2/cvm_jit_x86.h"
+      ],
+      "mentions": 30,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "byte",
+      "files": [
+        "cvm.c",
+        "cvm.h",
+        "cvm2/cvm_jit_x86.c",
+        "cvm2/cvm_jit_x86.h",
+        "cvm2/gen_fib_cvm.c",
+        "cvm2/gen_minimal.c",
+        "cvm2/gen_test.py"
+      ],
+      "mentions": 25,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "uint32",
+      "files": [
+        "cvm2/cvm.c",
+        "cvm2/cvm_jit.c",
+        "cvm2/cvm_jit.h",
+        "cvm2/cvm_jit_help.h",
+        "cvm2/cvm_jit_x86.c",
+        "cvm2/cvm_jit_x86.h",
+        "cvm2/cvm_view.h"
+      ],
+      "mentions": 23,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "ret",
+      "files": [
+        "cvm.c",
+        "cvm2/cvm.h",
+        "cvm2/cvm_jit.c",
+        "cvm2/cvm_jit.h",
+        "cvm2/cvm_jit_help.c",
+        "cvm2/cvm_jit_x86.c",
+        "cvm2/cvm_jit_x86.h"
+      ],
+      "mentions": 22,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "entry",
+      "files": [
+        "cvm.h",
+        "cvm2/cvm.h",
+        "cvm2/cvm_jit.c",
+        "cvm2/cvm_jit.h",
+        "cvm2/cvm_jit_help.h",
+        "cvm2/cvm_jit_x86.h",
+        "cvm2/cvm_view.h"
+      ],
+      "mentions": 20,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "run",
+      "files": [
+        "cvm.c",
+        "cvm.h",
+        "cvm2/cvm.c",
+        "cvm2/cvm.h",
+        "cvm2/cvm_dbg_main.c",
+        "cvm2/cvm_jit.c",
+        "cvm2/cvm_jit.h"
+      ],
+      "mentions": 16,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "name",
+      "files": [
+        "cvm.c",
+        "cvm.h",
+        "cvm2/cvm_dis.c",
+        "cvm2/cvm_ops.c",
+        "cvm2/cvm_ops.h",
+        "cvm2/cvm_view.c",
+        "cvm2/cvm_view.h"
+      ],
+      "mentions": 13,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "alloc",
+      "files": [
+        "cvm.c",
+        "cvm.h",
+        "cvm2/cvm.c",
+        "cvm2/cvm.h",
+        "cvm2/cvm_jit_help.c",
+        "cvm2/cvm_jit_help.h",
+        "cvm2/cvm_jit_x86.c"
+      ],
+      "mentions": 11,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "ifdef",
+      "files": [
+        "cvm.c",
+        "cvm2/cvm.h",
+        "cvm2/cvm_dis.h",
+        "cvm2/cvm_jit.h",
+        "cvm2/cvm_jit_help.h",
+        "cvm2/cvm_ops.h",
+        "cvm2/cvm_view.h"
+      ],
+      "mentions": 9,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "jit",
+      "files": [
+        "cvm2/cvm_jit.c",
+        "cvm2/cvm_jit.h",
+        "cvm2/cvm_jit_help.c",
+        "cvm2/cvm_jit_help.h",
+        "cvm2/cvm_jit_x86.c",
+        "cvm2/cvm_jit_x86.h"
+      ],
+      "mentions": 367,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "data",
+      "files": [
+        "cvm.h",
+        "cvm2/cvm.c",
+        "cvm2/cvm.h",
+        "cvm2/cvm_jit_x86.c",
+        "cvm2/cvm_jit_x86.h",
+        "cvm2/cvm_view.h"
+      ],
+      "mentions": 34,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "static",
+      "files": [
+        "cvm.c",
+        "cvm2/cvm.c",
+        "cvm2/cvm_jit.c",
+        "cvm2/cvm_jit_x86.c",
+        "cvm2/cvm_jit_x86.h",
+        "cvm2/cvm_val_main.c"
+      ],
+      "mentions": 24,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "heap",
+      "files": [
+        "cvm.c",
+        "cvm.h",
+        "cvm2/cvm.c",
+        "cvm2/cvm.h",
+        "cvm2/cvm_jit_help.c",
+        "cvm2/cvm_jit_help.h"
+      ],
+      "mentions": 16,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "one",
+      "files": [
+        "cvm2/cvm.c",
+        "cvm2/cvm_dis.h",
+        "cvm2/cvm_jit.c",
+        "cvm2/cvm_jit.h",
+        "cvm2/cvm_ops.h",
+        "cvm2/cvm_val_main.c"
+      ],
+      "mentions": 15,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "syscall",
+      "files": [
+        "cvm.c",
+        "cvm.h",
+        "cvm2/cvm_jit_help.c",
+        "cvm2/cvm_jit_help.h",
+        "cvm2/cvm_jit_x86.c",
+        "cvm2/cvm_jit_x86.h"
+      ],
+      "mentions": 15,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "all",
+      "files": [
+        "cvm2/cvm.c",
+        "cvm2/cvm.h",
+        "cvm2/cvm_jit.h",
+        "cvm2/cvm_jit_help.h",
+        "cvm2/cvm_jit_x86.h",
+        "cvm2/cvm_view.h"
+      ],
+      "mentions": 14,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "create",
+      "files": [
+        "cvm.c",
+        "cvm.h",
+        "cvm2/cvm.c",
+        "cvm2/cvm.h",
+        "cvm2/cvm_jit.c",
+        "cvm2/cvm_jit.h"
+      ],
+      "mentions": 13,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "string",
+      "files": [
+        "cvm.c",
+        "cvm.h",
+        "cvm2/cvm.h",
+        "cvm2/cvm_view.c",
+        "cvm2/cvm_view.h",
+        "gen_fib_cvm.c"
+      ],
+      "mentions": 13,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "error",
+      "files": [
+        "cvm.c",
+        "cvm2/cvm_jit.c",
+        "cvm2/cvm_jit.h",
+        "cvm2/cvm_jit_help.c",
+        "cvm2/cvm_jit_help.h",
+        "cvm2/cvm_view.h"
+      ],
+      "mentions": 12,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "destroy",
+      "files": [
+        "cvm.c",
+        "cvm.h",
+        "cvm2/cvm.c",
+        "cvm2/cvm.h",
+        "cvm2/cvm_jit.c",
+        "cvm2/cvm_jit.h"
+      ],
+      "mentions": 10,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "interpreter",
+      "files": [
+        "cvm.c",
+        "cvm2/cvm.c",
+        "cvm2/cvm_jit.c",
+        "cvm2/cvm_jit.h",
+        "cvm2/cvm_jit_help.h",
+        "cvm2/test.sh"
+      ],
+      "mentions": 10,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "args",
+      "files": [
+        "cvm.c",
+        "cvm.h",
+        "cvm2/cvm.c",
+        "cvm2/cvm.h",
+        "cvm2/cvm_jit.c",
+        "cvm2/cvm_val_main.c"
+      ],
+      "mentions": 9,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "cplusplus",
+      "files": [
+        "cvm2/cvm.h",
+        "cvm2/cvm_dis.h",
+        "cvm2/cvm_jit.h",
+        "cvm2/cvm_jit_help.h",
+        "cvm2/cvm_ops.h",
+        "cvm2/cvm_view.h"
+      ],
+      "mentions": 8,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "count",
+      "files": [
+        "cvm.c",
+        "cvm.h",
+        "cvm2/cvm.c",
+        "cvm2/cvm.h",
+        "cvm2/cvm_jit.h",
+        "cvm2/cvm_jit_x86.h"
+      ],
+      "mentions": 7,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "buf",
+      "files": [
+        "cvm.c",
+        "cvm2/cvm.c",
+        "cvm2/cvm_jit.c",
+        "cvm2/cvm_jit_x86.c",
+        "cvm2/cvm_jit_x86.h"
+      ],
+      "mentions": 251,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "register",
+      "files": [
+        "cvm2/cvm.c",
+        "cvm2/cvm.h",
+        "cvm2/cvm_jit.c",
+        "cvm2/cvm_jit_help.h",
+        "cvm2/cvm_jit_x86.h"
+      ],
+      "mentions": 31,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "state",
+      "files": [
+        "cvm2/cvm.c",
+        "cvm2/cvm.h",
+        "cvm2/cvm_jit.c",
+        "cvm2/cvm_jit.h",
+        "cvm2/cvm_jit_help.h"
+      ],
+      "mentions": 30,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "free",
+      "files": [
+        "cvm.c",
+        "cvm.h",
+        "cvm2/cvm.c",
+        "cvm2/cvm_jit_x86.c",
+        "cvm2/cvm_jit_x86.h"
+      ],
+      "mentions": 26,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "opcode",
+      "files": [
+        "cvm.c",
+        "cvm2/cvm.h",
+        "cvm2/cvm_jit.c",
+        "cvm2/cvm_jit_x86.c",
+        "cvm2/cvm_ops.h"
+      ],
+      "mentions": 23,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "not",
+      "files": [
+        "cvm2/cvm_dis.h",
+        "cvm2/cvm_jit.c",
+        "cvm2/cvm_jit_x86.c",
+        "cvm2/cvm_jit_x86.h",
+        "cvm2/cvm_ops.h"
+      ],
+      "mentions": 18,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "break",
+      "files": [
+        "cvm.c",
+        "cvm2/cvm.c",
+        "cvm2/cvm.h",
+        "cvm2/cvm_dbg_main.c",
+        "cvm2/cvm_jit.c"
+      ],
+      "mentions": 14,
+      "confidence": "EXTRACTED"
+    }
+  ],
+  "relations": [
+    {
+      "source": "cvm",
+      "target": "size",
+      "verb": "depends_on",
+      "strength": 1.0,
+      "confidence": "INFERRED",
+      "evidence": [
+        "cvm.c->cvm.h",
+        "cvm2/cvm.c->cvm2/cvm.h",
+        "cvm2/cvm.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_dis.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_ops.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_view.h",
+        "cvm2/cvm_dis.c->cvm2/cvm_dis.h",
+        "cvm2/cvm_dis.c->cvm2/cvm_ops.h",
+        "cvm2/cvm_dis.h->cvm2/cvm_view.h"
+      ]
+    },
+    {
+      "source": "cvm2",
+      "target": "code",
+      "verb": "depends_on",
+      "strength": 0.97,
+      "confidence": "INFERRED",
+      "evidence": [
+        "cvm2/cvm.c->cvm2/cvm.h",
+        "cvm2/cvm.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_dis.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_ops.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_view.h",
+        "cvm2/cvm_dis.c->cvm2/cvm_dis.h",
+        "cvm2/cvm_dis.c->cvm2/cvm_ops.h",
+        "cvm2/cvm_dis.h->cvm2/cvm_view.h",
+        "cvm2/cvm_dis_main.c->cvm2/cvm_dis.h"
+      ]
+    },
+    {
+      "source": "cvm2",
+      "target": "cvm",
+      "verb": "depends_on",
+      "strength": 0.97,
+      "confidence": "INFERRED",
+      "evidence": [
+        "cvm2/cvm.c->cvm2/cvm.h",
+        "cvm2/cvm.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_dis.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_ops.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_view.h",
+        "cvm2/cvm_dis.c->cvm2/cvm_dis.h",
+        "cvm2/cvm_dis.c->cvm2/cvm_ops.h",
+        "cvm2/cvm_dis.h->cvm2/cvm_view.h",
+        "cvm2/cvm_dis_main.c->cvm2/cvm_dis.h"
+      ]
+    },
+    {
+      "source": "cvm2",
+      "target": "size",
+      "verb": "depends_on",
+      "strength": 0.97,
+      "confidence": "INFERRED",
+      "evidence": [
+        "cvm2/cvm.c->cvm2/cvm.h",
+        "cvm2/cvm.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_dis.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_ops.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_view.h",
+        "cvm2/cvm_dis.c->cvm2/cvm_dis.h",
+        "cvm2/cvm_dis.c->cvm2/cvm_ops.h",
+        "cvm2/cvm_dis.h->cvm2/cvm_view.h",
+        "cvm2/cvm_dis_main.c->cvm2/cvm_dis.h"
+      ]
+    },
+    {
+      "source": "cvm",
+      "target": "code",
+      "verb": "depends_on",
+      "strength": 0.93,
+      "confidence": "INFERRED",
+      "evidence": [
+        "cvm2/cvm.c->cvm2/cvm.h",
+        "cvm2/cvm.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_dis.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_ops.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_view.h",
+        "cvm2/cvm_dis.c->cvm2/cvm_dis.h",
+        "cvm2/cvm_dis.c->cvm2/cvm_ops.h",
+        "cvm2/cvm_dis.h->cvm2/cvm_view.h",
+        "cvm2/cvm_dis_main.c->cvm2/cvm_dis.h"
+      ]
+    },
+    {
+      "source": "cvm",
+      "target": "cvm2",
+      "verb": "depends_on",
+      "strength": 0.93,
+      "confidence": "INFERRED",
+      "evidence": [
+        "cvm2/cvm.c->cvm2/cvm.h",
+        "cvm2/cvm.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_dis.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_ops.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_view.h",
+        "cvm2/cvm_dis.c->cvm2/cvm_dis.h",
+        "cvm2/cvm_dis.c->cvm2/cvm_ops.h",
+        "cvm2/cvm_dis.h->cvm2/cvm_view.h",
+        "cvm2/cvm_dis_main.c->cvm2/cvm_dis.h"
+      ]
+    },
+    {
+      "source": "cvm2",
+      "target": "cplusplus",
+      "verb": "depends_on",
+      "strength": 0.9,
+      "confidence": "INFERRED",
+      "evidence": [
+        "cvm2/cvm.c->cvm2/cvm.h",
+        "cvm2/cvm.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_dis.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_ops.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_view.h",
+        "cvm2/cvm_dis.c->cvm2/cvm_dis.h",
+        "cvm2/cvm_dis.c->cvm2/cvm_ops.h",
+        "cvm2/cvm_dis.h->cvm2/cvm_view.h",
+        "cvm2/cvm_dis_main.c->cvm2/cvm_dis.h"
+      ]
+    },
+    {
+      "source": "cvm2",
+      "target": "ifdef",
+      "verb": "depends_on",
+      "strength": 0.9,
+      "confidence": "INFERRED",
+      "evidence": [
+        "cvm2/cvm.c->cvm2/cvm.h",
+        "cvm2/cvm.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_dis.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_ops.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_view.h",
+        "cvm2/cvm_dis.c->cvm2/cvm_dis.h",
+        "cvm2/cvm_dis.c->cvm2/cvm_ops.h",
+        "cvm2/cvm_dis.h->cvm2/cvm_view.h",
+        "cvm2/cvm_dis_main.c->cvm2/cvm_dis.h"
+      ]
+    },
+    {
+      "source": "cvm",
+      "target": "cplusplus",
+      "verb": "depends_on",
+      "strength": 0.87,
+      "confidence": "INFERRED",
+      "evidence": [
+        "cvm2/cvm.c->cvm2/cvm.h",
+        "cvm2/cvm.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_dis.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_ops.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_view.h",
+        "cvm2/cvm_dis.c->cvm2/cvm_dis.h",
+        "cvm2/cvm_dis.c->cvm2/cvm_ops.h",
+        "cvm2/cvm_dis.h->cvm2/cvm_view.h",
+        "cvm2/cvm_dis_main.c->cvm2/cvm_dis.h"
+      ]
+    },
+    {
+      "source": "cvm",
+      "target": "ifdef",
+      "verb": "depends_on",
+      "strength": 0.87,
+      "confidence": "INFERRED",
+      "evidence": [
+        "cvm2/cvm.c->cvm2/cvm.h",
+        "cvm2/cvm.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_dis.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_ops.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_view.h",
+        "cvm2/cvm_dis.c->cvm2/cvm_dis.h",
+        "cvm2/cvm_dis.c->cvm2/cvm_ops.h",
+        "cvm2/cvm_dis.h->cvm2/cvm_view.h",
+        "cvm2/cvm_dis_main.c->cvm2/cvm_dis.h"
+      ]
+    },
+    {
+      "source": "cvm",
+      "target": "entry",
+      "verb": "depends_on",
+      "strength": 0.73,
+      "confidence": "INFERRED",
+      "evidence": [
+        "cvm.c->cvm.h",
+        "cvm2/cvm.c->cvm2/cvm.h",
+        "cvm2/cvm.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_view.h",
+        "cvm2/cvm_dis.h->cvm2/cvm_view.h",
+        "cvm2/cvm_dis_main.c->cvm2/cvm_view.h",
+        "cvm2/cvm_jit.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_jit.h->cvm2/cvm.h",
+        "cvm2/cvm_jit.h->cvm2/cvm_jit_help.h"
+      ]
+    },
+    {
+      "source": "cvm",
+      "target": "func",
+      "verb": "depends_on",
+      "strength": 0.73,
+      "confidence": "INFERRED",
+      "evidence": [
+        "cvm.c->cvm.h",
+        "cvm2/cvm.c->cvm2/cvm.h",
+        "cvm2/cvm.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_view.h",
+        "cvm2/cvm_dis.h->cvm2/cvm_view.h",
+        "cvm2/cvm_dis_main.c->cvm2/cvm_view.h",
+        "cvm2/cvm_jit.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_jit.h->cvm2/cvm.h",
+        "cvm2/cvm_jit.h->cvm2/cvm_jit_help.h"
+      ]
+    },
+    {
+      "source": "cvm",
+      "target": "const",
+      "verb": "depends_on",
+      "strength": 0.7,
+      "confidence": "INFERRED",
+      "evidence": [
+        "cvm.c->cvm.h",
+        "cvm2/cvm.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_dis.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_ops.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_view.h",
+        "cvm2/cvm_dis.c->cvm2/cvm_dis.h",
+        "cvm2/cvm_dis.c->cvm2/cvm_ops.h",
+        "cvm2/cvm_dis.h->cvm2/cvm_view.h",
+        "cvm2/cvm_dis_main.c->cvm2/cvm_dis.h",
+        "cvm2/cvm_dis_main.c->cvm2/cvm_view.h"
+      ]
+    },
+    {
+      "source": "cvm",
+      "target": "module",
+      "verb": "depends_on",
+      "strength": 0.7,
+      "confidence": "INFERRED",
+      "evidence": [
+        "cvm.c->cvm.h",
+        "cvm2/cvm.c->cvm2/cvm.h",
+        "cvm2/cvm.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_dis.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_view.h",
+        "cvm2/cvm_dis.c->cvm2/cvm_dis.h",
+        "cvm2/cvm_dis.h->cvm2/cvm_view.h",
+        "cvm2/cvm_dis_main.c->cvm2/cvm_dis.h",
+        "cvm2/cvm_dis_main.c->cvm2/cvm_view.h"
+      ]
+    },
+    {
+      "source": "cvm2",
+      "target": "all",
+      "verb": "depends_on",
+      "strength": 0.7,
+      "confidence": "INFERRED",
+      "evidence": [
+        "cvm2/cvm.c->cvm2/cvm.h",
+        "cvm2/cvm.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_view.h",
+        "cvm2/cvm_dis.h->cvm2/cvm_view.h",
+        "cvm2/cvm_dis_main.c->cvm2/cvm_view.h",
+        "cvm2/cvm_jit.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_jit.h->cvm2/cvm.h",
+        "cvm2/cvm_jit.h->cvm2/cvm_jit_help.h",
+        "cvm2/cvm_jit.h->cvm2/cvm_jit_x86.h"
+      ]
+    },
+    {
+      "source": "cvm2",
+      "target": "entry",
+      "verb": "depends_on",
+      "strength": 0.7,
+      "confidence": "INFERRED",
+      "evidence": [
+        "cvm2/cvm.c->cvm2/cvm.h",
+        "cvm2/cvm.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_view.h",
+        "cvm2/cvm_dis.h->cvm2/cvm_view.h",
+        "cvm2/cvm_dis_main.c->cvm2/cvm_view.h",
+        "cvm2/cvm_jit.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_jit.h->cvm2/cvm.h",
+        "cvm2/cvm_jit.h->cvm2/cvm_jit_help.h",
+        "cvm2/cvm_jit.h->cvm2/cvm_jit_x86.h"
+      ]
+    },
+    {
+      "source": "cvm2",
+      "target": "func",
+      "verb": "depends_on",
+      "strength": 0.7,
+      "confidence": "INFERRED",
+      "evidence": [
+        "cvm2/cvm.c->cvm2/cvm.h",
+        "cvm2/cvm.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_view.h",
+        "cvm2/cvm_dis.h->cvm2/cvm_view.h",
+        "cvm2/cvm_dis_main.c->cvm2/cvm_view.h",
+        "cvm2/cvm_jit.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_jit.h->cvm2/cvm.h",
+        "cvm2/cvm_jit.h->cvm2/cvm_jit_help.h",
+        "cvm2/cvm_jit.h->cvm2/cvm_jit_x86.h"
+      ]
+    },
+    {
+      "source": "cvm",
+      "target": "all",
+      "verb": "depends_on",
+      "strength": 0.67,
+      "confidence": "INFERRED",
+      "evidence": [
+        "cvm2/cvm.c->cvm2/cvm.h",
+        "cvm2/cvm.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_view.h",
+        "cvm2/cvm_dis.h->cvm2/cvm_view.h",
+        "cvm2/cvm_dis_main.c->cvm2/cvm_view.h",
+        "cvm2/cvm_jit.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_jit.h->cvm2/cvm.h",
+        "cvm2/cvm_jit.h->cvm2/cvm_jit_help.h",
+        "cvm2/cvm_jit.h->cvm2/cvm_jit_x86.h"
+      ]
+    },
+    {
+      "source": "cvm",
+      "target": "native",
+      "verb": "depends_on",
+      "strength": 0.67,
+      "confidence": "INFERRED",
+      "evidence": [
+        "cvm.c->cvm.h",
+        "cvm2/cvm.c->cvm2/cvm.h",
+        "cvm2/cvm.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_view.h",
+        "cvm2/cvm_dis.h->cvm2/cvm_view.h",
+        "cvm2/cvm_dis_main.c->cvm2/cvm_view.h",
+        "cvm2/cvm_jit.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_jit.h->cvm2/cvm.h",
+        "cvm2/cvm_jit.h->cvm2/cvm_jit_help.h"
+      ]
+    },
+    {
+      "source": "cvm2",
+      "target": "module",
+      "verb": "depends_on",
+      "strength": 0.67,
+      "confidence": "INFERRED",
+      "evidence": [
+        "cvm2/cvm.c->cvm2/cvm.h",
+        "cvm2/cvm.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_dis.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_view.h",
+        "cvm2/cvm_dis.c->cvm2/cvm_dis.h",
+        "cvm2/cvm_dis.h->cvm2/cvm_view.h",
+        "cvm2/cvm_dis_main.c->cvm2/cvm_dis.h",
+        "cvm2/cvm_dis_main.c->cvm2/cvm_view.h",
+        "cvm2/cvm_jit.c->cvm2/cvm_jit.h"
+      ]
+    },
+    {
+      "source": "cvm2",
+      "target": "const",
+      "verb": "depends_on",
+      "strength": 0.63,
+      "confidence": "INFERRED",
+      "evidence": [
+        "cvm2/cvm.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_dis.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_ops.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_view.h",
+        "cvm2/cvm_dis.c->cvm2/cvm_dis.h",
+        "cvm2/cvm_dis.c->cvm2/cvm_ops.h",
+        "cvm2/cvm_dis.h->cvm2/cvm_view.h",
+        "cvm2/cvm_dis_main.c->cvm2/cvm_dis.h",
+        "cvm2/cvm_dis_main.c->cvm2/cvm_view.h",
+        "cvm2/cvm_jit.c->cvm2/cvm_jit.h"
+      ]
+    },
+    {
+      "source": "cvm2",
+      "target": "native",
+      "verb": "depends_on",
+      "strength": 0.63,
+      "confidence": "INFERRED",
+      "evidence": [
+        "cvm2/cvm.c->cvm2/cvm.h",
+        "cvm2/cvm.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_view.h",
+        "cvm2/cvm_dis.h->cvm2/cvm_view.h",
+        "cvm2/cvm_dis_main.c->cvm2/cvm_view.h",
+        "cvm2/cvm_jit.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_jit.h->cvm2/cvm.h",
+        "cvm2/cvm_jit.h->cvm2/cvm_jit_help.h",
+        "cvm2/cvm_jit_help.c->cvm2/cvm_jit.h"
+      ]
+    },
+    {
+      "source": "cvm",
+      "target": "data",
+      "verb": "depends_on",
+      "strength": 0.53,
+      "confidence": "INFERRED",
+      "evidence": [
+        "cvm.c->cvm.h",
+        "cvm2/cvm.c->cvm2/cvm.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_view.h",
+        "cvm2/cvm_dis.h->cvm2/cvm_view.h",
+        "cvm2/cvm_dis_main.c->cvm2/cvm_view.h",
+        "cvm2/cvm_jit.h->cvm2/cvm.h",
+        "cvm2/cvm_jit.h->cvm2/cvm_jit_x86.h",
+        "cvm2/cvm_jit_help.h->cvm2/cvm.h",
+        "cvm2/cvm_jit_x86.c->cvm2/cvm_jit_x86.h"
+      ]
+    },
+    {
+      "source": "cvm",
+      "target": "function",
+      "verb": "depends_on",
+      "strength": 0.53,
+      "confidence": "INFERRED",
+      "evidence": [
+        "cvm2/cvm.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_dis.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_view.h",
+        "cvm2/cvm_dis.c->cvm2/cvm_dis.h",
+        "cvm2/cvm_dis.h->cvm2/cvm_view.h",
+        "cvm2/cvm_dis_main.c->cvm2/cvm_dis.h",
+        "cvm2/cvm_dis_main.c->cvm2/cvm_view.h",
+        "cvm2/cvm_jit.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_jit.h->cvm2/cvm_jit_help.h",
+        "cvm2/cvm_jit.h->cvm2/cvm_jit_x86.h"
+      ]
+    },
+    {
+      "source": "cvm",
+      "target": "int",
+      "verb": "depends_on",
+      "strength": 0.53,
+      "confidence": "INFERRED",
+      "evidence": [
+        "cvm.c->cvm.h",
+        "cvm2/cvm.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_dis.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_view.h",
+        "cvm2/cvm_dis.c->cvm2/cvm_dis.h",
+        "cvm2/cvm_dis.h->cvm2/cvm_view.h",
+        "cvm2/cvm_dis_main.c->cvm2/cvm_dis.h",
+        "cvm2/cvm_dis_main.c->cvm2/cvm_view.h",
+        "cvm2/cvm_jit.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_jit.h->cvm2/cvm_jit_x86.h"
+      ]
+    },
+    {
+      "source": "cvm",
+      "target": "uint8",
+      "verb": "depends_on",
+      "strength": 0.53,
+      "confidence": "INFERRED",
+      "evidence": [
+        "cvm.c->cvm.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_ops.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_view.h",
+        "cvm2/cvm_dis.c->cvm2/cvm_ops.h",
+        "cvm2/cvm_dis.h->cvm2/cvm_view.h",
+        "cvm2/cvm_dis_main.c->cvm2/cvm_view.h",
+        "cvm2/cvm_jit.c->cvm2/cvm_ops.h",
+        "cvm2/cvm_jit.h->cvm2/cvm_jit_help.h",
+        "cvm2/cvm_jit.h->cvm2/cvm_jit_x86.h",
+        "cvm2/cvm_jit_help.c->cvm2/cvm_jit_help.h"
+      ]
+    },
+    {
+      "source": "cvm2",
+      "target": "function",
+      "verb": "depends_on",
+      "strength": 0.53,
+      "confidence": "INFERRED",
+      "evidence": [
+        "cvm2/cvm.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_dis.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_view.h",
+        "cvm2/cvm_dis.c->cvm2/cvm_dis.h",
+        "cvm2/cvm_dis.h->cvm2/cvm_view.h",
+        "cvm2/cvm_dis_main.c->cvm2/cvm_dis.h",
+        "cvm2/cvm_dis_main.c->cvm2/cvm_view.h",
+        "cvm2/cvm_jit.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_jit.h->cvm2/cvm_jit_help.h",
+        "cvm2/cvm_jit.h->cvm2/cvm_jit_x86.h"
+      ]
+    },
+    {
+      "source": "func",
+      "target": "code",
+      "verb": "depends_on",
+      "strength": 0.53,
+      "confidence": "INFERRED",
+      "evidence": [
+        "cvm2/cvm_dbg_main.c->cvm2/cvm.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_dis.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_ops.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_view.h",
+        "cvm2/cvm_jit.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_jit.c->cvm2/cvm_ops.h",
+        "cvm2/cvm_jit.h->cvm2/cvm.h",
+        "cvm2/cvm_jit.h->cvm2/cvm_jit_help.h",
+        "cvm2/cvm_jit.h->cvm2/cvm_jit_x86.h",
+        "cvm2/cvm_jit_help.c->cvm2/cvm_jit.h"
+      ]
+    },
+    {
+      "source": "func",
+      "target": "cvm",
+      "verb": "depends_on",
+      "strength": 0.53,
+      "confidence": "INFERRED",
+      "evidence": [
+        "cvm2/cvm_dbg_main.c->cvm2/cvm.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_dis.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_ops.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_view.h",
+        "cvm2/cvm_jit.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_jit.c->cvm2/cvm_ops.h",
+        "cvm2/cvm_jit.h->cvm2/cvm.h",
+        "cvm2/cvm_jit.h->cvm2/cvm_jit_help.h",
+        "cvm2/cvm_jit.h->cvm2/cvm_jit_x86.h",
+        "cvm2/cvm_jit_help.c->cvm2/cvm_jit.h"
+      ]
+    },
+    {
+      "source": "func",
+      "target": "cvm2",
+      "verb": "depends_on",
+      "strength": 0.53,
+      "confidence": "INFERRED",
+      "evidence": [
+        "cvm2/cvm_dbg_main.c->cvm2/cvm.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_dis.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_ops.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_view.h",
+        "cvm2/cvm_jit.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_jit.c->cvm2/cvm_ops.h",
+        "cvm2/cvm_jit.h->cvm2/cvm.h",
+        "cvm2/cvm_jit.h->cvm2/cvm_jit_help.h",
+        "cvm2/cvm_jit.h->cvm2/cvm_jit_x86.h",
+        "cvm2/cvm_jit_help.c->cvm2/cvm_jit.h"
+      ]
+    },
+    {
+      "source": "func",
+      "target": "size",
+      "verb": "depends_on",
+      "strength": 0.53,
+      "confidence": "INFERRED",
+      "evidence": [
+        "cvm2/cvm_dbg_main.c->cvm2/cvm.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_dis.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_ops.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_view.h",
+        "cvm2/cvm_jit.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_jit.c->cvm2/cvm_ops.h",
+        "cvm2/cvm_jit.h->cvm2/cvm.h",
+        "cvm2/cvm_jit.h->cvm2/cvm_jit_help.h",
+        "cvm2/cvm_jit.h->cvm2/cvm_jit_x86.h",
+        "cvm2/cvm_jit_help.c->cvm2/cvm_jit.h"
+      ]
+    },
+    {
+      "source": "cvm",
+      "target": "count",
+      "verb": "depends_on",
+      "strength": 0.5,
+      "confidence": "INFERRED",
+      "evidence": [
+        "cvm.c->cvm.h",
+        "cvm2/cvm.c->cvm2/cvm.h",
+        "cvm2/cvm.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm.h",
+        "cvm2/cvm_jit.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_jit.h->cvm2/cvm.h",
+        "cvm2/cvm_jit.h->cvm2/cvm_jit_x86.h",
+        "cvm2/cvm_jit_help.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_jit_help.h->cvm2/cvm.h",
+        "cvm2/cvm_jit_x86.c->cvm2/cvm_jit_x86.h"
+      ]
+    },
+    {
+      "source": "cvm",
+      "target": "frame",
+      "verb": "depends_on",
+      "strength": 0.5,
+      "confidence": "INFERRED",
+      "evidence": [
+        "cvm.c->cvm.h",
+        "cvm2/cvm.c->cvm2/cvm.h",
+        "cvm2/cvm.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm.h",
+        "cvm2/cvm_jit.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_jit.h->cvm2/cvm.h",
+        "cvm2/cvm_jit.h->cvm2/cvm_jit_help.h",
+        "cvm2/cvm_jit_help.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_jit_help.c->cvm2/cvm_jit_help.h",
+        "cvm2/cvm_jit_help.h->cvm2/cvm.h"
+      ]
+    },
+    {
+      "source": "cvm",
+      "target": "max",
+      "verb": "depends_on",
+      "strength": 0.5,
+      "confidence": "INFERRED",
+      "evidence": [
+        "cvm.c->cvm.h",
+        "cvm2/cvm.c->cvm2/cvm.h",
+        "cvm2/cvm.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm.h",
+        "cvm2/cvm_jit.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_jit.h->cvm2/cvm.h",
+        "cvm2/cvm_jit.h->cvm2/cvm_jit_x86.h",
+        "cvm2/cvm_jit_help.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_jit_help.h->cvm2/cvm.h",
+        "cvm2/cvm_jit_x86.c->cvm2/cvm_jit_x86.h"
+      ]
+    },
+    {
+      "source": "cvm2",
+      "target": "data",
+      "verb": "depends_on",
+      "strength": 0.5,
+      "confidence": "INFERRED",
+      "evidence": [
+        "cvm2/cvm.c->cvm2/cvm.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_view.h",
+        "cvm2/cvm_dis.h->cvm2/cvm_view.h",
+        "cvm2/cvm_dis_main.c->cvm2/cvm_view.h",
+        "cvm2/cvm_jit.h->cvm2/cvm.h",
+        "cvm2/cvm_jit.h->cvm2/cvm_jit_x86.h",
+        "cvm2/cvm_jit_help.h->cvm2/cvm.h",
+        "cvm2/cvm_jit_x86.c->cvm2/cvm_jit_x86.h",
+        "cvm2/cvm_ops.c->cvm2/cvm.h"
+      ]
+    },
+    {
+      "source": "func",
+      "target": "cplusplus",
+      "verb": "depends_on",
+      "strength": 0.5,
+      "confidence": "INFERRED",
+      "evidence": [
+        "cvm2/cvm_dbg_main.c->cvm2/cvm.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_dis.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_ops.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_view.h",
+        "cvm2/cvm_jit.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_jit.c->cvm2/cvm_ops.h",
+        "cvm2/cvm_jit.h->cvm2/cvm.h",
+        "cvm2/cvm_jit.h->cvm2/cvm_jit_help.h",
+        "cvm2/cvm_jit_help.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_jit_help.c->cvm2/cvm_jit_help.h"
+      ]
+    },
+    {
+      "source": "func",
+      "target": "ifdef",
+      "verb": "depends_on",
+      "strength": 0.5,
+      "confidence": "INFERRED",
+      "evidence": [
+        "cvm2/cvm_dbg_main.c->cvm2/cvm.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_dis.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_ops.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_view.h",
+        "cvm2/cvm_jit.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_jit.c->cvm2/cvm_ops.h",
+        "cvm2/cvm_jit.h->cvm2/cvm.h",
+        "cvm2/cvm_jit.h->cvm2/cvm_jit_help.h",
+        "cvm2/cvm_jit_help.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_jit_help.c->cvm2/cvm_jit_help.h"
+      ]
+    },
+    {
+      "source": "code",
+      "target": "cvm",
+      "verb": "depends_on",
+      "strength": 0.47,
+      "confidence": "INFERRED",
+      "evidence": [
+        "cvm.c->cvm.h",
+        "cvm2/cvm.c->cvm2/cvm.h",
+        "cvm2/cvm.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_dis.h->cvm2/cvm_view.h",
+        "cvm2/cvm_jit.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_jit.c->cvm2/cvm_ops.h",
+        "cvm2/cvm_jit.h->cvm2/cvm.h",
+        "cvm2/cvm_jit.h->cvm2/cvm_jit_help.h",
+        "cvm2/cvm_jit.h->cvm2/cvm_jit_x86.h",
+        "cvm2/cvm_jit_help.h->cvm2/cvm.h"
+      ]
+    },
+    {
+      "source": "code",
+      "target": "size",
+      "verb": "depends_on",
+      "strength": 0.47,
+      "confidence": "INFERRED",
+      "evidence": [
+        "cvm.c->cvm.h",
+        "cvm2/cvm.c->cvm2/cvm.h",
+        "cvm2/cvm.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_dis.h->cvm2/cvm_view.h",
+        "cvm2/cvm_jit.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_jit.c->cvm2/cvm_ops.h",
+        "cvm2/cvm_jit.h->cvm2/cvm.h",
+        "cvm2/cvm_jit.h->cvm2/cvm_jit_help.h",
+        "cvm2/cvm_jit.h->cvm2/cvm_jit_x86.h",
+        "cvm2/cvm_jit_help.h->cvm2/cvm.h"
+      ]
+    },
+    {
+      "source": "cvm",
+      "target": "string",
+      "verb": "depends_on",
+      "strength": 0.47,
+      "confidence": "INFERRED",
+      "evidence": [
+        "cvm.c->cvm.h",
+        "cvm2/cvm.c->cvm2/cvm.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_view.h",
+        "cvm2/cvm_dis.h->cvm2/cvm_view.h",
+        "cvm2/cvm_dis_main.c->cvm2/cvm_view.h",
+        "cvm2/cvm_jit.h->cvm2/cvm.h",
+        "cvm2/cvm_jit_help.h->cvm2/cvm.h",
+        "cvm2/cvm_ops.c->cvm2/cvm.h",
+        "cvm2/cvm_val_main.c->cvm2/cvm_view.h"
+      ]
+    },
+    {
+      "source": "cvm2",
+      "target": "count",
+      "verb": "depends_on",
+      "strength": 0.47,
+      "confidence": "INFERRED",
+      "evidence": [
+        "cvm2/cvm.c->cvm2/cvm.h",
+        "cvm2/cvm.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm.h",
+        "cvm2/cvm_jit.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_jit.h->cvm2/cvm.h",
+        "cvm2/cvm_jit.h->cvm2/cvm_jit_x86.h",
+        "cvm2/cvm_jit_help.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_jit_help.h->cvm2/cvm.h",
+        "cvm2/cvm_jit_x86.c->cvm2/cvm_jit_x86.h",
+        "cvm2/cvm_ops.c->cvm2/cvm.h"
+      ]
+    },
+    {
+      "source": "cvm2",
+      "target": "frame",
+      "verb": "depends_on",
+      "strength": 0.47,
+      "confidence": "INFERRED",
+      "evidence": [
+        "cvm2/cvm.c->cvm2/cvm.h",
+        "cvm2/cvm.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm.h",
+        "cvm2/cvm_jit.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_jit.h->cvm2/cvm.h",
+        "cvm2/cvm_jit.h->cvm2/cvm_jit_help.h",
+        "cvm2/cvm_jit_help.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_jit_help.c->cvm2/cvm_jit_help.h",
+        "cvm2/cvm_jit_help.h->cvm2/cvm.h",
+        "cvm2/cvm_ops.c->cvm2/cvm.h"
+      ]
+    },
+    {
+      "source": "cvm2",
+      "target": "int",
+      "verb": "depends_on",
+      "strength": 0.47,
+      "confidence": "INFERRED",
+      "evidence": [
+        "cvm2/cvm.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_dis.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_view.h",
+        "cvm2/cvm_dis.c->cvm2/cvm_dis.h",
+        "cvm2/cvm_dis.h->cvm2/cvm_view.h",
+        "cvm2/cvm_dis_main.c->cvm2/cvm_dis.h",
+        "cvm2/cvm_dis_main.c->cvm2/cvm_view.h",
+        "cvm2/cvm_jit.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_jit.h->cvm2/cvm_jit_x86.h",
+        "cvm2/cvm_jit_help.c->cvm2/cvm_jit.h"
+      ]
+    },
+    {
+      "source": "cvm2",
+      "target": "max",
+      "verb": "depends_on",
+      "strength": 0.47,
+      "confidence": "INFERRED",
+      "evidence": [
+        "cvm2/cvm.c->cvm2/cvm.h",
+        "cvm2/cvm.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm.h",
+        "cvm2/cvm_jit.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_jit.h->cvm2/cvm.h",
+        "cvm2/cvm_jit.h->cvm2/cvm_jit_x86.h",
+        "cvm2/cvm_jit_help.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_jit_help.h->cvm2/cvm.h",
+        "cvm2/cvm_jit_x86.c->cvm2/cvm_jit_x86.h",
+        "cvm2/cvm_ops.c->cvm2/cvm.h"
+      ]
+    },
+    {
+      "source": "cvm2",
+      "target": "ret",
+      "verb": "depends_on",
+      "strength": 0.47,
+      "confidence": "INFERRED",
+      "evidence": [
+        "cvm2/cvm.c->cvm2/cvm.h",
+        "cvm2/cvm.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm.h",
+        "cvm2/cvm_jit.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_jit.h->cvm2/cvm.h",
+        "cvm2/cvm_jit.h->cvm2/cvm_jit_x86.h",
+        "cvm2/cvm_jit_help.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_jit_help.h->cvm2/cvm.h",
+        "cvm2/cvm_jit_x86.c->cvm2/cvm_jit_x86.h",
+        "cvm2/cvm_ops.c->cvm2/cvm.h"
+      ]
+    },
+    {
+      "source": "cvm2",
+      "target": "state",
+      "verb": "depends_on",
+      "strength": 0.47,
+      "confidence": "INFERRED",
+      "evidence": [
+        "cvm2/cvm.c->cvm2/cvm.h",
+        "cvm2/cvm.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm.h",
+        "cvm2/cvm_jit.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_jit.h->cvm2/cvm.h",
+        "cvm2/cvm_jit.h->cvm2/cvm_jit_help.h",
+        "cvm2/cvm_jit_help.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_jit_help.c->cvm2/cvm_jit_help.h",
+        "cvm2/cvm_jit_help.h->cvm2/cvm.h",
+        "cvm2/cvm_ops.c->cvm2/cvm.h"
+      ]
+    },
+    {
+      "source": "cvm2",
+      "target": "uint8",
+      "verb": "depends_on",
+      "strength": 0.47,
+      "confidence": "INFERRED",
+      "evidence": [
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_ops.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_view.h",
+        "cvm2/cvm_dis.c->cvm2/cvm_ops.h",
+        "cvm2/cvm_dis.h->cvm2/cvm_view.h",
+        "cvm2/cvm_dis_main.c->cvm2/cvm_view.h",
+        "cvm2/cvm_jit.c->cvm2/cvm_ops.h",
+        "cvm2/cvm_jit.h->cvm2/cvm_jit_help.h",
+        "cvm2/cvm_jit.h->cvm2/cvm_jit_x86.h",
+        "cvm2/cvm_jit_help.c->cvm2/cvm_jit_help.h",
+        "cvm2/cvm_jit_x86.c->cvm2/cvm_jit_x86.h"
+      ]
+    },
+    {
+      "source": "code",
+      "target": "cvm2",
+      "verb": "depends_on",
+      "strength": 0.43,
+      "confidence": "INFERRED",
+      "evidence": [
+        "cvm2/cvm.c->cvm2/cvm.h",
+        "cvm2/cvm.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_dis.h->cvm2/cvm_view.h",
+        "cvm2/cvm_jit.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_jit.c->cvm2/cvm_ops.h",
+        "cvm2/cvm_jit.h->cvm2/cvm.h",
+        "cvm2/cvm_jit.h->cvm2/cvm_jit_help.h",
+        "cvm2/cvm_jit.h->cvm2/cvm_jit_x86.h",
+        "cvm2/cvm_jit_help.h->cvm2/cvm.h",
+        "cvm2/cvm_jit_x86.c->cvm2/cvm_jit_x86.h"
+      ]
+    },
+    {
+      "source": "cvm",
+      "target": "create",
+      "verb": "depends_on",
+      "strength": 0.43,
+      "confidence": "INFERRED",
+      "evidence": [
+        "cvm.c->cvm.h",
+        "cvm2/cvm.c->cvm2/cvm.h",
+        "cvm2/cvm.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm.h",
+        "cvm2/cvm_jit.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_jit.h->cvm2/cvm.h",
+        "cvm2/cvm_jit_help.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_jit_help.h->cvm2/cvm.h",
+        "cvm2/cvm_ops.c->cvm2/cvm.h",
+        "cvm2/cvm_view.h->cvm2/cvm.h"
+      ]
+    },
+    {
+      "source": "cvm",
+      "target": "destroy",
+      "verb": "depends_on",
+      "strength": 0.43,
+      "confidence": "INFERRED",
+      "evidence": [
+        "cvm.c->cvm.h",
+        "cvm2/cvm.c->cvm2/cvm.h",
+        "cvm2/cvm.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm.h",
+        "cvm2/cvm_jit.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_jit.h->cvm2/cvm.h",
+        "cvm2/cvm_jit_help.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_jit_help.h->cvm2/cvm.h",
+        "cvm2/cvm_ops.c->cvm2/cvm.h",
+        "cvm2/cvm_view.h->cvm2/cvm.h"
+      ]
+    },
+    {
+      "source": "cvm",
+      "target": "ret",
+      "verb": "depends_on",
+      "strength": 0.43,
+      "confidence": "INFERRED",
+      "evidence": [
+        "cvm2/cvm.c->cvm2/cvm.h",
+        "cvm2/cvm.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm.h",
+        "cvm2/cvm_jit.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_jit.h->cvm2/cvm.h",
+        "cvm2/cvm_jit.h->cvm2/cvm_jit_x86.h",
+        "cvm2/cvm_jit_help.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_jit_help.h->cvm2/cvm.h",
+        "cvm2/cvm_jit_x86.c->cvm2/cvm_jit_x86.h",
+        "cvm2/cvm_ops.c->cvm2/cvm.h"
+      ]
+    },
+    {
+      "source": "cvm",
+      "target": "run",
+      "verb": "depends_on",
+      "strength": 0.43,
+      "confidence": "INFERRED",
+      "evidence": [
+        "cvm.c->cvm.h",
+        "cvm2/cvm.c->cvm2/cvm.h",
+        "cvm2/cvm.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm.h",
+        "cvm2/cvm_jit.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_jit.h->cvm2/cvm.h",
+        "cvm2/cvm_jit_help.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_jit_help.h->cvm2/cvm.h",
+        "cvm2/cvm_ops.c->cvm2/cvm.h",
+        "cvm2/cvm_view.h->cvm2/cvm.h"
+      ]
+    },
+    {
+      "source": "cvm",
+      "target": "stack",
+      "verb": "depends_on",
+      "strength": 0.43,
+      "confidence": "INFERRED",
+      "evidence": [
+        "cvm.c->cvm.h",
+        "cvm2/cvm.c->cvm2/cvm.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm.h",
+        "cvm2/cvm_jit.h->cvm2/cvm.h",
+        "cvm2/cvm_jit.h->cvm2/cvm_jit_help.h",
+        "cvm2/cvm_jit.h->cvm2/cvm_jit_x86.h",
+        "cvm2/cvm_jit_help.c->cvm2/cvm_jit_help.h",
+        "cvm2/cvm_jit_help.h->cvm2/cvm.h",
+        "cvm2/cvm_jit_x86.c->cvm2/cvm_jit_x86.h",
+        "cvm2/cvm_ops.c->cvm2/cvm.h"
+      ]
+    },
+    {
+      "source": "cvm",
+      "target": "state",
+      "verb": "depends_on",
+      "strength": 0.43,
+      "confidence": "INFERRED",
+      "evidence": [
+        "cvm2/cvm.c->cvm2/cvm.h",
+        "cvm2/cvm.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm.h",
+        "cvm2/cvm_jit.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_jit.h->cvm2/cvm.h",
+        "cvm2/cvm_jit.h->cvm2/cvm_jit_help.h",
+        "cvm2/cvm_jit_help.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_jit_help.c->cvm2/cvm_jit_help.h",
+        "cvm2/cvm_jit_help.h->cvm2/cvm.h",
+        "cvm2/cvm_ops.c->cvm2/cvm.h"
+      ]
+    },
+    {
+      "source": "cvm",
+      "target": "uint32",
+      "verb": "depends_on",
+      "strength": 0.43,
+      "confidence": "INFERRED",
+      "evidence": [
+        "cvm2/cvm.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_view.h",
+        "cvm2/cvm_dis.h->cvm2/cvm_view.h",
+        "cvm2/cvm_dis_main.c->cvm2/cvm_view.h",
+        "cvm2/cvm_jit.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_jit.h->cvm2/cvm_jit_help.h",
+        "cvm2/cvm_jit.h->cvm2/cvm_jit_x86.h",
+        "cvm2/cvm_jit_help.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_jit_help.c->cvm2/cvm_jit_help.h",
+        "cvm2/cvm_jit_x86.c->cvm2/cvm_jit_x86.h"
+      ]
+    },
+    {
+      "source": "cvm2",
+      "target": "opcode",
+      "verb": "depends_on",
+      "strength": 0.43,
+      "confidence": "INFERRED",
+      "evidence": [
+        "cvm2/cvm.c->cvm2/cvm.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_ops.h",
+        "cvm2/cvm_dis.c->cvm2/cvm_ops.h",
+        "cvm2/cvm_jit.c->cvm2/cvm_ops.h",
+        "cvm2/cvm_jit.h->cvm2/cvm.h",
+        "cvm2/cvm_jit_help.h->cvm2/cvm.h",
+        "cvm2/cvm_ops.c->cvm2/cvm.h",
+        "cvm2/cvm_ops.c->cvm2/cvm_ops.h",
+        "cvm2/cvm_val_main.c->cvm2/cvm_ops.h"
+      ]
+    },
+    {
+      "source": "cvm2",
+      "target": "string",
+      "verb": "depends_on",
+      "strength": 0.43,
+      "confidence": "INFERRED",
+      "evidence": [
+        "cvm2/cvm.c->cvm2/cvm.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_view.h",
+        "cvm2/cvm_dis.h->cvm2/cvm_view.h",
+        "cvm2/cvm_dis_main.c->cvm2/cvm_view.h",
+        "cvm2/cvm_jit.h->cvm2/cvm.h",
+        "cvm2/cvm_jit_help.h->cvm2/cvm.h",
+        "cvm2/cvm_ops.c->cvm2/cvm.h",
+        "cvm2/cvm_val_main.c->cvm2/cvm_view.h",
+        "cvm2/cvm_view.c->cvm2/cvm_view.h"
+      ]
+    },
+    {
+      "source": "cvm2",
+      "target": "uint32",
+      "verb": "depends_on",
+      "strength": 0.43,
+      "confidence": "INFERRED",
+      "evidence": [
+        "cvm2/cvm.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_view.h",
+        "cvm2/cvm_dis.h->cvm2/cvm_view.h",
+        "cvm2/cvm_dis_main.c->cvm2/cvm_view.h",
+        "cvm2/cvm_jit.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_jit.h->cvm2/cvm_jit_help.h",
+        "cvm2/cvm_jit.h->cvm2/cvm_jit_x86.h",
+        "cvm2/cvm_jit_help.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_jit_help.c->cvm2/cvm_jit_help.h",
+        "cvm2/cvm_jit_x86.c->cvm2/cvm_jit_x86.h"
+      ]
+    },
+    {
+      "source": "max",
+      "target": "code",
+      "verb": "depends_on",
+      "strength": 0.43,
+      "confidence": "INFERRED",
+      "evidence": [
+        "cvm2/cvm.c->cvm2/cvm.h",
+        "cvm2/cvm.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_dis.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_ops.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_view.h",
+        "cvm2/cvm_dis.c->cvm2/cvm_dis.h",
+        "cvm2/cvm_dis.c->cvm2/cvm_ops.h",
+        "cvm2/cvm_jit.h->cvm2/cvm.h",
+        "cvm2/cvm_jit.h->cvm2/cvm_jit_help.h"
+      ]
+    },
+    {
+      "source": "max",
+      "target": "cvm",
+      "verb": "depends_on",
+      "strength": 0.43,
+      "confidence": "INFERRED",
+      "evidence": [
+        "cvm2/cvm.c->cvm2/cvm.h",
+        "cvm2/cvm.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_dis.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_ops.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_view.h",
+        "cvm2/cvm_dis.c->cvm2/cvm_dis.h",
+        "cvm2/cvm_dis.c->cvm2/cvm_ops.h",
+        "cvm2/cvm_jit.h->cvm2/cvm.h",
+        "cvm2/cvm_jit.h->cvm2/cvm_jit_help.h"
+      ]
+    },
+    {
+      "source": "max",
+      "target": "cvm2",
+      "verb": "depends_on",
+      "strength": 0.43,
+      "confidence": "INFERRED",
+      "evidence": [
+        "cvm2/cvm.c->cvm2/cvm.h",
+        "cvm2/cvm.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_dis.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_ops.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_view.h",
+        "cvm2/cvm_dis.c->cvm2/cvm_dis.h",
+        "cvm2/cvm_dis.c->cvm2/cvm_ops.h",
+        "cvm2/cvm_jit.h->cvm2/cvm.h",
+        "cvm2/cvm_jit.h->cvm2/cvm_jit_help.h"
+      ]
+    },
+    {
+      "source": "max",
+      "target": "size",
+      "verb": "depends_on",
+      "strength": 0.43,
+      "confidence": "INFERRED",
+      "evidence": [
+        "cvm2/cvm.c->cvm2/cvm.h",
+        "cvm2/cvm.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_dis.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_ops.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_view.h",
+        "cvm2/cvm_dis.c->cvm2/cvm_dis.h",
+        "cvm2/cvm_dis.c->cvm2/cvm_ops.h",
+        "cvm2/cvm_jit.h->cvm2/cvm.h",
+        "cvm2/cvm_jit.h->cvm2/cvm_jit_help.h"
+      ]
+    },
+    {
+      "source": "code",
+      "target": "entry",
+      "verb": "depends_on",
+      "strength": 0.4,
+      "confidence": "INFERRED",
+      "evidence": [
+        "cvm.c->cvm.h",
+        "cvm2/cvm.c->cvm2/cvm.h",
+        "cvm2/cvm.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_dis.h->cvm2/cvm_view.h",
+        "cvm2/cvm_jit.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_jit.h->cvm2/cvm.h",
+        "cvm2/cvm_jit.h->cvm2/cvm_jit_help.h",
+        "cvm2/cvm_jit.h->cvm2/cvm_jit_x86.h",
+        "cvm2/cvm_jit_help.h->cvm2/cvm.h",
+        "cvm2/cvm_jit_x86.c->cvm2/cvm_jit_x86.h"
+      ]
+    },
+    {
+      "source": "code",
+      "target": "func",
+      "verb": "depends_on",
+      "strength": 0.4,
+      "confidence": "INFERRED",
+      "evidence": [
+        "cvm.c->cvm.h",
+        "cvm2/cvm.c->cvm2/cvm.h",
+        "cvm2/cvm.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_dis.h->cvm2/cvm_view.h",
+        "cvm2/cvm_jit.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_jit.h->cvm2/cvm.h",
+        "cvm2/cvm_jit.h->cvm2/cvm_jit_help.h",
+        "cvm2/cvm_jit.h->cvm2/cvm_jit_x86.h",
+        "cvm2/cvm_jit_help.h->cvm2/cvm.h",
+        "cvm2/cvm_jit_x86.c->cvm2/cvm_jit_x86.h"
+      ]
+    },
+    {
+      "source": "cvm",
+      "target": "name",
+      "verb": "depends_on",
+      "strength": 0.4,
+      "confidence": "INFERRED",
+      "evidence": [
+        "cvm.c->cvm.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_ops.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_view.h",
+        "cvm2/cvm_dis.c->cvm2/cvm_ops.h",
+        "cvm2/cvm_dis.h->cvm2/cvm_view.h",
+        "cvm2/cvm_dis_main.c->cvm2/cvm_view.h",
+        "cvm2/cvm_jit.c->cvm2/cvm_ops.h",
+        "cvm2/cvm_ops.c->cvm2/cvm_ops.h",
+        "cvm2/cvm_val_main.c->cvm2/cvm_ops.h",
+        "cvm2/cvm_val_main.c->cvm2/cvm_view.h"
+      ]
+    },
+    {
+      "source": "cvm",
+      "target": "one",
+      "verb": "depends_on",
+      "strength": 0.4,
+      "confidence": "INFERRED",
+      "evidence": [
+        "cvm2/cvm.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_dis.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_ops.h",
+        "cvm2/cvm_dis.c->cvm2/cvm_dis.h",
+        "cvm2/cvm_dis.c->cvm2/cvm_ops.h",
+        "cvm2/cvm_dis_main.c->cvm2/cvm_dis.h",
+        "cvm2/cvm_jit.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_jit.c->cvm2/cvm_ops.h",
+        "cvm2/cvm_jit_help.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_ops.c->cvm2/cvm_ops.h"
+      ]
+    },
+    {
+      "source": "cvm",
+      "target": "opcode",
+      "verb": "depends_on",
+      "strength": 0.4,
+      "confidence": "INFERRED",
+      "evidence": [
+        "cvm2/cvm.c->cvm2/cvm.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_ops.h",
+        "cvm2/cvm_dis.c->cvm2/cvm_ops.h",
+        "cvm2/cvm_jit.c->cvm2/cvm_ops.h",
+        "cvm2/cvm_jit.h->cvm2/cvm.h",
+        "cvm2/cvm_jit_help.h->cvm2/cvm.h",
+        "cvm2/cvm_ops.c->cvm2/cvm.h",
+        "cvm2/cvm_ops.c->cvm2/cvm_ops.h",
+        "cvm2/cvm_val_main.c->cvm2/cvm_ops.h"
+      ]
+    },
+    {
+      "source": "cvm2",
+      "target": "create",
+      "verb": "depends_on",
+      "strength": 0.4,
+      "confidence": "INFERRED",
+      "evidence": [
+        "cvm2/cvm.c->cvm2/cvm.h",
+        "cvm2/cvm.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm.h",
+        "cvm2/cvm_jit.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_jit.h->cvm2/cvm.h",
+        "cvm2/cvm_jit_help.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_jit_help.h->cvm2/cvm.h",
+        "cvm2/cvm_ops.c->cvm2/cvm.h",
+        "cvm2/cvm_view.h->cvm2/cvm.h",
+        "cvm2/gen_fib_cvm.c->cvm2/cvm.h"
+      ]
+    },
+    {
+      "source": "cvm2",
+      "target": "destroy",
+      "verb": "depends_on",
+      "strength": 0.4,
+      "confidence": "INFERRED",
+      "evidence": [
+        "cvm2/cvm.c->cvm2/cvm.h",
+        "cvm2/cvm.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm.h",
+        "cvm2/cvm_jit.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_jit.h->cvm2/cvm.h",
+        "cvm2/cvm_jit_help.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_jit_help.h->cvm2/cvm.h",
+        "cvm2/cvm_ops.c->cvm2/cvm.h",
+        "cvm2/cvm_view.h->cvm2/cvm.h",
+        "cvm2/gen_fib_cvm.c->cvm2/cvm.h"
+      ]
+    },
+    {
+      "source": "cvm2",
+      "target": "one",
+      "verb": "depends_on",
+      "strength": 0.4,
+      "confidence": "INFERRED",
+      "evidence": [
+        "cvm2/cvm.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_dis.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_ops.h",
+        "cvm2/cvm_dis.c->cvm2/cvm_dis.h",
+        "cvm2/cvm_dis.c->cvm2/cvm_ops.h",
+        "cvm2/cvm_dis_main.c->cvm2/cvm_dis.h",
+        "cvm2/cvm_jit.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_jit.c->cvm2/cvm_ops.h",
+        "cvm2/cvm_jit_help.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_ops.c->cvm2/cvm_ops.h"
+      ]
+    },
+    {
+      "source": "cvm2",
+      "target": "register",
+      "verb": "depends_on",
+      "strength": 0.4,
+      "confidence": "INFERRED",
+      "evidence": [
+        "cvm2/cvm.c->cvm2/cvm.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm.h",
+        "cvm2/cvm_jit.h->cvm2/cvm.h",
+        "cvm2/cvm_jit.h->cvm2/cvm_jit_help.h",
+        "cvm2/cvm_jit.h->cvm2/cvm_jit_x86.h",
+        "cvm2/cvm_jit_help.c->cvm2/cvm_jit_help.h",
+        "cvm2/cvm_jit_help.h->cvm2/cvm.h",
+        "cvm2/cvm_jit_x86.c->cvm2/cvm_jit_x86.h",
+        "cvm2/cvm_ops.c->cvm2/cvm.h",
+        "cvm2/cvm_view.h->cvm2/cvm.h"
+      ]
+    },
+    {
+      "source": "cvm2",
+      "target": "run",
+      "verb": "depends_on",
+      "strength": 0.4,
+      "confidence": "INFERRED",
+      "evidence": [
+        "cvm2/cvm.c->cvm2/cvm.h",
+        "cvm2/cvm.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm.h",
+        "cvm2/cvm_jit.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_jit.h->cvm2/cvm.h",
+        "cvm2/cvm_jit_help.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_jit_help.h->cvm2/cvm.h",
+        "cvm2/cvm_ops.c->cvm2/cvm.h",
+        "cvm2/cvm_view.h->cvm2/cvm.h",
+        "cvm2/gen_fib_cvm.c->cvm2/cvm.h"
+      ]
+    },
+    {
+      "source": "cvm2",
+      "target": "stack",
+      "verb": "depends_on",
+      "strength": 0.4,
+      "confidence": "INFERRED",
+      "evidence": [
+        "cvm2/cvm.c->cvm2/cvm.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm.h",
+        "cvm2/cvm_jit.h->cvm2/cvm.h",
+        "cvm2/cvm_jit.h->cvm2/cvm_jit_help.h",
+        "cvm2/cvm_jit.h->cvm2/cvm_jit_x86.h",
+        "cvm2/cvm_jit_help.c->cvm2/cvm_jit_help.h",
+        "cvm2/cvm_jit_help.h->cvm2/cvm.h",
+        "cvm2/cvm_jit_x86.c->cvm2/cvm_jit_x86.h",
+        "cvm2/cvm_ops.c->cvm2/cvm.h",
+        "cvm2/cvm_view.h->cvm2/cvm.h"
+      ]
+    },
+    {
+      "source": "emit",
+      "target": "cvm",
+      "verb": "depends_on",
+      "strength": 0.4,
+      "confidence": "INFERRED",
+      "evidence": [
+        "cvm.c->cvm.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_dis.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_ops.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_view.h",
+        "cvm2/cvm_dis.h->cvm2/cvm_view.h",
+        "cvm2/cvm_jit.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_jit.c->cvm2/cvm_ops.h",
+        "cvm2/cvm_jit_x86.c->cvm2/cvm_jit_x86.h",
+        "cvm2/gen_fib_cvm.c->cvm2/cvm.h"
+      ]
+    },
+    {
+      "source": "emit",
+      "target": "size",
+      "verb": "depends_on",
+      "strength": 0.4,
+      "confidence": "INFERRED",
+      "evidence": [
+        "cvm.c->cvm.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_dis.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_ops.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_view.h",
+        "cvm2/cvm_dis.h->cvm2/cvm_view.h",
+        "cvm2/cvm_jit.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_jit.c->cvm2/cvm_ops.h",
+        "cvm2/cvm_jit_x86.c->cvm2/cvm_jit_x86.h",
+        "cvm2/gen_fib_cvm.c->cvm2/cvm.h"
+      ]
+    },
+    {
+      "source": "func",
+      "target": "all",
+      "verb": "depends_on",
+      "strength": 0.4,
+      "confidence": "INFERRED",
+      "evidence": [
+        "cvm2/cvm_dbg_main.c->cvm2/cvm.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_view.h",
+        "cvm2/cvm_jit.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_jit.h->cvm2/cvm.h",
+        "cvm2/cvm_jit.h->cvm2/cvm_jit_help.h",
+        "cvm2/cvm_jit.h->cvm2/cvm_jit_x86.h",
+        "cvm2/cvm_jit_help.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_jit_help.c->cvm2/cvm_jit_help.h",
+        "cvm2/cvm_jit_help.h->cvm2/cvm.h",
+        "cvm2/cvm_val_main.c->cvm2/cvm_view.h"
+      ]
+    },
+    {
+      "source": "func",
+      "target": "entry",
+      "verb": "depends_on",
+      "strength": 0.4,
+      "confidence": "INFERRED",
+      "evidence": [
+        "cvm2/cvm_dbg_main.c->cvm2/cvm.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_view.h",
+        "cvm2/cvm_jit.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_jit.h->cvm2/cvm.h",
+        "cvm2/cvm_jit.h->cvm2/cvm_jit_help.h",
+        "cvm2/cvm_jit.h->cvm2/cvm_jit_x86.h",
+        "cvm2/cvm_jit_help.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_jit_help.c->cvm2/cvm_jit_help.h",
+        "cvm2/cvm_jit_help.h->cvm2/cvm.h",
+        "cvm2/cvm_val_main.c->cvm2/cvm_view.h"
+      ]
+    },
+    {
+      "source": "function",
+      "target": "code",
+      "verb": "depends_on",
+      "strength": 0.4,
+      "confidence": "INFERRED",
+      "evidence": [
+        "cvm2/cvm_dis.c->cvm2/cvm_dis.h",
+        "cvm2/cvm_dis.c->cvm2/cvm_ops.h",
+        "cvm2/cvm_dis.h->cvm2/cvm_view.h",
+        "cvm2/cvm_jit.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_jit.c->cvm2/cvm_ops.h",
+        "cvm2/cvm_jit.h->cvm2/cvm.h",
+        "cvm2/cvm_jit.h->cvm2/cvm_jit_help.h",
+        "cvm2/cvm_jit.h->cvm2/cvm_jit_x86.h",
+        "cvm2/cvm_jit_help.h->cvm2/cvm.h",
+        "cvm2/cvm_val_main.c->cvm2/cvm_ops.h"
+      ]
+    },
+    {
+      "source": "function",
+      "target": "cvm",
+      "verb": "depends_on",
+      "strength": 0.4,
+      "confidence": "INFERRED",
+      "evidence": [
+        "cvm2/cvm_dis.c->cvm2/cvm_dis.h",
+        "cvm2/cvm_dis.c->cvm2/cvm_ops.h",
+        "cvm2/cvm_dis.h->cvm2/cvm_view.h",
+        "cvm2/cvm_jit.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_jit.c->cvm2/cvm_ops.h",
+        "cvm2/cvm_jit.h->cvm2/cvm.h",
+        "cvm2/cvm_jit.h->cvm2/cvm_jit_help.h",
+        "cvm2/cvm_jit.h->cvm2/cvm_jit_x86.h",
+        "cvm2/cvm_jit_help.h->cvm2/cvm.h",
+        "cvm2/cvm_val_main.c->cvm2/cvm_ops.h"
+      ]
+    },
+    {
+      "source": "function",
+      "target": "cvm2",
+      "verb": "depends_on",
+      "strength": 0.4,
+      "confidence": "INFERRED",
+      "evidence": [
+        "cvm2/cvm_dis.c->cvm2/cvm_dis.h",
+        "cvm2/cvm_dis.c->cvm2/cvm_ops.h",
+        "cvm2/cvm_dis.h->cvm2/cvm_view.h",
+        "cvm2/cvm_jit.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_jit.c->cvm2/cvm_ops.h",
+        "cvm2/cvm_jit.h->cvm2/cvm.h",
+        "cvm2/cvm_jit.h->cvm2/cvm_jit_help.h",
+        "cvm2/cvm_jit.h->cvm2/cvm_jit_x86.h",
+        "cvm2/cvm_jit_help.h->cvm2/cvm.h",
+        "cvm2/cvm_val_main.c->cvm2/cvm_ops.h"
+      ]
+    },
+    {
+      "source": "function",
+      "target": "size",
+      "verb": "depends_on",
+      "strength": 0.4,
+      "confidence": "INFERRED",
+      "evidence": [
+        "cvm2/cvm_dis.c->cvm2/cvm_dis.h",
+        "cvm2/cvm_dis.c->cvm2/cvm_ops.h",
+        "cvm2/cvm_dis.h->cvm2/cvm_view.h",
+        "cvm2/cvm_jit.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_jit.c->cvm2/cvm_ops.h",
+        "cvm2/cvm_jit.h->cvm2/cvm.h",
+        "cvm2/cvm_jit.h->cvm2/cvm_jit_help.h",
+        "cvm2/cvm_jit.h->cvm2/cvm_jit_x86.h",
+        "cvm2/cvm_jit_help.h->cvm2/cvm.h",
+        "cvm2/cvm_val_main.c->cvm2/cvm_ops.h"
+      ]
+    },
+    {
+      "source": "max",
+      "target": "cplusplus",
+      "verb": "depends_on",
+      "strength": 0.4,
+      "confidence": "INFERRED",
+      "evidence": [
+        "cvm2/cvm.c->cvm2/cvm.h",
+        "cvm2/cvm.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_dis.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_ops.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_view.h",
+        "cvm2/cvm_dis.c->cvm2/cvm_dis.h",
+        "cvm2/cvm_dis.c->cvm2/cvm_ops.h",
+        "cvm2/cvm_jit.h->cvm2/cvm.h",
+        "cvm2/cvm_jit.h->cvm2/cvm_jit_help.h"
+      ]
+    },
+    {
+      "source": "max",
+      "target": "ifdef",
+      "verb": "depends_on",
+      "strength": 0.4,
+      "confidence": "INFERRED",
+      "evidence": [
+        "cvm2/cvm.c->cvm2/cvm.h",
+        "cvm2/cvm.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_dis.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_ops.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_view.h",
+        "cvm2/cvm_dis.c->cvm2/cvm_dis.h",
+        "cvm2/cvm_dis.c->cvm2/cvm_ops.h",
+        "cvm2/cvm_jit.h->cvm2/cvm.h",
+        "cvm2/cvm_jit.h->cvm2/cvm_jit_help.h"
+      ]
+    },
+    {
+      "source": "module",
+      "target": "cvm",
+      "verb": "depends_on",
+      "strength": 0.4,
+      "confidence": "INFERRED",
+      "evidence": [
+        "cvm.c->cvm.h",
+        "cvm2/cvm.c->cvm2/cvm.h",
+        "cvm2/cvm.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_dis.c->cvm2/cvm_dis.h",
+        "cvm2/cvm_dis.c->cvm2/cvm_ops.h",
+        "cvm2/cvm_dis.h->cvm2/cvm_view.h",
+        "cvm2/cvm_jit.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_jit.c->cvm2/cvm_ops.h",
+        "cvm2/cvm_jit.h->cvm2/cvm.h",
+        "cvm2/cvm_jit.h->cvm2/cvm_jit_help.h"
+      ]
+    },
+    {
+      "source": "module",
+      "target": "size",
+      "verb": "depends_on",
+      "strength": 0.4,
+      "confidence": "INFERRED",
+      "evidence": [
+        "cvm.c->cvm.h",
+        "cvm2/cvm.c->cvm2/cvm.h",
+        "cvm2/cvm.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_dis.c->cvm2/cvm_dis.h",
+        "cvm2/cvm_dis.c->cvm2/cvm_ops.h",
+        "cvm2/cvm_dis.h->cvm2/cvm_view.h",
+        "cvm2/cvm_jit.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_jit.c->cvm2/cvm_ops.h",
+        "cvm2/cvm_jit.h->cvm2/cvm.h",
+        "cvm2/cvm_jit.h->cvm2/cvm_jit_help.h"
+      ]
+    },
+    {
+      "source": "native",
+      "target": "cvm",
+      "verb": "depends_on",
+      "strength": 0.4,
+      "confidence": "INFERRED",
+      "evidence": [
+        "cvm.c->cvm.h",
+        "cvm2/cvm.c->cvm2/cvm.h",
+        "cvm2/cvm.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_jit.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_jit.c->cvm2/cvm_ops.h",
+        "cvm2/cvm_jit.h->cvm2/cvm.h",
+        "cvm2/cvm_jit.h->cvm2/cvm_jit_help.h",
+        "cvm2/cvm_jit.h->cvm2/cvm_jit_x86.h",
+        "cvm2/cvm_jit_help.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_jit_help.c->cvm2/cvm_jit_help.h"
+      ]
+    },
+    {
+      "source": "native",
+      "target": "size",
+      "verb": "depends_on",
+      "strength": 0.4,
+      "confidence": "INFERRED",
+      "evidence": [
+        "cvm.c->cvm.h",
+        "cvm2/cvm.c->cvm2/cvm.h",
+        "cvm2/cvm.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_jit.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_jit.c->cvm2/cvm_ops.h",
+        "cvm2/cvm_jit.h->cvm2/cvm.h",
+        "cvm2/cvm_jit.h->cvm2/cvm_jit_help.h",
+        "cvm2/cvm_jit.h->cvm2/cvm_jit_x86.h",
+        "cvm2/cvm_jit_help.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_jit_help.c->cvm2/cvm_jit_help.h"
+      ]
+    },
+    {
+      "source": "run",
+      "target": "cvm",
+      "verb": "depends_on",
+      "strength": 0.4,
+      "confidence": "INFERRED",
+      "evidence": [
+        "cvm.c->cvm.h",
+        "cvm2/cvm.c->cvm2/cvm.h",
+        "cvm2/cvm.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_dis.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_ops.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_view.h",
+        "cvm2/cvm_jit.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_jit.c->cvm2/cvm_ops.h",
+        "cvm2/cvm_jit.h->cvm2/cvm.h"
+      ]
+    },
+    {
+      "source": "run",
+      "target": "size",
+      "verb": "depends_on",
+      "strength": 0.4,
+      "confidence": "INFERRED",
+      "evidence": [
+        "cvm.c->cvm.h",
+        "cvm2/cvm.c->cvm2/cvm.h",
+        "cvm2/cvm.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_dis.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_ops.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_view.h",
+        "cvm2/cvm_jit.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_jit.c->cvm2/cvm_ops.h",
+        "cvm2/cvm_jit.h->cvm2/cvm.h"
+      ]
+    },
+    {
+      "source": "size",
+      "target": "cvm",
+      "verb": "depends_on",
+      "strength": 0.4,
+      "confidence": "INFERRED",
+      "evidence": [
+        "cvm.c->cvm.h",
+        "cvm2/cvm.c->cvm2/cvm.h",
+        "cvm2/cvm.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_dis.h->cvm2/cvm_view.h",
+        "cvm2/cvm_jit.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_jit.c->cvm2/cvm_ops.h",
+        "cvm2/cvm_jit.h->cvm2/cvm.h",
+        "cvm2/cvm_jit.h->cvm2/cvm_jit_help.h",
+        "cvm2/cvm_jit.h->cvm2/cvm_jit_x86.h",
+        "cvm2/cvm_jit_help.h->cvm2/cvm.h"
+      ]
+    },
+    {
+      "source": "stack",
+      "target": "cvm",
+      "verb": "depends_on",
+      "strength": 0.4,
+      "confidence": "INFERRED",
+      "evidence": [
+        "cvm.c->cvm.h",
+        "cvm2/cvm.c->cvm2/cvm.h",
+        "cvm2/cvm.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_dis.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_ops.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_view.h",
+        "cvm2/cvm_jit.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_jit.c->cvm2/cvm_ops.h",
+        "cvm2/cvm_jit_help.h->cvm2/cvm.h"
+      ]
+    },
+    {
+      "source": "stack",
+      "target": "size",
+      "verb": "depends_on",
+      "strength": 0.4,
+      "confidence": "INFERRED",
+      "evidence": [
+        "cvm.c->cvm.h",
+        "cvm2/cvm.c->cvm2/cvm.h",
+        "cvm2/cvm.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_dis.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_ops.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_view.h",
+        "cvm2/cvm_jit.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_jit.c->cvm2/cvm_ops.h",
+        "cvm2/cvm_jit_help.h->cvm2/cvm.h"
+      ]
+    },
+    {
+      "source": "code",
+      "target": "all",
+      "verb": "depends_on",
+      "strength": 0.37,
+      "confidence": "INFERRED",
+      "evidence": [
+        "cvm2/cvm.c->cvm2/cvm.h",
+        "cvm2/cvm.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_dis.h->cvm2/cvm_view.h",
+        "cvm2/cvm_jit.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_jit.h->cvm2/cvm.h",
+        "cvm2/cvm_jit.h->cvm2/cvm_jit_help.h",
+        "cvm2/cvm_jit.h->cvm2/cvm_jit_x86.h",
+        "cvm2/cvm_jit_help.h->cvm2/cvm.h",
+        "cvm2/cvm_jit_x86.c->cvm2/cvm_jit_x86.h",
+        "cvm2/cvm_val_main.c->cvm2/cvm_view.h"
+      ]
+    },
+    {
+      "source": "code",
+      "target": "cplusplus",
+      "verb": "depends_on",
+      "strength": 0.37,
+      "confidence": "INFERRED",
+      "evidence": [
+        "cvm2/cvm.c->cvm2/cvm.h",
+        "cvm2/cvm.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_dis.h->cvm2/cvm_view.h",
+        "cvm2/cvm_jit.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_jit.c->cvm2/cvm_ops.h",
+        "cvm2/cvm_jit.h->cvm2/cvm.h",
+        "cvm2/cvm_jit.h->cvm2/cvm_jit_help.h",
+        "cvm2/cvm_jit_help.h->cvm2/cvm.h",
+        "cvm2/cvm_val_main.c->cvm2/cvm_ops.h",
+        "cvm2/cvm_val_main.c->cvm2/cvm_view.h"
+      ]
+    },
+    {
+      "source": "code",
+      "target": "ifdef",
+      "verb": "depends_on",
+      "strength": 0.37,
+      "confidence": "INFERRED",
+      "evidence": [
+        "cvm2/cvm.c->cvm2/cvm.h",
+        "cvm2/cvm.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_dis.h->cvm2/cvm_view.h",
+        "cvm2/cvm_jit.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_jit.c->cvm2/cvm_ops.h",
+        "cvm2/cvm_jit.h->cvm2/cvm.h",
+        "cvm2/cvm_jit.h->cvm2/cvm_jit_help.h",
+        "cvm2/cvm_jit_help.h->cvm2/cvm.h",
+        "cvm2/cvm_val_main.c->cvm2/cvm_ops.h",
+        "cvm2/cvm_val_main.c->cvm2/cvm_view.h"
+      ]
+    },
+    {
+      "source": "cvm",
+      "target": "alloc",
+      "verb": "depends_on",
+      "strength": 0.37,
+      "confidence": "INFERRED",
+      "evidence": [
+        "cvm.c->cvm.h",
+        "cvm2/cvm.c->cvm2/cvm.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm.h",
+        "cvm2/cvm_jit.h->cvm2/cvm.h",
+        "cvm2/cvm_jit.h->cvm2/cvm_jit_help.h",
+        "cvm2/cvm_jit_help.c->cvm2/cvm_jit_help.h",
+        "cvm2/cvm_jit_help.h->cvm2/cvm.h",
+        "cvm2/cvm_ops.c->cvm2/cvm.h",
+        "cvm2/cvm_view.h->cvm2/cvm.h",
+        "cvm2/gen_fib_cvm.c->cvm2/cvm.h"
+      ]
+    },
+    {
+      "source": "cvm",
+      "target": "error",
+      "verb": "depends_on",
+      "strength": 0.37,
+      "confidence": "INFERRED",
+      "evidence": [
+        "cvm2/cvm.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_view.h",
+        "cvm2/cvm_dis.h->cvm2/cvm_view.h",
+        "cvm2/cvm_dis_main.c->cvm2/cvm_view.h",
+        "cvm2/cvm_jit.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_jit.h->cvm2/cvm_jit_help.h",
+        "cvm2/cvm_jit_help.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_jit_help.c->cvm2/cvm_jit_help.h",
+        "cvm2/cvm_val_main.c->cvm2/cvm_view.h",
+        "cvm2/cvm_view.c->cvm2/cvm_view.h"
+      ]
+    },
+    {
+      "source": "cvm",
+      "target": "heap",
+      "verb": "depends_on",
+      "strength": 0.37,
+      "confidence": "INFERRED",
+      "evidence": [
+        "cvm.c->cvm.h",
+        "cvm2/cvm.c->cvm2/cvm.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm.h",
+        "cvm2/cvm_jit.h->cvm2/cvm.h",
+        "cvm2/cvm_jit.h->cvm2/cvm_jit_help.h",
+        "cvm2/cvm_jit_help.c->cvm2/cvm_jit_help.h",
+        "cvm2/cvm_jit_help.h->cvm2/cvm.h",
+        "cvm2/cvm_ops.c->cvm2/cvm.h",
+        "cvm2/cvm_view.h->cvm2/cvm.h",
+        "cvm2/gen_fib_cvm.c->cvm2/cvm.h"
+      ]
+    },
+    {
+      "source": "cvm",
+      "target": "register",
+      "verb": "depends_on",
+      "strength": 0.37,
+      "confidence": "INFERRED",
+      "evidence": [
+        "cvm2/cvm.c->cvm2/cvm.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm.h",
+        "cvm2/cvm_jit.h->cvm2/cvm.h",
+        "cvm2/cvm_jit.h->cvm2/cvm_jit_help.h",
+        "cvm2/cvm_jit.h->cvm2/cvm_jit_x86.h",
+        "cvm2/cvm_jit_help.c->cvm2/cvm_jit_help.h",
+        "cvm2/cvm_jit_help.h->cvm2/cvm.h",
+        "cvm2/cvm_jit_x86.c->cvm2/cvm_jit_x86.h",
+        "cvm2/cvm_ops.c->cvm2/cvm.h",
+        "cvm2/cvm_view.h->cvm2/cvm.h"
+      ]
+    },
+    {
+      "source": "cvm",
+      "target": "void",
+      "verb": "depends_on",
+      "strength": 0.37,
+      "confidence": "INFERRED",
+      "evidence": [
+        "cvm.c->cvm.h",
+        "cvm2/cvm.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_dbg_main.c->cvm2/cvm_dis.h",
+        "cvm2/cvm_dis.c->cvm2/cvm_dis.h",
+        "cvm2/cvm_dis_main.c->cvm2/cvm_dis.h",
+        "cvm2/cvm_jit.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_jit.h->cvm2/cvm_jit_x86.h",
+        "cvm2/cvm_jit_help.c->cvm2/cvm_jit.h",
+        "cvm2/cvm_jit_x86.c->cvm2/cvm_jit_x86.h",
+        "cvm2/gen_fib_cvm.c->cvm2/cvm_jit.h"
+      ]
+    }
+  ],
+  "dialectic": [
+    "Thesis: `all` centralizes 6 files; Antithesis: `alloc` pulls 7 files with 3 shared (Jaccard 0.30); Synthesis: should they merge, split by layer, or keep `bridges` explicit?",
+    "Thesis: `all` centralizes 6 files; Antithesis: `code` pulls 12 files with 6 shared (Jaccard 0.50); Synthesis: should they merge, split by layer, or keep `depends_on` explicit?",
+    "Thesis: `all` centralizes 6 files; Antithesis: `const` pulls 9 files with 4 shared (Jaccard 0.36); Synthesis: should they merge, split by layer, or keep `bridges` explicit?",
+    "Thesis: `all` centralizes 6 files; Antithesis: `count` pulls 6 files with 4 shared (Jaccard 0.50); Synthesis: should they merge, split by layer, or keep `bridges` explicit?",
+    "Thesis: `all` centralizes 6 files; Antithesis: `cplusplus` pulls 6 files with 4 shared (Jaccard 0.50); Synthesis: should they merge, split by layer, or keep `bridges` explicit?",
+    "Thesis: `all` centralizes 6 files; Antithesis: `create` pulls 6 files with 3 shared (Jaccard 0.33); Synthesis: should they merge, split by layer, or keep `bridges` explicit?",
+    "Thesis: `all` centralizes 6 files; Antithesis: `data` pulls 6 files with 4 shared (Jaccard 0.50); Synthesis: should they merge, split by layer, or keep `bridges` explicit?",
+    "Thesis: `all` centralizes 6 files; Antithesis: `destroy` pulls 6 files with 3 shared (Jaccard 0.33); Synthesis: should they merge, split by layer, or keep `bridges` explicit?",
+    "Thesis: `all` centralizes 6 files; Antithesis: `entry` pulls 7 files with 5 shared (Jaccard 0.62); Synthesis: should they merge, split by layer, or keep `bridges` explicit?",
+    "Thesis: `all` centralizes 6 files; Antithesis: `error` pulls 6 files with 3 shared (Jaccard 0.33); Synthesis: should they merge, split by layer, or keep `bridges` explicit?"
+  ]
+}

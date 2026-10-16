@@ -1,9 +1,9 @@
 # Recipe: Reduce File Complexity
 
 Target hotspot: `cvm.h`
-(complexity 0.2, centrality 1.0)
+(complexity 0.3, centrality 1.0)
 
-1. Read dependents: `grep -n 'cvm.h' readmenator-agent/ARCHITECTURE.md`
+1. Read dependents: `grep -n 'cvm.h' readmenator-agent/ARCHITECTURE*.md`
 2. Extract functions/classes into new files in the same subsystem
 3. Update imports
 4. Regenerate: `readmenator .`

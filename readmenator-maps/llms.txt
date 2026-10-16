@@ -1,0 +1,55 @@
+# cvm
+
+> Static analysis knowledge base for cvm: 3 communities, 26 files, 91 imports, 4 languages, 565 symbols.
+
+Generated offline by readmenator (zero LLM tokens). Start with the wiki index for the big picture, then the agent INDEX for file lookup.
+
+## Wiki
+
+- [readmenator-wiki/index.md](md/readmenator-wiki/index.md): The codebase centres on cvm.h, cvm2/cvm.h, cvmjit.h. Architecturally it is 3 layers, dominant utility (21 files) across 4 import-based communities. Recorded...
+- [readmenator-wiki/REPORT.md](md/readmenator-wiki/REPORT.md): Project: cvm | 2026-10-16 | offline, deterministic
+- [readmenator-wiki/community_0_cvm2_cvm.md](md/readmenator-wiki/community_0_cvm2_cvm.md): Community 0 | 12 files | cohesion 0.73
+- [readmenator-wiki/community_1_cvm2_cvm_dbg_main.md](md/readmenator-wiki/community_1_cvm2_cvm_dbg_main.md): Community 1 | 5 files | cohesion 0.46
+- [readmenator-wiki/community_2_cvm2_cvm_jit.md](md/readmenator-wiki/community_2_cvm2_cvm_jit.md): Community 2 | 5 files | cohesion 0.40
+- [readmenator-wiki/community_3_orphans.md](md/readmenator-wiki/community_3_orphans.md): Community 3 | 4 files | cohesion 0.00
+- [readmenator-wiki/concepts.md](md/readmenator-wiki/concepts.md): Second-brain semantic layer: nouns map atomically to file sets (EXTRACTED); verbs aggregate structural edges (INFERRED).
+- [readmenator-wiki/queries.md](md/readmenator-wiki/queries.md): Log each answered question here so the wiki compounds. Format: question, answer, cited files.
+
+## GraphRAG
+
+- [readmenator-graphrag/REPORTS.md](md/readmenator-graphrag/REPORTS.md): Entities: 654 | Relationships: 1147 | Communities: 4 | Themes: 2 | Text units: 566
+
+## Agent Docs
+
+- [readmenator-agent/INDEX.md](md/readmenator-agent/INDEX.md)
+- [readmenator-agent/GOTCHAS.md](md/readmenator-agent/GOTCHAS.md): These files have the most connections. Changes here have high blast radius.
+- [readmenator-agent/API.md](md/readmenator-agent/API.md): cvmerror (function) cvm.c:12 static void cvmerror(CVM vm, const char fmt, ...) -- — C Virtual Machine interpreter #include "cvm.h" #include <stdarg.h>...
+- [readmenator-agent/API_p2.md](md/readmenator-agent/API_p2.md): Depends on: cvm2/cvm.h, cvm2/cvmjit.h
+- [readmenator-agent/ARCHITECTURE.md](md/readmenator-agent/ARCHITECTURE.md): cvm2/cvm.c -> cvm2/cvm.h
+- [readmenator-agent/CONCEPTS.md](md/readmenator-agent/CONCEPTS.md): Nouns map atomically to file sets (EXTRACTED); verbs aggregate structural edges (INFERRED).
+- [readmenator-agent/KB_cvm2.md](md/readmenator-agent/KB_cvm2.md): Doc: Vout: static int64t nativeatol(void vm, int ac, uint64t av) { (void)vm; if (ac < 1) return...
+- [readmenator-agent/KB_cvm2_p2.md](md/readmenator-agent/KB_cvm2_p2.md): Doc: JitBuf: / Condition codes for Jcc / SETcc enum { CCO = 0x0, CCNO = 0x1, CCB = 0x2...
+- [readmenator-agent/KB_root.md](md/readmenator-agent/KB_root.md): Doc: cvmerror: — C Virtual Machine interpreter #include "cvm.h" #include <stdarg.h> #include...
+- [readmenator-agent/MEMORY.md](md/readmenator-agent/MEMORY.md): Generated from 26 files at commit f18a832c52b6. Read this first, then readmenator-wiki/index.md, then readmenator . ask "<question>" for anything specific.
+- [readmenator-agent/SECURITY.md](md/readmenator-agent/SECURITY.md)
+- [readmenator-agent/SYMBOLS.md](md/readmenator-agent/SYMBOLS.md)
+- [readmenator-agent/SYMBOLS_p2.md](md/readmenator-agent/SYMBOLS_p2.md)
+- [readmenator-agent/recipes/add-function.md](md/readmenator-agent/recipes/add-function.md): Find the target file by purpose: grep -in '<topic>' readmenator-agent/INDEX.md
+- [readmenator-agent/recipes/change-impact.md](md/readmenator-agent/recipes/change-impact.md): Riskiest file: cvm2/cvm.h (15 dependents)
+- [readmenator-agent/recipes/fix-cycle.md](md/readmenator-agent/recipes/fix-cycle.md): Read cycles: grep -A5 'Dependency Cycles' readmenator-agent/GOTCHAS.md
+- [readmenator-agent/recipes/fix-security.md](md/readmenator-agent/recipes/fix-security.md): Read findings: grep -n '<file>' readmenator-agent/SECURITY.md
+- [readmenator-agent/recipes/reduce-complexity.md](md/readmenator-agent/recipes/reduce-complexity.md): (complexity 0.3, centrality 1.0)
+
+## Project Docs
+
+- [KNOWLEDGE_BASE.md](md/KNOWLEDGE_BASE.md): Start here: Statistics Dashboard for scope, God Nodes for blast radius, Architecture Reference for per-file API. Agents: prefer readmenator-agent/INDEX.md +...
+- [README.md](md/README.md): A stack-based bytecode virtual machine for a C language subset, designed as an alternative execution backend for the miniGCC and LazyC compilers. CVM compiles...
+- [SECURITY.md](md/SECURITY.md): Use this section to tell people about which versions of your project are
+
+## Optional
+
+- [Runtime Architecture](architecture.html): Components, services, storage, and boundaries across layers. (interactive HTML)
+- [Data Flow](dataflow.html): Movement of data from sources through transforms to stores. (interactive HTML)
+- [Change Lifecycle](lifecycle.html): States, transitions, waits, and retry paths of change. (interactive HTML)
+- [Request Sequence](sequence.html): Ordered interaction between top participants over time. (interactive HTML)
+- [Delivery Workflow](workflow.html): Delivery path across lanes from entry to terminal outcomes. (interactive HTML)

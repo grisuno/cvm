@@ -1,6 +1,6 @@
 # Audit Report
 
-*Project: cvm | 2026-09-17 | offline, deterministic*
+*Project: cvm | 2026-10-16 | offline, deterministic*
 
 ## Confidence Trail
 
@@ -10,16 +10,16 @@ Every edge is tagged. Extracted means parsed from source; inferred means derived
 |------------|-------|---------|
 | EXTRACTED | 31 | Resolved import edges parsed from source |
 | EXTRACTED | 91 | Raw import statements (may include externals) |
-| INFERRED | 0 | Surprising cross-community bridges |
+| INFERRED | 5 | Surprising cross-community bridges |
 | AMBIGUOUS | 0 | No uncertain edges are emitted by the static scanner |
 
 ## Coverage
 
-- Files: 26, communities: 2
+- Files: 26, communities: 4
 - File doc coverage: 2/26
-- Orphans (no docs at any level): 5
-- Layers detected: 4
-- Security findings: 1
+- Orphans (no docs at any level): 11
+- Layers detected: 3
+- Security findings: 0
 - Large files (>256KB, maybe generated): 0
 
 ## Limits
@@ -31,7 +31,7 @@ Every edge is tagged. Extracted means parsed from source; inferred means derived
 
 ## Token Benchmark
 
-- Wiki index plus community pages estimate: ~19653 tokens (chars/4).
+- Wiki index plus community pages estimate: ~14048 tokens (chars/4).
 - Full re-read of every source file would cost strictly more on any non-trivial project; this wiki is the cheaper entry point.
 - Generation cost: $0, offline, no network calls.
 
